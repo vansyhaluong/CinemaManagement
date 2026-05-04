@@ -1,0 +1,20 @@
+﻿Cinema
+1.0.0.0
+
+winexe
+C#
+.cs
+C:\Users\admin\OneDrive\Máy tính\Cinema\Cinema\obj\Debug\net8.0-windows\
+Cinema
+none
+false
+TRACE;DEBUG;NET;NET8_0;NETCOREAPP
+C:\Users\admin\OneDrive\Máy tính\Cinema\Cinema\App.xaml
+111944452664
+26-590548022
+16849126982
+2331069079226
+Controls\NavItem.xaml;Controls\StatCard.xaml;GUI\Booking.xaml;GUI\Home.xaml;GUI\Login.xaml;GUI\Main.xaml;GUI\MainWindow.xaml;GUI\MovieDetailDialog.xaml;GUI\QuanLyPhim.xaml;Themes\Dark.xaml;Themes\Light.xaml;
+
+True
+

@@ -1,0 +1,31 @@
+<!-- ============================================================
+     STEP 5 — CONTROLS/STATCARD.XAML
+     Summary stat card UserControl.
+     DependencyProperties: CardLabel, Value, SubLabel, ValueBrushKey
+     ValueBrushKey is a string key (e.g. "SuccessBrush") that the
+     code-behind uses to call SetResourceReference — so the value
+     colour participates in the theme toggle automatically.
+     ============================================================ -->
+<UserControl x:Class="Cinema.Controls.StatCard"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             Width="170" Height="60">
+
+    <Border Background="{DynamicResource SurfaceBrush}"
+            BorderBrush="{DynamicResource BorderBrush}"
+            BorderThickness="1"
+            CornerRadius="6"
+            Padding="14,10">
+        <StackPanel>
+            <TextBlock x:Name="lblLabel"
+                       FontSize="11"
+                       Foreground="{DynamicResource TextMutedBrush}"/>
+            <TextBlock x:Name="lblValue"
+                       FontSize="20" FontWeight="Bold"
+                       Foreground="{DynamicResource TextPrimaryBrush}"/>
+            <TextBlock x:Name="lblSub"
+                       FontSize="9"
+                       Foreground="{DynamicResource TextMutedBrush}"/>
+        </StackPanel>
+    </Border>
+</UserControl>
