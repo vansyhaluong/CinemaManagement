@@ -47,10 +47,11 @@
                          IsActive, BadgeCount are DependencyProperties.
                          Theme toggle updates colours automatically.
                     ─────────────────────────────────────────────── -->
-                    <controls:NavItem Icon="🏠" Label="Danh sách phim" IsActive="True" />
-                    <controls:NavItem Icon="▦"  Label="Inventory" MouseLeftButtonDown="Movie_Click"/>
+                    <controls:NavItem Icon="🎬" Label="Danh sách phim" IsActive="True" Click="Nav_Click" x:Name="nav_Phim"/>
+                    <controls:NavItem Icon="🎞"  Label="Quản Lý Phim" MouseLeftButtonDown="btnQuanLyPhim_Click" Click="Nav_Click" x:Name="nav_QLPhim"/>
+                    <controls:NavItem Icon="📽" Label="Quản Lý Phòng Chiếu" MouseLeftButtonDown="btnQuanLyPhong_Click" Click="Nav_Click" x:Name="nav_Phong"/>
                     <!--<controls:NavItem Icon="🎟" Label="Booking"/>-->
-                    <controls:NavItem Icon="🛒" Label="Purchase Orders" BadgeCount="3"/>
+                    <!--<controls:NavItem Icon="🛒" Label="Purchase Orders" BadgeCount="3"/>-->
                     <!--<controls:NavItem Icon="🏢" Label="Suppliers"/>-->
 
                     <Rectangle Height="1" Fill="{DynamicResource BorderBrush}" Margin="0,8"/>
@@ -101,7 +102,7 @@
 
         <!-- ── Main panel ────────────────────────────────────── -->
         
-        <Grid Grid.Column="1" x:Name="MainPage" Visibility="Visible"
+        <!--<Grid Grid.Column="1" x:Name="MainPage" Visibility="Visible"
               Background="{DynamicResource AppBackgroundBrush}">
             <Grid.RowDefinitions>
                 <RowDefinition Height="58"/>
@@ -110,7 +111,7 @@
                 <RowDefinition Height="42"/>
             </Grid.RowDefinitions>
 
-            <!-- Top bar -->
+            --><!-- Top bar --><!--
             <Border Grid.Row="0"
                     BorderBrush="{DynamicResource BorderBrush}"
                     BorderThickness="0,0,0,1">
@@ -137,12 +138,12 @@
                 </Grid>
             </Border>
 
-            <!-- ── STEP 5: StatCard UserControls ─────────────────
+            --><!-- ── STEP 5: StatCard UserControls ─────────────────
                  Replace the inline Border stat blocks.
                  ValueBrushKey maps to a key in the ResourceDictionary.
                  SetResourceReference in the code-behind links it —
                  theme toggle updates the value colour automatically.
-            ─────────────────────────────────────────────────────── -->
+            ─────────────────────────────────────────────────────── --><!--
             <Border Grid.Row="1"
                     BorderBrush="{DynamicResource BorderBrush}"
                     BorderThickness="0,0,0,1">
@@ -170,14 +171,14 @@
                 </StackPanel>
             </Border>
 
-            <!-- Content area -->
+            --><!-- Content area --><!--
             <Grid Grid.Row="2">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="44"/>
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
 
-                <!-- Filter bar -->
+                --><!-- Filter bar --><!--
                 <StackPanel Grid.Row="0" Orientation="Horizontal"
                             Margin="12,8" VerticalAlignment="Center">
                     <TextBox Width="220" Margin="0,0,8,0"
@@ -200,7 +201,7 @@
                     </ComboBox>
                 </StackPanel>
 
-                <!-- DataGrid -->
+                --><!-- DataGrid --><!--
                 <DataGrid Grid.Row="1" x:Name="dgvItems"
                           AutoGenerateColumns="False"
                           CanUserAddRows="False"
@@ -254,7 +255,7 @@
                 </DataGrid>
             </Grid>
 
-            <!-- Bottom bar -->
+            --><!-- Bottom bar --><!--
             <Border Grid.Row="3"
                     BorderBrush="{DynamicResource BorderBrush}"
                     BorderThickness="0,1,0,0">
@@ -277,9 +278,9 @@
                     </StackPanel>
                 </Grid>
             </Border>
-        </Grid>
+        </Grid>-->
         <ContentControl x:Name="MainContent"
                 Grid.Column="1"
-                Visibility="Collapsed"/>
+                />
     </Grid>
 </Window>

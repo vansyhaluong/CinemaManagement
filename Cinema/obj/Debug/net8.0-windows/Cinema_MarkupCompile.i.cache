@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET8_0;NETCOREAPP
 C:\Users\admin\OneDrive\Máy tính\Cinema\Cinema\App.xaml
-111944452664
-26-590548022
-16849126982
+17-1091233574
+301517323179
+231817869794
 2331069079226
-Controls\NavItem.xaml;Controls\StatCard.xaml;GUI\Booking.xaml;GUI\Home.xaml;GUI\Login.xaml;GUI\Main.xaml;GUI\MainWindow.xaml;GUI\MovieDetailDialog.xaml;GUI\QuanLyPhim.xaml;Themes\Dark.xaml;Themes\Light.xaml;
+Controls\NavItem.xaml;Controls\StatCard.xaml;GUI\AddMovieWindow.xaml;GUI\Booking.xaml;GUI\CustomMessageBox.xaml;GUI\Home.xaml;GUI\Login.xaml;GUI\Main.xaml;GUI\MainWindow.xaml;GUI\MovieDetailDialog.xaml;GUI\QuanLyPhim.xaml;GUI\QuanLyPhong.xaml;GUI\QuanLyPhongChieu.xaml;GUI\ThemPhong.xaml;GUI\ThemPhongChieu.xaml;Themes\Dark.xaml;Themes\Light.xaml;
 
 True
 

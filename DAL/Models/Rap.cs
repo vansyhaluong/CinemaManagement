@@ -13,5 +13,9 @@ public partial class Rap
 
     public string? ThanhPho { get; set; }
 
+    public virtual ICollection<BaoCaoDoanhThuNgay> BaoCaoDoanhThuNgays { get; set; } = new List<BaoCaoDoanhThuNgay>();
+
+    public virtual ICollection<NhanVien> NhanViens { get; set; } = new List<NhanVien>();
+
     public virtual ICollection<PhongChieu> PhongChieus { get; set; } = new List<PhongChieu>();
 }

@@ -1,0 +1,128 @@
+﻿<Window x:Class="Cinema.GUI.ThemPhong"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Cinema.GUI"
+        Background="{DynamicResource AppBackgroundBrush}"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize"
+        mc:Ignorable="d"
+        AllowsTransparency="True"
+         WindowStyle="None"
+        Title="ThemPhong" Height="450" Width="800">
+    
+        <!-- ROOT -->
+        <Grid Background="#80000000">
+
+            <!-- CARD -->
+            <Border Width="500"
+                Height="380"
+                Background="#111827"
+                CornerRadius="18"
+                Padding="25"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Center">
+
+                <Grid>
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <!-- HEADER -->
+                    <StackPanel>
+
+                        <TextBlock Text="🎬 Thêm phòng chiếu"
+                               FontSize="24"
+                               FontWeight="Bold"
+                               Foreground="White"/>
+
+                        <TextBlock Text="Nhập thông tin phòng mới cho hệ thống rạp"
+                               Margin="0,6,0,0"
+                               Foreground="#94A3B8"
+                               FontSize="12"/>
+                    </StackPanel>
+
+                    <!-- FORM -->
+                    <StackPanel Grid.Row="1"
+                            Margin="0,28,0,0">
+
+                        <!-- Tên phòng -->
+                        <TextBlock Text="Tên phòng"
+                               Foreground="White"
+                               FontSize="13"
+                               Margin="0,0,0,6"/>
+
+                        <TextBox x:Name="txtTenPhong"
+                             Height="42"
+                             FontSize="14"
+                             Padding="12,0"
+                             Background="#1E293B"
+                             Foreground="White"
+                             BorderBrush="#334155"
+                             BorderThickness="1"
+                             CaretBrush="White"
+                             VerticalContentAlignment="Center"
+                             />
+
+                        <!-- Tên rạp -->
+                        <TextBlock Text="Tên rạp"
+                               Foreground="White"
+                               FontSize="13"
+                               Margin="0,18,0,6"/>
+
+                        <ComboBox x:Name="cbRap"
+                              Height="42"
+                              FontSize="14"
+                              Padding="10,0"
+                              Background="#1E293B"
+                              Foreground="{DynamicResource TextMutedBrush}"
+                              BorderBrush="#334155"
+                              BorderThickness="1">
+
+                            
+
+                        </ComboBox>
+
+                    </StackPanel>
+
+                    <!-- BUTTON -->
+                    <StackPanel Grid.Row="2"
+                            Orientation="Horizontal"
+                            HorizontalAlignment="Right"
+                            Margin="0,20,0,0">
+
+                        <!-- Hủy -->
+                        <Button Content="Hủy"
+                            Width="95"
+                            Height="38"
+                            Margin="0,0,10,0"
+                            Background="#1E293B"
+                            Foreground="White"
+                            BorderBrush="#334155"
+                            Click="btnCancel_Click"
+                            Cursor="Hand"/>
+
+                        <!-- Lưu -->
+                        <Button Content="Lưu"
+                            Width="110"
+                            Height="38"
+                            Background="#2563EB"
+                            Foreground="White"
+                            BorderThickness="0"
+                            FontWeight="Bold"
+                            Click="btnSave_Click"
+                            Cursor="Hand"/>
+
+                    </StackPanel>
+
+                </Grid>
+
+            </Border>
+
+        </Grid>
+    
+</Window>

@@ -7,7 +7,13 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
+    <Compile Update="GUI\AddMovieWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="GUI\Booking.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="GUI\CustomMessageBox.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="GUI\Home.xaml.cs">
@@ -22,9 +28,21 @@
     <Compile Update="GUI\MovieDetailDialog.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="GUI\QuanLyPhong.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Compile Update="GUI\QuanLyPhim.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="GUI\QuanLyPhongChieu.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="GUI\ThemPhong.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="GUI\ThemPhongChieu.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
@@ -35,7 +53,13 @@
     <Page Update="Controls\StatCard.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="GUI\AddMovieWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="GUI\Booking.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="GUI\CustomMessageBox.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="GUI\Home.xaml">
@@ -53,7 +77,19 @@
     <Page Update="GUI\MovieDetailDialog.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="GUI\QuanLyPhong.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="GUI\QuanLyPhim.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="GUI\QuanLyPhongChieu.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="GUI\ThemPhong.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="GUI\ThemPhongChieu.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Themes\Dark.xaml">

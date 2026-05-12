@@ -1,0 +1,93 @@
+﻿<Window x:Class="Cinema.GUI.ThemPhongChieu"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Cinema.GUI"
+        Background="{DynamicResource AppBackgroundBrush}"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize"
+        mc:Ignorable="d"
+        Title="Phòng Chiếu Phim" Height="450" Width="600">
+    <Grid Margin="20">
+
+        <Border 
+                CornerRadius="16"
+                Padding="20">
+
+            <Border.Effect>
+                <DropShadowEffect BlurRadius="20"
+                                  Opacity="0.15"/>
+            </Border.Effect>
+
+            <Grid>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <!-- TITLE -->
+                <TextBlock Text="THÔNG TIN PHÒNG CHIẾU"
+                           FontSize="18"
+                           FontWeight="Bold"
+                           Foreground="White"
+                           Margin="0,0,0,20"/>
+
+                <!-- TÊN PHÒNG -->
+                <StackPanel Grid.Row="1" Margin="0,0,0,15">
+
+                    <TextBlock Text="Tên phòng"
+                               Foreground="#6B7280"
+                               Margin="0,0,0,5"/>
+
+                    <TextBox x:Name="txtTenPhong"
+                             Height="38"
+                             Padding="8"
+                             />
+                </StackPanel>
+
+                <!-- RẠP -->
+                <StackPanel Grid.Row="2" Margin="0,0,0,15">
+
+                    <TextBlock Text="Rạp chiếu"
+                               Foreground="#6B7280"
+                               Margin="0,0,0,5"/>
+
+                    <ComboBox x:Name="cbRap"
+                              Height="38"
+                              />
+                </StackPanel>
+
+                <!-- BUTTONS -->
+                <StackPanel Grid.Row="3"
+                            Orientation="Horizontal"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Bottom">
+
+                    <Button Content="Huỷ"
+                            Width="90"
+                            Height="36"
+                            Background="#E5E7EB"
+                            BorderThickness="0"
+                            Margin="0,0,10,0"
+                            />
+
+                    <Button Content="Lưu"
+                            Width="90"
+                            Height="36"
+                            Background="#22C55E"
+                            Foreground="White"
+                            BorderThickness="0"
+                            />
+
+                </StackPanel>
+
+            </Grid>
+
+        </Border>
+
+    </Grid>
+</Window>

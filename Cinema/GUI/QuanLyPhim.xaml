@@ -24,7 +24,7 @@
                     <Button Content="+ Thêm phim" Width="130" Height="42" DockPanel.Dock="Right"
                         HorizontalAlignment="Right" Margin="0,0,0,0"
                         Background="#2563EB" Foreground="White" BorderThickness="0"
-                        FontWeight="SemiBold" Cursor="Hand"/>
+                        FontWeight="SemiBold" Cursor="Hand" Click="btnThemPhim_Click"/>
                 </DockPanel>
             </Border>
             <!-- Search -->
@@ -48,46 +48,198 @@
             </Border>
             <!-- Table -->
             <Border Grid.Row="2" Margin="24,0,24,24" Background="#111827" CornerRadius="18" Padding="16">
-                <DataGrid AutoGenerateColumns="False"
-                      HeadersVisibility="Column"
-                      GridLinesVisibility="None"
-                      RowHeight="58"
-                      CanUserAddRows="False"
-                      Background="#111827"
-                      BorderThickness="0"
-                      Foreground="White"
-                      AlternatingRowBackground="#0B1220"
-                      RowBackground="#111827">
+                <DataGrid x:Name="dgPhim"
+          AutoGenerateColumns="False"
+          HeadersVisibility="Column"
+          GridLinesVisibility="None"
+          RowHeight="58"
+          CanUserAddRows="False"
+          Background="#111827"
+          BorderThickness="0"
+          Foreground="White"
+          AlternatingRowBackground="#0B1220"
+          RowBackground="#111827"
+          SelectionMode="Single"
+          SelectionUnit="FullRow">
+
+                    <!-- STYLE -->
                     <DataGrid.Resources>
+
+                        <!-- Header -->
                         <Style TargetType="DataGridColumnHeader">
                             <Setter Property="Background" Value="#1E293B"/>
                             <Setter Property="Foreground" Value="#CBD5E1"/>
                             <Setter Property="FontWeight" Value="SemiBold"/>
+                            <Setter Property="FontSize" Value="14"/>
                             <Setter Property="Height" Value="46"/>
                             <Setter Property="BorderThickness" Value="0"/>
+                            <Setter Property="HorizontalContentAlignment" Value="Center"/>
                         </Style>
+
+                        <!-- Cell -->
+                        <Style TargetType="DataGridCell">
+                            <Setter Property="BorderThickness" Value="0"/>
+                            <Setter Property="Padding" Value="8,0"/>
+                            <Setter Property="VerticalContentAlignment" Value="Center"/>
+                            <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+                        </Style>
+
+                        <!-- Row Hover -->
+                        <Style TargetType="DataGridRow">
+                            <Setter Property="Background" Value="#111827"/>
+                            <Setter Property="Foreground" Value="White"/>
+                            <Setter Property="BorderThickness" Value="0"/>
+                            <Style.Triggers>
+
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="#1E293B"/>
+                                </Trigger>
+
+                                <Trigger Property="IsSelected" Value="True">
+                                    <Setter Property="Background" Value="#2563EB"/>
+                                </Trigger>
+
+                            </Style.Triggers>
+                        </Style>
+
                     </DataGrid.Resources>
+
+                    <!-- COLUMNS -->
                     <DataGrid.Columns>
-                        <DataGridTextColumn Header="Mã" Binding="{Binding MaPhim}" Width="80"/>
-                        <DataGridTextColumn Header="Tên phim" Binding="{Binding TenPhim}" Width="2*"/>
-                        <DataGridTextColumn Header="Thể loại" Binding="{Binding TheLoai}" Width="*"/>
-                        <DataGridTextColumn Header="Thời lượng" Binding="{Binding ThoiLuong}" Width="120"/>
-                        <DataGridTextColumn Header="Khởi chiếu" Binding="{Binding KhoiChieu}" Width="140"/>
-                        <DataGridTextColumn Header="Trạng thái" Binding="{Binding TrangThai}" Width="130"/>
-                        <DataGridTemplateColumn Header="Thao tác" Width="220">
+
+                        <!-- Mã -->
+                        <DataGridTextColumn Header="Mã"
+                            Binding="{Binding MaPhim}"
+                            Width="80">
+                            <DataGridTextColumn.ElementStyle>
+                                <Style TargetType="TextBlock">
+                                    <Setter Property="TextAlignment" Value="Center"/>
+                                    <Setter Property="VerticalAlignment" Value="Center"/>
+                                </Style>
+                            </DataGridTextColumn.ElementStyle>
+                        </DataGridTextColumn>
+
+                        <!-- Tên phim -->
+                        <DataGridTextColumn Header="Tên phim"
+                    Binding="{Binding TieuDe}"
+                    Width="2*">
+
+                            <!-- Header -->
+                            <DataGridTextColumn.HeaderStyle>
+                                <Style TargetType="DataGridColumnHeader"
+           BasedOn="{StaticResource {x:Type DataGridColumnHeader}}">
+                                    <Setter Property="HorizontalContentAlignment" Value="Left"/>
+                                    <Setter Property="Padding" Value="25,0,0,0"/>
+                                </Style>
+                            </DataGridTextColumn.HeaderStyle>
+
+                            <!-- Data -->
+                            <DataGridTextColumn.ElementStyle>
+                                <Style TargetType="TextBlock">
+                                    <Setter Property="Padding" Value="25,0,0,0"/>
+                                    <Setter Property="TextAlignment" Value="Left"/>
+                                    <Setter Property="VerticalAlignment" Value="Center"/>
+                                </Style>
+                            </DataGridTextColumn.ElementStyle>
+
+                        </DataGridTextColumn>
+
+                        <!-- Thời lượng -->
+                        <DataGridTextColumn Header="Thời lượng"
+                            Binding="{Binding ThoiLuong}"
+                            Width="120">
+                            <DataGridTextColumn.ElementStyle>
+                                <Style TargetType="TextBlock">
+                                    <Setter Property="TextAlignment" Value="Center"/>
+                                    <Setter Property="VerticalAlignment" Value="Center"/>
+                                </Style>
+                            </DataGridTextColumn.ElementStyle>
+                        </DataGridTextColumn>
+
+                        <!-- Khởi chiếu -->
+                        <DataGridTextColumn Header="Khởi chiếu"
+                            Binding="{Binding KhoiChieu,StringFormat=dd/MM/yyyy}"
+                            Width="140">
+                            <DataGridTextColumn.ElementStyle>
+                                <Style TargetType="TextBlock">
+                                    <Setter Property="TextAlignment" Value="Center"/>
+                                    <Setter Property="VerticalAlignment" Value="Center"/>
+                                </Style>
+                            </DataGridTextColumn.ElementStyle>
+                        </DataGridTextColumn>
+
+                        <!-- Trạng thái -->
+                        <DataGridTemplateColumn Header="Trạng thái" Width="130">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
-                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                                        <Button Content="Sửa" Width="82" Height="34" Margin="0,0,8,0"
-                                            Background="#F59E0B" Foreground="White" BorderThickness="0"
-                                            Cursor="Hand"/>
-                                        <Button Content="Xóa" Width="82" Height="34"
-                                            Background="#EF4444" Foreground="White" BorderThickness="0"
-                                            Cursor="Hand"/>
+                                    <Border Background="#16A34A"
+                    CornerRadius="8"
+                    Padding="10,4"
+                    Height="32"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center">
+
+                                        <TextBlock Text="{Binding TrangThai}"
+                           Foreground="White"
+                           FontSize="12"
+                           FontWeight="SemiBold"
+                           VerticalAlignment="Center"
+                           HorizontalAlignment="Center"/>
+                                    </Border>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+
+                        <!-- Thao tác -->
+                        <DataGridTemplateColumn Header="Thao tác" Width="140">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center">
+
+                                        <!-- Edit -->
+                                        <Button Width="36"
+                                Height="36"
+                                Margin="0,0,8,0"
+                                Background="#F59E0B"
+                                BorderThickness="0"
+                                Cursor="Hand"
+                                Click="btnEdit_Click"
+                                Tag="{Binding}"
+                                ToolTip="Sửa">
+
+                                            <TextBlock FontFamily="Segoe MDL2 Assets"
+                                       Text="&#xE70F;"
+                                       FontSize="16"
+                                       Foreground="White"
+                                       HorizontalAlignment="Center"
+                                       VerticalAlignment="Center"/>
+                                        </Button>
+
+                                        <!-- Delete -->
+                                        <Button Width="36"
+                                Height="36"
+                                Background="#EF4444"
+                                BorderThickness="0"
+                                Cursor="Hand"
+                                Click="btnDelete_Click"
+                                 Tag="{Binding}"               
+                                ToolTip="Xóa">
+
+                                            <TextBlock FontFamily="Segoe MDL2 Assets"
+                                       Text="&#xE74D;"
+                                       FontSize="16"
+                                       Foreground="White"
+                                       HorizontalAlignment="Center"
+                                       VerticalAlignment="Center"/>
+                                        </Button>
+
                                     </StackPanel>
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
                         </DataGridTemplateColumn>
+
                     </DataGrid.Columns>
                 </DataGrid>
             </Border>

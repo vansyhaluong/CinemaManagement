@@ -1,10 +1,16 @@
-﻿C:\Users\admin\OneDrive\Máy tính\Cinema\Cinema\obj\Debug\net8.0-windows\GeneratedInternalTypeHelper.g.cs
+﻿
 FC:\Users\admin\OneDrive\Máy tính\Cinema\Cinema\App.xaml;;
+FC:\Users\admin\OneDrive\Máy tính\Cinema\Cinema\GUI\AddMovieWindow.xaml;;
 FC:\Users\admin\OneDrive\Máy tính\Cinema\Cinema\GUI\Booking.xaml;;
+FC:\Users\admin\OneDrive\Máy tính\Cinema\Cinema\GUI\CustomMessageBox.xaml;;
 FC:\Users\admin\OneDrive\Máy tính\Cinema\Cinema\GUI\Home.xaml;;
 FC:\Users\admin\OneDrive\Máy tính\Cinema\Cinema\GUI\Login.xaml;;
 FC:\Users\admin\OneDrive\Máy tính\Cinema\Cinema\GUI\Main.xaml;;
 FC:\Users\admin\OneDrive\Máy tính\Cinema\Cinema\GUI\MainWindow.xaml;;
 FC:\Users\admin\OneDrive\Máy tính\Cinema\Cinema\GUI\MovieDetailDialog.xaml;;
 FC:\Users\admin\OneDrive\Máy tính\Cinema\Cinema\GUI\QuanLyPhim.xaml;;
+FC:\Users\admin\OneDrive\Máy tính\Cinema\Cinema\GUI\QuanLyPhong.xaml;;
+FC:\Users\admin\OneDrive\Máy tính\Cinema\Cinema\GUI\QuanLyPhongChieu.xaml;;
+FC:\Users\admin\OneDrive\Máy tính\Cinema\Cinema\GUI\ThemPhong.xaml;;
+FC:\Users\admin\OneDrive\Máy tính\Cinema\Cinema\GUI\ThemPhongChieu.xaml;;
 

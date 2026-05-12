@@ -11,15 +11,25 @@
   <ItemGroup>
     <None Remove="Images\avenger.jpg" />
     <None Remove="Images\CinemaSquadin.jpg" />
+    <None Remove="Images\conan.jpg" />
+    <None Remove="Images\frozen2.jpg" />
     <None Remove="Images\spiderman.webp" />
     <None Remove="Images\traintobusan.jpg" />
   </ItemGroup>
 
   <ItemGroup>
+    <Content Include="bin\Debug\net8.0-windows\Images\conan.jpg" />
+    <Content Include="bin\Debug\net8.0-windows\Images\frozen2.jpg" />
     <Content Include="Images\avenger.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Images\CinemaSquadin.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\conan.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\frozen2.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Images\spiderman.webp">
@@ -55,6 +65,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="GUI\Converters\ImageConverter.cs">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
     <Compile Update="Properties\Settings.Designer.cs">
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <AutoGen>True</AutoGen>

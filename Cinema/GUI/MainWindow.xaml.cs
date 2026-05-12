@@ -1,4 +1,5 @@
-﻿using System.Collections.ObjectModel;
+﻿using Cinema.Controls;
+using System.Collections.ObjectModel;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -22,12 +23,13 @@ namespace Cinema.GUI
 		public MainWindow()
 		{
 			InitializeComponent();
-			LoadData();
-			dgvItems.ItemsSource = _filtered;
+			MainContent.Content = new Main();
+			//LoadData();
+			//dgvItems.ItemsSource = _filtered;
 
-			txtSearch.TextChanged += (s, e) => ApplyFilter();
-			cmbCategory.SelectionChanged += (s, e) => ApplyFilter();
-			cmbStatus.SelectionChanged += (s, e) => ApplyFilter();
+			//txtSearch.TextChanged += (s, e) => ApplyFilter();
+			//cmbCategory.SelectionChanged += (s, e) => ApplyFilter();
+			//cmbStatus.SelectionChanged += (s, e) => ApplyFilter();
 		}
 		private void ThemeToggle_Click(object sender, RoutedEventArgs e)
 			=> ((App)Application.Current).ThemeToggle();
@@ -46,32 +48,51 @@ namespace Cinema.GUI
 				new(1009,"Whiteboard Markers",      "Stationery", 55,   3.20m,"OfficeDepot", new DateTime(2024,3,3), "Active"),
 				new(1010,"Power Strip (6-outlet)",  "Electronics", 9,  22.50m,"TechDist Inc",new DateTime(2024,3,2), "Active"),
 			};
-			ApplyFilter();
+			//ApplyFilter();
 		}
-		private void ApplyFilter()
-		{
-			string search = txtSearch.Text == "Search items..." ? "" : txtSearch.Text;
-			string cat = (cmbCategory.SelectedItem as ComboBoxItem)?.Content?.ToString() ?? "";
-			string status = (cmbStatus.SelectedItem as ComboBoxItem)?.Content?.ToString() ?? "";
+		//private void ApplyFilter()
+		//{
+		//	string search = txtSearch.Text == "Search items..." ? "" : txtSearch.Text;
+		//	string cat = (cmbCategory.SelectedItem as ComboBoxItem)?.Content?.ToString() ?? "";
+		//	string status = (cmbStatus.SelectedItem as ComboBoxItem)?.Content?.ToString() ?? "";
 
-			var q = _allItems.AsEnumerable();
-			if (!string.IsNullOrWhiteSpace(search))
-				q = q.Where(i => i.Name.Contains(search, StringComparison.OrdinalIgnoreCase));
-			if (!string.IsNullOrWhiteSpace(cat) && cat != "All Categories")
-				q = q.Where(i => i.Category == cat);
-			if (!string.IsNullOrWhiteSpace(status) && status != "All Status")
-				q = q.Where(i => i.Status == status);
+		//	var q = _allItems.AsEnumerable();
+		//	if (!string.IsNullOrWhiteSpace(search))
+		//		q = q.Where(i => i.Name.Contains(search, StringComparison.OrdinalIgnoreCase));
+		//	if (!string.IsNullOrWhiteSpace(cat) && cat != "All Categories")
+		//		q = q.Where(i => i.Category == cat);
+		//	if (!string.IsNullOrWhiteSpace(status) && status != "All Status")
+		//		q = q.Where(i => i.Status == status);
 
-			_filtered.Clear();
-			foreach (var item in q) _filtered.Add(item);
-			lblPageInfo.Text = $"Showing {_filtered.Count} of {_allItems.Count} items";
-		}
-		public void Movie_Click(object sender, MouseButtonEventArgs e)
-		{
+		//	_filtered.Clear();
+		//	foreach (var item in q) _filtered.Add(item);
+		//	lblPageInfo.Text = $"Showing {_filtered.Count} of {_allItems.Count} items";
+		//}
+		//public void Movie_Click(object sender, MouseButtonEventArgs e)
+		//{
 
-			MainPage.Visibility = Visibility.Collapsed;
-			MainContent.Visibility = Visibility.Visible;
-			MainContent.Content = new Main();
-		}
-	}
+		//	MainPage.Visibility = Visibility.Collapsed;
+		//	MainContent.Visibility = Visibility.Visible;
+		//	MainContent.Content = new Main();
+		//}
+		public void btnQuanLyPhim_Click(object sender, MouseButtonEventArgs e)
+        {
+            MainContent.Content = new QuanLyPhim();
+        }
+		public void btnQuanLyPhong_Click(object sender, MouseButtonEventArgs e)
+        {
+            MainContent.Content = new QuanLyPhong();
+        }
+        private void Nav_Click(object sender, RoutedEventArgs e)
+        {
+            // Tắt tất cả
+            nav_Phim.IsActive = false;
+            nav_Phong.IsActive = false;
+            nav_QLPhim.IsActive = false;
+
+            // Bật item đang click
+            NavItem item = sender as NavItem;
+            item.IsActive = true;
+        }
+    }
 }

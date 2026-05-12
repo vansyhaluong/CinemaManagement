@@ -15,8 +15,6 @@ public partial class SuatChieu
 
     public DateTime? ThoiGianKetThuc { get; set; }
 
-    public decimal? Gia { get; set; }
-
     public virtual Phim? MaPhimNavigation { get; set; }
 
     public virtual PhongChieu? MaPhongNavigation { get; set; }

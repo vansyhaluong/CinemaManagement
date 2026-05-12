@@ -13,11 +13,21 @@ public partial class NhanVien
 
     public string? SoDienThoai { get; set; }
 
-    public string? Email { get; set; }
+    public int? MaRap { get; set; }
 
-    public decimal? Luong { get; set; }
+    public virtual ICollection<BangLuong> BangLuongs { get; set; } = new List<BangLuong>();
+
+    public virtual ICollection<ChamCong> ChamCongs { get; set; } = new List<ChamCong>();
 
     public virtual ICollection<DonHang> DonHangs { get; set; } = new List<DonHang>();
+
+    public virtual ICollection<HoanVe> HoanVes { get; set; } = new List<HoanVe>();
+
+    public virtual ICollection<KhenThuong> KhenThuongs { get; set; } = new List<KhenThuong>();
+
+    public virtual ICollection<KyLuat> KyLuats { get; set; } = new List<KyLuat>();
+
+    public virtual Rap? MaRapNavigation { get; set; }
 
     public virtual TaiKhoan? MaTaiKhoanNavigation { get; set; }
 

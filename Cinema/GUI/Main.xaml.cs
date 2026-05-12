@@ -1,8 +1,10 @@
 ﻿using BUS;
+using Cinema.GUI.Converters;
 using Cinema.Models;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -54,7 +56,9 @@ namespace Cinema.GUI
 			// show popup
 			PopupContainer.Visibility = Visibility.Visible;
 
-			imgPoster.Source = new BitmapImage(new Uri(fullMovie.AnhBia, UriKind.RelativeOrAbsolute));
+			// FIX ẢNH
+			var converter = new ImageConverter();
+			imgPoster.Source = converter.Convert(fullMovie.AnhBia, null, null, null) as ImageSource;
 			txtTitle.Text = fullMovie.TieuDe;
 			
 			txtCountry.Text = fullMovie.QuocGia;

@@ -30,8 +30,12 @@
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("robotocondensed-light.ttf")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("robotocondensed-lightitalic.ttf")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("robotocondensed-regular.ttf")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("bin/debug/net8.0-windows/images/conan.jpg")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("bin/debug/net8.0-windows/images/frozen2.jpg")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/avenger.jpg")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/cinemasquadin.jpg")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/conan.jpg")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/frozen2.jpg")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/spiderman.webp")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/traintobusan.jpg")]
 

@@ -21,5 +21,17 @@ namespace BUS
 		{
 			return dal.getMovieById(id);
 		}
+		public bool addMovie(Phim phim)
+		{
+			return dal.addMovie(phim);
+		}
+		public bool updateMovie(Phim phim)
+		{
+			return dal.updateMovie(phim);
+		}
+		public bool removeMovie(int id)
+		{
+			return dal.removeMovie(id);
+		}
 	}
 }

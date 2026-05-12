@@ -15,3 +15,4 @@ C:\Users\admin\OneDrive\Máy tính\Cinema\BUS\obj\Debug\net8.0\BUS.dll
 C:\Users\admin\OneDrive\Máy tính\Cinema\BUS\obj\Debug\net8.0\refint\BUS.dll
 C:\Users\admin\OneDrive\Máy tính\Cinema\BUS\obj\Debug\net8.0\BUS.pdb
 C:\Users\admin\OneDrive\Máy tính\Cinema\BUS\obj\Debug\net8.0\ref\BUS.dll
+C:\Users\admin\OneDrive\Máy tính\Cinema\BUS\obj\Debug\net8.0\BUS.sourcelink.json

@@ -15,6 +15,10 @@ public partial class VeBan
 
     public decimal? Gia { get; set; }
 
+    public string? TrangThai { get; set; }
+
+    public virtual ICollection<HoanVe> HoanVes { get; set; } = new List<HoanVe>();
+
     public virtual DonHang? MaDonHangNavigation { get; set; }
 
     public virtual Ghe? MaGheNavigation { get; set; }
