@@ -10,6 +10,12 @@
     <Compile Update="GUI\AddMovieWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="GUI\AddXuatChieu.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="GUI\BanVe.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="GUI\Booking.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -28,6 +34,12 @@
     <Compile Update="GUI\MovieDetailDialog.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="GUI\QuanLyGhe.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="GUI\QuanLyNhanVien.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="GUI\QuanLyPhong.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -37,6 +49,15 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="GUI\QuanLyPhongChieu.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="GUI\QuanLySuatChieu.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="GUI\Student.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="GUI\ThemNhanVien.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="GUI\ThemPhong.xaml.cs">
@@ -54,6 +75,12 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="GUI\AddMovieWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="GUI\AddXuatChieu.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="GUI\BanVe.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="GUI\Booking.xaml">
@@ -77,6 +104,12 @@
     <Page Update="GUI\MovieDetailDialog.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="GUI\QuanLyGhe.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="GUI\QuanLyNhanVien.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="GUI\QuanLyPhong.xaml">
       <SubType>Designer</SubType>
     </Page>
@@ -84,6 +117,15 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="GUI\QuanLyPhongChieu.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="GUI\QuanLySuatChieu.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="GUI\Student.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="GUI\ThemNhanVien.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="GUI\ThemPhong.xaml">

@@ -35,5 +35,16 @@ namespace DAL
         {
             return db.Ghes.Count(x => x.MaPhong == ma && x.TrangThai == "Bảo trì");
         }
+        public List<Ghe> getGheBySuatChieu(int maSuatChieu)
+        {
+            var suat = db.SuatChieus.FirstOrDefault(s => s.MaSuatChieu == maSuatChieu);
+
+            if (suat == null)
+                return new List<Ghe>();
+
+            return db.Ghes
+                .Where(x => x.MaPhong == suat.MaPhong)
+                .ToList();
+        }
     }
 }

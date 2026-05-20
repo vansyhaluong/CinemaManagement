@@ -7,6 +7,8 @@ public partial class VeBan
 {
     public int MaDatVe { get; set; }
 
+    public string? MaVe { get; set; }
+
     public int? MaDonHang { get; set; }
 
     public int? MaSuatChieu { get; set; }
@@ -16,6 +18,8 @@ public partial class VeBan
     public decimal? Gia { get; set; }
 
     public string? TrangThai { get; set; }
+
+    public virtual ICollection<GiuGheTam> GiuGheTams { get; set; } = new List<GiuGheTam>();
 
     public virtual ICollection<HoanVe> HoanVes { get; set; } = new List<HoanVe>();
 

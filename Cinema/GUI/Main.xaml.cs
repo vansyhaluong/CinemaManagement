@@ -28,8 +28,9 @@ namespace Cinema.GUI
     {
 		MovieBUS bus = new MovieBUS();
 		public ObservableCollection<Phim> Phim { get; set; } 
-		
-		public Main()
+		private Phim selectedMovie;
+
+        public Main()
         {
             InitializeComponent();
 			DataContext = this;
@@ -64,11 +65,20 @@ namespace Cinema.GUI
 			txtCountry.Text = fullMovie.QuocGia;
 			txtDuration.Text = fullMovie.ThoiLuong + " min";
 			txtStatus.Text = fullMovie.TrangThai;
-			
-		}
+            selectedMovie = fullMovie;
+
+        }
 		private void ClosePopup_Click(object sender, RoutedEventArgs e)
 		{
 			PopupContainer.Visibility = Visibility.Collapsed;
+			
 		}
-	}
+		public void btnDatVe_Click(object sender, RoutedEventArgs e)
+		{
+            MainWindow main = (MainWindow)Window.GetWindow(this);
+
+            main.MainContent.Content = new BanVe(selectedMovie);
+        }
+
+    }
 }

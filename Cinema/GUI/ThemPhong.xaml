@@ -114,6 +114,7 @@
                             Foreground="White"
                             BorderThickness="0"
                             FontWeight="Bold"
+                            x:Name="btnSave"
                             Click="btnSave_Click"
                             Cursor="Hand"/>
 

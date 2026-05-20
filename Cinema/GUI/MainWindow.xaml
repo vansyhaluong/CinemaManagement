@@ -47,9 +47,12 @@
                          IsActive, BadgeCount are DependencyProperties.
                          Theme toggle updates colours automatically.
                     ─────────────────────────────────────────────── -->
-                    <controls:NavItem Icon="🎬" Label="Danh sách phim" IsActive="True" Click="Nav_Click" x:Name="nav_Phim"/>
+                    <controls:NavItem Icon="🎬" Label="Danh sách phim" IsActive="True" Click="Nav_Click" x:Name="nav_Phim" MouseLeftButtonDown="btnListMovie_Click"/>
                     <controls:NavItem Icon="🎞"  Label="Quản Lý Phim" MouseLeftButtonDown="btnQuanLyPhim_Click" Click="Nav_Click" x:Name="nav_QLPhim"/>
                     <controls:NavItem Icon="📽" Label="Quản Lý Phòng Chiếu" MouseLeftButtonDown="btnQuanLyPhong_Click" Click="Nav_Click" x:Name="nav_Phong"/>
+                    <controls:NavItem Icon="🎫" Label="Bán Vé" MouseLeftButtonDown="btnBanVe_Click" Click="Nav_Click" x:Name="nav_BanVe"/>
+                    <controls:NavItem Icon="🧾" Label="Quản Lý Hóa Đơn" MouseLeftButtonDown="btnQuanLyHoaDon_Click" Click="Nav_Click" x:Name="nav_HoaDon"/>
+                    <controls:NavItem Icon="🧑‍💼" Label="Quản Lý Nhân Viên" MouseLeftButtonDown="btnQLNhanVien_Click" x:Name="nav_QLNV" Click="Nav_Click"/>
                     <!--<controls:NavItem Icon="🎟" Label="Booking"/>-->
                     <!--<controls:NavItem Icon="🛒" Label="Purchase Orders" BadgeCount="3"/>-->
                     <!--<controls:NavItem Icon="🏢" Label="Suppliers"/>-->

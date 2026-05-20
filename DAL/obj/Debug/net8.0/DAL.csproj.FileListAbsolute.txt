@@ -16,3 +16,21 @@ C:\Users\admin\OneDrive\Máy tính\Cinema\DAL\obj\Debug\net8.0\DAL.pdb
 C:\Users\admin\OneDrive\Máy tính\Cinema\DAL\obj\Debug\net8.0\DAL.genruntimeconfig.cache
 C:\Users\admin\OneDrive\Máy tính\Cinema\DAL\obj\Debug\net8.0\ref\DAL.dll
 C:\Users\admin\OneDrive\Máy tính\Cinema\DAL\obj\Debug\net8.0\DAL.sourcelink.json
+D:\Cinema\DAL\bin\Debug\net8.0\DAL.deps.json
+D:\Cinema\DAL\bin\Debug\net8.0\DAL.runtimeconfig.json
+D:\Cinema\DAL\bin\Debug\net8.0\DAL.dll
+D:\Cinema\DAL\bin\Debug\net8.0\DAL.pdb
+D:\Cinema\DAL\bin\Debug\net8.0\DTO.dll
+D:\Cinema\DAL\bin\Debug\net8.0\DTO.pdb
+D:\Cinema\DAL\obj\Debug\net8.0\DAL.csproj.AssemblyReference.cache
+D:\Cinema\DAL\obj\Debug\net8.0\DAL.GeneratedMSBuildEditorConfig.editorconfig
+D:\Cinema\DAL\obj\Debug\net8.0\DAL.AssemblyInfoInputs.cache
+D:\Cinema\DAL\obj\Debug\net8.0\DAL.AssemblyInfo.cs
+D:\Cinema\DAL\obj\Debug\net8.0\DAL.csproj.CoreCompileInputs.cache
+D:\Cinema\DAL\obj\Debug\net8.0\DAL.sourcelink.json
+D:\Cinema\DAL\obj\Debug\net8.0\DAL.csproj.Up2Date
+D:\Cinema\DAL\obj\Debug\net8.0\DAL.dll
+D:\Cinema\DAL\obj\Debug\net8.0\refint\DAL.dll
+D:\Cinema\DAL\obj\Debug\net8.0\DAL.pdb
+D:\Cinema\DAL\obj\Debug\net8.0\DAL.genruntimeconfig.cache
+D:\Cinema\DAL\obj\Debug\net8.0\ref\DAL.dll

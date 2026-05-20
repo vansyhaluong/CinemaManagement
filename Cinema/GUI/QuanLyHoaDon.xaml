@@ -1,0 +1,457 @@
+<UserControl x:Class="Cinema.GUI.QuanLyHoaDon"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             mc:Ignorable="d"
+             d:DesignHeight="820"
+             d:DesignWidth="1400"
+             Background="#0F172A">
+
+    <UserControl.Resources>
+        <DropShadowEffect x:Key="SoftShadow"
+                          BlurRadius="16"
+                          ShadowDepth="2"
+                          Opacity="0.12"
+                          Color="#000000"/>
+
+        <Style x:Key="PanelBorder" TargetType="Border">
+            <Setter Property="Background" Value="#111C2A"/>
+            <Setter Property="BorderBrush" Value="#1E293B"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="CornerRadius" Value="10"/>
+            <Setter Property="Padding" Value="18"/>
+        </Style>
+
+        <Style x:Key="SectionTitle" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="#F8FAFC"/>
+            <Setter Property="FontSize" Value="17"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+        </Style>
+
+        <Style x:Key="MutedText" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="#94A3B8"/>
+            <Setter Property="FontSize" Value="12"/>
+        </Style>
+
+        <Style x:Key="FilterLabel" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="#CBD5E1"/>
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Margin" Value="0,0,0,6"/>
+        </Style>
+
+        <Style x:Key="FilterTextBox" TargetType="TextBox">
+            <Setter Property="Height" Value="38"/>
+            <Setter Property="Padding" Value="12,0"/>
+            <Setter Property="Foreground" Value="#F8FAFC"/>
+            <Setter Property="Background" Value="#0F172A"/>
+            <Setter Property="BorderBrush" Value="#334155"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+        </Style>
+
+        <Style x:Key="FilterDatePicker" TargetType="DatePicker">
+            <Setter Property="Height" Value="38"/>
+            <Setter Property="Foreground" Value="#F8FAFC"/>
+            <Setter Property="Background" Value="#0F172A"/>
+            <Setter Property="BorderBrush" Value="#334155"/>
+            <Setter Property="BorderThickness" Value="1"/>
+        </Style>
+
+        <Style x:Key="SecondaryButton" TargetType="Button">
+            <Setter Property="Height" Value="38"/>
+            <Setter Property="Padding" Value="14,0"/>
+            <Setter Property="Foreground" Value="#E2E8F0"/>
+            <Setter Property="Background" Value="#1E293B"/>
+            <Setter Property="BorderBrush" Value="#334155"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="8">
+                            <ContentPresenter HorizontalAlignment="Center"
+                                              VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#263449"/>
+                    <Setter Property="BorderBrush" Value="#475569"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style x:Key="PrimaryButton" TargetType="Button" BasedOn="{StaticResource SecondaryButton}">
+            <Setter Property="Background" Value="#2563EB"/>
+            <Setter Property="BorderBrush" Value="#2563EB"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#1D4ED8"/>
+                    <Setter Property="BorderBrush" Value="#1D4ED8"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style x:Key="DangerButton" TargetType="Button" BasedOn="{StaticResource SecondaryButton}">
+            <Setter Property="Background" Value="#7F1D1D"/>
+            <Setter Property="BorderBrush" Value="#991B1B"/>
+            <Setter Property="Foreground" Value="#FEE2E2"/>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#991B1B"/>
+                    <Setter Property="BorderBrush" Value="#B91C1C"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style x:Key="DetailLabel" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="#94A3B8"/>
+            <Setter Property="FontSize" Value="11"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+        </Style>
+
+        <Style x:Key="DetailValue" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="#F8FAFC"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="TextWrapping" Value="Wrap"/>
+            <Setter Property="Margin" Value="0,4,0,0"/>
+        </Style>
+
+        <Style x:Key="DetailCard" TargetType="Border">
+            <Setter Property="Background" Value="#0F172A"/>
+            <Setter Property="BorderBrush" Value="#1E293B"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="CornerRadius" Value="8"/>
+            <Setter Property="Padding" Value="14"/>
+        </Style>
+
+        <Style TargetType="DataGrid">
+            <Setter Property="Background" Value="#111C2A"/>
+            <Setter Property="Foreground" Value="#E2E8F0"/>
+            <Setter Property="RowBackground" Value="#111C2A"/>
+            <Setter Property="AlternatingRowBackground" Value="#0F172A"/>
+            <Setter Property="HorizontalGridLinesBrush" Value="#1E293B"/>
+            <Setter Property="VerticalGridLinesBrush" Value="#1E293B"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="HeadersVisibility" Value="Column"/>
+            <Setter Property="GridLinesVisibility" Value="Horizontal"/>
+            <Setter Property="CanUserAddRows" Value="False"/>
+            <Setter Property="CanUserDeleteRows" Value="False"/>
+            <Setter Property="SelectionMode" Value="Single"/>
+            <Setter Property="SelectionUnit" Value="FullRow"/>
+            <Setter Property="RowHeaderWidth" Value="0"/>
+        </Style>
+
+        <Style TargetType="DataGridColumnHeader">
+            <Setter Property="Background" Value="#182437"/>
+            <Setter Property="Foreground" Value="#F8FAFC"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="Padding" Value="12,10"/>
+            <Setter Property="BorderBrush" Value="#243244"/>
+            <Setter Property="BorderThickness" Value="0,0,0,1"/>
+        </Style>
+
+        <Style TargetType="DataGridRow">
+            <Setter Property="Background" Value="#111C2A"/>
+            <Setter Property="Foreground" Value="#E2E8F0"/>
+            <Setter Property="BorderBrush" Value="#1E293B"/>
+            <Setter Property="BorderThickness" Value="0,0,0,1"/>
+            <Setter Property="MinHeight" Value="42"/>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#162133"/>
+                </Trigger>
+                <Trigger Property="IsSelected" Value="True">
+                    <Setter Property="Background" Value="#1D4ED8"/>
+                    <Setter Property="Foreground" Value="White"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style TargetType="DataGridCell">
+            <Setter Property="Padding" Value="12,10"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+        </Style>
+    </UserControl.Resources>
+
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="16"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Border Grid.Row="0"
+                Style="{StaticResource PanelBorder}"
+                Padding="22"
+                Margin="0,0,0,16">
+            <StackPanel>
+                <TextBlock Text=" Quản lý hóa đơn"
+                           Foreground="#F8FAFC"
+                           FontSize="28"
+                           FontWeight="Bold"/>
+                <TextBlock Text="Theo dõi hóa đơn đã bán, xem lại vé và thao tác nhanh với từng giao dịch."
+                           Foreground="#94A3B8"
+                           FontSize="13"
+                           Margin="0,6,0,0"/>
+            </StackPanel>
+        </Border>
+
+        <Border Grid.Row="1"
+                Style="{StaticResource PanelBorder}">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="220"/>
+                    <ColumnDefinition Width="220"/>
+                    <ColumnDefinition Width="150"/>
+                    <ColumnDefinition Width="150"/>
+                    <ColumnDefinition Width="120"/>
+                    <ColumnDefinition Width="120"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <StackPanel Grid.Column="0" Margin="0,0,14,0">
+                    <TextBlock Text="Mã hóa đơn" Style="{StaticResource FilterLabel}"/>
+                    <TextBox x:Name="txtMaHoaDon" Style="{StaticResource FilterTextBox}"/>
+                </StackPanel>
+
+                <StackPanel Grid.Column="1" Margin="0,0,14,0">
+                    <TextBlock Text="Số điện thoại" Style="{StaticResource FilterLabel}"/>
+                    <TextBox x:Name="txtSoDienThoai" Style="{StaticResource FilterTextBox}"/>
+                </StackPanel>
+
+                <StackPanel Grid.Column="2" Margin="0,0,14,0">
+                    <TextBlock Text="Từ ngày" Style="{StaticResource FilterLabel}"/>
+                    <DatePicker x:Name="dpTuNgay" Style="{StaticResource FilterDatePicker}"/>
+                </StackPanel>
+
+                <StackPanel Grid.Column="3" Margin="0,0,14,0">
+                    <TextBlock Text="Đến ngày" Style="{StaticResource FilterLabel}"/>
+                    <DatePicker x:Name="dpDenNgay" Style="{StaticResource FilterDatePicker}"/>
+                </StackPanel>
+
+                <StackPanel Grid.Column="4" VerticalAlignment="Bottom" Margin="0,0,12,0">
+                    <Button x:Name="btnTimKiem"
+                            Content="Tìm kiếm"
+                            Click="btnTimKiem_Click"
+                            Style="{StaticResource PrimaryButton}"/>
+                </StackPanel>
+
+                <StackPanel Grid.Column="5" VerticalAlignment="Bottom">
+                    <Button x:Name="btnLamMoi"
+                            Content="Làm mới"
+                            Click="btnLamMoi_Click"
+                            Style="{StaticResource SecondaryButton}"/>
+                </StackPanel>
+            </Grid>
+        </Border>
+
+        <Grid Grid.Row="3">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="18"/>
+                <ColumnDefinition Width="380"/>
+            </Grid.ColumnDefinitions>
+
+            <Border Grid.Column="0"
+                    Style="{StaticResource PanelBorder}"
+                    Padding="0"
+                    Effect="{StaticResource SoftShadow}">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <DockPanel Grid.Row="0" Margin="18,16,18,10">
+                        <TextBlock Text="Danh sách hóa đơn"
+                                   Style="{StaticResource SectionTitle}"
+                                   DockPanel.Dock="Left"/>
+                        <TextBlock x:Name="txtTongHoaDon"
+                                   Text="0 hóa đơn"
+                                   Foreground="#94A3B8"
+                                   VerticalAlignment="Center"
+                                   HorizontalAlignment="Right"/>
+                    </DockPanel>
+
+                    <DataGrid Grid.Row="1"
+                              x:Name="dgHoaDon"
+                              AutoGenerateColumns="False"
+                              Margin="0,0,0,4"
+                              IsReadOnly="True"
+                              SelectionChanged="dgHoaDon_SelectionChanged">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Mã HĐ" Binding="{Binding MaHoaDon}" Width="140"/>
+                            <DataGridTextColumn Header="Ngày lập" Binding="{Binding NgayLap}" Width="140"/>
+                            <DataGridTextColumn Header="Khách hàng / SĐT" Binding="{Binding KhachHang}" Width="220"/>
+                            <DataGridTextColumn Header="Nhân viên" Binding="{Binding NhanVien}" Width="140"/>
+                            <DataGridTextColumn Header="Số vé" Binding="{Binding SoVe}" Width="80"/>
+                            <DataGridTextColumn Header="Tổng tiền" Binding="{Binding TongTien}" Width="120"/>
+                            <DataGridTextColumn Header="Trạng thái" Binding="{Binding TrangThai}" Width="120"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+            </Border>
+
+            <Border Grid.Column="2"
+                    Style="{StaticResource PanelBorder}"
+                    Effect="{StaticResource SoftShadow}">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="16"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="12"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="12"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="12"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="18"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <StackPanel Grid.Row="0">
+                        <TextBlock Text="Chi tiết hóa đơn"
+                                   Style="{StaticResource SectionTitle}"/>
+                        <TextBlock x:Name="txtMoTaChiTiet"
+                                   Text="Chọn một hóa đơn để xem thông tin chi tiết."
+                                   Style="{StaticResource MutedText}"
+                                   Margin="0,6,0,0"/>
+                    </StackPanel>
+
+                    <Border Grid.Row="2" Style="{StaticResource DetailCard}">
+                        <StackPanel>
+                            <TextBlock Text="Thông tin phim" Style="{StaticResource DetailLabel}"/>
+                            <TextBlock x:Name="txtTenPhimChiTiet"
+                                       Text="Chưa có dữ liệu"
+                                       Style="{StaticResource DetailValue}"/>
+                        </StackPanel>
+                    </Border>
+
+                    <Grid Grid.Row="4">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="12"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Border Grid.Column="0" Style="{StaticResource DetailCard}">
+                            <StackPanel>
+                                <TextBlock Text="Suất chiếu" Style="{StaticResource DetailLabel}"/>
+                                <TextBlock x:Name="txtSuatChieuChiTiet"
+                                           Text="--/--/---- --:--"
+                                           Style="{StaticResource DetailValue}"/>
+                            </StackPanel>
+                        </Border>
+
+                        <Border Grid.Column="2" Style="{StaticResource DetailCard}">
+                            <StackPanel>
+                                <TextBlock Text="Phòng" Style="{StaticResource DetailLabel}"/>
+                                <TextBlock x:Name="txtPhongChieuChiTiet"
+                                           Text="--"
+                                           Style="{StaticResource DetailValue}"/>
+                            </StackPanel>
+                        </Border>
+                    </Grid>
+
+                    <Border Grid.Row="6" Style="{StaticResource DetailCard}">
+                        <StackPanel>
+                            <TextBlock Text="Ghế" Style="{StaticResource DetailLabel}"/>
+                            <TextBlock x:Name="txtGheChiTiet"
+                                       Text="--"
+                                       Style="{StaticResource DetailValue}"/>
+                        </StackPanel>
+                    </Border>
+
+                    <Border Grid.Row="8" Style="{StaticResource DetailCard}">
+                        <StackPanel>
+                            <TextBlock Text="Dịch vụ" Style="{StaticResource DetailLabel}"/>
+                            <ListBox x:Name="lstDichVuChiTiet"
+                                     Margin="0,10,0,0"
+                                     Background="Transparent"
+                                     BorderThickness="0"
+                                     Foreground="#E2E8F0"/>
+                        </StackPanel>
+                    </Border>
+
+                    <Border Grid.Row="9"
+                            Background="#182437"
+                            BorderBrush="#243244"
+                            BorderThickness="1"
+                            CornerRadius="10"
+                            Padding="16"
+                            VerticalAlignment="Bottom">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <StackPanel>
+                                <TextBlock Text="Tổng thanh toán" Style="{StaticResource DetailLabel}"/>
+                                <TextBlock x:Name="txtTongTienChiTiet"
+                                           Text="0 đ"
+                                           Foreground="#F8FAFC"
+                                           FontSize="24"
+                                           FontWeight="Bold"
+                                           Margin="0,4,0,0"/>
+                            </StackPanel>
+                            <Border Grid.Column="1"
+                                    Background="#1F7A5A"
+                                    Padding="10,6"
+                                    CornerRadius="999"
+                                    VerticalAlignment="Center">
+                                <TextBlock x:Name="txtTrangThaiChiTiet"
+                                           Text="Chưa chọn"
+                                           Foreground="White"
+                                           FontWeight="SemiBold"/>
+                            </Border>
+                        </Grid>
+                    </Border>
+
+                    <Grid Grid.Row="11">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="10"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="10"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                            <Button Grid.Column="0"
+                                x:Name="btnXemVe"
+                                Content="Xem vé"
+                                Click="btnXemVe_Click"
+                                Style="{StaticResource SecondaryButton}"/>
+
+                            <Button Grid.Column="2"
+                                x:Name="btnXuatPdfLai"
+                                Content="Xuất PDF lại"
+                                Click="btnXuatPdfLai_Click"
+                                Style="{StaticResource PrimaryButton}"/>
+
+                            <Button Grid.Column="4"
+                                x:Name="btnHuyVe"
+                                Content="Hủy vé"
+                                Click="btnHuyVe_Click"
+                                Style="{StaticResource DangerButton}"/>
+                    </Grid>
+                </Grid>
+            </Border>
+        </Grid>
+    </Grid>
+</UserControl>

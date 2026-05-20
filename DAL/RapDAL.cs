@@ -19,5 +19,13 @@ namespace DAL
         {
             return db.Raps.FirstOrDefault(r => r.MaRap == id);
         }
+        public List<Rap> getRapByPhim(int maPhim)
+        {
+            return db.Raps
+            .Where(r => r.PhongChieus
+            .Any(p => p.SuatChieus
+             .Any(s => s.MaPhim == maPhim)))
+            .ToList();
+        }
     }
 }

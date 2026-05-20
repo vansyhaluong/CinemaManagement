@@ -20,5 +20,7 @@ public partial class Ghe
 
     public virtual PhongChieu? MaPhongNavigation { get; set; }
 
+    public virtual ICollection<GiuGheTam> GiuGheTams { get; set; } = new List<GiuGheTam>();
+
     public virtual ICollection<VeBan> VeBans { get; set; } = new List<VeBan>();
 }

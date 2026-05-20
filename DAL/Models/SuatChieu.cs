@@ -15,9 +15,13 @@ public partial class SuatChieu
 
     public DateTime? ThoiGianKetThuc { get; set; }
 
+    public decimal GiaVeCoBan { get; set; }
+
     public virtual Phim? MaPhimNavigation { get; set; }
 
     public virtual PhongChieu? MaPhongNavigation { get; set; }
+
+    public virtual ICollection<GiuGheTam> GiuGheTams { get; set; } = new List<GiuGheTam>();
 
     public virtual ICollection<VeBan> VeBans { get; set; } = new List<VeBan>();
 }

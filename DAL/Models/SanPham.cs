@@ -9,7 +9,7 @@ public partial class SanPham
 
     public string? Ten { get; set; }
 
-    public decimal? Gia { get; set; }
+    public decimal Gia { get; set; }
 
     public string? TrangThai { get; set; }
 

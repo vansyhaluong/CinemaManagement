@@ -10,3 +10,15 @@ C:\Users\admin\OneDrive\Máy tính\Cinema\DTO\obj\Debug\net8.0\refint\DTO.dll
 C:\Users\admin\OneDrive\Máy tính\Cinema\DTO\obj\Debug\net8.0\DTO.pdb
 C:\Users\admin\OneDrive\Máy tính\Cinema\DTO\obj\Debug\net8.0\ref\DTO.dll
 C:\Users\admin\OneDrive\Máy tính\Cinema\DTO\obj\Debug\net8.0\DTO.sourcelink.json
+D:\Cinema\DTO\bin\Debug\net8.0\DTO.deps.json
+D:\Cinema\DTO\bin\Debug\net8.0\DTO.dll
+D:\Cinema\DTO\bin\Debug\net8.0\DTO.pdb
+D:\Cinema\DTO\obj\Debug\net8.0\DTO.GeneratedMSBuildEditorConfig.editorconfig
+D:\Cinema\DTO\obj\Debug\net8.0\DTO.AssemblyInfoInputs.cache
+D:\Cinema\DTO\obj\Debug\net8.0\DTO.AssemblyInfo.cs
+D:\Cinema\DTO\obj\Debug\net8.0\DTO.csproj.CoreCompileInputs.cache
+D:\Cinema\DTO\obj\Debug\net8.0\DTO.sourcelink.json
+D:\Cinema\DTO\obj\Debug\net8.0\DTO.dll
+D:\Cinema\DTO\obj\Debug\net8.0\refint\DTO.dll
+D:\Cinema\DTO\obj\Debug\net8.0\DTO.pdb
+D:\Cinema\DTO\obj\Debug\net8.0\ref\DTO.dll

@@ -340,7 +340,7 @@ VALUES
 (N'Spider-Man: No Way Home', 
  N'Peter Parker gặp rắc rối khi danh tính bị lộ và đa vũ trụ mở ra.', 
  148, '2021-12-17', N'Mỹ',
- 'pack://application:,,,/Images/spiderman.jpg', N'Đang chiếu'),
+ 'pack://application:,,,/Images/spiderman.webp', N'Đang chiếu'),
 
 (N'Frozen 2',
 N'Elsa khám phá sức mạnh bí ẩn.',
@@ -616,6 +616,245 @@ VALUES
 (4,1), -- Hành động
 (4,10); -- Chính kịch
 
+go
+/* ============================================================
+   PATCH: Dữ liệu bổ sung để database khớp chức năng của app WPF
+   - Sửa đường dẫn ảnh đúng với file trong Cinema/Images
+   - Bổ sung ghế cho toàn bộ phòng chiếu để màn Quản lý phòng/Bán vé có dữ liệu
+   - Bổ sung combo/dịch vụ, suất chiếu hiện tại, đơn hàng, vé, thanh toán
+   - Chuẩn hóa trạng thái đúng chuỗi đang được code kiểm tra
+   ============================================================ */
+
+UPDATE Phim
+SET AnhBia = 'pack://application:,,,/Images/spiderman.webp'
+WHERE TieuDe = N'Spider-Man: No Way Home';
+
+UPDATE Ghe
+SET TrangThai = N'Trống'
+WHERE TrangThai IS NULL;
+
+IF NOT EXISTS (SELECT 1 FROM LoaiSanPham WHERE TenLoai = N'Combo')
+BEGIN
+    INSERT INTO LoaiSanPham(TenLoai) VALUES (N'Combo');
+END
+
+IF NOT EXISTS (SELECT 1 FROM SanPham WHERE Ten = N'Combo bắp nước')
+BEGIN
+    INSERT INTO SanPham(Ten, Gia, TrangThai, MaLoaiSP)
+    SELECT N'Combo bắp nước', 89000, N'Đang bán', MaLoaiSP
+    FROM LoaiSanPham
+    WHERE TenLoai = N'Combo';
+END
+
+IF NOT EXISTS (SELECT 1 FROM Kho WHERE MaSanPham = (SELECT MaSanPham FROM SanPham WHERE Ten = N'Combo bắp nước'))
+BEGIN
+    INSERT INTO Kho(MaSanPham, SoLuongTon)
+    SELECT MaSanPham, 80
+    FROM SanPham
+    WHERE Ten = N'Combo bắp nước';
+END
+
+DECLARE @MaPhong INT = 1;
+DECLARE @Hang TABLE (HangGhe CHAR(1), ThuTu INT);
+INSERT INTO @Hang(HangGhe, ThuTu)
+VALUES ('A', 1), ('B', 2), ('C', 3), ('D', 4);
+
+WHILE @MaPhong <= 12
+BEGIN
+    INSERT INTO Ghe(MaPhong, HangGhe, SoGhe, MaLoaiGhe, TrangThai)
+    SELECT
+        @MaPhong,
+        h.HangGhe,
+        s.SoGhe,
+        CASE
+            WHEN h.HangGhe = 'D' THEN 3
+            WHEN h.HangGhe IN ('B', 'C') THEN 2
+            ELSE 1
+        END,
+        N'Trống'
+    FROM @Hang h
+    CROSS JOIN (VALUES (1), (2), (3), (4)) s(SoGhe)
+    WHERE EXISTS (SELECT 1 FROM PhongChieu WHERE MaPhong = @MaPhong)
+      AND NOT EXISTS (
+          SELECT 1
+          FROM Ghe g
+          WHERE g.MaPhong = @MaPhong
+            AND g.HangGhe = h.HangGhe
+            AND g.SoGhe = s.SoGhe
+      );
+
+    SET @MaPhong = @MaPhong + 1;
+END
+
+UPDATE Ghe
+SET TrangThai = N'Bảo trì'
+WHERE (MaPhong = 1 AND HangGhe = 'D' AND SoGhe = 4)
+   OR (MaPhong = 2 AND HangGhe = 'A' AND SoGhe = 4)
+   OR (MaPhong = 5 AND HangGhe = 'C' AND SoGhe = 3);
+
+IF NOT EXISTS (
+    SELECT 1
+    FROM SuatChieu
+    WHERE ThoiGianBatDau >= '2026-05-19'
+)
+BEGIN
+    INSERT INTO SuatChieu(MaPhim, MaPhong, ThoiGianBatDau, ThoiGianKetThuc)
+    VALUES
+    (1, 1, '2026-05-19 09:00', '2026-05-19 12:01'),
+    (2, 2, '2026-05-19 13:30', '2026-05-19 15:58'),
+    (4, 3, '2026-05-19 18:30', '2026-05-19 20:20'),
+    (1, 4, '2026-05-20 10:00', '2026-05-20 13:01'),
+    (2, 5, '2026-05-20 15:30', '2026-05-20 17:58'),
+    (3, 6, '2026-05-20 19:00', '2026-05-20 20:43'),
+    (4, 7, '2026-05-21 09:30', '2026-05-21 11:20'),
+    (1, 8, '2026-05-21 14:00', '2026-05-21 17:01'),
+    (2, 9, '2026-05-21 20:00', '2026-05-21 22:28'),
+    (3, 10, '2026-05-22 08:30', '2026-05-22 10:13'),
+    (4, 11, '2026-05-22 16:00', '2026-05-22 17:50'),
+    (1, 12, '2026-05-22 21:00', '2026-05-23 00:01');
+END
+
+IF NOT EXISTS (SELECT 1 FROM DonHang)
+BEGIN
+    INSERT INTO DonHang(MaKhachHang, NgayDat, TrangThai, MaNhanVien, MaKhuyenMai)
+    VALUES
+    (1, '2026-05-19 09:20', N'Đã thanh toán', 1, NULL),
+    (2, '2026-05-19 13:45', N'Đã thanh toán', 2, 1),
+    (3, '2026-05-20 15:40', N'Đã thanh toán', 3, NULL);
+
+    INSERT INTO VeBan(MaDonHang, MaSuatChieu, MaGhe, Gia, TrangThai)
+    SELECT 1, sc.MaSuatChieu, g.MaGhe, 90000, N'Đã bán'
+    FROM SuatChieu sc
+    JOIN Ghe g ON g.MaPhong = sc.MaPhong
+    WHERE sc.ThoiGianBatDau = '2026-05-19 09:00'
+      AND g.HangGhe = 'A'
+      AND g.SoGhe IN (1, 2);
+
+    INSERT INTO VeBan(MaDonHang, MaSuatChieu, MaGhe, Gia, TrangThai)
+    SELECT 2, sc.MaSuatChieu, g.MaGhe, 120000, N'Đã bán'
+    FROM SuatChieu sc
+    JOIN Ghe g ON g.MaPhong = sc.MaPhong
+    WHERE sc.ThoiGianBatDau = '2026-05-19 13:30'
+      AND g.HangGhe = 'B'
+      AND g.SoGhe IN (1, 2);
+
+    INSERT INTO ChiTietDonHang(MaDonHang, MaSanPham, SoLuong, Gia)
+    SELECT 1, MaSanPham, 1, Gia FROM SanPham WHERE Ten = N'Bắp rang bơ';
+
+    INSERT INTO ChiTietDonHang(MaDonHang, MaSanPham, SoLuong, Gia)
+    SELECT 2, MaSanPham, 2, Gia FROM SanPham WHERE Ten = N'Coca Cola';
+
+    INSERT INTO ThanhToan(MaDonHang, PhuongThuc, NgayThanhToan, SoTien, TrangThai)
+    VALUES
+    (1, N'Tiền mặt', '2026-05-19 09:25', 245000, N'Thành công'),
+    (2, N'Chuyển khoản', '2026-05-19 13:50', 250000, N'Thành công'),
+    (3, N'Tiền mặt', '2026-05-20 15:45', 0, N'Chờ thanh toán');
+
+    UPDATE g
+    SET TrangThai = N'Đã đặt'
+    FROM Ghe g
+    JOIN VeBan v ON v.MaGhe = g.MaGhe
+    WHERE v.TrangThai = N'Đã bán';
+END
+
+IF NOT EXISTS (SELECT 1 FROM BaoCaoDoanhThuNgay WHERE Ngay = '2026-05-19')
+BEGIN
+    INSERT INTO BaoCaoDoanhThuNgay(MaRap, Ngay, DoanhThuVe, DoanhThuDichVu, TongDoanhThu, SoDonHang, SoVeBan)
+    VALUES
+    (1, '2026-05-19', 180000, 65000, 245000, 1, 2),
+    (1, '2026-05-20', 0, 0, 0, 0, 0),
+    (2, '2026-05-19', 240000, 60000, 300000, 1, 2);
+END
+
+IF NOT EXISTS (SELECT 1 FROM sys.indexes WHERE name = 'IX_SuatChieu_MaPhim_ThoiGianBatDau')
+BEGIN
+    CREATE INDEX IX_SuatChieu_MaPhim_ThoiGianBatDau
+    ON SuatChieu(MaPhim, ThoiGianBatDau);
+END
+
+IF NOT EXISTS (SELECT 1 FROM sys.indexes WHERE name = 'IX_Ghe_MaPhong_TrangThai')
+BEGIN
+    CREATE INDEX IX_Ghe_MaPhong_TrangThai
+    ON Ghe(MaPhong, TrangThai);
+END
+
+go
+/* ============================================================
+   PATCH: Schema cho chức năng bán vé và giữ ghế tạm 1 phút
+   ============================================================ */
+
+IF COL_LENGTH('SuatChieu', 'GiaVeCoBan') IS NULL
+BEGIN
+    ALTER TABLE SuatChieu
+    ADD GiaVeCoBan DECIMAL(10,2) NOT NULL
+        CONSTRAINT DF_SuatChieu_GiaVeCoBan DEFAULT 90000;
+END
+
+IF COL_LENGTH('DonHang', 'MaHoaDon') IS NULL
+BEGIN
+    ALTER TABLE DonHang ADD MaHoaDon NVARCHAR(30) NULL;
+END
+
+IF COL_LENGTH('DonHang', 'TongTienVe') IS NULL
+BEGIN
+    ALTER TABLE DonHang ADD TongTienVe DECIMAL(10,2) NOT NULL
+        CONSTRAINT DF_DonHang_TongTienVe DEFAULT 0;
+END
+
+IF COL_LENGTH('DonHang', 'TongTienDichVu') IS NULL
+BEGIN
+    ALTER TABLE DonHang ADD TongTienDichVu DECIMAL(10,2) NOT NULL
+        CONSTRAINT DF_DonHang_TongTienDichVu DEFAULT 0;
+END
+
+IF COL_LENGTH('DonHang', 'TienGiam') IS NULL
+BEGIN
+    ALTER TABLE DonHang ADD TienGiam DECIMAL(10,2) NOT NULL
+        CONSTRAINT DF_DonHang_TienGiam DEFAULT 0;
+END
+
+IF COL_LENGTH('DonHang', 'TongThanhToan') IS NULL
+BEGIN
+    ALTER TABLE DonHang ADD TongThanhToan DECIMAL(10,2) NOT NULL
+        CONSTRAINT DF_DonHang_TongThanhToan DEFAULT 0;
+END
+
+IF COL_LENGTH('VeBan', 'MaVe') IS NULL
+BEGIN
+    ALTER TABLE VeBan ADD MaVe NVARCHAR(30) NULL;
+END
+
+IF COL_LENGTH('ChiTietDonHang', 'ThanhTien') IS NULL
+BEGIN
+    ALTER TABLE ChiTietDonHang ADD ThanhTien DECIMAL(10,2) NULL;
+END
+
+IF OBJECT_ID('GiuGheTam', 'U') IS NULL
+BEGIN
+    CREATE TABLE GiuGheTam (
+        MaGiuGhe INT IDENTITY PRIMARY KEY,
+        MaSuatChieu INT NOT NULL,
+        MaGhe INT NOT NULL,
+        ThoiGianGiu DATETIME NOT NULL DEFAULT GETDATE(),
+        HetHanLuc DATETIME NOT NULL,
+        TrangThai NVARCHAR(50) NOT NULL DEFAULT 'DangGiu',
+        MaDatVe INT NULL,
+
+        CONSTRAINT FK_GiuGheTam_SuatChieu FOREIGN KEY (MaSuatChieu)
+            REFERENCES SuatChieu(MaSuatChieu),
+        CONSTRAINT FK_GiuGheTam_Ghe FOREIGN KEY (MaGhe)
+            REFERENCES Ghe(MaGhe),
+        CONSTRAINT FK_GiuGheTam_VeBan FOREIGN KEY (MaDatVe)
+            REFERENCES VeBan(MaDatVe),
+        CONSTRAINT UQ_GiuGheTam UNIQUE (MaSuatChieu, MaGhe)
+    );
+END
+
+IF NOT EXISTS (SELECT 1 FROM sys.indexes WHERE name = 'IX_GiuGheTam_HetHanLuc')
+BEGIN
+    CREATE INDEX IX_GiuGheTam_HetHanLuc
+    ON GiuGheTam(HetHanLuc, TrangThai);
+END
 
 
 

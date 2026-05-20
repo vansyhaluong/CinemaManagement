@@ -34,11 +34,13 @@
                     <Button Content="OK"
                         Width="80"
                         Margin="5"
+                            x:Name="btnOk"
                         Click="Ok_Click"/>
 
                     <Button Content="Cancel"
                         Width="80"
                         Margin="5"
+                            x:Name="btnCancel"
                         Click="Cancel_Click"/>
                 </StackPanel>
 

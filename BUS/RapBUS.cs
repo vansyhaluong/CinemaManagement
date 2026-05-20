@@ -1,4 +1,5 @@
 ﻿using Cinema.Models;
+using DAL;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,14 +10,18 @@ namespace BUS
 {
     public class RapBUS
     {
-        DAL.RapDAL dal = new DAL.RapDAL();
-        public List<Rap> getRap()
+        RapDAL dal = new RapDAL();
+        public List<Rap> getAllRap()
         {
             return dal.getRap();
         }
         public Rap? GetRapById(int id)
         {
             return dal.getRapById(id);
+        }
+        public List<Rap> getRapByPhim(int maPhim)
+        {
+            return dal.getRapByPhim(maPhim);
         }
     }
 }

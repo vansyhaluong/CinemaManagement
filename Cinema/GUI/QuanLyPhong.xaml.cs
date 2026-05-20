@@ -25,6 +25,7 @@ namespace Cinema.GUI
         private PhongChieuBUS bus = new PhongChieuBUS();
         private GheBUS gheBus = new GheBUS();
         private RapBUS rapBus=new RapBUS();
+        
         public QuanLyPhong()
         {
             InitializeComponent();
@@ -39,14 +40,19 @@ namespace Cinema.GUI
         }
         public void btnSua_Click(object sender, RoutedEventArgs e)
         {
-            Button? btn = sender as Button;
-            var phong = btn?.Tag as PhongChieu;
+            var border = sender as FrameworkElement;
+            var phong = border?.DataContext as PhongChieu;
             if (phong == null)
             {
                 MessageBox.Show("Không tìm thấy phòng chiếu để sửa!");
                 return;
             }
-
+            var item = bus.getPhongChieuById(phong.MaPhong);
+            ThemPhong edit = new ThemPhong(item);
+            if (edit.ShowDialog() == true)
+            {
+                dgPhong.ItemsSource = bus.getPhongChieu();
+            }
         }
         public void btnXoa_Click(object sender, RoutedEventArgs e)
         {
@@ -156,7 +162,7 @@ namespace Cinema.GUI
         }
         public void loadComboRap()
         {
-            var dsRap = rapBus.getRap();
+            var dsRap = rapBus.getAllRap();
             dsRap.Insert(0, new Rap { MaRap = 0, TenRap = "🏢 Tất cả rạp" });
             cbRap.ItemsSource = dsRap;
             cbRap.DisplayMemberPath = "TenRap";

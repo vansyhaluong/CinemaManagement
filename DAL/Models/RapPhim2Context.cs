@@ -31,6 +31,8 @@ public partial class RapPhim2Context : DbContext
 
     public virtual DbSet<Ghe> Ghes { get; set; }
 
+    public virtual DbSet<GiuGheTam> GiuGheTams { get; set; }
+
     public virtual DbSet<HoanVe> HoanVes { get; set; }
 
     public virtual DbSet<KhachHang> KhachHangs { get; set; }
@@ -143,6 +145,7 @@ public partial class RapPhim2Context : DbContext
             entity.ToTable("ChiTietDonHang");
 
             entity.Property(e => e.Gia).HasColumnType("decimal(10, 2)");
+            entity.Property(e => e.ThanhTien).HasColumnType("decimal(10, 2)");
 
             entity.HasOne(d => d.MaDonHangNavigation).WithMany(p => p.ChiTietDonHangs)
                 .HasForeignKey(d => d.MaDonHang)
@@ -176,9 +179,14 @@ public partial class RapPhim2Context : DbContext
 
             entity.ToTable("DonHang");
 
+            entity.Property(e => e.MaHoaDon).HasMaxLength(30);
             entity.Property(e => e.NgayDat)
                 .HasDefaultValueSql("(getdate())")
                 .HasColumnType("datetime");
+            entity.Property(e => e.TienGiam).HasColumnType("decimal(10, 2)");
+            entity.Property(e => e.TongThanhToan).HasColumnType("decimal(10, 2)");
+            entity.Property(e => e.TongTienDichVu).HasColumnType("decimal(10, 2)");
+            entity.Property(e => e.TongTienVe).HasColumnType("decimal(10, 2)");
             entity.Property(e => e.TrangThai).HasMaxLength(50);
 
             entity.HasOne(d => d.MaKhachHangNavigation).WithMany(p => p.DonHangs)
@@ -214,6 +222,37 @@ public partial class RapPhim2Context : DbContext
             entity.HasOne(d => d.MaPhongNavigation).WithMany(p => p.Ghes)
                 .HasForeignKey(d => d.MaPhong)
                 .HasConstraintName("FK__Ghe__MaPhong__47DBAE45");
+        });
+
+        modelBuilder.Entity<GiuGheTam>(entity =>
+        {
+            entity.HasKey(e => e.MaGiuGhe);
+
+            entity.ToTable("GiuGheTam");
+
+            entity.HasIndex(e => new { e.MaSuatChieu, e.MaGhe }, "UQ_GiuGheTam").IsUnique();
+
+            entity.Property(e => e.HetHanLuc).HasColumnType("datetime");
+            entity.Property(e => e.ThoiGianGiu)
+                .HasDefaultValueSql("(getdate())")
+                .HasColumnType("datetime");
+            entity.Property(e => e.TrangThai)
+                .HasMaxLength(50)
+                .HasDefaultValue("DangGiu");
+
+            entity.HasOne(d => d.MaDatVeNavigation).WithMany(p => p.GiuGheTams)
+                .HasForeignKey(d => d.MaDatVe)
+                .HasConstraintName("FK_GiuGheTam_VeBan");
+
+            entity.HasOne(d => d.MaGheNavigation).WithMany(p => p.GiuGheTams)
+                .HasForeignKey(d => d.MaGhe)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_GiuGheTam_Ghe");
+
+            entity.HasOne(d => d.MaSuatChieuNavigation).WithMany(p => p.GiuGheTams)
+                .HasForeignKey(d => d.MaSuatChieu)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_GiuGheTam_SuatChieu");
         });
 
         modelBuilder.Entity<HoanVe>(entity =>
@@ -438,6 +477,9 @@ public partial class RapPhim2Context : DbContext
 
             entity.ToTable("SuatChieu");
 
+            entity.Property(e => e.GiaVeCoBan)
+                .HasDefaultValue(90000m)
+                .HasColumnType("decimal(10, 2)");
             entity.Property(e => e.ThoiGianBatDau).HasColumnType("datetime");
             entity.Property(e => e.ThoiGianKetThuc).HasColumnType("datetime");
 
@@ -499,6 +541,7 @@ public partial class RapPhim2Context : DbContext
             entity.HasIndex(e => new { e.MaGhe, e.MaSuatChieu }, "UQ_Ghe_SuatChieu").IsUnique();
 
             entity.Property(e => e.Gia).HasColumnType("decimal(10, 2)");
+            entity.Property(e => e.MaVe).HasMaxLength(30);
             entity.Property(e => e.TrangThai).HasMaxLength(50);
 
             entity.HasOne(d => d.MaDonHangNavigation).WithMany(p => p.VeBans)

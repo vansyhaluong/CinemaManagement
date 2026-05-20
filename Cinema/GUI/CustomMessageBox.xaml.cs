@@ -20,11 +20,17 @@ namespace Cinema.GUI
     public partial class CustomMessageBox : Window
     {
         public bool Result { get; private set; }
-        public CustomMessageBox(string title, string message)
+        public enum MessageBoxType
+        {
+            Ok,
+            YesNo
+        }
+        public CustomMessageBox(string title, string message, MessageBoxType type = MessageBoxType.Ok)
         {
             InitializeComponent();
             txtTitle.Text = title;
             txtMessage.Text = message;
+            ConfigureButtons(type);
         }
         private void Ok_Click(object sender, RoutedEventArgs e)
         {
@@ -35,7 +41,23 @@ namespace Cinema.GUI
         private void Cancel_Click(object sender, RoutedEventArgs e)
         {
             Result = false;
-            this.Close();
+           this.Close();
+        }
+        private void ConfigureButtons(MessageBoxType type)
+        {
+            if (type == MessageBoxType.Ok)
+            {
+                btnOk.Visibility = Visibility.Visible;
+                btnCancel.Visibility = Visibility.Collapsed;
+            }
+            else if (type == MessageBoxType.YesNo)
+            {
+                btnOk.Content = "Yes";
+                btnCancel.Content = "No";
+
+                btnOk.Visibility = Visibility.Visible;
+                btnCancel.Visibility = Visibility.Visible;
+            }
         }
     }
 }

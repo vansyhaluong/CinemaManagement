@@ -1,0 +1,4 @@
+D:\Cinema\Cinema\obj\Debug\net8.0-windows\Cinema_octpkfgi_wpftmp.csproj.AssemblyReference.cache
+D:\Cinema\Cinema\obj\Debug\net8.0-windows\Cinema.dll
+D:\Cinema\Cinema\obj\Debug\net8.0-windows\refint\Cinema.dll
+D:\Cinema\Cinema\obj\Debug\net8.0-windows\Cinema.pdb

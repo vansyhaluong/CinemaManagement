@@ -294,6 +294,7 @@
                         BorderThickness="0"
                         Cursor="Hand"
                         Padding="0"
+                        
                         Click="btnSua_Click"
                         HorizontalContentAlignment="Center"
                         VerticalContentAlignment="Center"/>

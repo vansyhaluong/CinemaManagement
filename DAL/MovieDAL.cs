@@ -1,5 +1,6 @@
 ﻿using Cinema.Models;
 using DTO;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -80,6 +81,15 @@ namespace DAL
 			}
 			
 		}
+        public List<string> GetTenTheLoaiByPhim(int maPhim)
+        {
+            return db.Phims
+        .Include(p => p.MaTheLoais)
+        .Where(p => p.MaPhim == maPhim)
+        .SelectMany(p => p.MaTheLoais)
+        .Select(t => t.Ten ?? "")
+        .ToList();
+        }
 
-	}
+    }
 }

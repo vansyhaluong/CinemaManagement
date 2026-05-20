@@ -1,0 +1,199 @@
+﻿<UserControl x:Class="Cinema.GUI.QuanLyNhanVien"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Cinema.GUI"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid Background="#0F1923">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- ================= HEADER + FILTER (COMPACT) ================= -->
+        <Border Grid.Row="0"
+            Background="#111C2A"
+            CornerRadius="12"
+            Margin="20,20,20,10"
+            Padding="18">
+
+            <Grid>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="30"/>
+                    <ColumnDefinition Width="300"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <!-- TITLE -->
+                <StackPanel Grid.Column="0"
+                        VerticalAlignment="Center">
+
+                    <TextBlock Text="QUẢN LÝ NHÂN VIÊN"
+                           FontSize="22"
+                           FontWeight="Bold"
+                           Foreground="White"/>
+
+                    <Border Height="3"
+                        Width="70"
+                        Background="#2563EB"
+                        Margin="0,6,0,0"
+                        CornerRadius="2"/>
+
+                </StackPanel>
+
+                <!-- DIVIDER SPACE -->
+                <Border Grid.Column="1"/>
+
+                <!-- FILTER -->
+                <StackPanel Grid.Column="2"
+                        VerticalAlignment="Center">
+
+                    <TextBlock Text="Lọc theo rạp"
+                           Foreground="#AAB4C0"
+                           FontSize="12"
+                           Margin="0,0,0,5"/>
+
+                    <ComboBox x:Name="cbRap"
+                          Height="38"
+                          FontSize="14"
+                          Background="#1B2A3A"
+                          Foreground="White"
+                          BorderThickness="0"
+                          DisplayMemberPath="TenRap"
+                          SelectedValuePath="MaRap"
+                          />
+                </StackPanel>
+
+            </Grid>
+        </Border>
+
+        <!-- ================= DATAGRID ================= -->
+        <Border Grid.Row="1"
+            Background="#111C2A"
+            CornerRadius="12"
+            Margin="20,0,20,20"
+            Padding="10">
+
+            <DataGrid x:Name="dgNhanVien"
+          AutoGenerateColumns="False"
+          CanUserAddRows="False"
+          IsReadOnly="True"
+          RowHeight="52"
+          Background="#111C2A"
+          Foreground="White"
+          BorderThickness="0"
+          GridLinesVisibility="None"
+          HeadersVisibility="Column">
+
+                <!-- ================= HEADER STYLE ================= -->
+                <DataGrid.ColumnHeaderStyle>
+                    <Style TargetType="DataGridColumnHeader">
+                        <Setter Property="Background" Value="#162433"/>
+                        <Setter Property="Foreground" Value="#AAB4C0"/>
+                        <Setter Property="FontWeight" Value="SemiBold"/>
+                        <Setter Property="FontSize" Value="13"/>
+                        <Setter Property="Height" Value="46"/>
+                        <Setter Property="BorderThickness" Value="0"/>
+
+                        <!-- FIX THẲNG HÀNG -->
+                        <Setter Property="VerticalContentAlignment" Value="Center"/>
+                        <Setter Property="HorizontalContentAlignment" Value="Left"/>
+                        <Setter Property="Padding" Value="12,0,0,0"/>
+                    </Style>
+                </DataGrid.ColumnHeaderStyle>
+
+                <!-- ================= CELL STYLE ================= -->
+                <DataGrid.CellStyle>
+                    <Style TargetType="DataGridCell">
+                        <Setter Property="BorderThickness" Value="0"/>
+                        <Setter Property="VerticalContentAlignment" Value="Center"/>
+                        <Setter Property="Padding" Value="12,0,0,0"/>
+                    </Style>
+                </DataGrid.CellStyle>
+
+                <DataGrid.Columns>
+
+                    <!-- MÃ NV -->
+                    <DataGridTextColumn Header="Mã NV"
+                            Width="90"
+                            Binding="{Binding MaNhanVien}" />
+
+                    <!-- HỌ TÊN -->
+                    <DataGridTextColumn Header="Họ tên"
+                            Width="220"
+                            Binding="{Binding HoTen}" />
+
+                    <!-- SĐT -->
+                    <DataGridTextColumn Header="SĐT"
+                            Width="160"
+                            Binding="{Binding SoDienThoai}" />
+
+                    <!-- RẠP -->
+                    <DataGridTextColumn Header="Rạp"
+                            Width="200"
+                            Binding="{Binding MaRapNavigation.TenRap}" />
+
+                    <!-- ================= THAO TÁC ================= -->
+                    <DataGridTemplateColumn Header="Thao tác"
+                                Width="150">
+
+                        <!-- HEADER RIÊNG CHO THAO TÁC -->
+                        <DataGridTemplateColumn.HeaderStyle>
+                            <Style TargetType="DataGridColumnHeader"
+                       BasedOn="{StaticResource {x:Type DataGridColumnHeader}}">
+                                <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                                <Setter Property="Padding" Value="0"/>
+                            </Style>
+                        </DataGridTemplateColumn.HeaderStyle>
+
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+
+                                <StackPanel Orientation="Horizontal"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center">
+
+                                    <!-- SỬA -->
+                                    <Button Content="✎"
+                                Width="30"
+                                Height="30"
+                                Margin="5"
+                                Background="#2563EB"
+                                Foreground="White"
+                                BorderThickness="0"
+                                Cursor="Hand"
+                                Tag="{Binding}"
+                                />
+
+                                    <!-- XÓA -->
+                                    <Button Content="🗑"
+                                Width="30"
+                                Height="30"
+                                Margin="5"
+                                Background="#DC2626"
+                                Foreground="White"
+                                BorderThickness="0"
+                                Cursor="Hand"
+                                Tag="{Binding}"
+                                />
+
+                                </StackPanel>
+
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+
+                    </DataGridTemplateColumn>
+
+                </DataGrid.Columns>
+
+            </DataGrid>
+
+        </Border>
+
+    </Grid>
+</UserControl>

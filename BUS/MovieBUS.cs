@@ -33,5 +33,11 @@ namespace BUS
 		{
 			return dal.removeMovie(id);
 		}
+		public string getTheLoaiByPhim(int ma)
+		{
+            List<string> ds = dal.GetTenTheLoaiByPhim(ma);
+
+            return string.Join(" • ", ds);
+        }
 	}
 }

@@ -256,12 +256,14 @@ MouseLeftButtonDown="Poster_Click">
 
             </ItemsControl>
         </ScrollViewer>
+         <!--POPUP MOVIE DETAIL-->
         <Grid x:Name="PopupContainer"
       Visibility="Collapsed"
       Background="#80000000"
               Grid.RowSpan="3"
       HorizontalAlignment="Stretch"
       VerticalAlignment="Stretch"
+              
       Panel.ZIndex="999">
 
             <Border Width="750"
@@ -347,6 +349,7 @@ MouseLeftButtonDown="Poster_Click">
                         Background="#E50914"
                         Foreground="White"
                         BorderThickness="0"
+                                Click="btnDatVe_Click"
                         Cursor="Hand"
                         />
 

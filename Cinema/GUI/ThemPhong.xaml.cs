@@ -23,28 +23,57 @@ namespace Cinema.GUI
     {
         BUS.PhongChieuBUS bus = new BUS.PhongChieuBUS();
         RapBUS bus2 = new RapBUS();
-        public ThemPhong()
+        private PhongChieu? editingPhong;
+        private bool isEdit;
+        public ThemPhong(PhongChieu? ph=null)
         {
             InitializeComponent();
             getAllRap();
+            if (ph != null)
+            {
+                isEdit = true;
+                editingPhong = ph;
+                loadData(ph);
+            }
         }
         public void btnSave_Click(object sender, RoutedEventArgs e)
         {
-            if (cbRap.SelectedItem == null)
+            if (isEdit)
             {
-                MessageBox.Show("Vui lòng chọn rạp!");
-                return;
+                editingPhong.TenPhong = txtTenPhong.Text;
+                editingPhong.MaRap = (int)cbRap.SelectedValue;
+                bool result = bus.updatePhongChieu(editingPhong);
+                if (result)
+                {
+                    CustomMessageBox customMessageBox = new CustomMessageBox("Cập nhật phòng chiếu thành công!", "Thông báo");
+                    customMessageBox.ShowDialog();
+                    this.DialogResult = true;
+                    this.Close();
+                }
+                else
+                {
+                    CustomMessageBox customMessageBox = new CustomMessageBox("Cập nhật phòng chiếu Thất bại!", "Thông báo");
+                    customMessageBox.ShowDialog();
+                }
             }
-
-            var item = new PhongChieu
+            else
             {
-                TenPhong = txtTenPhong.Text,
-                MaRap = (int)cbRap.SelectedValue
-            };
-            if (bus.addPhongChieu(item)){
-                MessageBox.Show("Thêm phòng chiếu thành công!");
-                this.DialogResult = true;
-                this.Close();
+                PhongChieu newPhong = new PhongChieu
+                {
+                    TenPhong = txtTenPhong.Text,
+                    MaRap = (int)cbRap.SelectedValue
+                };
+                bool result = bus.addPhongChieu(newPhong);
+                if (result)
+                {
+                    MessageBox.Show("Thêm phòng chiếu thành công!");
+                    this.DialogResult = true;
+                    this.Close();
+                }
+                else
+                {
+                    MessageBox.Show("Thêm phòng chiếu thất bại!");
+                }
             }
         }
         public void btnCancel_Click(object sender, RoutedEventArgs e)
@@ -53,10 +82,16 @@ namespace Cinema.GUI
         }
         public void getAllRap()
         {
-           var listRap = bus2.getRap();
+           var listRap = bus2.getAllRap();
             cbRap.ItemsSource = listRap;
             cbRap.DisplayMemberPath = "TenRap";
             cbRap.SelectedValuePath = "MaRap";
+        }
+        public void loadData(PhongChieu ph)
+        {
+            txtTenPhong.Text = ph.TenPhong;
+            cbRap.SelectedValue = ph.MaRap;
+            btnSave.Content = "Cập nhật";
         }
     }
 }

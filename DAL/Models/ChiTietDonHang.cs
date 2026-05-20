@@ -15,6 +15,8 @@ public partial class ChiTietDonHang
 
     public decimal? Gia { get; set; }
 
+    public decimal? ThanhTien { get; set; }
+
     public virtual DonHang? MaDonHangNavigation { get; set; }
 
     public virtual SanPham? MaSanPhamNavigation { get; set; }
