@@ -1,0 +1,248 @@
+﻿using Cinema.Models;
+using DTO;
+using Microsoft.EntityFrameworkCore;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace DAL
+{
+    public class BaoCaoDoanhThuDAL
+    {
+        private RapPhim2Context db = new RapPhim2Context();
+
+        public List<BaoCaoDoanhThuNgayDTO> GetBaoCaoTheoNgay(DateTime ngay, int maRap)
+        {
+            var query = db.BaoCaoDoanhThuNgays
+                .Where(x => x.Ngay == DateOnly.FromDateTime(ngay));
+
+            if (maRap != 0)
+            {
+                query = query.Where(x => x.MaRap == maRap);
+            }
+
+            return query
+                .Select(x => new BaoCaoDoanhThuNgayDTO
+                {
+                    MaBaoCao = x.MaBaoCao,
+                    MaRap = x.MaRap ?? 0,
+                    TenRap = x.MaRapNavigation.TenRap,
+
+                    Ngay = x.Ngay.HasValue
+                        ? x.Ngay.Value.ToDateTime(TimeOnly.MinValue)
+                        : DateTime.MinValue,
+
+                    DoanhThuVe = x.DoanhThuVe ?? 0,
+                    DoanhThuDichVu = x.DoanhThuDichVu ?? 0,
+                    TongDoanhThu = x.TongDoanhThu ?? 0,
+                    SoDonHang = x.SoDonHang ?? 0,
+                    SoVeBan = x.SoVeBan ?? 0
+                })
+                .ToList();
+        }
+        public void TaoBaoCaoTheoNgay(DateTime ngay)
+        {
+            var ngayBaoCao = DateOnly.FromDateTime(ngay);
+
+            var data = db.DonHangs
+                .Where(dh => dh.NgayDat.HasValue
+                         && dh.NgayDat.Value.Date == ngay.Date
+                         && dh.TrangThai != "Đã hủy")
+                .SelectMany(dh => dh.VeBans.Select(v => new
+                {
+                    DonHang = dh,
+                    Ve = v,
+                    MaRap = v.MaSuatChieuNavigation!
+                             .MaPhongNavigation!
+                             .MaRap
+                }))
+                .Where(x => x.MaRap != null)
+                .GroupBy(x => x.MaRap)
+                .Select(g => new
+                {
+                    MaRap = g.Key!.Value,
+
+                    DoanhThuVe = g.Select(x => x.DonHang)
+                                   .Distinct()
+                                   .Sum(x => x.TongTienVe),
+
+                    DoanhThuDichVu = g.Select(x => x.DonHang)
+                                       .Distinct()
+                                       .Sum(x => x.TongTienDichVu),
+
+                    TongDoanhThu = g.Select(x => x.DonHang)
+                                     .Distinct()
+                                     .Sum(x => x.TongThanhToan),
+
+                    SoDonHang = g.Select(x => x.DonHang.MaDonHang)
+                                  .Distinct()
+                                  .Count(),
+
+                    SoVeBan = g.Count()
+                })
+                .ToList();
+
+            foreach (var item in data)
+            {
+                var baoCao = db.BaoCaoDoanhThuNgays
+                    .FirstOrDefault(x => x.MaRap == item.MaRap
+                                      && x.Ngay == ngayBaoCao);
+
+                if (baoCao == null)
+                {
+                    baoCao = new BaoCaoDoanhThuNgay
+                    {
+                        MaRap = item.MaRap,
+                        Ngay = ngayBaoCao,
+                        DoanhThuVe = item.DoanhThuVe,
+                        DoanhThuDichVu = item.DoanhThuDichVu,
+                        TongDoanhThu = item.TongDoanhThu,
+                        SoDonHang = item.SoDonHang,
+                        SoVeBan = item.SoVeBan
+                    };
+
+                    db.BaoCaoDoanhThuNgays.Add(baoCao);
+                }
+                else
+                {
+                    baoCao.DoanhThuVe = item.DoanhThuVe;
+                    baoCao.DoanhThuDichVu = item.DoanhThuDichVu;
+                    baoCao.TongDoanhThu = item.TongDoanhThu;
+                    baoCao.SoDonHang = item.SoDonHang;
+                    baoCao.SoVeBan = item.SoVeBan;
+                }
+            }
+
+            db.SaveChanges();
+        }
+        public List<BaoCaoDoanhThuReportDTO> GetChiTietReport(DateTime ngay, int maRap)
+        {
+            return db.DonHangs
+                .Where(dh => dh.NgayDat.HasValue
+                         && dh.NgayDat.Value.Date == ngay.Date
+                         && dh.TrangThai == "DaThanhToan")
+                .Where(dh => dh.VeBans.Any(v =>
+                    v.MaSuatChieuNavigation!
+                     .MaPhongNavigation!
+                     .MaRap == maRap))
+                .Select(dh => new BaoCaoDoanhThuReportDTO
+                {
+                    MaHoaDon = dh.MaHoaDon ?? "",
+
+                    KhachHang = dh.MaKhachHangNavigation != null
+                        ? dh.MaKhachHangNavigation.HoTen!
+                        : "Khách lẻ",
+
+                    TienVe = dh.TongTienVe,
+
+                    TienDichVu = dh.TongTienDichVu,
+
+                    TongTien = dh.TongThanhToan
+                })
+                .ToList();
+        }
+        public List<BaoCaoDoanhThuExcelDTO> GetChiTietExcel(DateTime ngay, int maRap)
+        {
+            DateTime tuNgay = ngay.Date;
+            DateTime denNgay = tuNgay.AddDays(1);
+
+            var donHangs = db.DonHangs
+                .Include(dh => dh.MaKhachHangNavigation)
+                .Include(dh => dh.VeBans)
+                    .ThenInclude(v => v.MaGheNavigation)
+                .Include(dh => dh.VeBans)
+                    .ThenInclude(v => v.MaSuatChieuNavigation)
+                        .ThenInclude(sc => sc.MaPhongNavigation)
+                .Include(dh => dh.VeBans)
+                    .ThenInclude(v => v.MaSuatChieuNavigation)
+                        .ThenInclude(sc => sc.MaPhimNavigation)
+                .Include(dh => dh.ChiTietDonHangs)
+                    .ThenInclude(ct => ct.MaSanPhamNavigation)
+                .Where(dh => dh.NgayDat.HasValue
+                         && dh.NgayDat.Value >= tuNgay
+                         && dh.NgayDat.Value < denNgay
+                         && dh.TrangThai != null
+                         && dh.TrangThai.Trim() == "DaThanhToan")
+                .ToList();
+
+            var result = donHangs
+                .Where(dh => dh.VeBans.Any(v =>
+                    v.MaSuatChieuNavigation?.MaPhongNavigation?.MaRap == maRap))
+                .Select(dh =>
+                {
+                    var veTheoRap = dh.VeBans
+                        .Where(v => v.MaSuatChieuNavigation?.MaPhongNavigation?.MaRap == maRap)
+                        .ToList();
+
+                    return new BaoCaoDoanhThuExcelDTO
+                    {
+                        MaHoaDon = dh.MaHoaDon ?? "",
+                        NgayDat = dh.NgayDat,
+
+                        KhachHang = dh.MaKhachHangNavigation?.HoTen ?? "Khách lẻ",
+                        SoDienThoai = dh.MaKhachHangNavigation?.SoDienThoai ?? "",
+
+                        SoLuongVe = veTheoRap.Count,
+
+                        Ghe = string.Join(", ", veTheoRap.Select(v =>
+    v.MaGheNavigation != null
+        ? v.MaGheNavigation.SoGhe.ToString()
+        : ""
+)),
+
+                        TenPhim = veTheoRap
+                            .Select(v => v.MaSuatChieuNavigation?.MaPhimNavigation?.TieuDe ?? "")
+                            .FirstOrDefault() ?? "",
+
+                        SuatChieu = veTheoRap
+    .Select(v =>
+        v.MaSuatChieuNavigation != null &&
+        v.MaSuatChieuNavigation.ThoiGianBatDau.HasValue
+            ? v.MaSuatChieuNavigation.ThoiGianBatDau.Value
+                .ToString("dd/MM/yyyy HH:mm")
+            : ""
+    )
+    .FirstOrDefault() ?? "",
+
+                        DichVuDaMua = string.Join(", ",
+                            dh.ChiTietDonHangs.Select(ct =>
+                                (ct.MaSanPhamNavigation?.Ten ?? "") + " x" + ct.SoLuong
+                            )),
+
+                        TienVe = dh.TongTienVe,
+                        TienDichVu = dh.TongTienDichVu,
+                        TongTien = dh.TongThanhToan
+                    };
+                })
+                .ToList();
+            
+            return result;
+        }
+        public int CountDonHangTheoNgay(DateTime ngay)
+        {
+            DateTime tuNgay = ngay.Date;
+            DateTime denNgay = tuNgay.AddDays(1);
+
+            return db.DonHangs.Count(dh =>
+                dh.NgayDat.HasValue &&
+                dh.NgayDat.Value >= tuNgay &&
+                dh.NgayDat.Value < denNgay);
+        }
+
+        public int CountDonHangDaThanhToan(DateTime ngay)
+        {
+            DateTime tuNgay = ngay.Date;
+            DateTime denNgay = tuNgay.AddDays(1);
+
+            return db.DonHangs.Count(dh =>
+                dh.NgayDat.HasValue &&
+                dh.NgayDat.Value >= tuNgay &&
+                dh.NgayDat.Value < denNgay &&
+                dh.TrangThai != null &&
+                dh.TrangThai.Trim() == "Đã thanh toán");
+        }
+    }
+
+}

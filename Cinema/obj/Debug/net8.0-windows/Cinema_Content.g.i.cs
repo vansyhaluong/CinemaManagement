@@ -38,5 +38,6 @@
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/frozen2.jpg")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/spiderman.webp")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/traintobusan.jpg")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("reports/baocaodoanhthungay.frx")]
 
 

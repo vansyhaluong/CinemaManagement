@@ -16,7 +16,13 @@
     <Compile Update="GUI\BanVe.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="GUI\BaoCaoDoanhThuNgay.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="GUI\Booking.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="GUI\ChamCong.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="GUI\CustomMessageBox.xaml.cs">
@@ -52,6 +58,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="GUI\QuanLySuatChieu.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="GUI\ReportPreviewWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="GUI\Student.xaml.cs">

@@ -64,7 +64,7 @@
                                Foreground="{DynamicResource TextMutedBrush}"
                                Margin="16,0,0,6"/>
 
-                    <controls:NavItem Icon="📊" Label="Reports"/>
+                    <controls:NavItem Icon="📊" Label="Báo Cáo Doanh Thu" MouseLeftButtonDown="btnDoanhThu_Click" x:Name="nav_DoanhThu" Click="Nav_Click"/>
                     <controls:NavItem Icon="📈" Label="Trends"/>
 
                     <Rectangle Height="1" Fill="{DynamicResource BorderBrush}" Margin="0,8"/>

@@ -15,6 +15,7 @@
     <None Remove="Images\frozen2.jpg" />
     <None Remove="Images\spiderman.webp" />
     <None Remove="Images\traintobusan.jpg" />
+    <None Remove="Reports\BaoCaoDoanhThuNgay.frx" />
   </ItemGroup>
 
   <ItemGroup>
@@ -38,9 +39,16 @@
     <Content Include="Images\traintobusan.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Reports\BaoCaoDoanhThuNgay.frx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="ClosedXML" Version="0.105.0" />
+    <PackageReference Include="FastReport.OpenSource" Version="2026.2.1" />
+    <PackageReference Include="FastReport.OpenSource.Export.PdfSimple" Version="2026.2.1" />
+    <PackageReference Include="LiveChartsCore.SkiaSharpView.WPF" Version="2.0.4" />
     <PackageReference Include="MaterialDesignThemes" Version="5.3.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.25">
       <PrivateAssets>all</PrivateAssets>

@@ -855,6 +855,23 @@ BEGIN
     CREATE INDEX IX_GiuGheTam_HetHanLuc
     ON GiuGheTam(HetHanLuc, TrangThai);
 END
+go
+ALTER TABLE NhanVien
+ADD LuongTheoGio DECIMAL(10,2) DEFAULT 25000;
+go
+ALTER TABLE BangLuong
+ADD TongGioLam DECIMAL(10,2) DEFAULT 0;
+
+ALTER TABLE BangLuong
+ADD SoCaLam INT DEFAULT 0;
+
+ALTER TABLE BangLuong
+ADD NgayTinhLuong DATE;
+
+ALTER TABLE BangLuong
+ADD TrangThai NVARCHAR(50);
+go
+
 
 
 

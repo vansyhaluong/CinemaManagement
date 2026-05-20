@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report ScriptLanguage="CSharp" ReportInfo.Created="05/20/2026" ReportInfo.Modified="05/20/2026">
+  <Dictionary>
+    <BusinessObjectDataSource Name="BaoCao" ReferenceName="BaoCao" DataType="System.Int32" Enabled="true">
+      <Column Name="MaHoaDon" DataType="System.String"/>
+      <Column Name="KhachHang" DataType="System.String"/>
+      <Column Name="TienVe" DataType="System.Decimal"/>
+      <Column Name="TienDichVu" DataType="System.Decimal"/>
+      <Column Name="TongTien" DataType="System.Decimal"/>
+    </BusinessObjectDataSource>
+
+    <Parameter Name="NgayBaoCao" DataType="System.String"/>
+    <Parameter Name="TenRap" DataType="System.String"/>
+    <Parameter Name="TongDoanhThu" DataType="System.String"/>
+    <Parameter Name="TongTienVe" DataType="System.String"/>
+    <Parameter Name="TongTienDichVu" DataType="System.String"/>
+    <Parameter Name="TongDonHang" DataType="System.String"/>
+  </Dictionary>
+
+  <ReportPage Name="Page1" PaperWidth="210" PaperHeight="297" LeftMargin="10" RightMargin="10" TopMargin="10" BottomMargin="10">
+    
+    <ReportTitleBand Name="ReportTitle1" Width="718.2" Height="150">
+      <TextObject Left="0" Top="0" Width="718" Height="28" Text="CINEMA MANAGEMENT SYSTEM" HorzAlign="Center" Font="Arial, 14pt, style=Bold" TextFill.Color="#0F1923"/>
+      <TextObject Left="0" Top="32" Width="718" Height="34" Text="BÁO CÁO DOANH THU THEO NGÀY" HorzAlign="Center" Font="Arial, 18pt, style=Bold" TextFill.Color="#0EA5E9"/>
+
+      <TextObject Left="0" Top="78" Width="359" Height="22" Text="Ngày báo cáo: [NgayBaoCao]" Font="Arial, 10pt"/>
+      <TextObject Left="359" Top="78" Width="359" Height="22" Text="Rạp: [TenRap]" HorzAlign="Right" Font="Arial, 10pt"/>
+
+      <TextObject Left="0" Top="110" Width="170" Height="28" Text="Tổng doanh thu: [TongDoanhThu]" Font="Arial, 10pt, style=Bold" TextFill.Color="#16A34A"/>
+      <TextObject Left="180" Top="110" Width="170" Height="28" Text="Tiền vé: [TongTienVe]" Font="Arial, 10pt"/>
+      <TextObject Left="360" Top="110" Width="170" Height="28" Text="Dịch vụ: [TongTienDichVu]" Font="Arial, 10pt"/>
+      <TextObject Left="540" Top="110" Width="178" Height="28" Text="Đơn hàng: [TongDonHang]" HorzAlign="Right" Font="Arial, 10pt"/>
+    </ReportTitleBand>
+
+    <PageHeaderBand Name="PageHeader1" Width="718.2" Height="30">
+      <TextObject Left="0" Top="0" Width="120" Height="30" Border.Lines="All" Fill.Color="#0F1923" Text="Mã hóa đơn" HorzAlign="Center" VertAlign="Center" Font="Arial, 9pt, style=Bold" TextFill.Color="White"/>
+      <TextObject Left="120" Top="0" Width="200" Height="30" Border.Lines="All" Fill.Color="#0F1923" Text="Khách hàng" HorzAlign="Center" VertAlign="Center" Font="Arial, 9pt, style=Bold" TextFill.Color="White"/>
+      <TextObject Left="320" Top="0" Width="120" Height="30" Border.Lines="All" Fill.Color="#0F1923" Text="Tiền vé" HorzAlign="Center" VertAlign="Center" Font="Arial, 9pt, style=Bold" TextFill.Color="White"/>
+      <TextObject Left="440" Top="0" Width="130" Height="30" Border.Lines="All" Fill.Color="#0F1923" Text="Tiền dịch vụ" HorzAlign="Center" VertAlign="Center" Font="Arial, 9pt, style=Bold" TextFill.Color="White"/>
+      <TextObject Left="570" Top="0" Width="148" Height="30" Border.Lines="All" Fill.Color="#0F1923" Text="Tổng tiền" HorzAlign="Center" VertAlign="Center" Font="Arial, 9pt, style=Bold" TextFill.Color="White"/>
+    </PageHeaderBand>
+
+    <DataBand Name="Data1" Width="718.2" Height="28" DataSource="BaoCao">
+      <TextObject Left="0" Top="0" Width="120" Height="28" Border.Lines="All" Text="[BaoCao.MaHoaDon]" VertAlign="Center" Font="Arial, 9pt"/>
+      <TextObject Left="120" Top="0" Width="200" Height="28" Border.Lines="All" Text="[BaoCao.KhachHang]" VertAlign="Center" Font="Arial, 9pt"/>
+      <TextObject Left="320" Top="0" Width="120" Height="28" Border.Lines="All" Text="[BaoCao.TienVe]" Format="Number" Format.UseLocale="true" HorzAlign="Right" VertAlign="Center" Font="Arial, 9pt"/>
+      <TextObject Left="440" Top="0" Width="130" Height="28" Border.Lines="All" Text="[BaoCao.TienDichVu]" Format="Number" Format.UseLocale="true" HorzAlign="Right" VertAlign="Center" Font="Arial, 9pt"/>
+      <TextObject Left="570" Top="0" Width="148" Height="28" Border.Lines="All" Text="[BaoCao.TongTien]" Format="Number" Format.UseLocale="true" HorzAlign="Right" VertAlign="Center" Font="Arial, 9pt, style=Bold"/>
+    </DataBand>
+
+    <ReportSummaryBand Name="ReportSummary1" Width="718.2" Height="80">
+      <TextObject Left="0" Top="18" Width="718" Height="24" Text="TỔNG KẾT BÁO CÁO" HorzAlign="Center" Font="Arial, 12pt, style=Bold" TextFill.Color="#0F1923"/>
+      <TextObject Left="0" Top="48" Width="718" Height="22" Text="Tổng doanh thu trong ngày: [TongDoanhThu]" HorzAlign="Right" Font="Arial, 11pt, style=Bold" TextFill.Color="#16A34A"/>
+    </ReportSummaryBand>
+
+    <PageFooterBand Name="PageFooter1" Width="718.2" Height="45">
+      <TextObject Left="0" Top="5" Width="300" Height="20" Text="Ngày xuất báo cáo: [Date]" Font="Arial, 8pt" TextFill.Color="#64748B"/>
+      <TextObject Left="500" Top="5" Width="218" Height="20" Text="Trang [Page#]" HorzAlign="Right" Font="Arial, 8pt" TextFill.Color="#64748B"/>
+    </PageFooterBand>
+
+  </ReportPage>
+</Report>

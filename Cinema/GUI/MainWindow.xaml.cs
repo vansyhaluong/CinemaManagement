@@ -76,43 +76,47 @@ namespace Cinema.GUI
 		//	MainContent.Content = new Main();
 		//}
 		public void btnQuanLyPhim_Click(object sender, MouseButtonEventArgs e)
-        {
-            MainContent.Content = new QuanLyPhim();
-        }
+		{
+			MainContent.Content = new QuanLyPhim();
+		}
 		public void btnQuanLyPhong_Click(object sender, MouseButtonEventArgs e)
-        {
-            MainContent.Content = new QuanLyPhong();
-        }
-        private void Nav_Click(object sender, RoutedEventArgs e)
-        {
-            // Tắt tất cả
-            nav_Phim.IsActive = false;
-            nav_Phong.IsActive = false;
-            nav_QLPhim.IsActive = false;
+		{
+			MainContent.Content = new QuanLyPhong();
+		}
+		private void Nav_Click(object sender, RoutedEventArgs e)
+		{
+			// Tắt tất cả
+			nav_Phim.IsActive = false;
+			nav_Phong.IsActive = false;
+			nav_QLPhim.IsActive = false;
 			nav_BanVe.IsActive = false;
-            nav_HoaDon.IsActive = false;
+			nav_HoaDon.IsActive = false;
 
-            // Bật item đang click
-            NavItem? item = sender as NavItem;
-            item.IsActive = true;
-        }
+			// Bật item đang click
+			NavItem? item = sender as NavItem;
+			item.IsActive = true;
+		}
 		public void btnListMovie_Click(object sender, MouseButtonEventArgs e)
-        {
-            MainContent.Content = new Main();
-        }
+		{
+			MainContent.Content = new Main();
+		}
 		public void btnQLNhanVien_Click(object sender, MouseButtonEventArgs e)
-        {
-            MainContent.Content = new Student();
-        }
+		{
+			MainContent.Content = new Student();
+		}
 
-        public void btnBanVe_Click(object sender, MouseButtonEventArgs e)
-        {
-            MainContent.Content = new Main();
-        }
+		public void btnBanVe_Click(object sender, MouseButtonEventArgs e)
+		{
+			MainContent.Content = new Main();
+		}
 
-        public void btnQuanLyHoaDon_Click(object sender, MouseButtonEventArgs e)
-        {
-            MainContent.Content = new QuanLyHoaDon();
-        }
-    }
+		public void btnQuanLyHoaDon_Click(object sender, MouseButtonEventArgs e)
+		{
+			MainContent.Content = new QuanLyHoaDon();
+		}
+		public void btnDoanhThu_Click(object sender, MouseButtonEventArgs e)
+		{
+			MainContent.Content = new BaoCaoDoanhThuNgay();
+		}
+	}
 }
