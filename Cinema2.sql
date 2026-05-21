@@ -871,8 +871,29 @@ ADD NgayTinhLuong DATE;
 ALTER TABLE BangLuong
 ADD TrangThai NVARCHAR(50);
 go
+CREATE TABLE PhanCa (
+    MaPhanCa INT IDENTITY PRIMARY KEY,
+    MaNhanVien INT NOT NULL,
+    MaCa INT NOT NULL,
+    Ngay DATE NOT NULL,
 
-
+    FOREIGN KEY (MaNhanVien) REFERENCES NhanVien(MaNhanVien),
+    FOREIGN KEY (MaCa) REFERENCES CaLam(MaCa)
+);
+GO
+ALTER TABLE PhanCa
+ADD CONSTRAINT UQ_PhanCa_NhanVien_Ngay
+UNIQUE (MaNhanVien, Ngay);
+go
+INSERT INTO PhanCa (MaNhanVien, MaCa, Ngay)
+VALUES
+(1, 1, GETDATE()),
+(2, 1, GETDATE()),
+(3, 2, GETDATE()),
+(4, 2, GETDATE()),
+(5, 3, GETDATE()),
+(6, 3, GETDATE());
+GO
 
 
 

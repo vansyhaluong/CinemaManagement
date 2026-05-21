@@ -1,0 +1,67 @@
+﻿using Cinema.Models;
+using DTO;
+using Microsoft.EntityFrameworkCore;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace DAL
+{
+    public class KhenThuongDAL
+    {
+        RapPhim2Context db=new RapPhim2Context();
+        public List<KhenThuongDTO> GetAllKhenThuong()
+        {
+            return db.KhenThuongs
+                .Include(x => x.MaNhanVienNavigation)
+                .Select(x => new KhenThuongDTO
+                {
+                    MaKhenThuong = x.MaKhenThuong,
+                    MaNhanVien = x.MaNhanVien ?? 0,
+                    HoTen = x.MaNhanVienNavigation.HoTen,
+                    Ngay = x.Ngay.HasValue
+    ? x.Ngay.Value.ToDateTime(TimeOnly.MinValue)
+    : DateTime.Now,
+                    LyDo = x.LyDo,
+                    SoTienThuong = x.SoTienThuong ?? 0
+                })
+                .ToList();
+        }
+        public bool Add(KhenThuong kt)
+        {
+            db.KhenThuongs.Add(kt);
+            db.SaveChanges();
+            return true;
+        }
+
+        public bool Update(KhenThuong kt)
+        {
+            var old = db.KhenThuongs.Find(kt.MaKhenThuong);
+
+            if (old == null)
+                return false;
+
+            old.MaNhanVien = kt.MaNhanVien;
+            old.Ngay = kt.Ngay;
+            old.LyDo = kt.LyDo;
+            old.SoTienThuong = kt.SoTienThuong;
+
+            db.SaveChanges();
+            return true;
+        }
+
+        public bool Delete(int maKhenThuong)
+        {
+            var kt = db.KhenThuongs.Find(maKhenThuong);
+
+            if (kt == null)
+                return false;
+
+            db.KhenThuongs.Remove(kt);
+            db.SaveChanges();
+            return true;
+        }
+    }
+}

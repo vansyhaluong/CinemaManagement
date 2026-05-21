@@ -5,217 +5,260 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Cinema.GUI"
              mc:Ignorable="d" 
+             xmlns:controls="clr-namespace:Cinema.Controls"
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid Background="#070B16" Margin="24">
+
+
+    <Grid Background="{DynamicResource AppBackgroundBrush}">
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="58"/>
+            <RowDefinition Height="84"/>
             <RowDefinition Height="*"/>
+            <RowDefinition Height="42"/>
         </Grid.RowDefinitions>
 
-        <!-- HEADER -->
-        <Grid Grid.Row="0" Margin="0,0,0,22">
-            <StackPanel>
-                <TextBlock Text="Chấm công nhân viên"
-                       Foreground="White"
-                       FontSize="32"
-                       FontWeight="Bold"/>
+        <!-- TOP BAR -->
+        <Border Grid.Row="0"
+                BorderBrush="{DynamicResource BorderBrush}"
+                BorderThickness="0,0,0,1">
+            <Grid Margin="20,0">
+                <StackPanel VerticalAlignment="Center">
+                    <TextBlock Text="Chấm công nhân viên"
+                               FontSize="16"
+                               FontWeight="Bold"
+                               Foreground="{DynamicResource TextPrimaryBrush}"/>
+                    <TextBlock Text="Theo dõi check-in, check-out và trạng thái ca làm"
+                               FontSize="11"
+                               Foreground="{DynamicResource TextMutedBrush}"/>
+                </StackPanel>
 
-                <TextBlock Text="Theo dõi giờ vào, giờ ra và trạng thái làm việc trong ngày"
-                       Foreground="#94A3B8"
-                       FontSize="14"
-                       Margin="0,6,0,0"/>
-            </StackPanel>
+                <StackPanel HorizontalAlignment="Right"
+                            VerticalAlignment="Center">
+                    <TextBlock x:Name="txtTime"
+                               Text="00:00:00"
+                               FontSize="18"
+                               FontWeight="SemiBold"
+                               Foreground="{DynamicResource TextPrimaryBrush}"
+                               HorizontalAlignment="Right"/>
+                    <TextBlock x:Name="txtDate"
+                               Text="dd/MM/yyyy"
+                               FontSize="11"
+                               Foreground="{DynamicResource TextMutedBrush}"
+                               HorizontalAlignment="Right"/>
+                </StackPanel>
+            </Grid>
+        </Border>
 
+        <!-- STAT CARDS -->
+        <Border Grid.Row="1"
+                BorderBrush="{DynamicResource BorderBrush}"
+                BorderThickness="0,0,0,1">
             <StackPanel Orientation="Horizontal"
-                    HorizontalAlignment="Right"
-                    VerticalAlignment="Center">
+                        Margin="12,0"
+                        VerticalAlignment="Center">
 
-                <Button Content="Chấm vào"
-                    Width="120"
-                    Height="40"
-                    Margin="0,0,10,0"
-                    Background="#22C55E"
-                    Foreground="White"
-                    BorderThickness="0"
-                    FontWeight="Bold"
-                    Click="btnChamVao_Click"/>
+                <controls:StatCard CardLabel="Đúng giờ"
+                                   x:Name="cardActive"
+                                   Value="0"
+                                   SubLabel="Check-in hợp lệ"
+                                   ValueBrushKey="SuccessBrush"
+                                   Margin="0,0,10,0"/>
 
-                <Button Content="Chấm ra"
-                    Width="120"
-                    Height="40"
-                    Background="#3B82F6"
-                    Foreground="White"
-                    BorderThickness="0"
-                    FontWeight="Bold"
-                    Click="btnChamRa_Click"/>
+                <controls:StatCard CardLabel="Đi trễ"
+                                   x:Name="cardLate"
+                                   Value="0"
+                                   SubLabel="Sau giờ bắt đầu"
+                                   ValueBrushKey="WarningBrush"
+                                   Margin="0,0,10,0"/>
+
+                <controls:StatCard CardLabel="Chưa chấm công"
+                                   x:Name="cardAbsent"
+                                   Value="0"
+                                   SubLabel="Đã phân ca nhưng chưa vào"
+                                   ValueBrushKey="DangerBrush"
+                                   Margin="0,0,10,0"/>
+
+                <controls:StatCard CardLabel="Tổng ca"
+                                   x:Name="cardTotal"
+                                   Value="0"
+                                   SubLabel="Theo ngày đã chọn"
+                                   ValueBrushKey="TextPrimaryBrush"/>
             </StackPanel>
-        </Grid>
+        </Border>
 
-        <!-- KPI CARDS -->
-        <Grid Grid.Row="1" Margin="0,0,0,22">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-            </Grid.ColumnDefinitions>
-
-            <Border Background="#101827" CornerRadius="20" Padding="18" Margin="0,0,14,0">
-                <StackPanel>
-                    <TextBlock Text="Đang làm" Foreground="#94A3B8" FontSize="13"/>
-                    <TextBlock x:Name="txtDangLam" Text="12" Foreground="White" FontSize="30" FontWeight="Bold"/>
-                    <TextBlock Text="Nhân viên check-in" Foreground="#22C55E" FontSize="12"/>
-                </StackPanel>
-            </Border>
-
-            <Border Grid.Column="1" Background="#101827" CornerRadius="20" Padding="18" Margin="0,0,14,0">
-                <StackPanel>
-                    <TextBlock Text="Đi trễ" Foreground="#94A3B8" FontSize="13"/>
-                    <TextBlock x:Name="txtDiTre" Text="2" Foreground="White" FontSize="30" FontWeight="Bold"/>
-                    <TextBlock Text="So với giờ vào ca" Foreground="#F59E0B" FontSize="12"/>
-                </StackPanel>
-            </Border>
-
-            <Border Grid.Column="2" Background="#101827" CornerRadius="20" Padding="18" Margin="0,0,14,0">
-                <StackPanel>
-                    <TextBlock Text="Vắng / nghỉ" Foreground="#94A3B8" FontSize="13"/>
-                    <TextBlock x:Name="txtVang" Text="1" Foreground="White" FontSize="30" FontWeight="Bold"/>
-                    <TextBlock Text="Chưa có chấm công" Foreground="#EF4444" FontSize="12"/>
-                </StackPanel>
-            </Border>
-
-            <Border Grid.Column="3" Background="#101827" CornerRadius="20" Padding="18">
-                <StackPanel>
-                    <TextBlock Text="Tổng giờ hôm nay" Foreground="#94A3B8" FontSize="13"/>
-                    <TextBlock x:Name="txtTongGio" Text="86.5h" Foreground="White" FontSize="30" FontWeight="Bold"/>
-                    <TextBlock Text="Tính từ giờ vào / ra" Foreground="#38BDF8" FontSize="12"/>
-                </StackPanel>
-            </Border>
-        </Grid>
-
-        <!-- MAIN CONTENT -->
+        <!-- CONTENT -->
         <Grid Grid.Row="2">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="2*"/>
-                <ColumnDefinition Width="1.1*"/>
-            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="46"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
 
-            <!-- LEFT: EMPLOYEE LIST -->
-            <Border Background="#101827"
-                CornerRadius="22"
-                Padding="18"
-                Margin="0,0,18,0">
+            <!-- FILTER -->
+            <StackPanel Grid.Row="0"
+                        Orientation="Horizontal"
+                        Margin="12,8"
+                        VerticalAlignment="Center">
+                <DatePicker x:Name="dpNgay"
+                            Width="150"
+                            Margin="0,0,8,0"
+                            SelectedDateChanged="dpNgay_SelectedDateChanged"/>
 
-                <DockPanel>
-                    <TextBlock DockPanel.Dock="Top"
-                           Text="Danh sách chấm công hôm nay"
-                           Foreground="White"
-                           FontSize="20"
-                           FontWeight="Bold"
-                           Margin="0,0,0,16"/>
+                <ComboBox x:Name="cbRap"
+                          Width="160"
+                          Margin="0,0,8,0"
+                          DisplayMemberPath="TenRap"
+                          SelectedValuePath="MaRap"
+                          SelectionChanged="cbRap_SelectionChanged"/>
 
-                    <DataGrid x:Name="dgChamCong"
-                          AutoGenerateColumns="False"
-                          CanUserAddRows="False"
-                          RowHeight="48"
-                          HeadersVisibility="Column"
-                          GridLinesVisibility="None"
-                          Background="#101827"
-                          Foreground="White"
-                          BorderThickness="0">
+                <ComboBox x:Name="cbCa"
+                          Width="150"
+                          Margin="0,0,8,0"
+                          DisplayMemberPath="TenCa"
+                          SelectedValuePath="MaCa"
+                          SelectionChanged="cbCa_SelectionChanged"/>
 
-                        <DataGrid.Columns>
-                            <DataGridTextColumn Header="Nhân viên"
-                                            Binding="{Binding TenNhanVien}"
-                                            Width="*"/>
+                <TextBox x:Name="txtSearch"
+                         Width="220"
+                         Margin="0,0,8,0"
+                         TextChanged="txtSearch_TextChanged"/>
 
-                            <DataGridTextColumn Header="Ca"
-                                            Binding="{Binding TenCa}"
-                                            Width="100"/>
+                <Button Content="Lọc"
+                        Width="72"
+                        Click="btnLoc_Click"/>
+            </StackPanel>
 
-                            <DataGridTextColumn Header="Vào"
-                                            Binding="{Binding GioVao, StringFormat=HH:mm}"
-                                            Width="90"/>
+            <!-- MAIN -->
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="320"/>
+                </Grid.ColumnDefinitions>
 
-                            <DataGridTextColumn Header="Ra"
-                                            Binding="{Binding GioRa, StringFormat=HH:mm}"
-                                            Width="90"/>
+                <!-- STAFF LIST -->
+                <ScrollViewer Grid.Column="0"
+                              VerticalScrollBarVisibility="Auto">
+                    <ItemsControl x:Name="icNhanVien">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <Border BorderBrush="{DynamicResource BorderBrush}"
+                                        BorderThickness="0,0,0,1"
+                                        Padding="14,10">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="150"/>
+                                            <ColumnDefinition Width="120"/>
+                                            <ColumnDefinition Width="130"/>
+                                        </Grid.ColumnDefinitions>
 
-                            <DataGridTextColumn Header="Giờ"
-                                            Binding="{Binding TongGioLam}"
-                                            Width="80"/>
+                                        <StackPanel Grid.Column="0">
+                                            <TextBlock Text="{Binding HoTen}"
+                                                       FontSize="13"
+                                                       FontWeight="SemiBold"
+                                                       Foreground="{DynamicResource TextPrimaryBrush}"/>
+                                            <TextBlock FontSize="11"
+                                                       Foreground="{DynamicResource TextMutedBrush}">
+                                                <Run Text="{Binding ThoiGianCa, Mode=OneWay}"/>
+                                                <Run Text=" • "/>
+                                                <Run Text="{Binding TenCa, Mode=OneWay}"/>
+                                                <Run Text=" • "/>
+                                                <Run Text="{Binding ThoiGianCa, Mode=OneWay}"/>
+                                            </TextBlock>
+                                        </StackPanel>
 
-                            <DataGridTextColumn Header="Trạng thái"
-                                            Binding="{Binding TrangThai}"
-                                            Width="120"/>
-                        </DataGrid.Columns>
-                    </DataGrid>
-                </DockPanel>
-            </Border>
+                                        <StackPanel Grid.Column="1"
+                                                    VerticalAlignment="Center">
+                                            <TextBlock Text="{Binding GioVaoText}"
+                                                       FontSize="12"
+                                                       Foreground="{DynamicResource TextSecondaryBrush}"/>
+                                            <TextBlock Text="{Binding GioRaText}"
+                                                       FontSize="11"
+                                                       Foreground="{DynamicResource TextMutedBrush}"/>
+                                        </StackPanel>
 
-            <!-- RIGHT: TIMELINE -->
-            <Border Grid.Column="1"
-                Background="#101827"
-                CornerRadius="22"
-                Padding="20">
+                                        <TextBlock Grid.Column="2"
+                                                   Text="{Binding TrangThai}"
+                                                   FontSize="12"
+                                                   FontWeight="SemiBold"
+                                                   Foreground="{DynamicResource TextSecondaryBrush}"
+                                                   VerticalAlignment="Center"/>
 
-                <StackPanel>
-                    <TextBlock Text="Timeline hôm nay"
-                           Foreground="White"
-                           FontSize="20"
-                           FontWeight="Bold"
-                           Margin="0,0,0,20"/>
+                                        <StackPanel Grid.Column="3"
+                                                    Orientation="Horizontal"
+                                                    HorizontalAlignment="Right"
+                                                    VerticalAlignment="Center">
+                                            <Button Content="IN"
+                                                    Width="46"
+                                                    Margin="0,0,6,0"
+                                                    Tag="{Binding}"
+                                                    Click="btnCheckIn_Click"/>
+                                            <Button Content="OUT"
+                                                    Width="52"
+                                                    Tag="{Binding}"
+                                                    Click="btnCheckOut_Click"/>
+                                        </StackPanel>
+                                    </Grid>
+                                </Border>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </ScrollViewer>
 
-                    <StackPanel Orientation="Horizontal" Margin="0,0,0,18">
-                        <Ellipse Width="12" Height="12" Fill="#22C55E" Margin="0,4,12,0"/>
-                        <StackPanel>
-                            <TextBlock Text="08:00 - Nguyễn Văn A check-in"
-                                   Foreground="White"
-                                   FontSize="14"/>
-                            <TextBlock Text="Ca sáng bắt đầu"
-                                   Foreground="#94A3B8"
-                                   FontSize="12"/>
-                        </StackPanel>
-                    </StackPanel>
+                <!-- TIMELINE -->
+                <Border Grid.Column="1"
+                        BorderBrush="{DynamicResource BorderBrush}"
+                        BorderThickness="1,0,0,0"
+                        Padding="14,8">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="32"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
 
-                    <StackPanel Orientation="Horizontal" Margin="0,0,0,18">
-                        <Ellipse Width="12" Height="12" Fill="#F59E0B" Margin="0,4,12,0"/>
-                        <StackPanel>
-                            <TextBlock Text="08:18 - Trần Văn B đi trễ"
-                                   Foreground="White"
-                                   FontSize="14"/>
-                            <TextBlock Text="Trễ 18 phút"
-                                   Foreground="#94A3B8"
-                                   FontSize="12"/>
-                        </StackPanel>
-                    </StackPanel>
+                        <TextBlock Text="Activity Timeline"
+                                   FontSize="13"
+                                   FontWeight="Bold"
+                                   Foreground="{DynamicResource TextPrimaryBrush}"
+                                   VerticalAlignment="Center"/>
 
-                    <StackPanel Orientation="Horizontal" Margin="0,0,0,18">
-                        <Ellipse Width="12" Height="12" Fill="#3B82F6" Margin="0,4,12,0"/>
-                        <StackPanel>
-                            <TextBlock Text="12:00 - Kết thúc ca sáng"
-                                   Foreground="White"
-                                   FontSize="14"/>
-                            <TextBlock Text="8 nhân viên đã check-out"
-                                   Foreground="#94A3B8"
-                                   FontSize="12"/>
-                        </StackPanel>
-                    </StackPanel>
+                        <ItemsControl Grid.Row="1" x:Name="icLog">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid Margin="0,0,0,6">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="50"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
 
-                    <StackPanel Orientation="Horizontal">
-                        <Ellipse Width="12" Height="12" Fill="#EF4444" Margin="0,4,12,0"/>
-                        <StackPanel>
-                            <TextBlock Text="Chưa chấm công: Lê Minh C"
-                                   Foreground="White"
-                                   FontSize="14"/>
-                            <TextBlock Text="Ca chiều chưa check-in"
-                                   Foreground="#94A3B8"
-                                   FontSize="12"/>
-                        </StackPanel>
-                    </StackPanel>
-                </StackPanel>
-            </Border>
+                                        <TextBlock Text="{Binding ThoiGian}"
+                                                   FontSize="11"
+                                                   Foreground="{DynamicResource TextMutedBrush}"/>
+
+                                        <TextBlock Grid.Column="1"
+                                                   Text="{Binding NoiDung}"
+                                                   FontSize="11"
+                                                   Foreground="{DynamicResource TextSecondaryBrush}"
+                                                   TextWrapping="Wrap"/>
+                                    </Grid>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </Grid>
+                </Border>
+            </Grid>
         </Grid>
+
+        <!-- BOTTOM -->
+        <Border Grid.Row="3"
+                BorderBrush="{DynamicResource BorderBrush}"
+                BorderThickness="0,1,0,0">
+            <Grid Margin="14,0">
+                <TextBlock x:Name="lblPageInfo"
+                           Text="Showing 0 attendance records"
+                           FontSize="11"
+                           Foreground="{DynamicResource TextMutedBrush}"
+                           VerticalAlignment="Center"/>
+            </Grid>
+        </Border>
     </Grid>
 </UserControl>

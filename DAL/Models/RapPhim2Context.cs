@@ -1,6 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using DAL.Models;
 using Microsoft.EntityFrameworkCore;
+using System;
+using System.Collections.Generic;
 
 namespace Cinema.Models;
 
@@ -70,6 +71,7 @@ public partial class RapPhim2Context : DbContext
     public virtual DbSet<TheLoai> TheLoais { get; set; }
 
     public virtual DbSet<VeBan> VeBans { get; set; }
+    public virtual DbSet<PhanCa> PhanCas { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
@@ -77,6 +79,26 @@ public partial class RapPhim2Context : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        modelBuilder.Entity<PhanCa>(entity =>
+        {
+            entity.HasKey(e => e.MaPhanCa);
+
+            entity.ToTable("PhanCa");
+
+            entity.Property(e => e.Ngay)
+                  .HasColumnType("date");
+
+            entity.HasIndex(e => new { e.MaNhanVien, e.Ngay })
+                  .IsUnique();
+
+            entity.HasOne(e => e.MaNhanVienNavigation)
+                  .WithMany()
+                  .HasForeignKey(e => e.MaNhanVien);
+
+            entity.HasOne(e => e.MaCaNavigation)
+                  .WithMany()
+                  .HasForeignKey(e => e.MaCa);
+        });
         modelBuilder.Entity<BangLuong>(entity =>
         {
             entity.HasKey(e => e.MaLuong).HasName("PK__BangLuon__6609A48D12875A2E");

@@ -31,6 +31,9 @@
     <Compile Update="GUI\Home.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="GUI\KhenThuong.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="GUI\Login.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -38,6 +41,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="GUI\MovieDetailDialog.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="GUI\PhanCa.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="GUI\QuanLyGhe.xaml.cs">
