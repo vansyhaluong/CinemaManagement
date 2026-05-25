@@ -1,0 +1,103 @@
+﻿<Window x:Class="Cinema.GUI.PhieuLuong"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Cinema.GUI"
+        mc:Ignorable="d"
+        Title="Phiếu lương nhân viên"
+        Height="620"
+        Width="520"
+        WindowStartupLocation="CenterScreen"
+        Background="#F3F4F6">
+    <Grid Margin="18">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="46"/>
+        </Grid.RowDefinitions>
+
+        <Border x:Name="printArea"
+                Background="White"
+                CornerRadius="12"
+                Padding="26">
+            <StackPanel>
+                <TextBlock Text="PHIẾU LƯƠNG NHÂN VIÊN"
+                           FontSize="22"
+                           FontWeight="Bold"
+                           HorizontalAlignment="Center"/>
+
+                <TextBlock x:Name="txtThoiGian"
+                           FontSize="13"
+                           Foreground="#6B7280"
+                           HorizontalAlignment="Center"
+                           Margin="0,6,0,24"/>
+
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="170"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="34"/>
+                        <RowDefinition Height="34"/>
+                        <RowDefinition Height="34"/>
+                        <RowDefinition Height="34"/>
+                        <RowDefinition Height="34"/>
+                        <RowDefinition Height="34"/>
+                        <RowDefinition Height="34"/>
+                        <RowDefinition Height="34"/>
+                        <RowDefinition Height="44"/>
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Text="Họ tên:"/>
+                    <TextBlock x:Name="txtHoTen" Grid.Column="1" FontWeight="SemiBold"/>
+
+                    <TextBlock Text="Ngày công:" Grid.Row="1"/>
+                    <TextBlock x:Name="txtNgayCong" Grid.Row="1" Grid.Column="1"/>
+
+                    <TextBlock Text="Tổng giờ làm:" Grid.Row="2"/>
+                    <TextBlock x:Name="txtGioLam" Grid.Row="2" Grid.Column="1"/>
+
+                    <TextBlock Text="Lương cơ bản / giờ:" Grid.Row="3"/>
+                    <TextBlock x:Name="txtLuongCoBan" Grid.Row="3" Grid.Column="1"/>
+
+                    <TextBlock Text="Tiền lương giờ:" Grid.Row="4"/>
+                    <TextBlock x:Name="txtTienLuongGio" Grid.Row="4" Grid.Column="1"/>
+
+                    <TextBlock Text="Thưởng:" Grid.Row="5"/>
+                    <TextBlock x:Name="txtThuong" Grid.Row="5" Grid.Column="1" Foreground="#16A34A"/>
+
+                    <TextBlock Text="Khấu trừ:" Grid.Row="6"/>
+                    <TextBlock x:Name="txtPhat" Grid.Row="6" Grid.Column="1" Foreground="#DC2626"/>
+
+                    <TextBlock Text="Tổng thực nhận:" Grid.Row="8"
+                               FontSize="17"
+                               FontWeight="Bold"/>
+                    <TextBlock x:Name="txtTongLuong"
+                               Grid.Row="8"
+                               Grid.Column="1"
+                               FontSize="17"
+                               FontWeight="Bold"
+                               Foreground="#4F46E5"/>
+                </Grid>
+            </StackPanel>
+        </Border>
+
+        <StackPanel Grid.Row="1"
+                    Orientation="Horizontal"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Bottom">
+            <Button Content="In"
+                    Width="90"
+                    Height="32"
+                    Margin="0,0,8,0"
+                    Click="btnIn_Click"/>
+
+            <Button Content="Đóng"
+                    Width="90"
+                    Height="32"
+                    Click="btnDong_Click"/>
+        </StackPanel>
+    </Grid>
+</Window>

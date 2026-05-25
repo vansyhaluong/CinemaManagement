@@ -50,9 +50,10 @@
                     <controls:NavItem Icon="🎬" Label="Danh sách phim" IsActive="True" Click="Nav_Click" x:Name="nav_Phim" MouseLeftButtonDown="btnListMovie_Click"/>
                     <controls:NavItem Icon="🎞"  Label="Quản Lý Phim" MouseLeftButtonDown="btnQuanLyPhim_Click" Click="Nav_Click" x:Name="nav_QLPhim"/>
                     <controls:NavItem Icon="📽" Label="Quản Lý Phòng Chiếu" MouseLeftButtonDown="btnQuanLyPhong_Click" Click="Nav_Click" x:Name="nav_Phong"/>
-                    <controls:NavItem Icon="🎫" Label="Bán Vé" MouseLeftButtonDown="btnBanVe_Click" Click="Nav_Click" x:Name="nav_BanVe"/>
+                    <controls:NavItem Icon="🎫" Label="Suất Chiếu" MouseLeftButtonDown="btnSuatChieu_Click" Click="Nav_Click" x:Name="nav_SuatChieu"/>
                     <controls:NavItem Icon="🧾" Label="Quản Lý Hóa Đơn" MouseLeftButtonDown="btnQuanLyHoaDon_Click" Click="Nav_Click" x:Name="nav_HoaDon"/>
                     <controls:NavItem Icon="🧑‍💼" Label="Quản Lý Nhân Viên" MouseLeftButtonDown="btnQLNhanVien_Click" x:Name="nav_QLNV" Click="Nav_Click"/>
+                    <controls:NavItem Icon="📦" Label="Kho" MouseLeftButtonDown="btnKho_Click" x:Name="nav_Kho" Click="Nav_Click"/>
                     <!--<controls:NavItem Icon="🎟" Label="Booking"/>-->
                     <!--<controls:NavItem Icon="🛒" Label="Purchase Orders" BadgeCount="3"/>-->
                     <!--<controls:NavItem Icon="🏢" Label="Suppliers"/>-->
@@ -65,7 +66,7 @@
                                Margin="16,0,0,6"/>
 
                     <controls:NavItem Icon="📊" Label="Báo Cáo Doanh Thu" MouseLeftButtonDown="btnDoanhThu_Click" x:Name="nav_DoanhThu" Click="Nav_Click"/>
-                    <controls:NavItem Icon="📈" Label="Trends"/>
+                    <controls:NavItem Icon="📈" Label="Phân Ca" MouseLeftButtonDown="btnPhanCa_Click" x:Name="nav_PhanCa" Click="Nav_Click"/>
 
                     <Rectangle Height="1" Fill="{DynamicResource BorderBrush}" Margin="0,8"/>
 

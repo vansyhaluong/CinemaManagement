@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET8_0;NETCOREAPP;WINDOWS;WINDOWS7_0;NET5_0_OR_GREATER;NET6_0_OR_GREATER;NET7_0_OR_GREATER;NET8_0_OR_GREATER;NETCOREAPP3_0_OR_GREATER;NETCOREAPP3_1_OR_GREATER;WINDOWS7_0_OR_GREATER
 D:\Cinema\Cinema\App.xaml
-31-1744380139
-31-241149976
-371909301745
+38-1539781101
+361944973073
+44-1692874351
 264640776782
-Controls\NavItem.xaml;Controls\StatCard.xaml;GUI\AddMovieWindow.xaml;GUI\AddXuatChieu.xaml;GUI\BanVe.xaml;GUI\BaoCaoDoanhThuNgay.xaml;GUI\Booking.xaml;GUI\ChamCong.xaml;GUI\CustomMessageBox.xaml;GUI\Home.xaml;GUI\KhenThuong.xaml;GUI\Login.xaml;GUI\Main.xaml;GUI\MainWindow.xaml;GUI\MovieDetailDialog.xaml;GUI\PhanCa.xaml;GUI\QuanLyGhe.xaml;GUI\QuanLyHoaDon.xaml;GUI\QuanLyNhanVien.xaml;GUI\QuanLyPhim.xaml;GUI\QuanLyPhong.xaml;GUI\QuanLyPhongChieu.xaml;GUI\QuanLySuatChieu.xaml;GUI\ReportPreviewWindow.xaml;GUI\Student.xaml;GUI\ThemNhanVien.xaml;GUI\ThemPhong.xaml;GUI\ThemPhongChieu.xaml;GUI\TicketPreviewWindow.xaml;Themes\Dark.xaml;Themes\Light.xaml;
+Controls\NavItem.xaml;Controls\StatCard.xaml;GUI\AddMovieWindow.xaml;GUI\AddXuatChieu.xaml;GUI\BanVe.xaml;GUI\BaoCaoDoanhThuNgay.xaml;GUI\Booking.xaml;GUI\ChamCong.xaml;GUI\CustomMessageBox.xaml;GUI\Home.xaml;GUI\KhenThuong.xaml;GUI\Login.xaml;GUI\Main.xaml;GUI\MainWindow.xaml;GUI\MovieDetailDialog.xaml;GUI\NhapKhoWindow.xaml;GUI\PhanCa.xaml;GUI\PhieuLuong.xaml;GUI\PreviewPhieuNhap.xaml;GUI\QuanLyBangLuong.xaml;GUI\QuanLyGhe.xaml;GUI\QuanLyHoaDon.xaml;GUI\QuanLyKho.xaml;GUI\QuanLyNhanVien.xaml;GUI\QuanLyPhim.xaml;GUI\QuanLyPhong.xaml;GUI\QuanLyPhongChieu.xaml;GUI\QuanLySuatChieu.xaml;GUI\ReportPreviewWindow.xaml;GUI\Student.xaml;GUI\SuaSanPhamWindow.xaml;GUI\ThemNhanVien.xaml;GUI\ThemPhong.xaml;GUI\ThemPhongChieu.xaml;GUI\ThemSanPham.xaml;GUI\TicketPreviewWindow.xaml;Themes\Dark.xaml;Themes\Light.xaml;
 
-True
+False
 

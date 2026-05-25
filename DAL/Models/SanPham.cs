@@ -22,4 +22,5 @@ public partial class SanPham
     public virtual Kho? Kho { get; set; }
 
     public virtual LoaiSanPham? MaLoaiSpNavigation { get; set; }
+    public string? HinhAnh { get; set; }
 }

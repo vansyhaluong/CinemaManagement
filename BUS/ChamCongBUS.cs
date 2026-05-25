@@ -55,11 +55,7 @@ namespace BUS
             if (dto.GioRa != null)
                 throw new Exception("Nhân viên này đã check-out rồi.");
 
-            return dal.CheckOut(
-                dto.MaChamCong.Value,
-                DateTime.Now,
-                "Hoàn thành"
-            );
+            return dal.CheckOut(dto.MaChamCong.Value);
         }
     }
 }

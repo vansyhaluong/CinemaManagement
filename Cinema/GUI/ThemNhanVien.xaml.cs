@@ -49,20 +49,15 @@ namespace Cinema.GUI
         }
         public void btnSave_Click(object sender, RoutedEventArgs e)
         {
-            // Kiểm tra dữ liệu chung
             if (string.IsNullOrWhiteSpace(txtHoTen.Text) ||
                 string.IsNullOrWhiteSpace(txtSoDienThoai.Text) ||
                 cbRap.SelectedValue == null)
             {
-                CustomMessageBox customMessageBox = new CustomMessageBox(
+                new CustomMessageBox(
                     "Vui lòng điền đầy đủ thông tin!",
-                    "Thông báo");
-
-                customMessageBox.ShowDialog();
+                    "Thông báo").ShowDialog();
                 return;
             }
-
-            
 
             if (isEdit)
             {
@@ -71,8 +66,6 @@ namespace Cinema.GUI
                     editingNhanVien.HoTen = txtHoTen.Text.Trim();
                     editingNhanVien.SoDienThoai = txtSoDienThoai.Text.Trim();
                     editingNhanVien.MaRap = (int)cbRap.SelectedValue;
-                    editingNhanVien.MaTaiKhoan =int.Parse(txtMaTaiKhoan.Text);
-   
 
                     bool result = bus.suaNhanVien(editingNhanVien);
 
@@ -82,8 +75,8 @@ namespace Cinema.GUI
                             "Cập nhật nhân viên thành công!",
                             "Thông báo").ShowDialog();
 
-                        this.DialogResult = true;
-                        this.Close();
+                        DialogResult = true;
+                        Close();
                     }
                     else
                     {
@@ -92,44 +85,64 @@ namespace Cinema.GUI
                             "Thông báo").ShowDialog();
                     }
                 }
+
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(txtTenDangNhap.Text) ||
+                string.IsNullOrWhiteSpace(txtMatKhau.Password))
+            {
+                new CustomMessageBox(
+                    "Vui lòng nhập tên đăng nhập và mật khẩu!",
+                    "Thông báo").ShowDialog();
+                return;
+            }
+
+            bool themResult = bus.ThemNhanVienKemTaiKhoan(
+                txtHoTen.Text.Trim(),
+                txtSoDienThoai.Text.Trim(),
+                (int)cbRap.SelectedValue,
+                txtTenDangNhap.Text.Trim(),
+                txtMatKhau.Password.Trim()
+            );
+
+            if (themResult)
+            {
+                new CustomMessageBox(
+                    "Thêm nhân viên thành công!",
+                    "Thông báo").ShowDialog();
+
+                DialogResult = true;
+                Close();
             }
             else
             {
-                cbRap.SelectedIndex = 0;
-                NhanVien nv = new NhanVien()
-                {
-                    HoTen = txtHoTen.Text.Trim(),
-                    SoDienThoai = txtSoDienThoai.Text.Trim(),
-                    MaRap =(int)cbRap.SelectedValue,
-                    MaTaiKhoan = int.Parse(txtMaTaiKhoan.Text)
-                }; 
-
-                bool result = bus.themNhanVien(nv);
-
-                if (result)
-                {
-                    new CustomMessageBox(
-                        "Thêm nhân viên thành công!",
-                        "Thông báo").ShowDialog();
-
-                    this.DialogResult = true;
-                    this.Close();
-                }
-                else
-                {
-                    new CustomMessageBox(
-                        "Thêm nhân viên thất bại!",
-                        "Thông báo").ShowDialog();
-                }
+                new CustomMessageBox(
+                    "Thêm nhân viên thất bại! Có thể tên đăng nhập đã tồn tại.",
+                    "Thông báo").ShowDialog();
             }
+        }
+        public void btnCancel_Click(object sender, RoutedEventArgs e)
+        {
+            DialogResult = false;
+            Close();
         }
         public void loadData(NhanVien nv)
         {
+            isEdit = true;
+            editingNhanVien = nv;
+
             txtHoTen.Text = nv.HoTen;
-            btnSave.Content = "Cập nhật";
             txtSoDienThoai.Text = nv.SoDienThoai;
-            txtMaTaiKhoan.Text = nv.MaTaiKhoan.ToString();
             cbRap.SelectedValue = nv.MaRap;
+
+            btnSave.Content = "Cập nhật";
+
+            txtTenDangNhap.IsEnabled = false;
+            txtMatKhau.IsEnabled = false;
+
+            txtTenDangNhap.Text = "Không thay đổi khi sửa";
+            txtMatKhau.Password = "";
         }
     }
 }

@@ -76,5 +76,54 @@ namespace DAL
         {
             return db.TaiKhoans.Where(x=>x.MaTaiKhoan==id).ToList();
         }
+        public bool ThemNhanVienKemTaiKhoan(
+            string hoTen,
+            string soDienThoai,
+            int maRap,
+            string tenDangNhap,
+            string matKhau)
+        {
+            
+
+            using var tran = db.Database.BeginTransaction();
+
+            try
+            {
+                bool trungTenDangNhap = db.TaiKhoans
+                    .Any(x => x.TenDangNhap == tenDangNhap);
+
+                if (trungTenDangNhap)
+                    return false;
+
+                TaiKhoan tk = new TaiKhoan
+                {
+                    TenDangNhap = tenDangNhap,
+                    MatKhau = matKhau,
+                    VaiTro = "NhanVien"
+                };
+
+                db.TaiKhoans.Add(tk);
+                db.SaveChanges();
+
+                NhanVien nv = new NhanVien
+                {
+                    HoTen = hoTen,
+                    SoDienThoai = soDienThoai,
+                    MaRap = maRap,
+                    MaTaiKhoan = tk.MaTaiKhoan
+                };
+
+                db.NhanViens.Add(nv);
+                db.SaveChanges();
+
+                tran.Commit();
+                return true;
+            }
+            catch
+            {
+                tran.Rollback();
+                return false;
+            }
+        }
     }
 }

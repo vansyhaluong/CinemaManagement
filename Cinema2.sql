@@ -894,6 +894,46 @@ VALUES
 (5, 3, GETDATE()),
 (6, 3, GETDATE());
 GO
+ALTER TABLE SanPham
+ADD HinhAnh NVARCHAR(255),
+    MoTa NVARCHAR(500);
+	go
+ALTER TABLE PhieuNhapKho
+ADD TongTien DECIMAL(18,2) DEFAULT 0;
+go
+ALTER TABLE ChiTietPhieuNhapKho
+ADD CONSTRAINT CK_CTPNK_SoLuong CHECK (SoLuong > 0);
+
+ALTER TABLE ChiTietPhieuNhapKho
+ADD CONSTRAINT CK_CTPNK_DonGia CHECK (DonGia >= 0);
+go
+UPDATE SanPham
+SET HinhAnh = 'pack://application:,,,/Images/bap.jpg'
+WHERE Ten LIKE N'%Bắp rang bơ%'
+
+UPDATE SanPham
+SET HinhAnh = 'pack://application:,,,/Images/coca.webp'
+WHERE Ten LIKE N'%Coca Cola%'
+
+UPDATE SanPham
+SET HinhAnh = 'pack://application:,,,/Images/7up.png'
+WHERE Ten LIKE N'%7 up%'
+
+UPDATE SanPham
+SET HinhAnh = 'pack://application:,,,/Images/banhtrung.jpg'
+WHERE Ten LIKE N'%Bánh trứng%'
+
+UPDATE SanPham
+SET HinhAnh = '/Images/pepsi.png'
+WHERE Ten LIKE N'%Pepsi%'
+
+UPDATE SanPham
+SET HinhAnh = 'pack://application:,,,/Images/mandu.webp'
+WHERE Ten LIKE N'%Mandu%'
+
+UPDATE SanPham
+SET HinhAnh = 'pack://application:,,,/Images/sting.webp'
+WHERE Ten LIKE N'%Sting dâu%'
 
 
 

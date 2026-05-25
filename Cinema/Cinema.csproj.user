@@ -43,10 +43,25 @@
     <Compile Update="GUI\MovieDetailDialog.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="GUI\NhapKhoWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="GUI\PhanCa.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="GUI\PhieuLuong.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="GUI\PreviewPhieuNhap.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="GUI\QuanLyBangLuong.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="GUI\QuanLyGhe.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="GUI\QuanLyKho.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="GUI\QuanLyNhanVien.xaml.cs">
@@ -72,6 +87,9 @@
     <Compile Update="GUI\Student.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="GUI\SuaSanPhamWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="GUI\ThemNhanVien.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -79,6 +97,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="GUI\ThemPhongChieu.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="GUI\ThemSanPham.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>

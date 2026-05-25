@@ -31,5 +31,26 @@ namespace BUS
         {
             return dal.addStaff(nv);
         }
+        public bool ThemNhanVienKemTaiKhoan(
+            string hoTen,
+            string soDienThoai,
+            int maRap,
+            string tenDangNhap,
+            string matKhau)
+        {
+            if (string.IsNullOrWhiteSpace(hoTen)) return false;
+            if (string.IsNullOrWhiteSpace(soDienThoai)) return false;
+            if (maRap <= 0) return false;
+            if (string.IsNullOrWhiteSpace(tenDangNhap)) return false;
+            if (string.IsNullOrWhiteSpace(matKhau)) return false;
+
+            return dal.ThemNhanVienKemTaiKhoan(
+                hoTen,
+                soDienThoai,
+                maRap,
+                tenDangNhap,
+                matKhau
+            );
+        }
     }
 }

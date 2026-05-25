@@ -1,4 +1,6 @@
-﻿using System;
+﻿using BUS;
+using DTO;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,7 +21,8 @@ namespace Cinema.GUI
 	/// </summary>
 	public partial class Login : Window
 	{
-		public Login()
+        private TaiKhoanBUS tkBUS = new TaiKhoanBUS();
+        public Login()
 		{
 			InitializeComponent();
 		}
@@ -33,7 +36,32 @@ namespace Cinema.GUI
 		}
 		private void btnLogin_Click(object sender, RoutedEventArgs e)
 		{
+            string tenDangNhap = txtUsername.Text.Trim();
+            string matKhau = txtPassword.Text.Trim();
 
-		}
+            var tk = tkBUS.DangNhap(tenDangNhap, matKhau);
+
+            if (tk == null)
+            {
+                MessageBox.Show("Tên đăng nhập hoặc mật khẩu không đúng!");
+                return;
+            }
+
+            TaiKhoanDTO.MaTaiKhoan = tk.MaTaiKhoan;
+            TaiKhoanDTO.VaiTro = tk.VaiTro;
+
+            if (tk.NhanVien != null)
+            {
+                TaiKhoanDTO.MaNhanVien = tk.NhanVien.MaNhanVien;
+                TaiKhoanDTO.HoTen = tk.NhanVien.HoTen;
+                TaiKhoanDTO.MaRap = tk.NhanVien.MaRap ?? 0;
+                TaiKhoanDTO.TenRap = tk.NhanVien.MaRapNavigation?.TenRap ?? "";
+            }
+
+            MainWindow main = new MainWindow();
+            main.Show();
+
+            this.Close();
+        }
 	}
 }

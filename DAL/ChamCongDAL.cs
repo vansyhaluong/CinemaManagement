@@ -87,15 +87,37 @@ namespace DAL
             return db.SaveChanges() > 0;
         }
 
-        public bool CheckOut(int maChamCong, DateTime gioRa, string trangThai)
+        //public bool CheckOut(int maChamCong, DateTime gioRa, string trangThai)
+        //{
+        //    var cc = db.ChamCongs.Find(maChamCong);
+
+        //    if (cc == null)
+        //        return false;
+
+        //    cc.GioRa = gioRa;
+        //    cc.TrangThai = trangThai;
+
+        //    return db.SaveChanges() > 0;
+        //}
+        public bool CheckOut(int maChamCong)
         {
-            var cc = db.ChamCongs.Find(maChamCong);
+            var cc = db.ChamCongs
+                .Include(x => x.MaCaNavigation)
+                .FirstOrDefault(x => x.MaChamCong == maChamCong);
 
             if (cc == null)
                 return false;
 
-            cc.GioRa = gioRa;
-            cc.TrangThai = trangThai;
+            if (cc.GioRa != null)
+                throw new Exception("Nhân viên này đã check-out rồi.");
+
+            if (cc.Ngay == null)
+                throw new Exception("Không tìm thấy ngày chấm công.");
+
+            if (cc.MaCaNavigation == null || cc.MaCaNavigation.GioKetThuc == null)
+                throw new Exception("Không tìm thấy giờ kết thúc ca.");
+
+            cc.GioRa = cc.Ngay.Value.ToDateTime(cc.MaCaNavigation.GioKetThuc.Value);
 
             return db.SaveChanges() > 0;
         }

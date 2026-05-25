@@ -125,7 +125,7 @@ namespace Cinema.GUI {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/Cinema;V1.0.0.0;component/gui/quanlyphong.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/Cinema;component/gui/quanlyphong.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\GUI\QuanLyPhong.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

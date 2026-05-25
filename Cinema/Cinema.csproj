@@ -9,10 +9,16 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Images\7up.png" />
     <None Remove="Images\avenger.jpg" />
+    <None Remove="Images\banhtrung.jpg" />
+    <None Remove="Images\bap.jpg" />
     <None Remove="Images\CinemaSquadin.jpg" />
+    <None Remove="Images\coca.webp" />
     <None Remove="Images\conan.jpg" />
     <None Remove="Images\frozen2.jpg" />
+    <None Remove="Images\mandu.webp" />
+    <None Remove="Images\pepsi.png" />
     <None Remove="Images\spiderman.webp" />
     <None Remove="Images\traintobusan.jpg" />
     <None Remove="Reports\BaoCaoDoanhThuNgay.frx" />
@@ -21,10 +27,22 @@
   <ItemGroup>
     <Content Include="bin\Debug\net8.0-windows\Images\conan.jpg" />
     <Content Include="bin\Debug\net8.0-windows\Images\frozen2.jpg" />
+    <Content Include="Images\7up.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Images\avenger.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Images\banhtrung.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\bap.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Images\CinemaSquadin.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\coca.webp">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Images\conan.jpg">
@@ -33,6 +51,10 @@
     <Content Include="Images\frozen2.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Images\mandu.webp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Resource Include="Images\pepsi.png" />
     <Content Include="Images\spiderman.webp">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

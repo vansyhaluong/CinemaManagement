@@ -89,11 +89,13 @@ namespace Cinema.GUI
 			nav_Phim.IsActive = false;
 			nav_Phong.IsActive = false;
 			nav_QLPhim.IsActive = false;
-			nav_BanVe.IsActive = false;
+			nav_SuatChieu.IsActive = false;
 			nav_HoaDon.IsActive = false;
+			nav_Kho.IsActive = false;
+			nav_PhanCa.IsActive = false;
 
-			// Bật item đang click
-			NavItem? item = sender as NavItem;
+            // Bật item đang click
+            NavItem? item = sender as NavItem;
 			item.IsActive = true;
 		}
 		public void btnListMovie_Click(object sender, MouseButtonEventArgs e)
@@ -105,12 +107,12 @@ namespace Cinema.GUI
 			MainContent.Content = new Student();
 		}
 
-		public void btnBanVe_Click(object sender, MouseButtonEventArgs e)
+		public void btnSuatChieu_click(object sender, MouseButtonEventArgs e)
 		{
-			MainContent.Content = new Main();
-		}
+			MainContent.Content = new QuanLySuatChieu();
+        }
 
-		public void btnQuanLyHoaDon_Click(object sender, MouseButtonEventArgs e)
+        public void btnQuanLyHoaDon_Click(object sender, MouseButtonEventArgs e)
 		{
 			MainContent.Content = new QuanLyHoaDon();
 		}
@@ -118,5 +120,16 @@ namespace Cinema.GUI
 		{
 			MainContent.Content = new BaoCaoDoanhThuNgay();
 		}
-	}
+		public void btnKho_Click(object sender, MouseButtonEventArgs e)
+		{
+			MainContent.Content = new QuanLyKho();
+		}
+		public void btnPhanCa_Click(object sender, MouseButtonEventArgs e)
+		{
+            MainContent.Content = new PhanCa();
+        }
+
+
+
+    }
 }

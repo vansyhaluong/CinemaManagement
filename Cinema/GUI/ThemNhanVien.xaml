@@ -7,10 +7,15 @@
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
         Background="{DynamicResource AppBackgroundBrush}"
-        Title="ThemNhanVien" Height="450" Width="500">
-    <Grid Margin="20">
+        Title="Thêm nhân viên"
+        Height="560"
+        Width="520"
+        ResizeMode="NoResize">
 
+    <Grid Margin="22">
         <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
@@ -20,62 +25,91 @@
         </Grid.RowDefinitions>
 
         <!-- TITLE -->
-        <TextBlock Text="Employee Information"
-                   FontSize="18"
-                   FontWeight="Bold"
-                   Foreground="{DynamicResource TextPrimaryBrush}"
-                   Margin="0,0,0,15"/>
+        <StackPanel Grid.Row="0" Margin="0,0,0,18">
+            <TextBlock Text="Thêm nhân viên"
+                       FontSize="22"
+                       FontWeight="Bold"
+                       Foreground="{DynamicResource TextPrimaryBrush}"/>
+
+            <TextBlock Text="Tạo thông tin nhân viên và tài khoản đăng nhập"
+                       FontSize="12"
+                       Foreground="{DynamicResource TextMutedBrush}"
+                       Margin="0,4,0,0"/>
+        </StackPanel>
 
         <!-- HO TEN -->
-        <StackPanel Grid.Row="1" Margin="0,0,0,10">
-            <TextBlock Text="Full Name" Foreground="White"/>
+        <StackPanel Grid.Row="1" Margin="0,0,0,12">
+            <TextBlock Text="Họ tên"
+                       Foreground="{DynamicResource TextMutedBrush}"
+                       Margin="0,0,0,5"/>
             <TextBox x:Name="txtHoTen"
-                     Height="32"/>
+                     Height="34"/>
         </StackPanel>
 
         <!-- SO DIEN THOAI -->
-        <StackPanel Grid.Row="2" Margin="0,0,0,10">
-            <TextBlock Text="Phone Number" Foreground="White"/>
+        <StackPanel Grid.Row="2" Margin="0,0,0,12">
+            <TextBlock Text="Số điện thoại"
+                       Foreground="{DynamicResource TextMutedBrush}"
+                       Margin="0,0,0,5"/>
             <TextBox x:Name="txtSoDienThoai"
-                     Height="32"/>
+                     Height="34"/>
         </StackPanel>
 
-        <!-- MA TAI KHOAN -->
-        <StackPanel Grid.Row="3" Margin="0,0,0,10">
-            <TextBlock Text="Account ID" Foreground="White"/>
-            <TextBox x:Name="txtMaTaiKhoan"
-                     Height="32"/>
-        </StackPanel>
-
-        <!-- MA RAP -->
-        <StackPanel Grid.Row="4" Margin="0,0,0,10">
-            <TextBlock Text="Cinema Branch" Foreground="White"/>
+        <!-- RAP -->
+        <StackPanel Grid.Row="3" Margin="0,0,0,18">
+            <TextBlock Text="Rạp làm việc"
+                       Foreground="{DynamicResource TextMutedBrush}"
+                       Margin="0,0,0,5"/>
             <ComboBox x:Name="cbRap"
-                      Height="32">
-                
-            </ComboBox>
+                      Height="34"
+                      DisplayMemberPath="TenRap"
+                      SelectedValuePath="MaRap"/>
+        </StackPanel>
+
+        <!-- ACCOUNT TITLE -->
+        <TextBlock Grid.Row="4"
+                   Text="Tài khoản đăng nhập"
+                   FontSize="15"
+                   FontWeight="SemiBold"
+                   Foreground="{DynamicResource TextPrimaryBrush}"
+                   Margin="0,0,0,10"/>
+
+        <!-- USERNAME -->
+        <StackPanel Grid.Row="5" Margin="0,0,0,12">
+            <TextBlock Text="Tên đăng nhập"
+                       Foreground="{DynamicResource TextMutedBrush}"
+                       Margin="0,0,0,5"/>
+            <TextBox x:Name="txtTenDangNhap"
+                     Height="34"/>
+        </StackPanel>
+
+        <!-- PASSWORD -->
+        <StackPanel Grid.Row="6" Margin="0,0,0,18">
+            <TextBlock Text="Mật khẩu"
+                       Foreground="{DynamicResource TextMutedBrush}"
+                       Margin="0,0,0,5"/>
+            <PasswordBox x:Name="txtMatKhau"
+                         Height="34"/>
         </StackPanel>
 
         <!-- BUTTONS -->
-        <StackPanel Grid.Row="5"
+        <StackPanel Grid.Row="7"
                     Orientation="Horizontal"
                     HorizontalAlignment="Right">
-
-            <Button Content="Cancel"
+            <Button Content="Hủy"
                     Width="90"
+                    Height="34"
                     Margin="0,0,10,0"
-                    />
+                    Click="btnCancel_Click"/>
 
-            <Button Content="Save"
+            <Button Content="Lưu"
                     Width="90"
+                    Height="34"
                     Background="#22C55E"
                     Foreground="White"
                     BorderThickness="0"
                     x:Name="btnSave"
-                    Click="btnSave_Click"
-                    />
-
+                    Click="btnSave_Click"/>
         </StackPanel>
-
     </Grid>
 </Window>
