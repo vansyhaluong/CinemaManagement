@@ -1,18 +1,17 @@
-﻿using Cinema.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Cinema.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace DAL
 {
-    public  class DichVuDAL
+    public class DichVuDAL
     {
-        RapPhim2Context db = new RapPhim2Context();
+        private readonly RapPhim2Context db = new RapPhim2Context();
+
         public List<SanPham> getDichVu()
         {
-            return db.SanPhams.ToList();
+            return db.SanPhams
+                .Include(x => x.Kho)
+                .ToList();
         }
     }
 }

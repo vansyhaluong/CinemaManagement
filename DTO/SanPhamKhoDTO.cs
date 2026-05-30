@@ -44,6 +44,7 @@ namespace DTO
         }
 
         public string GiaDisplay => Gia.ToString("N0") + " đ";
+        public bool HienSoLuongTon => !string.Equals(TenLoai, "Combo", StringComparison.OrdinalIgnoreCase);
 
         public string TrangThaiKho
         {

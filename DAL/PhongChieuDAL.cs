@@ -11,13 +11,31 @@ namespace DAL
     public class PhongChieuDAL
     {
         RapPhim2Context db = new RapPhim2Context();
-        public List<PhongChieu> getPhongChieu()
+        public List<PhongChieu> getPhongChieu(int? maRap = null)
         {
-            return db.PhongChieus.Include(p => p.MaRapNavigation).ToList();
+            var query = db.PhongChieus
+                .Include(p => p.MaRapNavigation)
+                .AsQueryable();
+
+            if (maRap.HasValue && maRap.Value > 0)
+            {
+                query = query.Where(p => p.MaRap == maRap.Value);
+            }
+
+            return query.ToList();
         }
-        public PhongChieu? getPhongChieuById(int id)
+        public PhongChieu? getPhongChieuById(int id, int? maRap = null)
         {
-            return db.PhongChieus.Include(p=>p.MaRapNavigation).FirstOrDefault(p => p.MaPhong == id);
+            var query = db.PhongChieus
+                .Include(p => p.MaRapNavigation)
+                .Where(p => p.MaPhong == id);
+
+            if (maRap.HasValue && maRap.Value > 0)
+            {
+                query = query.Where(p => p.MaRap == maRap.Value);
+            }
+
+            return query.FirstOrDefault();
         }
         public List<PhongChieu> getPhongChieuByRap(int maRap)
         {
@@ -28,6 +46,19 @@ namespace DAL
         {
             try
             {
+                var tenPhong = (phong.TenPhong ?? string.Empty).Trim();
+                phong.TenPhong = tenPhong;
+
+                bool daTonTai = db.PhongChieus.Any(p =>
+                    p.MaRap == phong.MaRap &&
+                    p.TenPhong != null &&
+                    p.TenPhong.Trim() == tenPhong);
+
+                if (daTonTai)
+                {
+                    return false;
+                }
+
                 db.PhongChieus.Add(phong);
                 db.SaveChanges();
                 return true;
@@ -59,10 +90,22 @@ namespace DAL
         {
             try
             {
+                var tenPhong = (phong.TenPhong ?? string.Empty).Trim();
                 var existing = db.PhongChieus.FirstOrDefault(p => p.MaPhong == phong.MaPhong);
                 if (existing != null)
                 {
-                    existing.TenPhong = phong.TenPhong;
+                    bool daTonTai = db.PhongChieus.Any(p =>
+                        p.MaPhong != phong.MaPhong &&
+                        p.MaRap == phong.MaRap &&
+                        p.TenPhong != null &&
+                        p.TenPhong.Trim() == tenPhong);
+
+                    if (daTonTai)
+                    {
+                        return false;
+                    }
+
+                    existing.TenPhong = tenPhong;
                     existing.MaRap = phong.MaRap;
                     db.SaveChanges();
                     return true;

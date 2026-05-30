@@ -43,7 +43,9 @@ namespace Cinema.GUI
 
         private void LoadSanPham()
         {
-            dsSanPham = spBUS.GetDanhSachKho();
+            dsSanPham = spBUS.GetDanhSachKho()
+                .Where(x => !string.Equals(x.TenLoai, "Combo", StringComparison.OrdinalIgnoreCase))
+                .ToList();
 
             cbSanPham.ItemsSource = dsSanPham;
 

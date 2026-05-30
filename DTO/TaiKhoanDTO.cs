@@ -22,6 +22,8 @@ namespace DTO
             MaNhanVien = 0;
             HoTen = "";
             VaiTro = "";
+            MaRap = 0;
+            TenRap = "";
         }
     }
 }

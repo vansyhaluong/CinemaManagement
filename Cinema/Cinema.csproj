@@ -15,10 +15,13 @@
     <None Remove="Images\bap.jpg" />
     <None Remove="Images\CinemaSquadin.jpg" />
     <None Remove="Images\coca.webp" />
+    <None Remove="Images\combo1.jpg" />
+    <None Remove="Images\combo2.jpg" />
     <None Remove="Images\conan.jpg" />
     <None Remove="Images\frozen2.jpg" />
     <None Remove="Images\mandu.webp" />
     <None Remove="Images\pepsi.png" />
+    <None Remove="Images\qr.jpg" />
     <None Remove="Images\spiderman.webp" />
     <None Remove="Images\traintobusan.jpg" />
     <None Remove="Reports\BaoCaoDoanhThuNgay.frx" />
@@ -45,6 +48,12 @@
     <Content Include="Images\coca.webp">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Images\combo1.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\combo2.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Images\conan.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -55,6 +64,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Resource Include="Images\pepsi.png" />
+    <Content Include="Images\qr.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Images\spiderman.webp">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -76,6 +88,7 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="QRCoder" Version="1.8.0" />
   </ItemGroup>
 
   <ItemGroup>

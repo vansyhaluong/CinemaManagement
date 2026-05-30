@@ -7,8 +7,10 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:controls="clr-namespace:Cinema.Controls"
         mc:Ignorable="d"
+        WindowStyle="None"
         WindowStartupLocation="CenterScreen"
         WindowState="Maximized"
+        ResizeMode="NoResize"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
         <Grid.ColumnDefinitions>
@@ -26,13 +28,11 @@
 
                     <!-- Logo area -->
                     <StackPanel Margin="16,16,16,16">
-                        <TextBlock Text="CGV"
+                        <TextBlock Text="🎬 CGV CINEMA"
                                    FontSize="18" FontWeight="Bold"
                                    Foreground="{DynamicResource TextPrimaryBrush}"
                                    Margin="0,0,0,4"/>
-                        <TextBlock Text="v2.1"
-                                   FontSize="11"
-                                   Foreground="{DynamicResource TextMutedBrush}"/>
+                        
                     </StackPanel>
 
                     <Rectangle Height="1" Fill="{DynamicResource BorderBrush}" Margin="0,0,0,8"/>
@@ -51,9 +51,11 @@
                     <controls:NavItem Icon="🎞"  Label="Quản Lý Phim" MouseLeftButtonDown="btnQuanLyPhim_Click" Click="Nav_Click" x:Name="nav_QLPhim"/>
                     <controls:NavItem Icon="📽" Label="Quản Lý Phòng Chiếu" MouseLeftButtonDown="btnQuanLyPhong_Click" Click="Nav_Click" x:Name="nav_Phong"/>
                     <controls:NavItem Icon="🎫" Label="Suất Chiếu" MouseLeftButtonDown="btnSuatChieu_Click" Click="Nav_Click" x:Name="nav_SuatChieu"/>
+                    <controls:NavItem Icon="🎫" Label="Chấm Công" MouseLeftButtonDown="btnChamCong_Click" Click="Nav_Click" x:Name="nav_ChamCong"/>
                     <controls:NavItem Icon="🧾" Label="Quản Lý Hóa Đơn" MouseLeftButtonDown="btnQuanLyHoaDon_Click" Click="Nav_Click" x:Name="nav_HoaDon"/>
                     <controls:NavItem Icon="🧑‍💼" Label="Quản Lý Nhân Viên" MouseLeftButtonDown="btnQLNhanVien_Click" x:Name="nav_QLNV" Click="Nav_Click"/>
                     <controls:NavItem Icon="📦" Label="Kho" MouseLeftButtonDown="btnKho_Click" x:Name="nav_Kho" Click="Nav_Click"/>
+                    <controls:NavItem Icon="🎁" Label="Khuyến mãi" MouseLeftButtonDown="btnKhuyenMai_Click" x:Name="nav_KhuyenMai" Click="Nav_Click"/>
                     <!--<controls:NavItem Icon="🎟" Label="Booking"/>-->
                     <!--<controls:NavItem Icon="🛒" Label="Purchase Orders" BadgeCount="3"/>-->
                     <!--<controls:NavItem Icon="🏢" Label="Suppliers"/>-->
@@ -67,6 +69,8 @@
 
                     <controls:NavItem Icon="📊" Label="Báo Cáo Doanh Thu" MouseLeftButtonDown="btnDoanhThu_Click" x:Name="nav_DoanhThu" Click="Nav_Click"/>
                     <controls:NavItem Icon="📈" Label="Phân Ca" MouseLeftButtonDown="btnPhanCa_Click" x:Name="nav_PhanCa" Click="Nav_Click"/>
+                    <controls:NavItem Icon="💰" Label="Khen Thưởng/Kỉ Luật" MouseLeftButtonDown="btnKhenThuong_Click" x:Name="nav_KhenThuong" Click="Nav_Click"/>
+                    <controls:NavItem Icon="💵" Label="Lương" MouseLeftButtonDown="btnLuong_Click" x:Name="nav_Luong" Click="Nav_Click"/>
 
                     <Rectangle Height="1" Fill="{DynamicResource BorderBrush}" Margin="0,8"/>
 
@@ -76,6 +80,7 @@
                                Margin="16,0,0,6"/>
 
                     <controls:NavItem Icon="⚙" Label="Settings"/>
+                    <controls:NavItem Icon="🚪" Label="Đăng xuất" MouseLeftButtonDown="btnLogout_Click" x:Name="nav_Logout" Click="Nav_Click"/>
 
                 </StackPanel>
 

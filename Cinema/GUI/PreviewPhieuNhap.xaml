@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Cinema.GUI"
         mc:Ignorable="d"
+        WindowStyle="None"
         Title="Preview Phiếu Nhập"
         Width="900"
         Height="700"

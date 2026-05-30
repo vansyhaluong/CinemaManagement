@@ -289,9 +289,10 @@
                         Content="✎"
                         FontSize="12"
                         FontWeight="Bold"
-                        Background="#F5A623"
-                        Foreground="White"
-                        BorderThickness="0"
+                        Background="#1E293B"
+                        Foreground="#60A5FA"
+                        BorderBrush="#334155"
+                        BorderThickness="1"
                         Cursor="Hand"
                         Padding="0"
                         
@@ -306,9 +307,10 @@
                         Content="✕"
                         FontSize="12"
                         FontWeight="Bold"
-                        Background="#DC2626"
-                        Foreground="White"
-                        BorderThickness="0"
+                        Background="#1E293B"
+                        Foreground="#F87171"
+                        BorderBrush="#334155"
+                        BorderThickness="1"
                         Cursor="Hand"
                         Padding="0"
                         Click="btnXoa_Click"
@@ -361,6 +363,19 @@
                                    Margin="0,6,0,0"
                                    x:Name="txtTenRap"
                                    Foreground="#94A3B8"/>
+
+                        <ComboBox x:Name="cbSuatChieu"
+                                  Margin="0,10,0,0"
+                                  Height="36"
+                                  Width="320"
+                                  HorizontalAlignment="Left"
+                                  Background="#1E293B"
+                                  Foreground="{DynamicResource TextMutedBrush}"
+                                  BorderBrush="#334155"
+                                  Padding="8"
+                                  SelectionChanged="cbSuatChieu_SelectionChanged"
+                                  DisplayMemberPath="DisplayText"
+                                  SelectedValuePath="MaSuatChieu"/>
 
                         <TextBlock Text="120 ghế • Máy chiếu Sony 4K • Đang hoạt động"
                                    Margin="0,4,0,0"
@@ -447,17 +462,20 @@
                                 VerticalAlignment="Center"
                                 HorizontalAlignment="Center">
 
-                        <Border Width="18" Height="18" Background="#3B82F6" CornerRadius="4" Margin="10,0"/>
-                        <TextBlock Text="Thường" Foreground="White" Margin="0,0,12,0"/>
+                        <Border Width="18"
+                                Height="18"
+                                Background="Transparent"
+                                BorderBrush="#475569"
+                                BorderThickness="1.5"
+                                CornerRadius="4"
+                                Margin="10,0"/>
+                        <TextBlock Text="Ghế trống" Foreground="White" Margin="0,0,12,0"/>
 
-                        <Border Width="18" Height="18" Background="#EAB308" CornerRadius="4" Margin="10,0"/>
-                        <TextBlock Text="VIP" Foreground="White" Margin="0,0,12,0"/>
+                        <Border Width="18" Height="18" Background="#38BDF8" CornerRadius="4" Margin="10,0"/>
+                        <TextBlock Text="Đang sử dụng" Foreground="White" Margin="0,0,12,0"/>
 
-                        <Border Width="18" Height="18" Background="#EF4444" CornerRadius="4" Margin="10,0"/>
-                        <TextBlock Text="Couple" Foreground="White" Margin="0,0,12,0"/>
-
-                        <Border Width="18" Height="18" Background="#374151" CornerRadius="4" Margin="10,0"/>
-                        <TextBlock Text="Khóa/Hỏng" Foreground="White"/>
+                        <Border Width="18" Height="18" Background="#475569" CornerRadius="4" Margin="10,0"/>
+                        <TextBlock Text="Bảo trì" Foreground="White"/>
 
                     </StackPanel>
 

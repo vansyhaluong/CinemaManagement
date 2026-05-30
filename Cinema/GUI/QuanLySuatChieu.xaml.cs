@@ -1,5 +1,6 @@
 ﻿using BUS;
 using Cinema.Models;
+using DTO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,13 +24,16 @@ namespace Cinema.GUI
     /// </summary>
     public partial class QuanLySuatChieu : UserControl
     {
-        SuatChieuBUS bus = new SuatChieuBUS();
-        MovieBUS phimBus = new MovieBUS();
+        private readonly SuatChieuBUS bus = new SuatChieuBUS();
+        private readonly MovieBUS phimBus = new MovieBUS();
+        private List<SuatChieu> allSuatChieus = new();
+        private readonly int? maRapDangNhap = Session.IsAdmin ? null : Session.MaRap;
+
         public QuanLySuatChieu()
         {
             InitializeComponent();
-            dgSuatChieu.ItemsSource = bus.GetAllSuatChieu();
             loadComboPhim();
+            LoadSuatChieuData();
         }
         public void loadComboPhim()
         {
@@ -41,31 +45,86 @@ namespace Cinema.GUI
             cbPhim.ItemsSource = dsPhim;
             cbPhim.SelectedIndex = 0;
         }
+
+        private void LoadSuatChieuData()
+        {
+            allSuatChieus = bus.GetAllSuatChieu(maRapDangNhap);
+            ApplyFilters();
+        }
+
+        private void ApplyFilters()
+        {
+            IEnumerable<SuatChieu> query = allSuatChieus;
+
+            int selectedMovieId = 0;
+            if (cbPhim.SelectedValue != null)
+            {
+                int.TryParse(cbPhim.SelectedValue.ToString(), out selectedMovieId);
+            }
+
+            if (selectedMovieId > 0)
+            {
+                query = query.Where(item => item.MaPhim == selectedMovieId);
+            }
+
+            if (dtNgayChieu.SelectedDate.HasValue)
+            {
+                var selectedDate = dtNgayChieu.SelectedDate.Value.Date;
+                query = query.Where(item => item.ThoiGianBatDau.HasValue && item.ThoiGianBatDau.Value.Date == selectedDate);
+            }
+
+            var filtered = query
+                .OrderBy(item => item.ThoiGianBatDau)
+                .ThenBy(item => item.MaPhongNavigation?.TenPhong)
+                .ToList();
+
+            dgSuatChieu.ItemsSource = filtered;
+            txtTongSuat.Text = filtered.Count.ToString();
+            txtBoLocDangDung.Text = BuildFilterSummary(selectedMovieId);
+        }
+
+        private string BuildFilterSummary(int selectedMovieId)
+        {
+            var filters = new List<string>();
+
+            if (dtNgayChieu.SelectedDate.HasValue)
+            {
+                filters.Add($"Ngày {dtNgayChieu.SelectedDate.Value:dd/MM/yyyy}");
+            }
+
+            if (selectedMovieId > 0 && cbPhim.SelectedItem is Phim phim)
+            {
+                filters.Add(phim.TieuDe ?? "Phim đã chọn");
+            }
+
+            return filters.Count == 0 ? "Tất cả suất chiếu" : string.Join("  •  ", filters);
+        }
+
         public void cbPhim_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            int maPhim = Convert.ToInt32(cbPhim.SelectedValue);
-            if (maPhim == 0)
+            if (!IsLoaded)
             {
-                dgSuatChieu.ItemsSource = bus.GetAllSuatChieu();
+                return;
             }
-            else
-            {
-                dgSuatChieu.ItemsSource = bus.getSuatChieuByPhim(maPhim);
-            }
+
+            ApplyFilters();
         }
-        public void dpNgayChieu_SelectedDateChanged(object sender, EventArgs e)
+        public void dpNgayChieu_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (dtNgayChieu.SelectedDate != null)
+            if (!IsLoaded)
             {
-                DateTime day = dtNgayChieu.SelectedDate.Value;
-                dgSuatChieu.ItemsSource = bus.getSuatChieuByNgay(day);
+                return;
             }
+
+            ApplyFilters();
         }
         public void btnThem_Click(object sender, RoutedEventArgs e)
         {
             AddXuatChieu themSuatChieu = new AddXuatChieu();
-            themSuatChieu.ShowDialog();
-            dgSuatChieu.ItemsSource = bus.GetAllSuatChieu();
+            if (themSuatChieu.ShowDialog() == true)
+            {
+                LoadSuatChieuData();
+            }
         }
         public void btnXoa_Click(object sender, RoutedEventArgs e)
         {
@@ -88,7 +147,7 @@ namespace Cinema.GUI
                 {
                     CustomMessageBox cus = new CustomMessageBox("Thông báo", "Xóa suất chiếu thành công!");
                     cus.ShowDialog();
-                    dgSuatChieu.ItemsSource = bus.GetAllSuatChieu();
+                    LoadSuatChieuData();
                 }
                 else
                 {
@@ -106,12 +165,19 @@ namespace Cinema.GUI
                 MessageBox.Show("Không tìm thấy suất chiếu để sửa!");
                 return;
             }
-            var item = bus.getSuatChieuById(suatChieu.MaSuatChieu);
+            var item = bus.getSuatChieuById(suatChieu.MaSuatChieu, maRapDangNhap);
             AddXuatChieu edit = new AddXuatChieu(item);
             if (edit.ShowDialog() == true)
             {
-                dgSuatChieu.ItemsSource = bus.GetAllSuatChieu();
+                LoadSuatChieuData();
             }
+        }
+
+        public void btnLamMoi_Click(object sender, RoutedEventArgs e)
+        {
+            dtNgayChieu.SelectedDate = null;
+            cbPhim.SelectedIndex = 0;
+            LoadSuatChieuData();
         }
     }
 }

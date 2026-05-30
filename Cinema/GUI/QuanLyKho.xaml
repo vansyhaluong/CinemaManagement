@@ -187,7 +187,7 @@
                                             Background="{DynamicResource AppBackgroundBrush}"
                                             ClipToBounds="True">
                                         <Image Source="{Binding HinhAnh}"
-                                               Stretch="UniformToFill"/>
+                                               Stretch="Uniform"/>
                                     </Border>
 
                                     <StackPanel Grid.Row="1"
@@ -209,6 +209,16 @@
                                                    Foreground="{DynamicResource SuccessBrush}"/>
 
                                         <Grid Margin="0,8,0,0">
+                                            <Grid.Style>
+                                                <Style TargetType="Grid">
+                                                    <Setter Property="Visibility" Value="Visible"/>
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding HienSoLuongTon}" Value="False">
+                                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Grid.Style>
                                             <TextBlock Text="Tồn kho"
                                                        FontSize="12"
                                                        Foreground="{DynamicResource TextMutedBrush}"
@@ -225,12 +235,12 @@
                                                 Height="26"
                                                 CornerRadius="13"
                                                 Background="{Binding StatusBrush}">
-                                            <TextBlock Text="{Binding TrangThaiKho}"
+                                            <!--<TextBlock Text="{Binding TrangThaiKho}"
                                                        FontSize="12"
                                                        FontWeight="SemiBold"
                                                        Foreground="White"
-                                                       HorizontalAlignment="Center"
-                                                       VerticalAlignment="Center"/>
+                                                       HorizontalAlignment="Left"
+                                                       VerticalAlignment="Center"/>-->
                                         </Border>
                                     </StackPanel>
 

@@ -39,5 +39,9 @@ namespace BUS
         {
             return dal.getGheBySuatChieu(maSuatChieu);
         }
+        public List<int> getMaGheDaBanTheoSuat(int maSuatChieu)
+        {
+            return dal.getMaGheDaBanTheoSuat(maSuatChieu);
+        }
     }
 }

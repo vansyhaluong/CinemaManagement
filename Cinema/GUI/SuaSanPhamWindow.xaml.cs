@@ -21,9 +21,11 @@ namespace Cinema.GUI
     public partial class SuaSanPhamWindow : Window
     {
         public SanPhamKhoDTO SanPham { get; private set; }
+        private readonly bool laCombo;
         public SuaSanPhamWindow(SanPhamKhoDTO sp)
         {
             InitializeComponent();
+            laCombo = string.Equals(sp.TenLoai, "Combo", StringComparison.OrdinalIgnoreCase);
             SanPham = new SanPhamKhoDTO
             {
                 MaSanPham = sp.MaSanPham,
@@ -37,6 +39,9 @@ namespace Cinema.GUI
             txtTen.Text = SanPham.Ten;
             txtGia.Text = SanPham.Gia.ToString("0");
             txtSoLuongTon.Text = SanPham.SoLuongTon.ToString();
+            txtSoLuongTon.IsEnabled = !laCombo;
+            lblSoLuongTon.Visibility = laCombo ? Visibility.Collapsed : Visibility.Visible;
+            txtSoLuongTon.Visibility = laCombo ? Visibility.Collapsed : Visibility.Visible;
         }
         private void BtnLuu_Click(object sender, RoutedEventArgs e)
         {
@@ -56,7 +61,10 @@ namespace Cinema.GUI
                 MessageBox.Show("Số lượng tồn kho không hợp lệ!");
                 return;
             }
-            SanPham.SoLuongTon = soLuongTon;
+            if (!laCombo)
+            {
+                SanPham.SoLuongTon = soLuongTon;
+            }
             SanPham.Ten = txtTen.Text.Trim();
             SanPham.Gia = gia;
 

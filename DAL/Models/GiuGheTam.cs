@@ -14,7 +14,7 @@ public partial class GiuGheTam
 
     public DateTime HetHanLuc { get; set; }
 
-    public string TrangThai { get; set; } = "DangGiu";
+    public string TrangThai { get; set; } = "Đang giữ";
 
     public int? MaDatVe { get; set; }
 

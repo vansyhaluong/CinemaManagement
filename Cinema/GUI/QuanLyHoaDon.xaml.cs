@@ -1,7 +1,9 @@
 using BUS;
 using DAL.Models;
+using DTO;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
 
 namespace Cinema.GUI
 {
@@ -11,6 +13,7 @@ namespace Cinema.GUI
         private readonly BanVeBUS banVeBUS = new BanVeBUS();
 
         private HoaDonRowInfo? selectedHoaDon;
+        private HoaDonDetailInfo? selectedDetail;
 
         public QuanLyHoaDon()
         {
@@ -21,11 +24,13 @@ namespace Cinema.GUI
 
         private void LoadHoaDons()
         {
+            int? maRap = Session.IsAdmin ? null : Session.MaRap;
             var list = hoaDonBUS.GetHoaDons(
                 txtMaHoaDon.Text,
                 txtSoDienThoai.Text,
                 dpTuNgay.SelectedDate,
-                dpDenNgay.SelectedDate);
+                dpDenNgay.SelectedDate,
+                maRap);
 
             dgHoaDon.ItemsSource = list;
             txtTongHoaDon.Text = $"{list.Count} hóa đơn";
@@ -37,6 +42,7 @@ namespace Cinema.GUI
             else
             {
                 selectedHoaDon = null;
+                selectedDetail = null;
                 ResetChiTiet();
             }
         }
@@ -44,19 +50,22 @@ namespace Cinema.GUI
         private void dgHoaDon_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             selectedHoaDon = dgHoaDon.SelectedItem as HoaDonRowInfo;
+            selectedDetail = null;
+
             if (selectedHoaDon == null)
             {
                 ResetChiTiet();
                 return;
             }
 
-            var detail = hoaDonBUS.GetHoaDonDetail(selectedHoaDon.MaDonHang);
+            var detail = hoaDonBUS.GetHoaDonDetail(selectedHoaDon.MaDonHang, Session.IsAdmin ? null : Session.MaRap);
             if (detail == null)
             {
                 ResetChiTiet();
                 return;
             }
 
+            selectedDetail = detail;
             txtMoTaChiTiet.Text = $"Chi tiết hóa đơn {detail.MaHoaDon}";
             txtTenPhimChiTiet.Text = detail.TenPhim;
             txtSuatChieuChiTiet.Text = detail.SuatChieu;
@@ -65,6 +74,9 @@ namespace Cinema.GUI
             lstDichVuChiTiet.ItemsSource = detail.DichVus.Any() ? detail.DichVus : new List<string> { "Không có dịch vụ" };
             txtTongTienChiTiet.Text = detail.TongTien;
             txtTrangThaiChiTiet.Text = detail.TrangThai;
+            CapNhatTrangThaiChiTiet(detail.TrangThai);
+            btnHuyVe.Content = detail.TrangThai == "Đã hủy" ? "Đã hủy" : "Hủy hóa đơn";
+            btnHuyVe.IsEnabled = detail.TrangThai != "Đã hủy";
         }
 
         private void btnTimKiem_Click(object sender, RoutedEventArgs e)
@@ -127,27 +139,48 @@ namespace Cinema.GUI
 
         private void btnHuyVe_Click(object sender, RoutedEventArgs e)
         {
-            if (selectedHoaDon == null)
+            if (selectedHoaDon == null || selectedDetail == null)
             {
                 MessageBox.Show("Vui lòng chọn một hóa đơn.", "Thông báo");
                 return;
             }
 
-            var result = MessageBox.Show(
-                $"Bạn có chắc muốn hủy hóa đơn {selectedHoaDon.MaHoaDon}?",
-                "Xác nhận hủy",
-                MessageBoxButton.YesNo,
-                MessageBoxImage.Warning);
+            if (selectedDetail.TrangThai == "Đã hủy")
+            {
+                MessageBox.Show("Hóa đơn này đã được hủy trước đó.", "Thông báo");
+                return;
+            }
 
-            if (result != MessageBoxResult.Yes)
+            var dialog = new HuyHoaDonWindow(selectedDetail)
+            {
+                Owner = Window.GetWindow(this)
+            };
+
+            if (dialog.ShowDialog() != true)
                 return;
 
-            var thanhCong = hoaDonBUS.HuyHoaDon(selectedHoaDon.MaDonHang);
+            var thanhCong = hoaDonBUS.HuyHoaDon(
+                selectedHoaDon.MaDonHang,
+                dialog.LyDoHuy,
+                Session.MaNhanVien,
+                Session.IsAdmin ? null : Session.MaRap);
             MessageBox.Show(
                 thanhCong ? "Hủy hóa đơn thành công." : "Không thể hủy hóa đơn.",
                 "Thông báo");
 
             LoadHoaDons();
+        }
+
+        private void CapNhatTrangThaiChiTiet(string trangThai)
+        {
+            if (trangThai == "Đã hủy")
+            {
+                txtTrangThaiChiTiet.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#991B1B"));
+            }
+            else
+            {
+                txtTrangThaiChiTiet.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#1F7A5A"));
+            }
         }
 
         private void ResetChiTiet()
@@ -160,6 +193,9 @@ namespace Cinema.GUI
             lstDichVuChiTiet.ItemsSource = new List<string> { "Không có dữ liệu" };
             txtTongTienChiTiet.Text = "0 đ";
             txtTrangThaiChiTiet.Text = "Chưa chọn";
+            txtTrangThaiChiTiet.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#1F7A5A"));
+            btnHuyVe.Content = "Hủy hóa đơn";
+            btnHuyVe.IsEnabled = false;
         }
     }
 }

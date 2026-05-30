@@ -74,13 +74,14 @@ namespace DAL
             return db.SaveChanges() > 0;
         }
 
-        public bool Exists(int maNhanVien, DateTime ngay)
+        public bool Exists(int maNhanVien, DateTime ngay, int? excludeMaPhanCa = null)
         {
             var date = DateOnly.FromDateTime(ngay);
 
             return db.PhanCas.Any(x =>
                 x.MaNhanVien == maNhanVien &&
-                x.Ngay == date);
+                x.Ngay == date &&
+                (!excludeMaPhanCa.HasValue || x.MaPhanCa != excludeMaPhanCa.Value));
         }
     }
 }

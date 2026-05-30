@@ -37,7 +37,7 @@ namespace Cinema.GUI
 		private void btnLogin_Click(object sender, RoutedEventArgs e)
 		{
             string tenDangNhap = txtUsername.Text.Trim();
-            string matKhau = txtPassword.Text.Trim();
+            string matKhau = txtPassword.Password.Trim();
 
             var tk = tkBUS.DangNhap(tenDangNhap, matKhau);
 
@@ -57,6 +57,14 @@ namespace Cinema.GUI
                 TaiKhoanDTO.MaRap = tk.NhanVien.MaRap ?? 0;
                 TaiKhoanDTO.TenRap = tk.NhanVien.MaRapNavigation?.TenRap ?? "";
             }
+
+            Session.Set(
+                TaiKhoanDTO.MaTaiKhoan,
+                TaiKhoanDTO.MaNhanVien,
+                TaiKhoanDTO.HoTen,
+                TaiKhoanDTO.VaiTro,
+                TaiKhoanDTO.MaRap,
+                TaiKhoanDTO.TenRap);
 
             MainWindow main = new MainWindow();
             main.Show();

@@ -11,22 +11,31 @@ namespace BUS
 {
     public class BangLuongBUS
     {
-        private BangLuongDAL dal = new BangLuongDAL();
+        private readonly BangLuongDAL dal = new BangLuongDAL();
+        private readonly ChamCongDAL chamCongDal = new ChamCongDAL();
+        private readonly KhenThuongDAL khenThuongDal = new KhenThuongDAL();
+        private readonly KyLuatDAL kyLuatDal = new KyLuatDAL();
 
         public List<BangLuongDTO> TinhLuongTheoThang(int thang, int nam)
         {
-            var dsChamCong = dal.GetChamCongTheoThang(thang, nam);
+            var tuNgay = new DateOnly(nam, thang, 1);
+            var denNgay = tuNgay.AddMonths(1).AddDays(-1);
+            var dsChamCong = chamCongDal.GetDanhSachChamCongTheoKhoang(tuNgay, denNgay);
+            var dsThuong = khenThuongDal.GetByDateRange(tuNgay, denNgay);
+            var dsKyLuat = kyLuatDal.GetByDateRange(tuNgay, denNgay);
 
-            var result = dsChamCong
-                .Where(x => x.MaNhanVien != null)
+            return dsChamCong
                 .GroupBy(x => x.MaNhanVien)
                 .Select(g =>
                 {
-                    var nv = g.First().MaNhanVienNavigation;
+                    var itemDau = g.First();
 
                     int ngayCong = g.Count(x => x.TrangThai == "Đúng giờ" || x.TrangThai == "Trễ");
                     int soLanTre = g.Count(x => x.TrangThai == "Trễ");
-                    int soNgayNghi = g.Count(x => x.TrangThai == "Nghỉ" || x.TrangThai == "Vắng");
+                    int soNgayNghi = g.Count(x =>
+                        x.TrangThai == "Nghỉ" ||
+                        x.TrangThai == "Vắng" ||
+                        x.TrangThai == "Chưa chấm công");
 
                     double tongGio = g.Sum(x =>
                     {
@@ -38,15 +47,19 @@ namespace BUS
 
                     decimal luongCoBan = 25000;
                     decimal tongLuongGio = (decimal)tongGio * luongCoBan;
-
-                    decimal phat = soLanTre * 20000 + soNgayNghi * 100000;
-                    decimal thuong = ngayCong >= 26 ? 500000 : 0;
+                    decimal thuong = dsThuong
+                        .Where(x => x.MaNhanVien == g.Key)
+                        .Sum(x => x.SoTienThuong);
+                    decimal phat = dsKyLuat
+                        .Where(x => x.MaNhanVien == g.Key)
+                        .Sum(x => x.SoTienPhat);
 
                     return new BangLuongDTO
                     {
-                        MaNhanVien = nv.MaNhanVien,
-                        HoTen = nv.HoTen,
-                        TenRap = nv.MaRapNavigation?.TenRap ?? "",
+                        MaNhanVien = itemDau.MaNhanVien,
+                        MaRap = itemDau.MaRap,
+                        HoTen = itemDau.HoTen,
+                        TenRap = itemDau.TenRap,
                         Thang = thang,
                         Nam = nam,
                         TongNgayCong = ngayCong,
@@ -60,39 +73,34 @@ namespace BUS
                     };
                 })
                 .ToList();
-
-            return result;
         }
         public List<BangLuongDTO> TinhLuongTheoTuan(DateOnly tuNgay, DateOnly denNgay)
         {
-            var dsChamCong = dal.GetChamCongTheoTuan(tuNgay, denNgay);
+            var dsChamCong = chamCongDal.GetDanhSachChamCongTheoKhoang(tuNgay, denNgay);
+            var dsThuong = khenThuongDal.GetByDateRange(tuNgay, denNgay);
+            var dsKyLuat = kyLuatDal.GetByDateRange(tuNgay, denNgay);
 
             return dsChamCong
-                .Where(x => x.MaNhanVien != null)
                 .GroupBy(x => x.MaNhanVien)
                 .Select(g =>
                 {
-                    var nv = g.First().MaNhanVienNavigation;
+                    var itemDau = g.First();
 
                     double tongGio = g.Sum(x =>
                     {
-                        if (x.GioVao == null)
+                        if (x.GioVao == null || x.GioRa == null)
                             return 0;
 
-                        if (x.Ngay == null || x.MaCaNavigation == null)
+                        if (string.IsNullOrWhiteSpace(x.GioBatDau))
                             return 0;
 
-                        if (x.MaCaNavigation.GioBatDau == null || x.MaCaNavigation.GioKetThuc == null)
-                            return 0;
-
-                        DateTime gioBatDauCa = x.Ngay.Value.ToDateTime(x.MaCaNavigation.GioBatDau.Value);
-                        DateTime gioKetThucCa = x.Ngay.Value.ToDateTime(x.MaCaNavigation.GioKetThuc.Value);
+                        DateTime gioBatDauCa = DateTime.Parse($"{x.Ngay:yyyy-MM-dd} {x.GioBatDau}");
 
                         DateTime gioBatDauTinhLuong = x.GioVao.Value > gioBatDauCa
                             ? x.GioVao.Value
                             : gioBatDauCa;
 
-                        DateTime gioKetThucTinhLuong = x.GioRa ?? gioKetThucCa;
+                        DateTime gioKetThucTinhLuong = x.GioRa.Value;
 
                         if (gioKetThucTinhLuong <= gioBatDauTinhLuong)
                             return 0;
@@ -108,23 +116,26 @@ namespace BUS
 
                     int soNgayNghi = g.Count(x =>
                         x.TrangThai == "Nghỉ" ||
-                        x.TrangThai == "Vắng");
+                        x.TrangThai == "Vắng" ||
+                        x.TrangThai == "Chưa chấm công");
 
                     decimal luongCoBan = 25000;
                     decimal tienLuongGio = (decimal)tongGio * luongCoBan;
-                    decimal phat = soLanTre * 20000 + soNgayNghi * 100000;
-                    decimal thuong = ngayCong >= 6 ? 200000 : 0;
+                    decimal thuong = dsThuong
+                        .Where(x => x.MaNhanVien == g.Key)
+                        .Sum(x => x.SoTienThuong);
+                    decimal phat = dsKyLuat
+                        .Where(x => x.MaNhanVien == g.Key)
+                        .Sum(x => x.SoTienPhat);
 
                     decimal tongLuong = tienLuongGio + thuong - phat;
 
-
-                    
                     return new BangLuongDTO
                     {
-                        MaNhanVien = nv.MaNhanVien,
-                        MaRap = nv.MaRap ?? 0,
-                        HoTen = nv.HoTen ?? "",
-                        TenRap = nv.MaRapNavigation?.TenRap ?? "",
+                        MaNhanVien = itemDau.MaNhanVien,
+                        MaRap = itemDau.MaRap,
+                        HoTen = itemDau.HoTen,
+                        TenRap = itemDau.TenRap,
 
                         TuNgay = tuNgay,
                         DenNgay = denNgay,

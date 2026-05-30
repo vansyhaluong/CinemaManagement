@@ -11,21 +11,75 @@ namespace DAL
     public class SuatChieuDAL
     {
         RapPhim2Context db = new RapPhim2Context();
-        public List<SuatChieu> GetAllSuatChieu()
+        public List<SuatChieu> GetAllSuatChieu(int? maRap = null)
         {
-            return db.SuatChieus.Include(x => x.MaPhimNavigation).Include(x => x.MaPhongNavigation).ToList();
+            var query = db.SuatChieus
+                .Include(x => x.MaPhimNavigation)
+                .Include(x => x.MaPhongNavigation)
+                .AsQueryable();
+
+            if (maRap.HasValue && maRap.Value > 0)
+            {
+                query = query.Where(x => x.MaPhongNavigation != null && x.MaPhongNavigation.MaRap == maRap.Value);
+            }
+
+            return query.ToList();
         }
-        public List<SuatChieu> getSuatChieuByPhim(int maPhim)
+        public List<SuatChieu> getSuatChieuByPhim(int maPhim, int? maRap = null)
         {
-            return db.SuatChieus.Include(x => x.MaPhimNavigation).Include(x => x.MaPhongNavigation).Where(x => x.MaPhim == maPhim).OrderBy(x=>x.ThoiGianBatDau).ToList();
+            var query = db.SuatChieus
+                .Include(x => x.MaPhimNavigation)
+                .Include(x => x.MaPhongNavigation)
+                .Where(x => x.MaPhim == maPhim);
+
+            if (maRap.HasValue && maRap.Value > 0)
+            {
+                query = query.Where(x => x.MaPhongNavigation != null && x.MaPhongNavigation.MaRap == maRap.Value);
+            }
+
+            return query.OrderBy(x => x.ThoiGianBatDau).ToList();
         }
-        public SuatChieu? getSuatChieuById(int id)
+        public SuatChieu? getSuatChieuById(int id, int? maRap = null)
         {
-            return db.SuatChieus.Include(x => x.MaPhimNavigation).Include(x => x.MaPhongNavigation).FirstOrDefault(x => x.MaSuatChieu == id);
+            var query = db.SuatChieus
+                .Include(x => x.MaPhimNavigation)
+                .Include(x => x.MaPhongNavigation)
+                .Where(x => x.MaSuatChieu == id);
+
+            if (maRap.HasValue && maRap.Value > 0)
+            {
+                query = query.Where(x => x.MaPhongNavigation != null && x.MaPhongNavigation.MaRap == maRap.Value);
+            }
+
+            return query.FirstOrDefault();
         }
-        public List<SuatChieu> getSuatChieuByNgay(DateTime day)
+        public List<SuatChieu> getSuatChieuByNgay(DateTime day, int? maRap = null)
         {
-            return db.SuatChieus.Include(x => x.MaPhimNavigation).Include(x => x.MaPhongNavigation).Where(x => x.ThoiGianBatDau.Value.Date == day.Date).ToList();
+            var query = db.SuatChieus
+                .Include(x => x.MaPhimNavigation)
+                .Include(x => x.MaPhongNavigation)
+                .Where(x => x.ThoiGianBatDau.Value.Date == day.Date);
+
+            if (maRap.HasValue && maRap.Value > 0)
+            {
+                query = query.Where(x => x.MaPhongNavigation != null && x.MaPhongNavigation.MaRap == maRap.Value);
+            }
+
+            return query.ToList();
+        }
+        public List<SuatChieu> getSuatChieuByPhong(int maPhong, int? maRap = null)
+        {
+            var query = db.SuatChieus
+                .Include(x => x.MaPhimNavigation)
+                .Include(x => x.MaPhongNavigation)
+                .Where(x => x.MaPhong == maPhong);
+
+            if (maRap.HasValue && maRap.Value > 0)
+            {
+                query = query.Where(x => x.MaPhongNavigation != null && x.MaPhongNavigation.MaRap == maRap.Value);
+            }
+
+            return query.OrderBy(x => x.ThoiGianBatDau).ToList();
         }
         public bool KiemTraTrungGio(int maPhong, DateTime start, DateTime end)
         {
@@ -76,10 +130,22 @@ namespace DAL
                 var existingSuat = db.SuatChieus.FirstOrDefault(s => s.MaSuatChieu == suat.MaSuatChieu);
                 if (existingSuat != null)
                 {
+                    bool biTrungGio = db.SuatChieus.Any(s =>
+                        s.MaSuatChieu != suat.MaSuatChieu &&
+                        s.MaPhong == suat.MaPhong &&
+                        s.ThoiGianBatDau < suat.ThoiGianKetThuc &&
+                        s.ThoiGianKetThuc > suat.ThoiGianBatDau);
+
+                    if (biTrungGio)
+                    {
+                        return false;
+                    }
+
                     existingSuat.MaPhim = suat.MaPhim;
                     existingSuat.MaPhong = suat.MaPhong;
                     existingSuat.ThoiGianBatDau = suat.ThoiGianBatDau;
                     existingSuat.ThoiGianKetThuc = suat.ThoiGianKetThuc;
+                    existingSuat.GiaVeCoBan = suat.GiaVeCoBan;
                     db.SaveChanges();
                     return true;
                 }

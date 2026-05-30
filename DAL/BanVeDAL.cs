@@ -20,12 +20,12 @@ namespace DAL
 
             var now = DateTime.Now;
             var gheDaBan = db.VeBans
-                .Where(v => v.MaSuatChieu == maSuatChieu && v.TrangThai != "DaHuy" && v.TrangThai != "DaHoan")
+                .Where(v => v.MaSuatChieu == maSuatChieu && v.TrangThai != "Đã hủy" && v.TrangThai != "DaHuy" && v.TrangThai != "Đã hoàn" && v.TrangThai != "DaHoan")
                 .Select(v => v.MaGhe)
                 .ToHashSet();
 
             var gheDangGiu = db.GiuGheTams
-                .Where(g => g.MaSuatChieu == maSuatChieu && g.TrangThai == "DangGiu" && g.HetHanLuc > now)
+                .Where(g => g.MaSuatChieu == maSuatChieu && (g.TrangThai == "Đang giữ" || g.TrangThai == "DangGiu") && g.HetHanLuc > now)
                 .ToDictionary(g => g.MaGhe, g => g.HetHanLuc);
 
             return db.Ghes
@@ -36,20 +36,20 @@ namespace DAL
                 .AsEnumerable()
                 .Select(g =>
                 {
-                    var trangThai = "Trong";
+                    var trangThai = "Trống";
                     var giayConLai = 0;
 
                     if (g.TrangThai == "Bảo trì")
                     {
-                        trangThai = "BaoTri";
+                        trangThai = "Bảo trì";
                     }
                     else if (gheDaBan.Contains(g.MaGhe))
                     {
-                        trangThai = "DaBan";
+                        trangThai = "Đã bán";
                     }
                     else if (gheDangGiu.TryGetValue(g.MaGhe, out var hetHan))
                     {
-                        trangThai = "DangGiu";
+                        trangThai = "Đang giữ";
                         giayConLai = Math.Max(0, (int)(hetHan - now).TotalSeconds);
                     }
 
@@ -77,7 +77,9 @@ namespace DAL
             var daBan = db.VeBans.Any(v =>
                 v.MaSuatChieu == maSuatChieu &&
                 v.MaGhe == maGhe &&
+                v.TrangThai != "Đã hủy" &&
                 v.TrangThai != "DaHuy" &&
+                v.TrangThai != "Đã hoàn" &&
                 v.TrangThai != "DaHoan");
 
             if (daBan)
@@ -86,7 +88,7 @@ namespace DAL
             var daGiu = db.GiuGheTams.Any(g =>
                 g.MaSuatChieu == maSuatChieu &&
                 g.MaGhe == maGhe &&
-                g.TrangThai == "DangGiu" &&
+                (g.TrangThai == "Đang giữ" || g.TrangThai == "DangGiu") &&
                 g.HetHanLuc > DateTime.Now);
 
             if (daGiu)
@@ -99,7 +101,7 @@ namespace DAL
                 MaGhe = maGhe,
                 ThoiGianGiu = now,
                 HetHanLuc = now.AddMinutes(1),
-                TrangThai = "DangGiu"
+                TrangThai = "Đang giữ"
             });
 
             db.SaveChanges();
@@ -112,13 +114,19 @@ namespace DAL
             var item = db.GiuGheTams.FirstOrDefault(g =>
                 g.MaSuatChieu == maSuatChieu &&
                 g.MaGhe == maGhe &&
-                g.TrangThai == "DangGiu");
+                (g.TrangThai == "Đang giữ" || g.TrangThai == "DangGiu"));
 
             if (item != null)
             {
                 db.GiuGheTams.Remove(item);
                 db.SaveChanges();
             }
+        }
+
+        public KhuyenMaiApDungInfo KiemTraKhuyenMai(string maCode, decimal tamTinh)
+        {
+            using var db = new RapPhim2Context();
+            return KiemTraKhuyenMaiNoiBo(db, maCode, tamTinh);
         }
 
         public KetQuaBanVe ThanhToan(
@@ -128,6 +136,7 @@ namespace DAL
             string hoTen,
             string soDienThoai,
             string phuongThuc,
+            string? maKhuyenMaiCode = null,
             int? maNhanVien = 1)
         {
             using var db = new RapPhim2Context();
@@ -148,7 +157,9 @@ namespace DAL
                 var daBan = db.VeBans.Any(v =>
                     v.MaSuatChieu == maSuatChieu &&
                     dsGhe.Contains(v.MaGhe ?? 0) &&
+                    v.TrangThai != "Đã hủy" &&
                     v.TrangThai != "DaHuy" &&
+                    v.TrangThai != "Đã hoàn" &&
                     v.TrangThai != "DaHoan");
 
                 if (daBan)
@@ -157,7 +168,7 @@ namespace DAL
                 var soGheDangGiu = db.GiuGheTams.Count(g =>
                     g.MaSuatChieu == maSuatChieu &&
                     dsGhe.Contains(g.MaGhe) &&
-                    g.TrangThai == "DangGiu" &&
+                    (g.TrangThai == "Đang giữ" || g.TrangThai == "DangGiu") &&
                     g.HetHanLuc > DateTime.Now);
 
                 if (soGheDangGiu != dsGhe.Count)
@@ -171,7 +182,7 @@ namespace DAL
                     MaHoaDon = maHoaDon,
                     MaKhachHang = khachHang.MaKhachHang,
                     NgayDat = DateTime.Now,
-                    TrangThai = "DaThanhToan",
+                    TrangThai = "Đã thanh toán",
                     MaNhanVien = maNhanVien,
                     TongTienDichVu = 0,
                     TongTienVe = 0,
@@ -193,16 +204,38 @@ namespace DAL
                         MaSuatChieu = maSuatChieu,
                         MaGhe = ghe.MaGhe,
                         Gia = ghe.Gia,
-                        TrangThai = "DaBan"
+                        TrangThai = "Đã bán"
                     });
                 }
 
                 var tongDichVu = ThemDichVu(db, donHang.MaDonHang, dichVus);
                 var tongVe = gheInfos.Sum(g => g.Gia);
+                var tamTinh = tongVe + tongDichVu;
+
+                KhuyenMaiApDungInfo? kmInfo = null;
+                if (!string.IsNullOrWhiteSpace(maKhuyenMaiCode))
+                {
+                    kmInfo = KiemTraKhuyenMaiNoiBo(db, maKhuyenMaiCode, tamTinh);
+                    if (!kmInfo.ThanhCong || !kmInfo.MaKhuyenMai.HasValue)
+                        return Loi(kmInfo.ThongBao);
+                }
 
                 donHang.TongTienVe = tongVe;
                 donHang.TongTienDichVu = tongDichVu;
-                donHang.TongThanhToan = tongVe + tongDichVu - donHang.TienGiam;
+                donHang.MaKhuyenMai = kmInfo?.MaKhuyenMai;
+                donHang.TienGiam = kmInfo?.SoTienGiam ?? 0;
+                donHang.TongThanhToan = tamTinh - donHang.TienGiam;
+
+                if (donHang.TongThanhToan < 0)
+                {
+                    donHang.TongThanhToan = 0;
+                }
+
+                if (kmInfo?.MaKhuyenMai.HasValue == true)
+                {
+                    var khuyenMai = db.KhuyenMais.First(x => x.MaKhuyenMai == kmInfo.MaKhuyenMai.Value);
+                    khuyenMai.DaDung = (khuyenMai.DaDung ?? 0) + 1;
+                }
 
                 db.ThanhToans.Add(new ThanhToan
                 {
@@ -210,7 +243,7 @@ namespace DAL
                     PhuongThuc = phuongThuc,
                     NgayThanhToan = DateTime.Now,
                     SoTien = donHang.TongThanhToan,
-                    TrangThai = "ThanhCong"
+                    TrangThai = "Thành công"
                 });
 
                 var holds = db.GiuGheTams.Where(g => g.MaSuatChieu == maSuatChieu && dsGhe.Contains(g.MaGhe));
@@ -232,6 +265,119 @@ namespace DAL
                 transaction.Rollback();
                 return Loi("Không thể thanh toán: " + ex.Message);
             }
+        }
+
+        private static KhuyenMaiApDungInfo KiemTraKhuyenMaiNoiBo(RapPhim2Context db, string maCode, decimal tamTinh)
+        {
+            var code = (maCode ?? string.Empty).Trim();
+            if (string.IsNullOrWhiteSpace(code))
+            {
+                return new KhuyenMaiApDungInfo
+                {
+                    ThanhCong = false,
+                    ThongBao = "Vui lòng nhập mã khuyến mãi."
+                };
+            }
+
+            var km = db.KhuyenMais.FirstOrDefault(x =>
+                x.MaCode != null &&
+                x.MaCode.Trim().ToLower() == code.ToLower());
+
+            if (km == null)
+            {
+                return new KhuyenMaiApDungInfo
+                {
+                    ThanhCong = false,
+                    ThongBao = "Mã khuyến mãi không tồn tại."
+                };
+            }
+
+            var rawStatus = (km.TrangThai ?? string.Empty).Trim().ToLowerInvariant();
+            if (rawStatus is "tạm dừng" or "tamdung")
+            {
+                return new KhuyenMaiApDungInfo
+                {
+                    ThanhCong = false,
+                    ThongBao = "Khuyến mãi hiện đang tạm dừng."
+                };
+            }
+
+            var now = DateTime.Now;
+            if (km.NgayBatDau.HasValue && km.NgayBatDau.Value > now)
+            {
+                return new KhuyenMaiApDungInfo
+                {
+                    ThanhCong = false,
+                    ThongBao = "Khuyến mãi chưa bắt đầu."
+                };
+            }
+
+            if (km.NgayKetThuc.HasValue && km.NgayKetThuc.Value < now)
+            {
+                return new KhuyenMaiApDungInfo
+                {
+                    ThanhCong = false,
+                    ThongBao = "Khuyến mãi đã hết hạn."
+                };
+            }
+
+            var soLuong = km.SoLuong ?? 0;
+            if (soLuong <= 0 || (km.DaDung ?? 0) >= soLuong)
+            {
+                return new KhuyenMaiApDungInfo
+                {
+                    ThanhCong = false,
+                    ThongBao = "Khuyến mãi đã hết lượt sử dụng."
+                };
+            }
+
+            var donToiThieu = km.DonToiThieu ?? 0;
+            if (tamTinh < donToiThieu)
+            {
+                return new KhuyenMaiApDungInfo
+                {
+                    ThanhCong = false,
+                    ThongBao = $"Hóa đơn chưa đạt giá trị tối thiểu {donToiThieu:N0} đ."
+                };
+            }
+
+            var giaTri = km.GiaTriGiam ?? 0;
+            decimal soTienGiam = 0;
+            switch ((km.LoaiGiam ?? string.Empty).Trim().ToLowerInvariant())
+            {
+                case "tienmat":
+                case "giảm tiền":
+                    soTienGiam = giaTri;
+                    break;
+                case "phantram":
+                case "giảm phần trăm":
+                    soTienGiam = Math.Round(tamTinh * giaTri / 100m, 0);
+                    break;
+            }
+
+            if (soTienGiam <= 0)
+            {
+                return new KhuyenMaiApDungInfo
+                {
+                    ThanhCong = false,
+                    ThongBao = "Khuyến mãi không hợp lệ."
+                };
+            }
+
+            if (soTienGiam > tamTinh)
+            {
+                soTienGiam = tamTinh;
+            }
+
+            return new KhuyenMaiApDungInfo
+            {
+                ThanhCong = true,
+                ThongBao = "Áp dụng khuyến mãi thành công.",
+                MaKhuyenMai = km.MaKhuyenMai,
+                MaCode = km.MaCode?.Trim() ?? code,
+                TenKhuyenMai = km.TenKhuyenMai?.Trim() ?? string.Empty,
+                SoTienGiam = soTienGiam
+            };
         }
 
         public List<TicketInfo> GetVeTheoDonHang(int maDonHang)
@@ -264,22 +410,62 @@ namespace DAL
                 .ToList();
         }
 
+        public int GetSoLuongTonDichVu(int maSanPham)
+        {
+            using var db = new RapPhim2Context();
+            var sanPham = db.SanPhams
+                .Include(s => s.Kho)
+                .Include(s => s.MaLoaiSpNavigation)
+                .FirstOrDefault(s => s.MaSanPham == maSanPham);
+
+            if (sanPham == null)
+                return 0;
+
+            if (string.Equals(sanPham.MaLoaiSpNavigation?.TenLoai, "Combo", StringComparison.OrdinalIgnoreCase))
+                return TinhSoLuongComboKhaDung(db, maSanPham);
+
+            return sanPham.Kho?.SoLuongTon ?? 0;
+        }
+
         private static KhachHang TimHoacTaoKhachHang(RapPhim2Context db, string hoTen, string soDienThoai)
         {
-            var sdt = soDienThoai.Trim();
+            var sdt = (soDienThoai ?? string.Empty).Trim();
+            var ten = (hoTen ?? string.Empty).Trim();
+
+            if (string.IsNullOrWhiteSpace(sdt))
+            {
+                var khachLe = db.KhachHangs
+                    .Where(k => k.SoDienThoai == null && k.HoTen == "Khách lẻ")
+                    .OrderBy(k => k.MaKhachHang)
+                    .FirstOrDefault();
+
+                if (khachLe != null)
+                    return khachLe;
+
+                khachLe = new KhachHang
+                {
+                    HoTen = "Khách lẻ",
+                    SoDienThoai = null,
+                    NgayTao = DateTime.Now
+                };
+                db.KhachHangs.Add(khachLe);
+                db.SaveChanges();
+                return khachLe;
+            }
+
             var kh = db.KhachHangs.FirstOrDefault(k => k.SoDienThoai == sdt);
             if (kh != null)
             {
-                if (!string.IsNullOrWhiteSpace(hoTen))
-                    kh.HoTen = hoTen.Trim();
+                if (!string.IsNullOrWhiteSpace(ten))
+                    kh.HoTen = ten;
 
                 return kh;
             }
 
             kh = new KhachHang
             {
-                HoTen = string.IsNullOrWhiteSpace(hoTen) ? "Khách lẻ" : hoTen.Trim(),
-                SoDienThoai = string.IsNullOrWhiteSpace(sdt) ? null : sdt,
+                HoTen = string.IsNullOrWhiteSpace(ten) ? "Khách lẻ" : ten,
+                SoDienThoai = sdt,
                 NgayTao = DateTime.Now
             };
             db.KhachHangs.Add(kh);
@@ -308,11 +494,18 @@ namespace DAL
             decimal tong = 0;
             foreach (var dv in dichVus.Where(d => d.MaSanPham > 0 && d.SoLuong > 0))
             {
-                var sanPham = db.SanPhams.Include(s => s.Kho).FirstOrDefault(s => s.MaSanPham == dv.MaSanPham);
+                var sanPham = db.SanPhams
+                    .Include(s => s.Kho)
+                    .Include(s => s.MaLoaiSpNavigation)
+                    .FirstOrDefault(s => s.MaSanPham == dv.MaSanPham);
                 if (sanPham == null)
-                    continue;
+                    throw new InvalidOperationException("Dich vu khong con ton tai.");
 
-                if (sanPham.Kho != null)
+                if (string.Equals(sanPham.MaLoaiSpNavigation?.TenLoai, "Combo", StringComparison.OrdinalIgnoreCase))
+                {
+                    TruKhoThanhPhanCombo(db, sanPham, dv.SoLuong);
+                }
+                else if (sanPham.Kho != null)
                 {
                     if ((sanPham.Kho.SoLuongTon ?? 0) < dv.SoLuong)
                         throw new InvalidOperationException($"Sản phẩm {sanPham.Ten} không đủ tồn kho.");
@@ -335,10 +528,58 @@ namespace DAL
             return tong;
         }
 
+        private static int TinhSoLuongComboKhaDung(RapPhim2Context db, int maCombo)
+        {
+            var thanhPhans = db.ComboChiTiets
+                .Where(x => x.MaCombo == maCombo && (x.SoLuong ?? 0) > 0)
+                .ToList();
+
+            if (!thanhPhans.Any())
+                return 0;
+
+            return thanhPhans
+                .Select(x =>
+                {
+                    var ton = db.Khos
+                        .Where(k => k.MaSanPham == x.MaSanPhamCon)
+                        .Select(k => k.SoLuongTon ?? 0)
+                        .FirstOrDefault();
+
+                    return ton / (x.SoLuong ?? 1);
+                })
+                .Min();
+        }
+
+        private static void TruKhoThanhPhanCombo(RapPhim2Context db, SanPham combo, int soLuongCombo)
+        {
+            var thanhPhans = db.ComboChiTiets
+                .Where(x => x.MaCombo == combo.MaSanPham && (x.SoLuong ?? 0) > 0)
+                .ToList();
+
+            if (!thanhPhans.Any())
+                throw new InvalidOperationException($"Combo {combo.Ten} chua co thanh phan.");
+
+            foreach (var thanhPhan in thanhPhans)
+            {
+                var kho = db.Khos.FirstOrDefault(x => x.MaSanPham == thanhPhan.MaSanPhamCon);
+                var soLuongCan = soLuongCombo * (thanhPhan.SoLuong ?? 0);
+                var soLuongTon = kho?.SoLuongTon ?? 0;
+
+                if (soLuongTon < soLuongCan)
+                    throw new InvalidOperationException($"Combo {combo.Ten} khong du hang do thieu san pham thanh phan.");
+            }
+
+            foreach (var thanhPhan in thanhPhans)
+            {
+                var kho = db.Khos.First(x => x.MaSanPham == thanhPhan.MaSanPhamCon);
+                kho.SoLuongTon = (kho.SoLuongTon ?? 0) - soLuongCombo * (thanhPhan.SoLuong ?? 0);
+            }
+        }
+
         private static void XoaGiuGheHetHan(RapPhim2Context db)
         {
             var now = DateTime.Now;
-            var expired = db.GiuGheTams.Where(g => g.TrangThai == "DangGiu" && g.HetHanLuc <= now);
+            var expired = db.GiuGheTams.Where(g => (g.TrangThai == "Đang giữ" || g.TrangThai == "DangGiu") && g.HetHanLuc <= now);
             db.GiuGheTams.RemoveRange(expired);
             db.SaveChanges();
         }

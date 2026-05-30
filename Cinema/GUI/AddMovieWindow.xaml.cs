@@ -1,17 +1,7 @@
-﻿using Cinema.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Cinema.Models;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 using Microsoft.Win32;
 using System.IO;
@@ -25,11 +15,12 @@ namespace Cinema.GUI
 	/// </summary>
 	public partial class AddMovieWindow : Window
 	{
-		string posterPath = "";
-		MovieBUS bus = new MovieBUS();
+		private string posterPath = "";
+		private readonly MovieBUS bus = new MovieBUS();
 		private Phim? editingMovie;
 		private bool isEdit;
-		public AddMovieWindow(Phim? movie=null)
+
+		public AddMovieWindow(Phim? movie = null)
 		{
 			InitializeComponent();
 			if (movie != null)
@@ -38,24 +29,40 @@ namespace Cinema.GUI
 				editingMovie = movie;
 				loadData(movie);
 			}
-
 		}
+
 		private void btnSave_Click(object sender, RoutedEventArgs e)
 		{
+			if (!ValidateMovieInput(out int thoiLuong, out DateOnly ngayKhoiChieu, out string quocGia, out string trangThai, out string theLoai))
+			{
+				return;
+			}
+
 			if (isEdit)
 			{
-				editingMovie.TieuDe = txtTitle.Text;
-				editingMovie.QuocGia = cbQuocGia.SelectedItem.ToString();
-				editingMovie.ThoiLuong = int.Parse(txtThoiLuong.Text);
-				editingMovie.TrangThai = cbTrangThai.SelectedItem.ToString();
+				if (editingMovie == null)
+				{
+					MessageBox.Show("Không tìm thấy phim để cập nhật!");
+					return;
+				}
+
+				editingMovie.TieuDe = txtTitle.Text.Trim();
+				editingMovie.MoTa = txtMoTa.Text.Trim();
+				editingMovie.QuocGia = quocGia;
+				editingMovie.ThoiLuong = thoiLuong;
+				editingMovie.NgayKhoiChieu = ngayKhoiChieu;
+				editingMovie.TrangThai = trangThai;
 				editingMovie.AnhBia = posterPath;
+
+				editingMovie.MaTheLoais.Clear();
+				editingMovie.MaTheLoais.Add(new TheLoai { Ten = theLoai });
 
 				bool result = bus.updateMovie(editingMovie);
 				if (result)
 				{
 					MessageBox.Show("Cập nhật phim thành công!");
-					this.DialogResult = true;
-					this.Close();
+					DialogResult = true;
+					Close();
 				}
 				else
 				{
@@ -67,28 +74,118 @@ namespace Cinema.GUI
 				var phim = new Phim
 				{
 					AnhBia = posterPath,
-					MoTa = txtMoTa.Text,
-					ThoiLuong = int.Parse(txtThoiLuong.Text),
-					NgayKhoiChieu = DateOnly.Parse(dpNgayKhoiChieu.Text),
-					QuocGia = cbQuocGia.Text,
-					TieuDe = txtTitle.Text,
-					TrangThai = cbTrangThai.SelectedItem.ToString()
-
+					MoTa = txtMoTa.Text.Trim(),
+					ThoiLuong = thoiLuong,
+					NgayKhoiChieu = ngayKhoiChieu,
+					QuocGia = quocGia,
+					TieuDe = txtTitle.Text.Trim(),
+					TrangThai = trangThai
 				};
+
+				phim.MaTheLoais.Add(new TheLoai { Ten = theLoai });
+
 				if (bus.addMovie(phim))
 				{
 					MessageBox.Show("Thêm phim thành công!");
-					this.DialogResult = true;
-					this.Close();
+					DialogResult = true;
+					Close();
 				}
 				else
 				{
 					MessageBox.Show("Thêm phim thất bại!");
 				}
 			}
-			
-
 		}
+
+		private bool ValidateMovieInput(out int thoiLuong, out DateOnly ngayKhoiChieu, out string quocGia, out string trangThai, out string theLoai)
+		{
+			thoiLuong = 0;
+			ngayKhoiChieu = default;
+			quocGia = string.Empty;
+			trangThai = string.Empty;
+			theLoai = string.Empty;
+
+			if (string.IsNullOrWhiteSpace(txtTitle.Text))
+			{
+				MessageBox.Show("Vui lòng nhập tiêu đề phim!");
+				txtTitle.Focus();
+				return false;
+			}
+
+			if (!int.TryParse(txtThoiLuong.Text?.Trim(), out thoiLuong) || thoiLuong <= 0)
+			{
+				MessageBox.Show("Thời lượng phim phải là số nguyên dương!");
+				txtThoiLuong.Focus();
+				return false;
+			}
+
+			if (dpNgayKhoiChieu.SelectedDate == null)
+			{
+				MessageBox.Show("Vui lòng chọn ngày khởi chiếu!");
+				dpNgayKhoiChieu.Focus();
+				return false;
+			}
+
+			ngayKhoiChieu = DateOnly.FromDateTime(dpNgayKhoiChieu.SelectedDate.Value);
+			quocGia = GetSelectedComboBoxValue(cbQuocGia);
+			trangThai = GetSelectedComboBoxValue(cbTrangThai);
+			theLoai = GetSelectedComboBoxValue(cbTheLoai);
+
+			if (string.IsNullOrWhiteSpace(quocGia))
+			{
+				MessageBox.Show("Vui lòng chọn quốc gia!");
+				cbQuocGia.Focus();
+				return false;
+			}
+
+			if (string.IsNullOrWhiteSpace(trangThai))
+			{
+				MessageBox.Show("Vui lòng chọn trạng thái phim!");
+				cbTrangThai.Focus();
+				return false;
+			}
+
+			if (string.IsNullOrWhiteSpace(theLoai))
+			{
+				MessageBox.Show("Vui lòng chọn thể loại phim!");
+				cbTheLoai.Focus();
+				return false;
+			}
+
+			return true;
+		}
+
+		private static string GetSelectedComboBoxValue(ComboBox comboBox)
+		{
+			if (comboBox.SelectedItem is ComboBoxItem item)
+			{
+				return item.Content?.ToString()?.Trim() ?? string.Empty;
+			}
+
+			return comboBox.Text?.Trim() ?? string.Empty;
+		}
+
+		private static void SetSelectedComboBoxValue(ComboBox comboBox, string? value)
+		{
+			if (string.IsNullOrWhiteSpace(value))
+			{
+				comboBox.SelectedIndex = -1;
+				return;
+			}
+
+			foreach (var item in comboBox.Items)
+			{
+				if (item is ComboBoxItem comboBoxItem &&
+					string.Equals(comboBoxItem.Content?.ToString(), value, StringComparison.CurrentCultureIgnoreCase))
+				{
+					comboBox.SelectedItem = comboBoxItem;
+					return;
+				}
+			}
+
+			comboBox.Text = value;
+		}
+
 		private void btnUpLoad_Click(object sender, RoutedEventArgs e)
 		{
 			OpenFileDialog dlg = new OpenFileDialog();
@@ -98,10 +195,8 @@ namespace Cinema.GUI
 			if (dlg.ShowDialog() == true)
 			{
 				string sourceFile = dlg.FileName;
-
 				string fileName = Path.GetFileName(sourceFile);
 
-				// Thư mục chạy app
 				string folder = Path.Combine(
 					AppDomain.CurrentDomain.BaseDirectory,
 					"Images");
@@ -114,24 +209,46 @@ namespace Cinema.GUI
 				File.Copy(sourceFile, destFile, true);
 
 				posterPath = "Images/" + fileName;
-
-				imgPoster.Source = new BitmapImage(
-					new Uri(destFile));
-
+				imgPoster.Source = new BitmapImage(new Uri(destFile));
 				txtNoImage.Visibility = Visibility.Collapsed;
 			}
 		}
+
 		public void loadData(Phim movie)
 		{
+			Title = "Cập nhật phim";
 			btnSave.Content = "Lưu thay đổi";
 			txtTitle.Text = movie.TieuDe;
 			txtMoTa.Text = movie.MoTa;
-			txtThoiLuong.Text = movie.ThoiLuong.ToString();
-			dpNgayKhoiChieu.Text = movie.NgayKhoiChieu.ToString();
-			cbQuocGia.Text = movie.QuocGia;
-			cbTrangThai.Text = movie.TrangThai;
-			posterPath = movie.AnhBia;
-			imgPoster.Source = new BitmapImage(new Uri(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, posterPath), UriKind.Absolute));
+			txtThoiLuong.Text = movie.ThoiLuong?.ToString() ?? string.Empty;
+
+			if (movie.NgayKhoiChieu.HasValue)
+			{
+				dpNgayKhoiChieu.SelectedDate = movie.NgayKhoiChieu.Value.ToDateTime(TimeOnly.MinValue);
+			}
+
+			SetSelectedComboBoxValue(cbQuocGia, movie.QuocGia);
+			SetSelectedComboBoxValue(cbTrangThai, movie.TrangThai);
+			SetSelectedComboBoxValue(cbTheLoai, movie.MaTheLoais.FirstOrDefault()?.Ten);
+
+			posterPath = movie.AnhBia ?? string.Empty;
+			if (!string.IsNullOrWhiteSpace(posterPath))
+			{
+				Uri imageUri;
+
+				if (Uri.TryCreate(posterPath, UriKind.Absolute, out Uri? absoluteUri))
+				{
+					imageUri = absoluteUri;
+				}
+				else
+				{
+					string fullPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, posterPath);
+					imageUri = new Uri(fullPath, UriKind.Absolute);
+				}
+
+				imgPoster.Source = new BitmapImage(imageUri);
+				txtNoImage.Visibility = Visibility.Collapsed;
+			}
 		}
 	}
 }

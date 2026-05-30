@@ -6,7 +6,7 @@ namespace DAL
 {
     public class HoaDonDAL
     {
-        public List<HoaDonRowInfo> GetHoaDons(string? maHoaDon, string? soDienThoai, DateTime? tuNgay, DateTime? denNgay)
+        public List<HoaDonRowInfo> GetHoaDons(string? maHoaDon, string? soDienThoai, DateTime? tuNgay, DateTime? denNgay, int? maRap = null)
         {
             using var db = new RapPhim2Context();
 
@@ -14,7 +14,17 @@ namespace DAL
                 .Include(x => x.MaKhachHangNavigation)
                 .Include(x => x.MaNhanVienNavigation)
                 .Include(x => x.VeBans)
+                    .ThenInclude(v => v.MaSuatChieuNavigation)
+                        .ThenInclude(s => s!.MaPhongNavigation)
                 .AsQueryable();
+
+            if (maRap.HasValue && maRap.Value > 0)
+            {
+                query = query.Where(x => x.VeBans.Any(v =>
+                    v.MaSuatChieuNavigation != null &&
+                    v.MaSuatChieuNavigation.MaPhongNavigation != null &&
+                    v.MaSuatChieuNavigation.MaPhongNavigation.MaRap == maRap.Value));
+            }
 
             if (!string.IsNullOrWhiteSpace(maHoaDon))
             {
@@ -50,18 +60,19 @@ namespace DAL
                     NgayLap = x.NgayDat?.ToString("dd/MM/yyyy HH:mm") ?? "",
                     KhachHang = TaoKhachHangText(x.MaKhachHangNavigation?.HoTen, x.MaKhachHangNavigation?.SoDienThoai),
                     NhanVien = x.MaNhanVienNavigation?.HoTen ?? "N/A",
-                    SoVe = x.VeBans.Count(v => v.TrangThai != "DaHuy"),
+                    SoVe = x.VeBans.Count(v => v.TrangThai != "Đã hủy" && v.TrangThai != "DaHuy"),
                     TongTien = x.TongThanhToan.ToString("N0") + " đ",
                     TrangThai = ChuanHoaTrangThai(x.TrangThai)
                 })
                 .ToList();
         }
 
-        public HoaDonDetailInfo? GetHoaDonDetail(int maDonHang)
+        public HoaDonDetailInfo? GetHoaDonDetail(int maDonHang, int? maRap = null)
         {
             using var db = new RapPhim2Context();
 
             var donHang = db.DonHangs
+                .Include(x => x.MaKhachHangNavigation)
                 .Include(x => x.VeBans)
                     .ThenInclude(v => v.MaSuatChieuNavigation)
                         .ThenInclude(s => s!.MaPhimNavigation)
@@ -77,32 +88,48 @@ namespace DAL
             if (donHang == null)
                 return null;
 
+            if (maRap.HasValue && maRap.Value > 0)
+            {
+                var thuocRapDangNhap = donHang.VeBans.Any(v =>
+                    v.MaSuatChieuNavigation != null &&
+                    v.MaSuatChieuNavigation.MaPhongNavigation != null &&
+                    v.MaSuatChieuNavigation.MaPhongNavigation.MaRap == maRap.Value);
+
+                if (!thuocRapDangNhap)
+                    return null;
+            }
+
             var veDau = donHang.VeBans
-                .Where(v => v.TrangThai != "DaHuy")
+                .Where(v => v.TrangThai != "Đã hủy" && v.TrangThai != "DaHuy")
                 .OrderBy(v => v.MaDatVe)
-                .FirstOrDefault();
+                .FirstOrDefault()
+                ?? donHang.VeBans.OrderBy(v => v.MaDatVe).FirstOrDefault();
 
             return new HoaDonDetailInfo
             {
                 MaDonHang = donHang.MaDonHang,
                 MaHoaDon = donHang.MaHoaDon ?? $"HD{donHang.MaDonHang}",
+                KhachHang = TaoKhachHangText(donHang.MaKhachHangNavigation?.HoTen, donHang.MaKhachHangNavigation?.SoDienThoai),
+                NgayLap = donHang.NgayDat?.ToString("dd/MM/yyyy HH:mm") ?? "--",
                 TenPhim = veDau?.MaSuatChieuNavigation?.MaPhimNavigation?.TieuDe ?? "Chưa có dữ liệu",
                 SuatChieu = veDau?.MaSuatChieuNavigation?.ThoiGianBatDau?.ToString("dd/MM/yyyy HH:mm") ?? "--",
                 PhongChieu = veDau?.MaSuatChieuNavigation?.MaPhongNavigation?.TenPhong ?? "--",
                 Ghe = string.Join(", ", donHang.VeBans
-                    .Where(v => v.TrangThai != "DaHuy")
+                    .Where(v => v.TrangThai != "Đã hủy" && v.TrangThai != "DaHuy")
                     .OrderBy(v => v.MaGheNavigation!.HangGhe)
                     .ThenBy(v => v.MaGheNavigation!.SoGhe)
                     .Select(v => $"{v.MaGheNavigation!.HangGhe}{v.MaGheNavigation!.SoGhe}")),
-                DichVus = donHang.ChiTietDonHangs
-                    .Select(x => $"{x.MaSanPhamNavigation?.Ten} x{x.SoLuong} - {(x.ThanhTien ?? ((x.Gia ?? 0) * (x.SoLuong ?? 0))):N0} đ")
-                    .ToList(),
+                DichVus = donHang.ChiTietDonHangs.Any()
+                    ? donHang.ChiTietDonHangs
+                        .Select(x => $"{x.MaSanPhamNavigation?.Ten} x{x.SoLuong} - {(x.ThanhTien ?? ((x.Gia ?? 0) * (x.SoLuong ?? 0))):N0} đ")
+                        .ToList()
+                    : new List<string>(),
                 TongTienValue = donHang.TongThanhToan,
                 TrangThai = ChuanHoaTrangThai(donHang.TrangThai)
             };
         }
 
-        public bool HuyHoaDon(int maDonHang, int maNhanVien = 1)
+        public bool HuyHoaDon(int maDonHang, string lyDo, int maNhanVien = 1, int? maRap = null)
         {
             using var db = new RapPhim2Context();
             using var transaction = db.Database.BeginTransaction();
@@ -111,6 +138,8 @@ namespace DAL
             {
                 var donHang = db.DonHangs
                     .Include(x => x.VeBans)
+                        .ThenInclude(v => v.MaSuatChieuNavigation)
+                            .ThenInclude(s => s!.MaPhongNavigation)
                     .Include(x => x.ChiTietDonHangs)
                         .ThenInclude(c => c.MaSanPhamNavigation)
                             .ThenInclude(s => s!.Kho)
@@ -120,19 +149,34 @@ namespace DAL
                 if (donHang == null)
                     return false;
 
-                if (donHang.TrangThai == "DaHuy")
+                if (maRap.HasValue && maRap.Value > 0)
+                {
+                    var thuocRapDangNhap = donHang.VeBans.Any(v =>
+                        v.MaSuatChieuNavigation != null &&
+                        v.MaSuatChieuNavigation.MaPhongNavigation != null &&
+                        v.MaSuatChieuNavigation.MaPhongNavigation.MaRap == maRap.Value);
+
+                    if (!thuocRapDangNhap)
+                        return false;
+                }
+
+                if (donHang.TrangThai == "Đã hủy" || donHang.TrangThai == "DaHuy")
                     return true;
 
-                foreach (var ve in donHang.VeBans.Where(v => v.TrangThai != "DaHuy"))
+                var lyDoLuu = string.IsNullOrWhiteSpace(lyDo)
+                    ? "Hủy từ quản lý hóa đơn"
+                    : lyDo.Trim();
+
+                foreach (var ve in donHang.VeBans.Where(v => v.TrangThai != "Đã hủy" && v.TrangThai != "DaHuy"))
                 {
-                    ve.TrangThai = "DaHuy";
+                    ve.TrangThai = "Đã hủy";
                     db.HoanVes.Add(new HoanVe
                     {
                         MaDatVe = ve.MaDatVe,
                         NgayHoan = DateTime.Now,
-                        LyDo = "Hủy từ quản lý hóa đơn",
+                        LyDo = lyDoLuu,
                         SoTienHoan = ve.Gia ?? 0,
-                        TrangThai = "DaHoan",
+                        TrangThai = "Đã hoàn",
                         MaNhanVien = maNhanVien
                     });
                 }
@@ -147,11 +191,26 @@ namespace DAL
 
                 foreach (var thanhToan in donHang.ThanhToans)
                 {
-                    thanhToan.TrangThai = "DaHuy";
+                    thanhToan.TrangThai = "Đã hủy";
                 }
 
-                donHang.TrangThai = "DaHuy";
+                if (donHang.MaKhuyenMai.HasValue)
+                {
+                    var khuyenMai = db.KhuyenMais.FirstOrDefault(x => x.MaKhuyenMai == donHang.MaKhuyenMai.Value);
+                    if (khuyenMai != null && (khuyenMai.DaDung ?? 0) > 0)
+                    {
+                        khuyenMai.DaDung = (khuyenMai.DaDung ?? 0) - 1;
+                    }
+                }
+
+                donHang.TrangThai = "Đã hủy";
                 db.SaveChanges();
+
+                if (donHang.NgayDat.HasValue)
+                {
+                    BaoCaoDoanhThuDAL.RebuildBaoCaoTheoNgay(db, donHang.NgayDat.Value);
+                }
+
                 transaction.Commit();
                 return true;
             }
@@ -179,9 +238,12 @@ namespace DAL
             {
                 "DaThanhToan" => "Đã thanh toán",
                 "DaHuy" => "Đã hủy",
+                "DaBan" => "Đã bán",
+                "DaHoan" => "Đã hoàn",
                 "ThanhCong" => "Thành công",
                 _ => string.IsNullOrWhiteSpace(trangThai) ? "Chưa xác định" : trangThai
             };
         }
     }
 }
+

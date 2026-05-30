@@ -1,4 +1,6 @@
 ﻿using Cinema.Controls;
+using Cinema.Models;
+using DTO;
 using System.Collections.ObjectModel;
 using System.Text;
 using System.Windows;
@@ -23,7 +25,8 @@ namespace Cinema.GUI
 		public MainWindow()
 		{
 			InitializeComponent();
-			MainContent.Content = new Main();
+			ApplyPermission();
+            MainContent.Content = new Main();
 			//LoadData();
 			//dgvItems.ItemsSource = _filtered;
 
@@ -93,23 +96,48 @@ namespace Cinema.GUI
 			nav_HoaDon.IsActive = false;
 			nav_Kho.IsActive = false;
 			nav_PhanCa.IsActive = false;
-
+			nav_ChamCong.IsActive = false;
+			nav_Logout.IsActive = false;
+			nav_Luong.IsActive = false;
+			nav_KhenThuong.IsActive = false;
+			nav_QLNV.IsActive = false;
+			nav_KhuyenMai.IsActive = false;
             // Bật item đang click
             NavItem? item = sender as NavItem;
 			item.IsActive = true;
 		}
-		public void btnListMovie_Click(object sender, MouseButtonEventArgs e)
+		public void btnKhuyenMai_Click(object sender, MouseButtonEventArgs e)
+		{
+			MainContent.Content = new KhuyenMai();
+        }
+        public void btnListMovie_Click(object sender, MouseButtonEventArgs e)
 		{
 			MainContent.Content = new Main();
 		}
-		public void btnQLNhanVien_Click(object sender, MouseButtonEventArgs e)
+		public void btnLuong_Click(object sender, MouseButtonEventArgs e)
+		{
+			MainContent.Content = new QuanLyBangLuong();
+        }
+        public void btnQLNhanVien_Click(object sender, MouseButtonEventArgs e)
 		{
 			MainContent.Content = new Student();
 		}
+		public void btnLogout_Click(object sender, MouseButtonEventArgs e)
+		{
+			Session.Clear();
+			TaiKhoanDTO.Clear();
+			Login login = new Login();
+			login.Show();
+			this.Close();
+        }
 
-		public void btnSuatChieu_click(object sender, MouseButtonEventArgs e)
+        public void btnSuatChieu_Click(object sender, MouseButtonEventArgs e)
 		{
 			MainContent.Content = new QuanLySuatChieu();
+        }
+		public void btnKhenThuong_Click(object sender, MouseButtonEventArgs e)
+		{
+            MainContent.Content = new KhenThuong();
         }
 
         public void btnQuanLyHoaDon_Click(object sender, MouseButtonEventArgs e)
@@ -128,8 +156,33 @@ namespace Cinema.GUI
 		{
             MainContent.Content = new PhanCa();
         }
+		public void btnChamCong_Click(object sender, MouseButtonEventArgs e)
+		{
+            MainContent.Content = new ChamCong();
+        }
+        private void ApplyPermission()
+        {
+            string vaiTro = Session.VaiTro;
 
+            if (vaiTro == "Admin")
+            {
+                return; // thấy hết
+            }
 
+			else
+			{
+				nav_DoanhThu.Visibility = Visibility.Collapsed;
+				nav_QLNV.Visibility = Visibility.Collapsed;
+				nav_PhanCa.Visibility = Visibility.Collapsed;
+				nav_KhuyenMai.Visibility = Visibility.Collapsed;
+				nav_Luong.Visibility = Visibility.Collapsed;
+				nav_Phim.Visibility = Visibility.Collapsed;
+				nav_KhenThuong.Visibility = Visibility.Collapsed;
+				nav_Phong.Visibility = Visibility.Collapsed;
+			}
+
+            
+        }
 
     }
 }

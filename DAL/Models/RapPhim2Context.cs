@@ -24,6 +24,8 @@ public partial class RapPhim2Context : DbContext
 
     public virtual DbSet<ChamCong> ChamCongs { get; set; }
 
+    public virtual DbSet<ComboChiTiet> ComboChiTiets { get; set; }
+
     public virtual DbSet<ChiTietDonHang> ChiTietDonHangs { get; set; }
 
     public virtual DbSet<ChiTietPhieuNhapKho> ChiTietPhieuNhapKhos { get; set; }
@@ -160,6 +162,13 @@ public partial class RapPhim2Context : DbContext
                 .HasConstraintName("FK__ChamCong__MaNhan__06CD04F7");
         });
 
+        modelBuilder.Entity<ComboChiTiet>(entity =>
+        {
+            entity.HasKey(e => new { e.MaCombo, e.MaSanPhamCon });
+
+            entity.ToTable("ComboChiTiet");
+        });
+
         modelBuilder.Entity<ChiTietDonHang>(entity =>
         {
             entity.HasKey(e => e.Ma).HasName("PK__ChiTietD__3214CC9F2A867D6B");
@@ -260,7 +269,7 @@ public partial class RapPhim2Context : DbContext
                 .HasColumnType("datetime");
             entity.Property(e => e.TrangThai)
                 .HasMaxLength(50)
-                .HasDefaultValue("DangGiu");
+                .HasDefaultValue("Đang giữ");
 
             entity.HasOne(d => d.MaDatVeNavigation).WithMany(p => p.GiuGheTams)
                 .HasForeignKey(d => d.MaDatVe)
@@ -348,6 +357,7 @@ public partial class RapPhim2Context : DbContext
             entity.Property(e => e.DonToiThieu).HasColumnType("decimal(10, 2)");
             entity.Property(e => e.GiaTriGiam).HasColumnType("decimal(10, 2)");
             entity.Property(e => e.LoaiGiam).HasMaxLength(50);
+            entity.Property(e => e.MaCode).HasMaxLength(100);
             entity.Property(e => e.MoTa).HasMaxLength(500);
             entity.Property(e => e.NgayBatDau).HasColumnType("datetime");
             entity.Property(e => e.NgayKetThuc).HasColumnType("datetime");

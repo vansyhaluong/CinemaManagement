@@ -6,6 +6,10 @@ namespace DAL.Models
 
         public string MaHoaDon { get; set; } = string.Empty;
 
+        public string KhachHang { get; set; } = string.Empty;
+
+        public string NgayLap { get; set; } = string.Empty;
+
         public string TenPhim { get; set; } = string.Empty;
 
         public string SuatChieu { get; set; } = string.Empty;

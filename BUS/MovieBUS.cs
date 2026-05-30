@@ -29,9 +29,9 @@ namespace BUS
 		{
 			return dal.updateMovie(phim);
 		}
-		public bool removeMovie(int id)
+		public bool removeMovie(int id, out string message)
 		{
-			return dal.removeMovie(id);
+			return dal.removeMovie(id, out message);
 		}
 		public string getTheLoaiByPhim(int ma)
 		{

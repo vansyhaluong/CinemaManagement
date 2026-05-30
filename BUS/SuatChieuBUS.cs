@@ -11,31 +11,41 @@ namespace BUS
     public class SuatChieuBUS
     {
          SuatChieuDAL dal=new SuatChieuDAL();
-        public List<SuatChieu> GetAllSuatChieu()
+        public List<SuatChieu> GetAllSuatChieu(int? maRap = null)
         {
-            return dal.GetAllSuatChieu();
+            return dal.GetAllSuatChieu(maRap);
         }
-        public List<SuatChieu> getSuatChieuByPhim(int maPhim)
+        public List<SuatChieu> getSuatChieuByPhim(int maPhim, int? maRap = null)
         {
-            return dal.getSuatChieuByPhim(maPhim);
+            return dal.getSuatChieuByPhim(maPhim, maRap);
         }
-        public List<SuatChieu> getSuatChieuByNgay(DateTime day)
+        public List<SuatChieu> getSuatChieuByNgay(DateTime day, int? maRap = null)
         {
-            return dal.getSuatChieuByNgay(day);
+            return dal.getSuatChieuByNgay(day, maRap);
+        }
+        public List<SuatChieu> getSuatChieuByPhong(int maPhong, int? maRap = null)
+        {
+            return dal.getSuatChieuByPhong(maPhong, maRap);
         }
         public bool KiemTraTrungGio(int maPhong, DateTime start, DateTime end)
         {
             return dal.KiemTraTrungGio(maPhong, start, end);
         }
-        public SuatChieu? getSuatChieuById(int id)
+        public SuatChieu? getSuatChieuById(int id, int? maRap = null)
         {
-            return dal.getSuatChieuById(id);
+            return dal.getSuatChieuById(id, maRap);
         }
         public bool addSuatChieu(SuatChieu suat)
         {
             if (!suat.MaPhong.HasValue ||
+            !suat.MaPhim.HasValue ||
             !suat.ThoiGianBatDau.HasValue ||
             !suat.ThoiGianKetThuc.HasValue)
+            {
+                return false;
+            }
+
+            if (suat.ThoiGianKetThuc.Value <= suat.ThoiGianBatDau.Value)
             {
                 return false;
             }
@@ -47,15 +57,8 @@ namespace BUS
             {
                 return false;
             }
-            try
-            {
-                dal.addSuatChieu(suat);
-                return true;
-            }
-            catch
-            {
-                return false;
-            }
+
+            return dal.addSuatChieu(suat);
         }
         public bool removeSuatChieu(int id)
         {
@@ -71,15 +74,20 @@ namespace BUS
         }
         public bool updateSuatChieu(SuatChieu suat)
         {
-            try
-            {
-                dal.updateSuatChieu(suat);
-                return true;
-            }
-            catch
+            if (!suat.MaPhong.HasValue ||
+                !suat.MaPhim.HasValue ||
+                !suat.ThoiGianBatDau.HasValue ||
+                !suat.ThoiGianKetThuc.HasValue)
             {
                 return false;
             }
+
+            if (suat.ThoiGianKetThuc.Value <= suat.ThoiGianBatDau.Value)
+            {
+                return false;
+            }
+
+            return dal.updateSuatChieu(suat);
         }
     }
 }

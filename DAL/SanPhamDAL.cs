@@ -14,6 +14,11 @@ namespace DAL
         RapPhim2Context db=new RapPhim2Context();
         public List<SanPhamKhoDTO> GetDanhSachKho()
         {
+            var comboChiTiets = db.ComboChiTiets.ToList();
+            var tonKhoTheoSanPham = db.Khos
+                .Where(x => x.MaSanPham.HasValue)
+                .ToDictionary(x => x.MaSanPham!.Value, x => x.SoLuongTon ?? 0);
+
             var ds = db.SanPhams
                 .Include(x => x.MaLoaiSpNavigation)
                 .Include(x => x.Kho)
@@ -31,6 +36,11 @@ namespace DAL
                 })
                 .ToList();
 
+            foreach (var item in ds.Where(x => string.Equals(x.TenLoai, "Combo", StringComparison.OrdinalIgnoreCase)))
+            {
+                item.SoLuongTon = TinhSoLuongComboKhaDung(item.MaSanPham, comboChiTiets, tonKhoTheoSanPham);
+            }
+
             return ds;
         }
         public bool SuaSanPham(SanPhamKhoDTO sp)
@@ -45,6 +55,17 @@ namespace DAL
             sanPham.Ten = sp.Ten;
             sanPham.Gia = sp.Gia;
             sanPham.HinhAnh = sp.HinhAnh;
+
+            var isCombo = string.Equals(
+                db.LoaiSanPhams.Where(x => x.MaLoaiSp == sanPham.MaLoaiSp).Select(x => x.TenLoai).FirstOrDefault(),
+                "Combo",
+                StringComparison.OrdinalIgnoreCase);
+
+            if (isCombo)
+            {
+                db.SaveChanges();
+                return true;
+            }
 
             var kho = db.Khos.FirstOrDefault(x => x.MaSanPham == sp.MaSanPham);
 
@@ -108,6 +129,16 @@ namespace DAL
             db.SanPhams.Add(sp);
             db.SaveChanges();
 
+            var isCombo = string.Equals(
+                db.LoaiSanPhams.Where(x => x.MaLoaiSp == sp.MaLoaiSp).Select(x => x.TenLoai).FirstOrDefault(),
+                "Combo",
+                StringComparison.OrdinalIgnoreCase);
+
+            if (isCombo)
+            {
+                return true;
+            }
+
             var kho = new Kho
             {
                 MaSanPham = sp.MaSanPham,
@@ -126,6 +157,8 @@ namespace DAL
         }
         public bool NhapKhoSanPham(int maSanPham, int soLuong, decimal donGia, int maNhanVien)
         {
+            if (LaSanPhamCombo(maSanPham))
+                return false;
             
 
             using var transaction = db.Database.BeginTransaction();
@@ -181,6 +214,8 @@ namespace DAL
         }
         public int TaoPhieuNhapKho(int maNhanVien, List<ChiTietNhapKhoDTO> dsChiTiet)
         {
+            if (dsChiTiet.Any(x => LaSanPhamCombo(x.MaSanPham)))
+                return 0;
             
 
             using var tran = db.Database.BeginTransaction();
@@ -271,6 +306,36 @@ namespace DAL
             ).ToList();
 
             return data;
+        }
+
+        private bool LaSanPhamCombo(int maSanPham)
+        {
+            return db.SanPhams
+                .Include(x => x.MaLoaiSpNavigation)
+                .Any(x => x.MaSanPham == maSanPham &&
+                          x.MaLoaiSpNavigation != null &&
+                          x.MaLoaiSpNavigation.TenLoai == "Combo");
+        }
+
+        private static int TinhSoLuongComboKhaDung(
+            int maCombo,
+            List<ComboChiTiet> comboChiTiets,
+            Dictionary<int, int> tonKhoTheoSanPham)
+        {
+            var thanhPhans = comboChiTiets
+                .Where(x => x.MaCombo == maCombo && (x.SoLuong ?? 0) > 0)
+                .ToList();
+
+            if (!thanhPhans.Any())
+                return 0;
+
+            return thanhPhans
+                .Select(x =>
+                {
+                    var ton = tonKhoTheoSanPham.TryGetValue(x.MaSanPhamCon, out var soTon) ? soTon : 0;
+                    return ton / (x.SoLuong ?? 1);
+                })
+                .Min();
         }
     }
 }

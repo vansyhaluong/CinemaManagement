@@ -38,6 +38,12 @@ namespace BUS
             if (maPhanCa <= 0)
                 throw new Exception("Vui lòng chọn phân ca cần sửa.");
 
+            if (maNhanVien <= 0 || maCa <= 0)
+                throw new Exception("Vui lòng chọn nhân viên và ca làm.");
+
+            if (dal.Exists(maNhanVien, ngay, maPhanCa))
+                throw new Exception("Nhân viên này đã có phân ca trong ngày này.");
+
             var pc = new PhanCa
             {
                 MaPhanCa = maPhanCa,

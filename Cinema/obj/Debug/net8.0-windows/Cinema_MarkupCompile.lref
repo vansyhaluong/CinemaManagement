@@ -1,4 +1,4 @@
-﻿D:\Cinema\Cinema\obj\Debug\net8.0-windows\GeneratedInternalTypeHelper.g.cs
+﻿
 FD:\Cinema\Cinema\App.xaml;;
 FD:\Cinema\Cinema\GUI\AddMovieWindow.xaml;;
 FD:\Cinema\Cinema\GUI\AddXuatChieu.xaml;;
@@ -6,6 +6,7 @@ FD:\Cinema\Cinema\GUI\BaoCaoDoanhThuNgay.xaml;;
 FD:\Cinema\Cinema\GUI\Booking.xaml;;
 FD:\Cinema\Cinema\GUI\ChamCong.xaml;;
 FD:\Cinema\Cinema\GUI\CustomMessageBox.xaml;;
+FD:\Cinema\Cinema\GUI\HoanVe.xaml;;
 FD:\Cinema\Cinema\GUI\Home.xaml;;
 FD:\Cinema\Cinema\GUI\KhenThuong.xaml;;
 FD:\Cinema\Cinema\GUI\Login.xaml;;
@@ -23,7 +24,6 @@ FD:\Cinema\Cinema\GUI\QuanLyNhanVien.xaml;;
 FD:\Cinema\Cinema\GUI\QuanLyPhim.xaml;;
 FD:\Cinema\Cinema\GUI\QuanLyPhong.xaml;;
 FD:\Cinema\Cinema\GUI\QuanLyPhongChieu.xaml;;
-FD:\Cinema\Cinema\GUI\QuanLySuatChieu.xaml;;
 FD:\Cinema\Cinema\GUI\ReportPreviewWindow.xaml;;
 FD:\Cinema\Cinema\GUI\Student.xaml;;
 FD:\Cinema\Cinema\GUI\SuaSanPhamWindow.xaml;;

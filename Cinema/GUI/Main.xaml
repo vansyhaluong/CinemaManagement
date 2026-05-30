@@ -30,7 +30,7 @@
                     <TextBlock Text="🎬"
                                FontSize="28"
                                VerticalAlignment="Center" Foreground="White"/>
-                    <TextBlock Text="CGV CINEMA"
+                    <TextBlock Text="DANH SÁCH PHIM"
                                Foreground="White"
                                FontSize="22"
                                FontWeight="Bold"
@@ -58,49 +58,48 @@
             </Grid.ColumnDefinitions>
 
             <!-- Genre -->
-            <ComboBox Grid.Column="0"
+            <ComboBox x:Name="cbTheLoai"
+                      Grid.Column="0"
                       Height="40"
                       Margin="5"
                       Padding="8"
-                      SelectedIndex="0">
-                <ComboBoxItem Content="All Genres"/>
-                <ComboBoxItem Content="Action"/>
-                <ComboBoxItem Content="Comedy"/>
-                <ComboBoxItem Content="Horror"/>
-                <ComboBoxItem Content="Romance"/>
-            </ComboBox>
+                      SelectedIndex="0"
+                      SelectionChanged="Filter_SelectionChanged"/>
 
             <!-- Country -->
-            <ComboBox Grid.Column="1"
+            <ComboBox x:Name="cbQuocGia"
+                      Grid.Column="1"
                       Height="40"
                       Margin="5"
                       Padding="8"
-                      SelectedIndex="0">
-                <ComboBoxItem Content="All Countries"/>
-                <ComboBoxItem Content="USA"/>
-                <ComboBoxItem Content="Korea"/>
-                <ComboBoxItem Content="Japan"/>
-                <ComboBoxItem Content="Vietnam"/>
-            </ComboBox>
+                      SelectedIndex="0"
+                      SelectionChanged="Filter_SelectionChanged"/>
 
             <!-- Search -->
-            <TextBox Grid.Column="2"
+            <TextBox x:Name="txtTimKiem"
+                     Grid.Column="2"
                      Height="40"
                      Margin="5"
                      Padding="10"
                      FontSize="14"
                      VerticalContentAlignment="Center"
-                     Text="Search movie..." />
+                     Foreground="#94A3B8"
+                     Text="Tìm kiếm phim..."
+                     TextChanged="txtTimKiem_TextChanged"
+                     GotFocus="txtTimKiem_GotFocus"
+                     LostFocus="txtTimKiem_LostFocus"/>
 
             <!-- Add -->
             <Button Grid.Column="3"
+                    x:Name="btnThemPhim"
                     Content="+ Add Movie"
                     Background="#2563EB"
                     Foreground="White"
                     FontWeight="Bold"
                     BorderThickness="0"
                     Cursor="Hand"
-                    Margin="5"/>
+                    Margin="5"
+                    Click="btnThemPhim_Click"/>
         </Grid>
 
         <!-- ================= MOVIE GRID ================= -->
@@ -109,9 +108,9 @@
               HorizontalScrollBarVisibility="Disabled"
               Margin="10">
             <ItemsControl Grid.Row="2"
-                      x:Name="icPhim"
-                     ItemsSource="{Binding Phim}"
-                      Margin="20">
+              x:Name="icPhim"
+              ItemsSource="{Binding Phim}"
+              Margin="20">
 
                 <ItemsControl.ItemsPanel>
                     <ItemsPanelTemplate>
@@ -120,250 +119,315 @@
                 </ItemsControl.ItemsPanel>
 
                 <ItemsControl.ItemTemplate>
-
                     <DataTemplate>
 
                         <!-- CARD -->
-                        <Border Width="210"
-                            Height="270"
-                            Background="White"
-                            CornerRadius="14"
-                            Margin="10"
-                            >
+                        <Border Width="220"
+                    Height="340"
+                    Background="#111827"
+                    BorderBrush="#1F2937"
+                    BorderThickness="1"
+                    CornerRadius="18"
+                    Margin="10"
+                    ClipToBounds="True">
 
                             <Border.Style>
                                 <Style TargetType="Border">
+                                    <Setter Property="RenderTransformOrigin"
+                                Value="0.5,0.5"/>
 
-                                    <!-- Shadow -->
-                                    <Setter Property="Effect">
+                                    <Setter Property="RenderTransform">
                                         <Setter.Value>
-                                            <DropShadowEffect BlurRadius="15"
-                                                          ShadowDepth="2"
-                                                          Opacity="0.12"
-                                                          Color="Black"/>
+                                            <ScaleTransform ScaleX="1" ScaleY="1"/>
                                         </Setter.Value>
                                     </Setter>
 
-                                    <!-- Hover -->
+                                    <Setter Property="Effect">
+                                        <Setter.Value>
+                                            <DropShadowEffect BlurRadius="22"
+                                                  ShadowDepth="0"
+                                                  Opacity="0.28"
+                                                  Color="Black"/>
+                                        </Setter.Value>
+                                    </Setter>
+
                                     <Style.Triggers>
                                         <Trigger Property="IsMouseOver" Value="True">
                                             <Setter Property="RenderTransform">
                                                 <Setter.Value>
-                                                    <ScaleTransform ScaleX="1.05" ScaleY="1.05"/>
+                                                    <ScaleTransform ScaleX="1.025"
+                                                        ScaleY="1.025"/>
                                                 </Setter.Value>
                                             </Setter>
 
+                                            <Setter Property="BorderBrush"
+                                        Value="#EF4444"/>
+
                                             <Setter Property="Effect">
                                                 <Setter.Value>
-                                                    <DropShadowEffect BlurRadius="25"
-                                                                  ShadowDepth="4"
-                                                                  Opacity="0.25"
-                                                                  Color="Black"/>
+                                                    <DropShadowEffect BlurRadius="32"
+                                                          ShadowDepth="0"
+                                                          Opacity="0.45"
+                                                          Color="Black"/>
                                                 </Setter.Value>
                                             </Setter>
                                         </Trigger>
                                     </Style.Triggers>
-
                                 </Style>
                             </Border.Style>
 
-                            <Border.RenderTransformOrigin>
-                                <Point X="0.5" Y="0.5"/>
-                            </Border.RenderTransformOrigin>
-
-                            <Grid>
+                            <Grid Cursor="Hand"
+                      MouseLeftButtonDown="Poster_Click">
 
                                 <Grid.RowDefinitions>
-                                    <RowDefinition Height="210"/>
+                                    <RowDefinition Height="260"/>
                                     <RowDefinition Height="*"/>
                                 </Grid.RowDefinitions>
 
-                                <!-- POSTER -->
-                                <Grid Cursor="Hand"
-MouseLeftButtonDown="Poster_Click">
+                                <!-- POSTER AREA -->
+                                <Grid Grid.Row="0">
 
-                                    <Border CornerRadius="14,14,0,0"
-                                        >
-                                        <Image Source="{Binding AnhBia, Converter={StaticResource ImageConverter}}"
-                                           Stretch="Fill"
-                                           />
-                                    </Border>
+                                    <Image Source="{Binding AnhBia, Converter={StaticResource ImageConverter}}"
+                               Stretch="UniformToFill"/>
 
-                                    <!-- dark overlay -->
-                                    <Border CornerRadius="14,14,0,0">
+                                    <!-- Gradient bottom overlay -->
+                                    <Border VerticalAlignment="Bottom"
+                                Height="90">
                                         <Border.Background>
-                                            <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
-                                                <GradientStop Color="#00000000" Offset="0.5"/>
-                                                <GradientStop Color="#CC000000" Offset="1"/>
+                                            <LinearGradientBrush StartPoint="0,0"
+                                                     EndPoint="0,1">
+                                                <GradientStop Color="#00000000"
+                                                  Offset="0"/>
+                                                <GradientStop Color="#E6111827"
+                                                  Offset="1"/>
                                             </LinearGradientBrush>
                                         </Border.Background>
                                     </Border>
 
-                                    <!-- status -->
-                                    <!--<Border Background="#10B981"
-                                        HorizontalAlignment="Left"
-                                        VerticalAlignment="Top"
-                                        Margin="10"
-                                        Padding="6,2"
-                                        CornerRadius="6">
-
-                                        <TextBlock Text="{Binding Status}"
-                                               Foreground="White"
-                                               FontSize="11"
-                                               FontWeight="Bold"/>
-                                    </Border>-->
+                                    <!-- Top badge -->
+                                    <Border HorizontalAlignment="Left"
+                                VerticalAlignment="Top"
+                                Margin="10"
+                                Padding="7,3"
+                                CornerRadius="8"
+                                Background="#EF4444">
+                                        <TextBlock Text="New"
+                                       Foreground="White"
+                                       FontSize="10"
+                                       FontWeight="Bold"/>
+                                    </Border>
 
                                 </Grid>
 
-                                <!-- INFO -->
-                                <StackPanel Grid.Row="1" Margin="10">
+                                <!-- INFO AREA -->
+                                <Grid Grid.Row="1"
+                          Margin="12,10,12,12">
 
-                                    <TextBlock Text="{Binding TieuDe}"
-                                           FontSize="14"
-                                           FontWeight="Bold"
-                                           TextWrapping="Wrap"
-                                           Foreground="#111827"/>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="*"/>
+                                        <RowDefinition Height="Auto"/>
+                                    </Grid.RowDefinitions>
 
-                                    <!--<TextBlock Text="{Binding Genre}"
-                                           FontSize="12"
-                                           Foreground="#6B7280"/>
+                                    <TextBlock Grid.Row="0"
+                                   Text="{Binding TieuDe}"
+                                   FontSize="15"
+                                   FontWeight="Bold"
+                                   Foreground="White"
+                                   TextWrapping="Wrap"
+                                   TextTrimming="CharacterEllipsis"
+                                   MaxHeight="40"/>
 
-                                <TextBlock Text="{Binding Country}"
-                                           FontSize="12"
-                                           Foreground="#6B7280"/>
+                                    <StackPanel Grid.Row="2"
+                                    Orientation="Horizontal"
+                                    VerticalAlignment="Bottom">
 
-                                <TextBlock Text="{Binding Duration}"
-                                           FontSize="12"
-                                           Foreground="#6B7280"/>
+                                        <Border Background="#F59E0B"
+                                    CornerRadius="6"
+                                    Padding="6,2">
+                                            <TextBlock Text="Cinema"
+                                           Foreground="#111827"
+                                           FontSize="10"
+                                           FontWeight="Bold"/>
+                                        </Border>
 
-                                <Button Content="View Details"
-                                        Height="28"
-                                        Margin="0,8,0,0"
-                                        Background="#2563EB"
-                                        Foreground="White"
-                                        BorderThickness="0"
-                                        Cursor="Hand"/>-->
-
-                                </StackPanel>
-
+                                        <TextBlock Text="  •  Chi tiết"
+                                       Foreground="#9CA3AF"
+                                       FontSize="12"
+                                       VerticalAlignment="Center"/>
+                                    </StackPanel>
+                                </Grid>
                             </Grid>
-
                         </Border>
 
                     </DataTemplate>
-
                 </ItemsControl.ItemTemplate>
-
             </ItemsControl>
         </ScrollViewer>
          <!--POPUP MOVIE DETAIL-->
         <Grid x:Name="PopupContainer"
       Visibility="Collapsed"
-      Background="#80000000"
-              Grid.RowSpan="3"
+      Background="#B0000000"
+      Grid.RowSpan="3"
       HorizontalAlignment="Stretch"
       VerticalAlignment="Stretch"
-              
       Panel.ZIndex="999">
 
-            <Border Width="750"
-            Height="320"
-            Background="#1E1E1E"
-            CornerRadius="16"
+            <Border Width="820"
+            Height="430"
+            CornerRadius="24"
             HorizontalAlignment="Center"
             VerticalAlignment="Center"
-            Padding="15">
+            ClipToBounds="True">
+
+                <Border.Background>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                        <GradientStop Color="#18181B" Offset="0"/>
+                        <GradientStop Color="#111827" Offset="0.55"/>
+                        <GradientStop Color="#450A0A" Offset="1"/>
+                    </LinearGradientBrush>
+                </Border.Background>
 
                 <Grid>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="180"/>
+                        <ColumnDefinition Width="260"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
 
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="Auto"/>
-                    </Grid.RowDefinitions>
-
-                    <!-- 🎬 LEFT: POSTER -->
-                    <Border Grid.RowSpan="2"
-                    CornerRadius="12"
-                    ClipToBounds="True"
-                    Margin="0,0,15,0">
+                    <!-- Poster -->
+                    <Border Grid.Column="0"
+                    Margin="22"
+                    CornerRadius="18"
+                    ClipToBounds="True">
                         <Image x:Name="imgPoster"
-                       Stretch="Fill"/>
+                       Stretch="UniformToFill"/>
                     </Border>
 
-                    <!-- 🎬 CENTER CONTENT -->
-                    <StackPanel Grid.Column="1">
+                    <!-- Content -->
+                    <Grid Grid.Column="1"
+                  Margin="10,24,24,24">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
 
-                        <!-- TITLE -->
-                        <TextBlock x:Name="txtTitle"
-                           FontSize="24"
-                           FontWeight="Bold"
-                           Foreground="White"
-                           TextWrapping="Wrap"/>
-
-                        <Separator Margin="0,10"/>
-
-                        <!-- DESCRIPTION -->
-                        <TextBlock x:Name="txtDescription"
-                           Foreground="#CCCCCC"
-                           TextWrapping="Wrap"
-                           Margin="0,5"/>
-
-                        <!-- INFO -->
-                        <StackPanel Margin="0,15,0,0">
-
-                            <TextBlock x:Name="txtGenre"
-                               Foreground="#BBBBBB"
-                               Margin="0,3"/>
-
-                            <TextBlock x:Name="txtCountry"
-                               Foreground="#BBBBBB"
-                               Margin="0,3"/>
-
-                            <TextBlock x:Name="txtDuration"
-                               Foreground="#BBBBBB"
-                               Margin="0,3"/>
-
-                            <TextBlock x:Name="txtStatus"
-                               Foreground="#4CAF50"
-                               FontWeight="Bold"
-                               Margin="0,3"/>
-                        </StackPanel>
-                    </StackPanel>
-
-                    <!-- 🎬 BOTTOM RIGHT BUTTONS -->
-                    <StackPanel Grid.Row="1"
-                        Grid.Column="1"
-                        Orientation="Horizontal"
-                        HorizontalAlignment="Right"
-                        Margin="0,20,0,0">
-
-                        <!-- BOOKING BUTTON -->
-                        <Button Content="🎟 Đặt vé"
-                        Width="120"
-                        Height="35"
-                        Margin="0,0,10,0"
-                        Background="#E50914"
-                        Foreground="White"
-                        BorderThickness="0"
-                                Click="btnDatVe_Click"
-                        Cursor="Hand"
-                        />
-
-                        <!-- CLOSE BUTTON -->
+                        <!-- Close -->
                         <Button Content="✕"
-                        Width="40"
-                        Height="35"
-                        Background="#444"
+                        Width="36"
+                        Height="36"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Top"
+                        Background="#33FFFFFF"
                         Foreground="White"
                         BorderThickness="0"
                         Cursor="Hand"
                         Click="ClosePopup_Click"/>
-                    </StackPanel>
 
+                        <!-- Title -->
+                        <StackPanel Grid.Row="0"
+                            Margin="0,4,48,0">
+                            <TextBlock x:Name="txtTitle"
+                               FontSize="30"
+                               FontWeight="Bold"
+                               Foreground="White"
+                               TextWrapping="Wrap"/>
+
+                            <StackPanel Orientation="Horizontal"
+                                Margin="0,12,0,0">
+                                <Border Background="#E50914"
+                                CornerRadius="10"
+                                Padding="10,4"
+                                Margin="0,0,8,0">
+                                    <TextBlock Text="NOW SHOWING"
+                                       Foreground="White"
+                                       FontSize="11"
+                                       FontWeight="Bold"/>
+                                </Border>
+
+                                <Border Background="#22C55E22"
+                                CornerRadius="10"
+                                Padding="10,4">
+                                    <TextBlock x:Name="txtStatus"
+                                       Foreground="#22C55E"
+                                       FontSize="12"
+                                       FontWeight="SemiBold"/>
+                                </Border>
+                            </StackPanel>
+                        </StackPanel>
+
+                        <!-- Info badges -->
+                        <StackPanel Grid.Row="1"
+                            Orientation="Horizontal"
+                            Margin="0,18,0,14">
+                            <Border Background="#1F2937"
+                            CornerRadius="12"
+                            Padding="12,8"
+                            Margin="0,0,10,0">
+                                <TextBlock x:Name="txtGenre"
+                                   Foreground="#D1D5DB"
+                                   FontSize="13"/>
+                            </Border>
+
+                            <Border Background="#1F2937"
+                            CornerRadius="12"
+                            Padding="12,8"
+                            Margin="0,0,10,0">
+                                <TextBlock x:Name="txtCountry"
+                                   Foreground="#D1D5DB"
+                                   FontSize="13"/>
+                            </Border>
+
+                            <Border Background="#1F2937"
+                            CornerRadius="12"
+                            Padding="12,8">
+                                <TextBlock x:Name="txtDuration"
+                                   Foreground="#D1D5DB"
+                                   FontSize="13"/>
+                            </Border>
+                        </StackPanel>
+
+                        <!-- Description -->
+                        <Border Grid.Row="2"
+                        Background="#22FFFFFF"
+                        CornerRadius="16"
+                        Padding="16"
+                        Margin="0,0,0,18">
+                            <ScrollViewer VerticalScrollBarVisibility="Auto">
+                                <TextBlock x:Name="txtDescription"
+                                   Foreground="#E5E7EB"
+                                   FontSize="14"
+                                   LineHeight="22"
+                                   TextWrapping="Wrap"/>
+                            </ScrollViewer>
+                        </Border>
+
+                        <!-- Buttons -->
+                        <StackPanel Grid.Row="3"
+                            Orientation="Horizontal"
+                            HorizontalAlignment="Right">
+                            <Button Content="Đóng"
+                            Width="100"
+                            Height="40"
+                            Margin="0,0,10,0"
+                            Background="#374151"
+                            Foreground="White"
+                            BorderThickness="0"
+                            Cursor="Hand"
+                            Click="ClosePopup_Click"/>
+
+                            <Button Content="🎟 Đặt vé"
+                            Width="130"
+                            Height="40"
+                            Background="#E50914"
+                            Foreground="White"
+                            FontWeight="Bold"
+                            BorderThickness="0"
+                            Cursor="Hand"
+                            Click="btnDatVe_Click"/>
+                        </StackPanel>
+                    </Grid>
                 </Grid>
             </Border>
         </Grid>

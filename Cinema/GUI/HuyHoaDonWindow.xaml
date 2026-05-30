@@ -1,0 +1,240 @@
+<Window x:Class="Cinema.GUI.HuyHoaDonWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Hủy hóa đơn"
+        Width="700"
+        Height="760"
+        WindowStartupLocation="CenterOwner"
+        Background="#0F172A"
+        WindowStyle="None"
+        ResizeMode="NoResize">
+
+    <Window.Resources>
+        <Style x:Key="Card" TargetType="Border">
+            <Setter Property="Background" Value="#111827"/>
+            <Setter Property="BorderBrush" Value="#1E293B"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="CornerRadius" Value="10"/>
+            <Setter Property="Padding" Value="16"/>
+        </Style>
+
+        <Style x:Key="SectionLabel" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="#94A3B8"/>
+            <Setter Property="FontSize" Value="11"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+        </Style>
+
+        <Style x:Key="SectionValue" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="#F8FAFC"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="TextWrapping" Value="Wrap"/>
+            <Setter Property="Margin" Value="0,4,0,0"/>
+        </Style>
+
+        <Style x:Key="DialogComboBox" TargetType="ComboBox">
+            <Setter Property="Height" Value="40"/>
+            <Setter Property="Foreground" Value="#F8FAFC"/>
+            <Setter Property="Background" Value="#0F172A"/>
+            <Setter Property="BorderBrush" Value="#334155"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Padding" Value="10,0"/>
+        </Style>
+
+        <Style x:Key="DialogTextBox" TargetType="TextBox">
+            <Setter Property="Foreground" Value="#F8FAFC"/>
+            <Setter Property="Background" Value="#0F172A"/>
+            <Setter Property="BorderBrush" Value="#334155"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Padding" Value="12"/>
+            <Setter Property="TextWrapping" Value="Wrap"/>
+            <Setter Property="AcceptsReturn" Value="True"/>
+            <Setter Property="VerticalScrollBarVisibility" Value="Auto"/>
+        </Style>
+
+        <Style x:Key="SecondaryButton" TargetType="Button">
+            <Setter Property="Height" Value="40"/>
+            <Setter Property="Padding" Value="16,0"/>
+            <Setter Property="Foreground" Value="#E2E8F0"/>
+            <Setter Property="Background" Value="#1E293B"/>
+            <Setter Property="BorderBrush" Value="#334155"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="8">
+                            <ContentPresenter HorizontalAlignment="Center"
+                                              VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="DangerButton" TargetType="Button" BasedOn="{StaticResource SecondaryButton}">
+            <Setter Property="Background" Value="#991B1B"/>
+            <Setter Property="BorderBrush" Value="#B91C1C"/>
+            <Setter Property="Foreground" Value="#FEE2E2"/>
+        </Style>
+    </Window.Resources>
+
+    <Grid Margin="22">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="16"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="18"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0">
+            <TextBlock Text="Xác nhận hủy hóa đơn"
+                       Foreground="#F8FAFC"
+                       FontSize="28"
+                       FontWeight="Bold"/>
+            <TextBlock Text="Thao tác này sẽ hủy toàn bộ vé trong hóa đơn đã chọn."
+                       Foreground="#94A3B8"
+                       FontSize="13"
+                       Margin="0,6,0,0"/>
+        </StackPanel>
+
+        <ScrollViewer Grid.Row="2"
+                      VerticalScrollBarVisibility="Auto">
+            <StackPanel>
+                <Border Style="{StaticResource Card}">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="18"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+
+                        <StackPanel Grid.Row="0" Grid.Column="0" Margin="0,0,0,14">
+                            <TextBlock Text="Mã hóa đơn" Style="{StaticResource SectionLabel}"/>
+                            <TextBlock x:Name="txtMaHoaDon" Style="{StaticResource SectionValue}"/>
+                        </StackPanel>
+
+                        <StackPanel Grid.Row="0" Grid.Column="2" Margin="0,0,0,14">
+                            <TextBlock Text="Ngày lập" Style="{StaticResource SectionLabel}"/>
+                            <TextBlock x:Name="txtNgayLap" Style="{StaticResource SectionValue}"/>
+                        </StackPanel>
+
+                        <StackPanel Grid.Row="1" Grid.Column="0" Margin="0,0,0,14">
+                            <TextBlock Text="Khách hàng" Style="{StaticResource SectionLabel}"/>
+                            <TextBlock x:Name="txtKhachHang" Style="{StaticResource SectionValue}"/>
+                        </StackPanel>
+
+                        <StackPanel Grid.Row="1" Grid.Column="2" Margin="0,0,0,14">
+                            <TextBlock Text="Tổng tiền" Style="{StaticResource SectionLabel}"/>
+                            <TextBlock x:Name="txtTongTien" Style="{StaticResource SectionValue}"/>
+                        </StackPanel>
+
+                        <StackPanel Grid.Row="2" Grid.Column="0">
+                            <TextBlock Text="Phim" Style="{StaticResource SectionLabel}"/>
+                            <TextBlock x:Name="txtTenPhim" Style="{StaticResource SectionValue}"/>
+                        </StackPanel>
+
+                        <StackPanel Grid.Row="2" Grid.Column="2">
+                            <TextBlock Text="Suất chiếu" Style="{StaticResource SectionLabel}"/>
+                            <TextBlock x:Name="txtSuatChieu" Style="{StaticResource SectionValue}"/>
+                        </StackPanel>
+                    </Grid>
+                </Border>
+
+                <Grid Margin="0,14,0,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="14"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Border Grid.Column="0" Style="{StaticResource Card}">
+                        <StackPanel>
+                            <TextBlock Text="Phòng" Style="{StaticResource SectionLabel}"/>
+                            <TextBlock x:Name="txtPhong" Style="{StaticResource SectionValue}"/>
+                        </StackPanel>
+                    </Border>
+
+                    <Border Grid.Column="2" Style="{StaticResource Card}">
+                        <StackPanel>
+                            <TextBlock Text="Ghế" Style="{StaticResource SectionLabel}"/>
+                            <TextBlock x:Name="txtGhe" Style="{StaticResource SectionValue}"/>
+                        </StackPanel>
+                    </Border>
+                </Grid>
+
+                <Border Style="{StaticResource Card}" Margin="0,14,0,0">
+                    <StackPanel>
+                        <TextBlock Text="Tác động sau khi hủy"
+                                   Foreground="#FECACA"
+                                   FontWeight="Bold"
+                                   FontSize="14"/>
+                        <TextBlock Text="Toàn bộ vé trong hóa đơn sẽ chuyển sang trạng thái Đã hủy."
+                                   Foreground="#E2E8F0"
+                                   Margin="0,10,0,0"/>
+                        <TextBlock Text="Ghế của suất chiếu sẽ được mở bán lại."
+                                   Foreground="#E2E8F0"
+                                   Margin="0,6,0,0"/>
+                        <TextBlock Text="Hóa đơn sẽ không còn hiệu lực và thanh toán sẽ bị đánh dấu đã hủy."
+                                   Foreground="#E2E8F0"
+                                   Margin="0,6,0,0"/>
+                    </StackPanel>
+                </Border>
+
+                <Border Style="{StaticResource Card}" Margin="0,14,0,0">
+                    <StackPanel>
+                        <TextBlock Text="Lý do hủy"
+                                   Foreground="#F8FAFC"
+                                   FontWeight="SemiBold"/>
+                        <ComboBox x:Name="cbLyDo"
+                                  Margin="0,10,0,0"
+                                  Style="{StaticResource DialogComboBox}"
+                                  SelectionChanged="cbLyDo_SelectionChanged">
+                            <ComboBoxItem Content="Khách đổi lịch"/>
+                            <ComboBoxItem Content="Khách không thanh toán"/>
+                            <ComboBoxItem Content="Nhập sai hóa đơn"/>
+                            <ComboBoxItem Content="Khác"/>
+                        </ComboBox>
+
+                        <TextBox x:Name="txtLyDoKhac"
+                                 Margin="0,12,0,0"
+                                 Height="100"
+                                 Visibility="Collapsed"
+                                 Style="{StaticResource DialogTextBox}"/>
+                    </StackPanel>
+                </Border>
+            </StackPanel>
+        </ScrollViewer>
+
+        <Grid Grid.Row="4">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="10"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+
+            <Button Grid.Column="1"
+                    Width="100"
+                    Content="Đóng"
+                    Click="Close_Click"
+                    Style="{StaticResource SecondaryButton}"/>
+
+            <Button Grid.Column="3"
+                    Width="150"
+                    Content="Xác nhận hủy"
+                    Click="Confirm_Click"
+                    Style="{StaticResource DangerButton}"/>
+        </Grid>
+    </Grid>
+</Window>

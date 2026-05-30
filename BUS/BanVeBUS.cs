@@ -22,20 +22,32 @@ namespace BUS
             dal.BoGiuGhe(maSuatChieu, maGhe);
         }
 
+        public KhuyenMaiApDungInfo KiemTraKhuyenMai(string maCode, decimal tamTinh)
+        {
+            return dal.KiemTraKhuyenMai(maCode, tamTinh);
+        }
+
         public KetQuaBanVe ThanhToan(
             int maSuatChieu,
             IEnumerable<int> maGhes,
             IEnumerable<DichVuTam> dichVus,
             string hoTen,
             string soDienThoai,
-            string phuongThuc)
+            string phuongThuc,
+            string? maKhuyenMaiCode = null,
+            int? maNhanVien = 1)
         {
-            return dal.ThanhToan(maSuatChieu, maGhes, dichVus, hoTen, soDienThoai, phuongThuc);
+            return dal.ThanhToan(maSuatChieu, maGhes, dichVus, hoTen, soDienThoai, phuongThuc, maKhuyenMaiCode, maNhanVien);
         }
 
         public List<TicketInfo> GetVeTheoDonHang(int maDonHang)
         {
             return dal.GetVeTheoDonHang(maDonHang);
+        }
+
+        public int GetSoLuongTonDichVu(int maSanPham)
+        {
+            return dal.GetSoLuongTonDichVu(maSanPham);
         }
     }
 }

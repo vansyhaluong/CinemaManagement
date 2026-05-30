@@ -12,13 +12,13 @@ namespace BUS
     {
         DAL.PhongChieuDAL dal = new DAL.PhongChieuDAL();
         
-        public List<PhongChieu> getPhongChieu()
+        public List<PhongChieu> getPhongChieu(int? maRap = null)
         {
-            return dal.getPhongChieu();
+            return dal.getPhongChieu(maRap);
         }
-        public PhongChieu? getPhongChieuById(int id)
+        public PhongChieu? getPhongChieuById(int id, int? maRap = null)
         {
-            return dal.getPhongChieuById(id);
+            return dal.getPhongChieuById(id, maRap);
         }
         public bool addPhongChieu(PhongChieu phong)
         {

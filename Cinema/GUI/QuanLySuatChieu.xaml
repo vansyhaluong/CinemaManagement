@@ -1,62 +1,39 @@
-﻿<UserControl x:Class="Cinema.GUI.QuanLySuatChieu"
+<UserControl x:Class="Cinema.GUI.QuanLySuatChieu"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:Cinema.GUI"
-             xmlns:controls="clr-namespace:Cinema.Controls"
-             mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             mc:Ignorable="d"
+             d:DesignHeight="680"
+             d:DesignWidth="1180">
     <UserControl.Resources>
+        <SolidColorBrush x:Key="PageBackgroundBrush" Color="#0F172A"/>
+        <SolidColorBrush x:Key="PanelBrush" Color="#111827"/>
+        <SolidColorBrush x:Key="PanelAltBrush" Color="#1E293B"/>
+        <SolidColorBrush x:Key="BorderBrushDark" Color="#334155"/>
+        <SolidColorBrush x:Key="TextMutedBrushLocal" Color="#94A3B8"/>
+        <SolidColorBrush x:Key="AccentBrush" Color="#38BDF8"/>
+        <SolidColorBrush x:Key="DangerBrush" Color="#F87171"/>
 
-        <!-- MAIN COLORS -->
-        <SolidColorBrush x:Key="MainColor" Color="#0F1923"/>
-        <SolidColorBrush x:Key="MainLight" Color="#1D2A36"/>
-        <SolidColorBrush x:Key="AccentColor" Color="#3FA9F5"/>
-        <SolidColorBrush x:Key="WhiteColor" Color="White"/>
-        <SolidColorBrush x:Key="BorderColor" Color="#DCE2E8"/>
-        <SolidColorBrush x:Key="TextGray" Color="#6B7280"/>
-
-        <!-- CARD -->
-        <Style TargetType="Border" x:Key="CardStyle">
-            <Setter Property="Background" Value="White"/>
-            <Setter Property="CornerRadius" Value="18"/>
-            <Setter Property="BorderBrush" Value="{StaticResource BorderColor}"/>
+        <Style x:Key="DashboardCard" TargetType="Border">
+            <Setter Property="Background" Value="{StaticResource PanelBrush}"/>
+            <Setter Property="CornerRadius" Value="16"/>
+            <Setter Property="BorderBrush" Value="{StaticResource BorderBrushDark}"/>
             <Setter Property="BorderThickness" Value="1"/>
-            <Setter Property="Padding" Value="18"/>
-            <Setter Property="Margin" Value="0,0,0,16"/>
         </Style>
 
-        <!-- BUTTON -->
-        <Style TargetType="Button" x:Key="PrimaryButton">
-            <Setter Property="Foreground" Value="White"/>
-            <Setter Property="Background" Value="{StaticResource MainColor}"/>
-            <Setter Property="FontWeight" Value="SemiBold"/>
-            <Setter Property="BorderThickness" Value="0"/>
-            <Setter Property="Cursor" Value="Hand"/>
+        <Style x:Key="FilterControlStyle" TargetType="Control">
+            <Setter Property="Height" Value="42"/>
+            <Setter Property="FontSize" Value="14"/>
+        </Style>
+
+        <Style x:Key="PrimaryButtonStyle" TargetType="Button">
             <Setter Property="Height" Value="42"/>
             <Setter Property="Padding" Value="18,0"/>
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="Button">
-                        <Border Background="{TemplateBinding Background}"
-                                CornerRadius="10">
-                            <ContentPresenter HorizontalAlignment="Center"
-                                              VerticalAlignment="Center"/>
-                        </Border>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
-
-        <!-- ICON BUTTON -->
-        <Style TargetType="Button" x:Key="IconButton">
-            <Setter Property="Width" Value="34"/>
-            <Setter Property="Height" Value="34"/>
-            <Setter Property="Margin" Value="4,0"/>
+            <Setter Property="Background" Value="#2563EB"/>
             <Setter Property="Foreground" Value="White"/>
-            <Setter Property="FontWeight" Value="Bold"/>
             <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
             <Setter Property="Cursor" Value="Hand"/>
             <Setter Property="Template">
                 <Setter.Value>
@@ -71,184 +48,246 @@
             </Setter>
         </Style>
 
+        <Style x:Key="SecondaryButtonStyle" TargetType="Button" BasedOn="{StaticResource PrimaryButtonStyle}">
+            <Setter Property="Background" Value="#1E293B"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="BorderBrush" Value="{StaticResource BorderBrushDark}"/>
+        </Style>
+
+        <Style x:Key="ActionButtonStyle" TargetType="Button">
+            <Setter Property="Width" Value="30"/>
+            <Setter Property="Height" Value="30"/>
+            <Setter Property="Margin" Value="3,0"/>
+            <Setter Property="Background" Value="#1E293B"/>
+            <Setter Property="BorderBrush" Value="{StaticResource BorderBrushDark}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="8">
+                            <ContentPresenter HorizontalAlignment="Center"
+                                              VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style TargetType="DataGridColumnHeader">
+            <Setter Property="Background" Value="#1E293B"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="FontSize" Value="13"/>
+            <Setter Property="Height" Value="44"/>
+            <Setter Property="BorderBrush" Value="{StaticResource BorderBrushDark}"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+        </Style>
+
+        <Style TargetType="DataGridCell">
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Padding" Value="8,0"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="TextBlock.TextAlignment" Value="Center"/>
+        </Style>
+
+        <Style TargetType="DataGridRow">
+            <Setter Property="Background" Value="#111827"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="BorderBrush" Value="#1F2937"/>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#172554"/>
+                </Trigger>
+                <Trigger Property="IsSelected" Value="True">
+                    <Setter Property="Background" Value="#1D4ED8"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
     </UserControl.Resources>
 
-    <Grid Margin="24">
+    <Grid Background="{StaticResource PageBackgroundBrush}">
+        <Grid Margin="24">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
 
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
+            <Border Grid.Row="0"
+                    Style="{StaticResource DashboardCard}"
+                    Padding="26"
+                    Margin="0,0,0,18">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
 
-        <!-- HEADER -->
-        <Border Grid.Row="0"
-                Background="{StaticResource MainColor}"
-                CornerRadius="22"
-                Padding="28"
-                Margin="0,0,0,18">
+                    <StackPanel>
+                        <TextBlock Text="QUẢN LÝ SUẤT CHIẾU"
+                                   FontSize="28"
+                                   FontWeight="Bold"
+                                   Foreground="White"/>
+                        <TextBlock Text="Theo dõi lịch chiếu, lọc nhanh và quản lý suất chiếu theo ngày"
+                                   Margin="0,8,0,0"
+                                   FontSize="13"
+                                   Foreground="{StaticResource TextMutedBrushLocal}"/>
+                    </StackPanel>
 
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="Auto"/>
-                </Grid.ColumnDefinitions>
-
-                <StackPanel>
-                    <TextBlock Text="QUẢN LÝ SUẤT CHIẾU"
-                               FontSize="30"
-                               FontWeight="Bold"
-                               Foreground="White"/>
-
-                    <TextBlock Text="Theo dõi lịch chiếu phim, chỉnh sửa và quản lý suất chiếu"
-                               Margin="0,8,0,0"
-                               FontSize="14"
-                               Foreground="#BFC8D4"/>
-                </StackPanel>
-
-                <Button Grid.Column="1"
-                        Width="120"
-                        
-                        Click="btnThem_Click"
-                        Style="{StaticResource PrimaryButton}"
-                        Background="{StaticResource AccentColor}"
-                        Content="+ Thêm suất chiếu"/>
-            </Grid>
-        </Border>
-
-        <!-- FILTER -->
-        <Border Grid.Row="1"
-                Style="{StaticResource CardStyle}">
-
-            <Grid VerticalAlignment="Center">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="230"/>
-                    <ColumnDefinition Width="250"/>
-                    <ColumnDefinition Width="150"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-
-                <DatePicker Height="42"
-                            x:Name="dtNgayChieu"
-                            SelectedDateChanged="dpNgayChieu_SelectedDateChanged"
-                            FontSize="14"/>
-
-                <ComboBox Grid.Column="1"
-                          Margin="14,0,0,0"
-                          Height="42"
-                          FontSize="14"
-                          x:Name="cbPhim"
-                          SelectionChanged="cbPhim_SelectionChanged"
-                          >
-                    <!--<ComboBoxItem Content="Tất cả phim"/>
-                    <ComboBoxItem Content="Avengers Endgame"/>
-                    <ComboBoxItem Content="Spider Man"/>-->
-                </ComboBox>
-
-                
-
-                <TextBlock Grid.Column="3"
-                           HorizontalAlignment="Right"
-                           VerticalAlignment="Center"
-                           FontSize="13"
-                           Foreground="{StaticResource TextGray}"
-                           Text=""/>
-            </Grid>
-        </Border>
-
-        <!-- TABLE -->
-        <Border Grid.Row="2"
-                Style="{StaticResource CardStyle}">
-
-            <DataGrid AutoGenerateColumns="False"
-          HeadersVisibility="Column"
-          CanUserAddRows="False"
-          IsReadOnly="True"
-          x:Name="dgSuatChieu"
-          GridLinesVisibility="Horizontal"
-          RowHeight="52"
-          FontSize="14"
-          BorderThickness="0"
-          Background="White"
-          AlternatingRowBackground="#F8FAFC"
-          RowBackground="White"
-          HorizontalContentAlignment="Center"
-          VerticalContentAlignment="Center">
-
-                <!-- HEADER -->
-                <DataGrid.ColumnHeaderStyle>
-                    <Style TargetType="DataGridColumnHeader">
-                        <Setter Property="Background" Value="#F3F6F9"/>
-                        <Setter Property="Foreground" Value="{StaticResource MainColor}"/>
-                        <Setter Property="FontWeight" Value="Bold"/>
-                        <Setter Property="Height" Value="48"/>
-                        <Setter Property="BorderBrush" Value="#E5E7EB"/>
-                        <Setter Property="HorizontalContentAlignment" Value="Center"/>
-                        <Setter Property="VerticalContentAlignment" Value="Center"/>
-                        <Setter Property="FontSize" Value="14"/>
-                    </Style>
-                </DataGrid.ColumnHeaderStyle>
-
-                <!-- CELL STYLE -->
-                <DataGrid.CellStyle>
-                    <Style TargetType="DataGridCell">
-                        <Setter Property="BorderThickness" Value="0"/>
-                        <Setter Property="Padding" Value="8,0"/>
-                        <Setter Property="TextBlock.TextAlignment" Value="Center"/>
-                        <Setter Property="VerticalContentAlignment" Value="Center"/>
-                    </Style>
-                </DataGrid.CellStyle>
-
-                <DataGrid.Columns>
-
-                    <!-- BỎ CỘT MÃ -->
-
-                    <DataGridTextColumn Header="Tên phim"
-                            Width="300"
-                            Binding="{Binding MaPhimNavigation.TieuDe}"/>
-
-                    <DataGridTextColumn Header="Phòng"
-                            Width="120"
-                            Binding="{Binding MaPhongNavigation.TenPhong}"/>
-
-                    <DataGridTextColumn Header="Bắt đầu"
-                            Width="190"
-                            Binding="{Binding ThoiGianBatDau, StringFormat=dd/MM/yyyy HH:mm}"/>
-
-                    <DataGridTextColumn Header="Kết thúc"
-                            Width="190"
-                            Binding="{Binding ThoiGianKetThuc, StringFormat=dd/MM/yyyy HH:mm}"/>
-
-                    <DataGridTemplateColumn Header="Thao tác"
-                                Width="140">
-                        <DataGridTemplateColumn.CellTemplate>
-                            <DataTemplate>
-                                <StackPanel Orientation="Horizontal"
-                                HorizontalAlignment="Center"
+                    <StackPanel Grid.Column="1"
+                                Orientation="Horizontal"
                                 VerticalAlignment="Center">
+                        <!--<Button Content="Làm mới"
+                                Margin="0,0,10,0"
+                                Click="btnLamMoi_Click"
+                                Style="{StaticResource SecondaryButtonStyle}"/>-->
+                        <Button Content="+ Thêm suất chiếu"
+                                Width="150"
+                                Click="btnThem_Click"
+                                Style="{StaticResource PrimaryButtonStyle}"/>
+                    </StackPanel>
+                </Grid>
+            </Border>
 
-                                    <Button Style="{StaticResource IconButton}"
-                                Click="btnSua_Click"
-                                Tag="{Binding}"
-                                Background="#2563EB"
-                                Content="✎"/>
+            <Border Grid.Row="1"
+                    Style="{StaticResource DashboardCard}"
+                    Padding="18"
+                    Margin="0,0,0,18">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="230"/>
+                        <ColumnDefinition Width="260"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
 
-                                    <Button Style="{StaticResource IconButton}"
-                                Background="#DC2626"
-                                Tag="{Binding}"
-                                Click="btnXoa_Click"
-                                Content="🗑"/>
+                    <DatePicker x:Name="dtNgayChieu"
+                                Style="{StaticResource FilterControlStyle}"
+                                Foreground="White"
+                                Background="#1E293B"
+                                BorderBrush="{StaticResource BorderBrushDark}"
+                                SelectedDateChanged="dpNgayChieu_SelectedDateChanged"/>
 
-                                </StackPanel>
-                            </DataTemplate>
-                        </DataGridTemplateColumn.CellTemplate>
-                    </DataGridTemplateColumn>
+                    <ComboBox Grid.Column="1"
+                              x:Name="cbPhim"
+                              Margin="14,0,0,0"
+                              Style="{StaticResource FilterControlStyle}"
+                              Foreground="{StaticResource TextMutedBrushLocal}"
+                              Background="#1E293B"
+                              BorderBrush="{StaticResource BorderBrushDark}"
+                              SelectionChanged="cbPhim_SelectionChanged"/>
 
-                </DataGrid.Columns>
+                    <StackPanel Grid.Column="2"
+                                Orientation="Horizontal"
+                                HorizontalAlignment="Right"
+                                VerticalAlignment="Center">
+                        <Border Background="#1E293B"
+                                CornerRadius="10"
+                                Padding="14,10"
+                                BorderBrush="{StaticResource BorderBrushDark}"
+                                BorderThickness="1">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="Tổng suất chiếu: "
+                                           Foreground="{StaticResource TextMutedBrushLocal}"
+                                           FontSize="13"/>
+                                <TextBlock x:Name="txtTongSuat"
+                                           Foreground="White"
+                                           FontSize="13"
+                                           FontWeight="SemiBold"/>
+                            </StackPanel>
+                        </Border>
+                    </StackPanel>
+                </Grid>
+            </Border>
 
-            </DataGrid>
+            <Border Grid.Row="2"
+                    Style="{StaticResource DashboardCard}"
+                    Padding="16">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
 
-        </Border>
+                    <DockPanel Margin="4,0,4,12">
+                        <TextBlock Text="Danh sách suất chiếu"
+                                   Foreground="White"
+                                   FontSize="16"
+                                   FontWeight="SemiBold"
+                                   DockPanel.Dock="Left"/>
+                        <TextBlock x:Name="txtBoLocDangDung"
+                                   Foreground="{StaticResource TextMutedBrushLocal}"
+                                   FontSize="12"
+                                   HorizontalAlignment="Right"/>
+                    </DockPanel>
 
+                    <DataGrid Grid.Row="1"
+                              x:Name="dgSuatChieu"
+                              AutoGenerateColumns="False"
+                              HeadersVisibility="Column"
+                              CanUserAddRows="False"
+                              IsReadOnly="True"
+                              GridLinesVisibility="Horizontal"
+                              RowHeight="50"
+                              FontSize="14"
+                              BorderThickness="0"
+                              Background="#111827"
+                              Foreground="White"
+                              RowBackground="#111827"
+                              AlternatingRowBackground="#0F172A">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Tên phim"
+                                                Width="2.4*"
+                                                Binding="{Binding MaPhimNavigation.TieuDe}"/>
+                            <DataGridTextColumn Header="Phòng"
+                                                Width="1.1*"
+                                                Binding="{Binding MaPhongNavigation.TenPhong}"/>
+                            <DataGridTextColumn Header="Ngày chiếu"
+                                                Width="1.3*"
+                                                Binding="{Binding ThoiGianBatDau, StringFormat=dd/MM/yyyy}"/>
+                            <DataGridTextColumn Header="Bắt đầu"
+                                                Width="1.1*"
+                                                Binding="{Binding ThoiGianBatDau, StringFormat=HH:mm}"/>
+                            <DataGridTextColumn Header="Kết thúc"
+                                                Width="1.1*"
+                                                Binding="{Binding ThoiGianKetThuc, StringFormat=HH:mm}"/>
+                            <DataGridTextColumn Header="Giá vé"
+                                                Width="1.2*"
+                                                Binding="{Binding GiaVeCoBan, StringFormat={}{0:N0} đ}"/>
+
+                            <DataGridTemplateColumn Header="Thao tác" Width="110">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Orientation="Horizontal"
+                                                    HorizontalAlignment="Center"
+                                                    VerticalAlignment="Center">
+                                            <Button Style="{StaticResource ActionButtonStyle}"
+                                                    Click="btnSua_Click"
+                                                    Tag="{Binding}"
+                                                    Foreground="{StaticResource AccentBrush}"
+                                                    Content="✎"/>
+                                            <Button Style="{StaticResource ActionButtonStyle}"
+                                                    Tag="{Binding}"
+                                                    Click="btnXoa_Click"
+                                                    Foreground="{StaticResource DangerBrush}"
+                                                    Content="✕"/>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+            </Border>
+        </Grid>
     </Grid>
 </UserControl>

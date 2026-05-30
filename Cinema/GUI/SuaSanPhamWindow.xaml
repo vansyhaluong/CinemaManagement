@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:Cinema.GUI"
         mc:Ignorable="d"
         Title="Sửa sản phẩm"
+        WindowStyle="None"
         Width="380"
         Height="350"
         WindowStartupLocation="CenterScreen"
@@ -48,6 +49,7 @@
                  VerticalAlignment="Top"
                  Margin="0,6,0,12"/>
         <TextBlock Grid.Row="5"
+           x:Name="lblSoLuongTon"
            Text="Số lượng tồn kho"
            Foreground="{DynamicResource TextMutedBrush}"/>
 

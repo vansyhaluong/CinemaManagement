@@ -46,5 +46,13 @@ namespace DAL
                 .Where(x => x.MaPhong == suat.MaPhong)
                 .ToList();
         }
+        public List<int> getMaGheDaBanTheoSuat(int maSuatChieu)
+        {
+            return db.VeBans
+                .Where(x => x.MaSuatChieu == maSuatChieu && x.TrangThai != "Đã hủy" && x.MaGhe.HasValue)
+                .Select(x => x.MaGhe!.Value)
+                .Distinct()
+                .ToList();
+        }
     }
 }

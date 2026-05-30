@@ -935,7 +935,60 @@ UPDATE SanPham
 SET HinhAnh = 'pack://application:,,,/Images/sting.webp'
 WHERE Ten LIKE N'%Sting dâu%'
 
+go
+ALTER TABLE KhuyenMai
+ADD MaCode NVARCHAR(50),
+    DaDung INT DEFAULT 0;
 
+go
+INSERT INTO KhuyenMai
+(TenKhuyenMai,  MoTa, LoaiGiam, GiaTriGiam, DonToiThieu, NgayBatDau, NgayKetThuc, SoLuong, TrangThai, MaCode,DaDung)
+VALUES
+(N'Giảm 20% cuối tuần', N'Áp dụng cho hóa đơn cuối tuần từ 200.000đ', N'PhanTram', 20,200000, '2026-05-30', '2026-06-30', 20, N'HoatDong', 'WEEKEND20', 0),
 
+(N'Giảm 50.000đ cho hóa đơn lớn', N'Giảm trực tiếp 50.000đ cho hóa đơn từ 300.000đ', N'TienMat',50000, 300000, '2026-05-30', '2026-06-30',10, N'HoatDong', 'CGV50',0)
+
+go
+ALTER TABLE DonHang
+ADD TienGiam DECIMAL(10,2) DEFAULT 0;
+go
+ALTER TABLE DonHang
+ADD CONSTRAINT FK_HoaDon_KhuyenMai
+FOREIGN KEY (MaKhuyenMai) REFERENCES KhuyenMai(MaKhuyenMai);
+go
+CREATE TABLE ComboChiTiet (
+    MaCombo INT,
+    MaSanPhamCon INT,
+    SoLuong INT CHECK (SoLuong > 0),
+
+    PRIMARY KEY (MaCombo, MaSanPhamCon),
+
+    FOREIGN KEY (MaCombo) REFERENCES SanPham(MaSanPham),
+    FOREIGN KEY (MaSanPhamCon) REFERENCES SanPham(MaSanPham)
+);
+go
+-- =========================
+-- COMBO
+-- =========================
+INSERT INTO LoaiSanPham(TenLoai)
+values(N'Combo')
+go
+INSERT INTO SanPham (Ten, Gia, TrangThai, MaLoaiSP, HinhAnh,MoTa)
+VALUES
+(N'Combo Couple', 99000, N'Đang bán',3, 'pack://application:,,,/Images/combo1.jpg', N'1 Bắp lớn + 2 Pepsi'),
+(N'Combo Family', 179000, N'Đang bán', 3,'pack://application:,,,/Images/combo2.jpg',N'2 Bắp lớn + 4 Coca Cola + 2 Snack');
+go
+-- =========================
+-- CHI TIẾT COMBO
+-- =========================
+select * from SanPham
+go
+INSERT INTO ComboChiTiet (MaCombo, MaSanPhamCon, SoLuong)
+VALUES
+(9, 1, 1), -- 2 Pepsi
+(9, 2, 2), -- 1 Bắp lớn
+(10,1,2),
+(10,2,4)
+go
 
 

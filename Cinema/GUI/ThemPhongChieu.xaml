@@ -7,6 +7,7 @@
         Background="{DynamicResource AppBackgroundBrush}"
         WindowStartupLocation="CenterScreen"
         ResizeMode="NoResize"
+        WindowStyle="None"
         mc:Ignorable="d"
         Title="Phòng Chiếu Phim" Height="450" Width="600">
     <Grid Margin="20">

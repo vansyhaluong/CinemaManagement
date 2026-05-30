@@ -4,6 +4,7 @@
         Title="Xem vé"
         Width="760"
         Height="720"
+        WindowStyle="None"
         WindowStartupLocation="CenterOwner"
         Background="#0F172A">
 

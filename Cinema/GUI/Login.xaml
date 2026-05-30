@@ -6,6 +6,8 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:local="clr-namespace:Cinema.GUI"
         mc:Ignorable="d"
+        
+         WindowStartupLocation="CenterScreen"
         Title="Login" Height="450" Width="800">
     <Grid>
         <Grid.Background>
@@ -19,18 +21,58 @@
         </Border>
         <StackPanel Orientation="Horizontal">
             <StackPanel Width="350">
-                <Image Source="pack://application:,,,/Images/CinemaSquadin.jpg" Height="354" VerticalAlignment="Stretch" Stretch="Fill" Margin="20"/>
+                <Image Source="pack://application:,,,/Images/CinemaSquadin.jpg" Height="389" VerticalAlignment="Stretch" Stretch="Fill" />
             </StackPanel>
             <StackPanel Width="350">
                 <StackPanel Margin="20 40">
                     <TextBlock Text="Login" Margin="20" Foreground="White" TextAlignment="Center" FontSize="38" FontFamily="Impact"></TextBlock>
                     <StackPanel Orientation="Horizontal" Margin="10">
-                        <materialDesign:PackIcon Kind="User" Width="25" Height="25" Foreground="White"/>
-                        <TextBox x:Name="txtUsername"  materialDesign:HintAssist.Hint="Enter Username" Margin="10 0" Foreground="White" Width="250" BorderBrush="White" CaretBrush="#ffd94448" SelectionBrush="#ffd94448"  Background="Transparent"/>
+                        <materialDesign:PackIcon Kind="User"
+                             Width="25"
+                             Height="25"
+                             Foreground="White"
+                             VerticalAlignment="Center"/>
+
+                        <Border Width="250"
+            Height="40"
+            Margin="10 0"
+            CornerRadius="7"
+            BorderBrush="#333344"
+            BorderThickness="1"
+            Background="Transparent">
+                            <TextBox x:Name="txtUsername"
+                 Padding="12,0"
+                 Foreground="White"
+                 CaretBrush="#ffd94448"
+                 SelectionBrush="#ffd94448"
+                 Background="Transparent"
+                 BorderThickness="0"
+                 VerticalContentAlignment="Center"/>
+                        </Border>
                     </StackPanel>
+
                     <StackPanel Orientation="Horizontal" Margin="10">
-                        <materialDesign:PackIcon Kind="Password" Width="25" Height="25" Foreground="White"/>
-                        <TextBox x:Name="txtPassword" materialDesign:HintAssist.Hint="Enter Password" Margin="10 0" Foreground="White" Width="250" BorderBrush="White" CaretBrush="#ffd94448" SelectionBrush="#ffd94448"  Background="Transparent"/>
+                        <materialDesign:PackIcon Kind="Password"
+                             Width="25"
+                             Height="25"
+                             Foreground="White"
+                             VerticalAlignment="Center"/>
+
+                        <Border Width="250"
+            Height="40"
+            Margin="10 0"
+            CornerRadius="7"
+            BorderBrush="#333344"
+            BorderThickness="1"
+            Background="Transparent">
+                            <PasswordBox x:Name="txtPassword"
+                     Padding="12,0"
+                     Foreground="White"
+                     CaretBrush="#ffd94448"
+                     Background="Transparent"
+                     BorderThickness="0"
+                     VerticalContentAlignment="Center"/>
+                        </Border>
                     </StackPanel>
                     <StackPanel Margin="10" HorizontalAlignment="Center">
                         <Button Width="100" Height="40" Style="{StaticResource MaterialDesignRaisedButton}" 

@@ -1,5 +1,6 @@
 ﻿using BUS;
 using Cinema.Models;
+using DTO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,6 +24,7 @@ namespace Cinema.GUI
     {
         BUS.PhongChieuBUS bus = new BUS.PhongChieuBUS();
         RapBUS bus2 = new RapBUS();
+        private readonly int? maRapDangNhap = Session.IsAdmin ? null : Session.MaRap;
         private PhongChieu? editingPhong;
         private bool isEdit;
         public ThemPhong(PhongChieu? ph=null)
@@ -38,10 +40,15 @@ namespace Cinema.GUI
         }
         public void btnSave_Click(object sender, RoutedEventArgs e)
         {
+            if (!ValidatePhongInput(out string tenPhong, out int maRap))
+            {
+                return;
+            }
+
             if (isEdit)
             {
-                editingPhong.TenPhong = txtTenPhong.Text;
-                editingPhong.MaRap = (int)cbRap.SelectedValue;
+                editingPhong.TenPhong = tenPhong;
+                editingPhong.MaRap = maRap;
                 bool result = bus.updatePhongChieu(editingPhong);
                 if (result)
                 {
@@ -60,8 +67,8 @@ namespace Cinema.GUI
             {
                 PhongChieu newPhong = new PhongChieu
                 {
-                    TenPhong = txtTenPhong.Text,
-                    MaRap = (int)cbRap.SelectedValue
+                    TenPhong = tenPhong,
+                    MaRap = maRap
                 };
                 bool result = bus.addPhongChieu(newPhong);
                 if (result)
@@ -82,16 +89,49 @@ namespace Cinema.GUI
         }
         public void getAllRap()
         {
-           var listRap = bus2.getAllRap();
+           var listRap = maRapDangNhap.HasValue && maRapDangNhap.Value > 0
+                ? bus2.getAllRap().Where(x => x.MaRap == maRapDangNhap.Value).ToList()
+                : bus2.getAllRap();
             cbRap.ItemsSource = listRap;
             cbRap.DisplayMemberPath = "TenRap";
             cbRap.SelectedValuePath = "MaRap";
+            cbRap.IsEnabled = !maRapDangNhap.HasValue;
+            if (maRapDangNhap.HasValue && maRapDangNhap.Value > 0)
+            {
+                cbRap.SelectedValue = maRapDangNhap.Value;
+            }
+            else if (cbRap.Items.Count > 0)
+            {
+                cbRap.SelectedIndex = 0;
+            }
         }
         public void loadData(PhongChieu ph)
         {
             txtTenPhong.Text = ph.TenPhong;
             cbRap.SelectedValue = ph.MaRap;
             btnSave.Content = "Cập nhật";
+        }
+
+        private bool ValidatePhongInput(out string tenPhong, out int maRap)
+        {
+            tenPhong = txtTenPhong.Text?.Trim() ?? string.Empty;
+            maRap = 0;
+
+            if (string.IsNullOrWhiteSpace(tenPhong))
+            {
+                MessageBox.Show("Vui lòng nhập tên phòng chiếu!");
+                txtTenPhong.Focus();
+                return false;
+            }
+
+            if (cbRap.SelectedValue == null || !int.TryParse(cbRap.SelectedValue.ToString(), out maRap))
+            {
+                MessageBox.Show("Vui lòng chọn rạp!");
+                cbRap.Focus();
+                return false;
+            }
+
+            return true;
         }
     }
 }

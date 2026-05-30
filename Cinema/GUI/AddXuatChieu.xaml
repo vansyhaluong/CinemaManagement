@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Cinema.GUI"
         mc:Ignorable="d"
+        Background="{DynamicResource AppBackgroundBrush}"
          Title="Thêm suất chiếu"
  Width="860"
  Height="520"
@@ -46,6 +47,14 @@
             <Setter Property="Height" Value="42"/>
             <Setter Property="FontSize" Value="12"/>
             <Setter Property="HorizontalAlignment" Value="Stretch"/>
+        </Style>
+
+        <Style TargetType="TextBox">
+            <Setter Property="Height" Value="35"/>
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="Padding" Value="10,0"/>
+            <Setter Property="BorderBrush" Value="{StaticResource BorderColor}"/>
+            <Setter Property="BorderThickness" Value="1"/>
         </Style>
 
         <!-- BUTTON -->
@@ -116,7 +125,8 @@
                          Foreground="White"
                          FontSize="18"
                          BorderThickness="0"
-                         Content="✕"/>
+                         Content="✕"
+                         Click="btnCancel_Click"/>
                 </Grid>
             </Border>
 
@@ -205,7 +215,7 @@
                     <TextBox x:Name="txtGioKetThuc"
                  Height="32"
                  FontSize="12"
-                 Foreground="White"
+                  Foreground="{DynamicResource TextMutedBrush}"
                  Padding="10,0"
                  IsReadOnly="True"/>
 
@@ -214,6 +224,15 @@
                    Margin="0,12,0,0"
                    FontSize="12"
                    Foreground="#22C55E"/>
+
+                    <TextBlock Text="Giá vé cơ bản"
+                   FontSize="12"
+                   Margin="0,18,0,6"
+                   Foreground="{DynamicResource TextMutedBrush}"
+                   FontWeight="SemiBold"/>
+
+                    <TextBox x:Name="txtGiaVe"
+                 Text="90000"/>
 
                 </StackPanel>
 
@@ -239,7 +258,7 @@
 
                     <Button Width="100"
                          Background="{StaticResource AccentColor}"
-                         Style="{StaticResource AccentButton}"
+                         Style="{StaticResource MainButton}"
                          FontSize="12"
                             x:Name="btnSave"
                          Click="btnSave_Click"

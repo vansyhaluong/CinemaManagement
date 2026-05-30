@@ -1,5 +1,6 @@
 ﻿using BUS;
 using Cinema.Models;
+using DTO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,16 +22,18 @@ namespace Cinema.GUI
     /// </summary>
     public partial class AddXuatChieu : Window
     {
-        MovieBUS movieBUS = new MovieBUS();
-        PhongChieuBUS phongChieuBUS = new PhongChieuBUS();
-        RapBUS rapBUS = new RapBUS();
-        SuatChieuBUS suatChieuBUS = new SuatChieuBUS();
+        private readonly MovieBUS movieBUS = new MovieBUS();
+        private readonly PhongChieuBUS phongChieuBUS = new PhongChieuBUS();
+        private readonly RapBUS rapBUS = new RapBUS();
+        private readonly SuatChieuBUS suatChieuBUS = new SuatChieuBUS();
+        private readonly int? maRapDangNhap = Session.IsAdmin ? null : Session.MaRap;
         private bool isEdit;
         private SuatChieu? editingSuatChieu;
         public AddXuatChieu(SuatChieu? s=null)
         {
             InitializeComponent();
             loadComboPhim();
+            loadAllRap();
             loadGio();
             if (s != null)
             {
@@ -43,12 +46,18 @@ namespace Cinema.GUI
 
         private void loadData(SuatChieu s)
         {
+            if (!s.ThoiGianBatDau.HasValue || !s.ThoiGianKetThuc.HasValue)
+            {
+                return;
+            }
+
             cbPhim.SelectedValue = s.MaPhim;
-            cbRap.SelectedValue = s.MaPhongNavigation.MaRap;
+            cbRap.SelectedValue = s.MaPhongNavigation?.MaRap;
             cbPhong.SelectedValue = s.MaPhong;
             dpNgay.SelectedDate = s.ThoiGianBatDau.Value.Date;
             cbGio.SelectedItem = s.ThoiGianBatDau.Value.ToString("HH:mm");
             txtGioKetThuc.Text = s.ThoiGianKetThuc.Value.ToString("HH:mm");
+            txtGiaVe.Text = s.GiaVeCoBan.ToString("0");
             btnSave.Content = "Cập nhật";
         }
 
@@ -63,30 +72,20 @@ namespace Cinema.GUI
         }
         public void btnSave_Click(object sender, RoutedEventArgs e)
         {
+            if (!TryBuildSuatChieuInput(out int maPhim, out int maPhong, out DateTime thoiGianBatDau, out DateTime thoiGianKetThuc, out decimal giaVe))
+            {
+                return;
+            }
+
             if (isEdit)
             {
                 if (editingSuatChieu != null)
                 {
-                    if (cbPhim.SelectedValue == null ||
-                        cbPhong.SelectedValue == null ||
-                        dpNgay.SelectedDate == null ||
-                        cbGio.SelectedItem == null)
-                    {
-                        new CustomMessageBox("Thông báo", "Vui lòng nhập đủ dữ liệu!").ShowDialog();
-                        return;
-                    }
-
-                    editingSuatChieu.MaPhim = (int)cbPhim.SelectedValue;
-                    editingSuatChieu.MaPhong = (int)cbPhong.SelectedValue;
-
-                    var ngay = dpNgay.SelectedDate.Value;
-                    var gio = cbGio.SelectedItem.ToString();
-
-                    editingSuatChieu.ThoiGianBatDau =
-                        DateTime.Parse($"{ngay:yyyy-MM-dd} {gio}");
-
-                    editingSuatChieu.ThoiGianKetThuc =
-                        DateTime.Parse($"{ngay:yyyy-MM-dd} {txtGioKetThuc.Text}");
+                    editingSuatChieu.MaPhim = maPhim;
+                    editingSuatChieu.MaPhong = maPhong;
+                    editingSuatChieu.ThoiGianBatDau = thoiGianBatDau;
+                    editingSuatChieu.ThoiGianKetThuc = thoiGianKetThuc;
+                    editingSuatChieu.GiaVeCoBan = giaVe;
 
                     bool result = suatChieuBUS.updateSuatChieu(editingSuatChieu);
 
@@ -104,24 +103,13 @@ namespace Cinema.GUI
             }
             else
             {
-                if (cbPhim.SelectedValue == null ||
-                    cbPhong.SelectedValue == null ||
-                    dpNgay.SelectedDate == null ||
-                    cbGio.SelectedItem == null)
-                {
-                    new CustomMessageBox("Thông báo", "Vui lòng nhập đủ dữ liệu!").ShowDialog();
-                    return;
-                }
-
-                var ngay = dpNgay.SelectedDate.Value;
-                var gio = cbGio.SelectedItem.ToString();
-
                 var xuatChieu = new SuatChieu
                 {
-                    MaPhim = (int)cbPhim.SelectedValue,
-                    MaPhong = (int)cbPhong.SelectedValue,
-                    ThoiGianBatDau = DateTime.Parse($"{ngay:yyyy-MM-dd} {gio}"),
-                    ThoiGianKetThuc = DateTime.Parse($"{ngay:yyyy-MM-dd} {txtGioKetThuc.Text}")
+                    MaPhim = maPhim,
+                    MaPhong = maPhong,
+                    ThoiGianBatDau = thoiGianBatDau,
+                    ThoiGianKetThuc = thoiGianKetThuc,
+                    GiaVeCoBan = giaVe
                 };
 
                 bool result = suatChieuBUS.addSuatChieu(xuatChieu);
@@ -130,6 +118,12 @@ namespace Cinema.GUI
                     "Thông báo",
                     result ? "Thêm thành công!" : "Thêm thất bại!"
                 ).ShowDialog();
+
+                if (result)
+                {
+                    DialogResult = true;
+                    Close();
+                }
             }
 
         }
@@ -148,28 +142,70 @@ namespace Cinema.GUI
         }
         public void loadComboRap(int maPhim)
         {
-            var dsRap = rapBUS.getRapByPhim(maPhim);
-            dsRap.Insert(0, new Rap { MaRap = 0, TenRap = "---Chọn Rạp---" });
+            loadAllRap();
+        }
+
+        private void loadAllRap()
+        {
+            var dsRap = maRapDangNhap.HasValue && maRapDangNhap.Value > 0
+                ? rapBUS.getAllRap().Where(x => x.MaRap == maRapDangNhap.Value).ToList()
+                : rapBUS.getAllRap();
+
+            if (!maRapDangNhap.HasValue)
+            {
+                dsRap.Insert(0, new Rap { MaRap = 0, TenRap = "---Chọn Rạp---" });
+            }
+
             cbRap.DisplayMemberPath = "TenRap";
             cbRap.SelectedValuePath = "MaRap";
             cbRap.ItemsSource = dsRap;
-            cbRap.SelectedIndex = 0;
+            if (maRapDangNhap.HasValue && maRapDangNhap.Value > 0)
+            {
+                cbRap.SelectedValue = maRapDangNhap.Value;
+                cbRap.IsEnabled = false;
+            }
+            else if (!isEdit)
+            {
+                cbRap.SelectedIndex = 0;
+            }
         }
         public void cbRap_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            int maRap = Convert.ToInt32(cbRap.SelectedValue);
+            if (cbRap.SelectedValue == null || !int.TryParse(cbRap.SelectedValue.ToString(), out int maRap))
+            {
+                return;
+            }
+
             if (maRap != 0)
             {
                 loadComBoPhong(maRap);
             }
+            else
+            {
+                cbPhong.ItemsSource = null;
+            }
         }
         public void cbPhim_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            int maPhim = Convert.ToInt32(cbPhim.SelectedValue);
-           if(maPhim != 0)
+            if (cbPhim.SelectedValue == null || !int.TryParse(cbPhim.SelectedValue.ToString(), out int maPhim))
             {
-                loadComboRap(maPhim);
+                return;
             }
+
+            if(maPhim != 0)
+            {
+                if (!maRapDangNhap.HasValue)
+                {
+                    loadComboRap(maPhim);
+                }
+            }
+            else
+            {
+                cbRap.ItemsSource = null;
+                cbPhong.ItemsSource = null;
+            }
+
+            OnChange(sender, e);
         }
         public void loadGio()
         {
@@ -194,6 +230,76 @@ namespace Cinema.GUI
             DateTime end = start.AddMinutes(thoiLuong);
 
             txtGioKetThuc.Text = end.ToString("HH:mm");
+        }
+
+        private bool TryBuildSuatChieuInput(out int maPhim, out int maPhong, out DateTime thoiGianBatDau, out DateTime thoiGianKetThuc, out decimal giaVe)
+        {
+            maPhim = 0;
+            maPhong = 0;
+            thoiGianBatDau = default;
+            thoiGianKetThuc = default;
+            giaVe = 0;
+
+            if (!int.TryParse(cbPhim.SelectedValue?.ToString(), out maPhim) || maPhim <= 0)
+            {
+                new CustomMessageBox("Thông báo", "Vui lòng chọn phim!").ShowDialog();
+                cbPhim.Focus();
+                return false;
+            }
+
+            if (!int.TryParse(cbRap.SelectedValue?.ToString(), out int maRap) || maRap <= 0)
+            {
+                new CustomMessageBox("Thông báo", "Vui lòng chọn rạp chiếu!").ShowDialog();
+                cbRap.Focus();
+                return false;
+            }
+
+            if (!int.TryParse(cbPhong.SelectedValue?.ToString(), out maPhong) || maPhong <= 0)
+            {
+                new CustomMessageBox("Thông báo", "Vui lòng chọn phòng chiếu!").ShowDialog();
+                cbPhong.Focus();
+                return false;
+            }
+
+            if (dpNgay.SelectedDate == null)
+            {
+                new CustomMessageBox("Thông báo", "Vui lòng chọn ngày chiếu!").ShowDialog();
+                dpNgay.Focus();
+                return false;
+            }
+
+            if (cbGio.SelectedItem == null)
+            {
+                new CustomMessageBox("Thông báo", "Vui lòng chọn giờ bắt đầu!").ShowDialog();
+                cbGio.Focus();
+                return false;
+            }
+
+            if (!decimal.TryParse(txtGiaVe.Text?.Trim(), out giaVe) || giaVe <= 0)
+            {
+                new CustomMessageBox("Thông báo", "Giá vé cơ bản phải là số dương!").ShowDialog();
+                txtGiaVe.Focus();
+                return false;
+            }
+
+            if (string.IsNullOrWhiteSpace(txtGioKetThuc.Text))
+            {
+                new CustomMessageBox("Thông báo", "Không tính được giờ kết thúc!").ShowDialog();
+                return false;
+            }
+
+            var ngay = dpNgay.SelectedDate.Value;
+            var gio = cbGio.SelectedItem.ToString();
+
+            thoiGianBatDau = DateTime.Parse($"{ngay:yyyy-MM-dd} {gio}");
+            thoiGianKetThuc = DateTime.Parse($"{ngay:yyyy-MM-dd} {txtGioKetThuc.Text}");
+
+            if (thoiGianKetThuc <= thoiGianBatDau)
+            {
+                thoiGianKetThuc = thoiGianKetThuc.AddDays(1);
+            }
+
+            return true;
         }
     }
 }

@@ -492,3 +492,17 @@ D:\Cinema\Cinema\obj\Debug\net8.0-windows\GUI\ThemSanPham.g.cs
 D:\Cinema\Cinema\obj\Debug\net8.0-windows\GUI\ThemSanPham.baml
 D:\Cinema\Cinema\obj\Debug\net8.0-windows\GUI\PreviewPhieuNhap.g.cs
 D:\Cinema\Cinema\obj\Debug\net8.0-windows\GUI\PreviewPhieuNhap.baml
+D:\Cinema\Cinema\obj\Debug\net8.0-windows\GUI\HoanVe.g.cs
+D:\Cinema\Cinema\obj\Debug\net8.0-windows\GUI\KhuyenMai.g.cs
+D:\Cinema\Cinema\obj\Debug\net8.0-windows\GUI\HoanVe.baml
+D:\Cinema\Cinema\obj\Debug\net8.0-windows\GUI\KhuyenMai.baml
+D:\Cinema\Cinema\obj\Debug\net8.0-windows\GUI\HuyHoaDonWindow.baml
+D:\Cinema\Cinema\obj\Debug\net8.0-windows\GUI\HuyHoaDonWindow.g.cs
+D:\Cinema\Cinema\obj\Debug\net8.0-windows\GUI\ThemKhuyenMai.baml
+D:\Cinema\Cinema\obj\Debug\net8.0-windows\GUI\ThemKhuyenMai.g.cs
+D:\Cinema\Cinema\bin\Debug\net8.0-windows\Images\combo1.jpg
+D:\Cinema\Cinema\bin\Debug\net8.0-windows\Images\combo2.jpg
+D:\Cinema\Cinema\bin\Debug\net8.0-windows\Images\qr.jpg
+D:\Cinema\Cinema\obj\Debug\net8.0-windows\GUI\QrThanhToanWindow.baml
+D:\Cinema\Cinema\obj\Debug\net8.0-windows\GUI\QrThanhToanWindow.g.cs
+D:\Cinema\Cinema\bin\Debug\net8.0-windows\QRCoder.dll

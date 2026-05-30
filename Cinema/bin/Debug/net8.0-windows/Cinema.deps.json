@@ -15,7 +15,8 @@
           "FastReport.OpenSource.Export.PdfSimple": "2026.2.1",
           "LiveChartsCore.SkiaSharpView.WPF": "2.0.4",
           "MaterialDesignThemes": "5.3.1",
-          "Microsoft.EntityFrameworkCore.Design": "8.0.25"
+          "Microsoft.EntityFrameworkCore.Design": "8.0.25",
+          "QRCoder": "1.8.0"
         },
         "runtime": {
           "Cinema.dll": {}
@@ -903,6 +904,17 @@
           }
         }
       },
+      "QRCoder/1.8.0": {
+        "dependencies": {
+          "System.Drawing.Common": "6.0.0"
+        },
+        "runtime": {
+          "lib/net6.0/QRCoder.dll": {
+            "assemblyVersion": "1.8.0.0",
+            "fileVersion": "1.8.0.0"
+          }
+        }
+      },
       "RBush.Signed/4.0.0": {
         "runtime": {
           "lib/net8.0/RBush.dll": {
@@ -1666,6 +1678,13 @@
       "sha512": "sha512-viHlwA0RIYLA1EyoA+gOkfqpA9xMZV6HigVYhaHaEsYb3jk518RdCKEdFggu/P4oYUNYZmmHaUYDC9pwarkXjA==",
       "path": "opentk.glwpfcontrol/3.3.0",
       "hashPath": "opentk.glwpfcontrol.3.3.0.nupkg.sha512"
+    },
+    "QRCoder/1.8.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-RuvX3PEXU6pbY/I5ItAk800jm62r+YnoPLgyS2WTgwxkOnGkOfU9ORiipHUF0LkLyqM8rlroUCA319JjRYfRFQ==",
+      "path": "qrcoder/1.8.0",
+      "hashPath": "qrcoder.1.8.0.nupkg.sha512"
     },
     "RBush.Signed/4.0.0": {
       "type": "package",

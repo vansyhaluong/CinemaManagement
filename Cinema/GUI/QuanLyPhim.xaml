@@ -4,10 +4,40 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Cinema.GUI"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
         <Grid Background="#0F172A">
+            <Grid.Resources>
+                <Style x:Key="MovieActionButton" TargetType="Button">
+                    <Setter Property="Width" Value="36"/>
+                    <Setter Property="Height" Value="36"/>
+                    <Setter Property="Background" Value="#1E293B"/>
+                    <Setter Property="BorderBrush" Value="#334155"/>
+                    <Setter Property="BorderThickness" Value="1"/>
+                    <Setter Property="Cursor" Value="Hand"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="Button">
+                                <Border Background="{TemplateBinding Background}"
+                                        BorderBrush="{TemplateBinding BorderBrush}"
+                                        BorderThickness="{TemplateBinding BorderThickness}"
+                                        CornerRadius="8">
+                                    <ContentPresenter HorizontalAlignment="Center"
+                                                      VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="#273449"/>
+                            <Setter Property="BorderBrush" Value="#475569"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Grid.Resources>
             <Grid.RowDefinitions>
                 <RowDefinition Height="72"/>
                 <RowDefinition Height="Auto"/>
@@ -31,18 +61,19 @@
             <Border Grid.Row="1" Margin="24,20,24,14" Background="#111827" CornerRadius="18" Padding="18">
                 <Grid>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="200"/>
                         <ColumnDefinition Width="180"/>
                     </Grid.ColumnDefinitions>
-                    <TextBox Height="40" FontSize="14" VerticalContentAlignment="Center"
-                         Background="#1E293B" Foreground="White" BorderThickness="0"
-                         Padding="14,0" Text="Tìm kiếm phim..."/>
-                    <ComboBox Grid.Column="1" Margin="14,0,0,0" Height="40" SelectedIndex="0"
-                          Background="#1E293B" Foreground="White" BorderThickness="0">
-                        <ComboBoxItem Content="Tất cả thể loại"/>
-                        <ComboBoxItem Content="Hành động"/>
-                        <ComboBoxItem Content="Tình cảm"/>
-                        <ComboBoxItem Content="Kinh dị"/>
+                    <TextBox x:Name="txtTimKiem" Height="40" FontSize="14" VerticalContentAlignment="Center"
+                         Background="#1E293B" Foreground="#94A3B8" BorderThickness="0"
+                         Padding="14,0" Text="Tìm kiếm phim..."
+                         TextChanged="txtTimKiem_TextChanged"
+                         GotFocus="txtTimKiem_GotFocus"
+                         LostFocus="txtTimKiem_LostFocus"/>
+                    <ComboBox Grid.Column="1" Margin="14,0,0,0" Height="40" SelectedIndex="0" x:Name="cbTheLoai"
+                          Background="#1E293B" Foreground="White" BorderThickness="0"
+                          SelectionChanged="cbTheLoai_SelectionChanged">
+                        
                     </ComboBox>
                 </Grid>
             </Border>
@@ -158,7 +189,7 @@
 
                         <!-- Khởi chiếu -->
                         <DataGridTextColumn Header="Khởi chiếu"
-                            Binding="{Binding KhoiChieu,StringFormat=dd/MM/yyyy}"
+                            Binding="{Binding NgayKhoiChieu,StringFormat=dd/MM/yyyy}"
                             Width="140">
                             <DataGridTextColumn.ElementStyle>
                                 <Style TargetType="TextBlock">
@@ -199,40 +230,30 @@
                                 VerticalAlignment="Center">
 
                                         <!-- Edit -->
-                                        <Button Width="36"
-                                Height="36"
+                                        <Button Style="{StaticResource MovieActionButton}"
                                 Margin="0,0,8,0"
-                                Background="#F59E0B"
-                                BorderThickness="0"
                                 Cursor="Hand"
                                 Click="btnEdit_Click"
                                 Tag="{Binding}"
                                 ToolTip="Sửa">
 
-                                            <TextBlock FontFamily="Segoe MDL2 Assets"
-                                       Text="&#xE70F;"
-                                       FontSize="16"
-                                       Foreground="White"
-                                       HorizontalAlignment="Center"
-                                       VerticalAlignment="Center"/>
+                                            <materialDesign:PackIcon Kind="Pencil"
+                                                                     Width="18"
+                                                                     Height="18"
+                                                                     Foreground="#60A5FA"/>
                                         </Button>
 
                                         <!-- Delete -->
-                                        <Button Width="36"
-                                Height="36"
-                                Background="#EF4444"
-                                BorderThickness="0"
+                                        <Button Style="{StaticResource MovieActionButton}"
                                 Cursor="Hand"
                                 Click="btnDelete_Click"
                                  Tag="{Binding}"               
                                 ToolTip="Xóa">
 
-                                            <TextBlock FontFamily="Segoe MDL2 Assets"
-                                       Text="&#xE74D;"
-                                       FontSize="16"
-                                       Foreground="White"
-                                       HorizontalAlignment="Center"
-                                       VerticalAlignment="Center"/>
+                                            <materialDesign:PackIcon Kind="DeleteOutline"
+                                                                     Width="18"
+                                                                     Height="18"
+                                                                     Foreground="#F87171"/>
                                         </Button>
 
                                     </StackPanel>

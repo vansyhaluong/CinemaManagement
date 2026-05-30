@@ -92,7 +92,7 @@ namespace Cinema.Controls {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/Cinema;component/controls/navitem.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/Cinema;V1.0.0.0;component/controls/navitem.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\Controls\NavItem.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);
