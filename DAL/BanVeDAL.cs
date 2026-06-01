@@ -197,15 +197,29 @@ namespace DAL
                 foreach (var ghe in gheInfos)
                 {
                     var maVe = $"VE{DateTime.Now:yyyyMMdd}{donHang.MaDonHang:D4}{ghe.MaGhe:D3}";
-                    db.VeBans.Add(new VeBan
+                    var veCu = db.VeBans.FirstOrDefault(v =>
+                        v.MaSuatChieu == maSuatChieu &&
+                        v.MaGhe == ghe.MaGhe);
+
+                    if (veCu == null)
                     {
-                        MaVe = maVe,
-                        MaDonHang = donHang.MaDonHang,
-                        MaSuatChieu = maSuatChieu,
-                        MaGhe = ghe.MaGhe,
-                        Gia = ghe.Gia,
-                        TrangThai = "Đã bán"
-                    });
+                        db.VeBans.Add(new VeBan
+                        {
+                            MaVe = maVe,
+                            MaDonHang = donHang.MaDonHang,
+                            MaSuatChieu = maSuatChieu,
+                            MaGhe = ghe.MaGhe,
+                            Gia = ghe.Gia,
+                            TrangThai = "Đã bán"
+                        });
+                    }
+                    else
+                    {
+                        veCu.MaVe = maVe;
+                        veCu.MaDonHang = donHang.MaDonHang;
+                        veCu.Gia = ghe.Gia;
+                        veCu.TrangThai = "Đã bán";
+                    }
                 }
 
                 var tongDichVu = ThemDichVu(db, donHang.MaDonHang, dichVus);
@@ -263,7 +277,7 @@ namespace DAL
             catch (Exception ex)
             {
                 transaction.Rollback();
-                return Loi("Không thể thanh toán: " + ex.Message);
+                return Loi("Không thể thanh toán: " + (ex.InnerException?.Message ?? ex.Message));
             }
         }
 
@@ -372,7 +386,7 @@ namespace DAL
             return new KhuyenMaiApDungInfo
             {
                 ThanhCong = true,
-                ThongBao = "Áp dụng khuyến mãi thành công.",
+                    ThongBao = "Áp dụng khuyến mãi thành công.",
                 MaKhuyenMai = km.MaKhuyenMai,
                 MaCode = km.MaCode?.Trim() ?? code,
                 TenKhuyenMai = km.TenKhuyenMai?.Trim() ?? string.Empty,
@@ -499,7 +513,7 @@ namespace DAL
                     .Include(s => s.MaLoaiSpNavigation)
                     .FirstOrDefault(s => s.MaSanPham == dv.MaSanPham);
                 if (sanPham == null)
-                    throw new InvalidOperationException("Dich vu khong con ton tai.");
+                    throw new InvalidOperationException("Dịch vụ không còn tồn tại.");
 
                 if (string.Equals(sanPham.MaLoaiSpNavigation?.TenLoai, "Combo", StringComparison.OrdinalIgnoreCase))
                 {

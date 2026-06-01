@@ -29,6 +29,7 @@ namespace Cinema.GUI
     {
 		private const string SearchPlaceholder = "Tìm kiếm phim...";
 		MovieBUS bus = new MovieBUS();
+		SuatChieuBUS suatChieuBUS = new SuatChieuBUS();
 		public ObservableCollection<Phim> Phim { get; set; } 
 		private Phim selectedMovie;
 		private List<Phim> allMovies = new();
@@ -162,6 +163,21 @@ namespace Cinema.GUI
 		}
 		public void btnDatVe_Click(object sender, RoutedEventArgs e)
 		{
+			if (selectedMovie == null)
+			{
+				MessageBox.Show("Không tìm thấy phim để đặt vé.");
+				return;
+			}
+
+			int? maRap = Session.IsAdmin ? null : Session.MaRap;
+			var dsSuatChieu = suatChieuBUS.getSuatChieuByPhim(selectedMovie.MaPhim, maRap);
+
+			if (dsSuatChieu == null || dsSuatChieu.Count == 0)
+			{
+				MessageBox.Show("Phim này hiện chưa có suất chiếu tại rạp của bạn.");
+				return;
+			}
+
             MainWindow main = (MainWindow)Window.GetWindow(this);
 
             main.MainContent.Content = new BanVe(selectedMovie);

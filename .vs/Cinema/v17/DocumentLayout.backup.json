@@ -3,12 +3,48 @@
   "WorkspaceRootPath": "D:\\Cinema\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{C52DEBAD-40E0-4AF0-8D14-F999E38FD214}|Cinema\\Cinema.csproj|d:\\cinema\\cinema\\gui\\addmoviewindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{C52DEBAD-40E0-4AF0-8D14-F999E38FD214}|Cinema\\Cinema.csproj|solutionrelative:cinema\\gui\\addmoviewindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+      "AbsoluteMoniker": "D:0:0:{C3FB7E0C-D2E0-4361-A100-31431C017E44}|DAL\\DAL.csproj|d:\\cinema\\dal\\banvedal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C3FB7E0C-D2E0-4361-A100-31431C017E44}|DAL\\DAL.csproj|solutionrelative:dal\\banvedal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C52DEBAD-40E0-4AF0-8D14-F999E38FD214}|Cinema\\Cinema.csproj|d:\\cinema\\cinema\\gui\\banve.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C52DEBAD-40E0-4AF0-8D14-F999E38FD214}|Cinema\\Cinema.csproj|solutionrelative:cinema\\gui\\banve.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C52DEBAD-40E0-4AF0-8D14-F999E38FD214}|Cinema\\Cinema.csproj|d:\\cinema\\cinema\\gui\\huyhoadonwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{C52DEBAD-40E0-4AF0-8D14-F999E38FD214}|Cinema\\Cinema.csproj|solutionrelative:cinema\\gui\\huyhoadonwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C52DEBAD-40E0-4AF0-8D14-F999E38FD214}|Cinema\\Cinema.csproj|d:\\cinema\\cinema\\gui\\phanca.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{C52DEBAD-40E0-4AF0-8D14-F999E38FD214}|Cinema\\Cinema.csproj|solutionrelative:cinema\\gui\\phanca.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C52DEBAD-40E0-4AF0-8D14-F999E38FD214}|Cinema\\Cinema.csproj|d:\\cinema\\cinema\\gui\\banve.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{C52DEBAD-40E0-4AF0-8D14-F999E38FD214}|Cinema\\Cinema.csproj|solutionrelative:cinema\\gui\\banve.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C52DEBAD-40E0-4AF0-8D14-F999E38FD214}|Cinema\\Cinema.csproj|d:\\cinema\\cinema\\gui\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C52DEBAD-40E0-4AF0-8D14-F999E38FD214}|Cinema\\Cinema.csproj|solutionrelative:cinema\\gui\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C52DEBAD-40E0-4AF0-8D14-F999E38FD214}|Cinema\\Cinema.csproj|d:\\cinema\\cinema\\gui\\khuyenmai.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{C52DEBAD-40E0-4AF0-8D14-F999E38FD214}|Cinema\\Cinema.csproj|solutionrelative:cinema\\gui\\khuyenmai.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C52DEBAD-40E0-4AF0-8D14-F999E38FD214}|Cinema\\Cinema.csproj|d:\\cinema\\cinema\\gui\\khuyenmai.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C52DEBAD-40E0-4AF0-8D14-F999E38FD214}|Cinema\\Cinema.csproj|solutionrelative:cinema\\gui\\khuyenmai.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C52DEBAD-40E0-4AF0-8D14-F999E38FD214}|Cinema\\Cinema.csproj|d:\\cinema\\cinema\\gui\\quanlyhoadon.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{C52DEBAD-40E0-4AF0-8D14-F999E38FD214}|Cinema\\Cinema.csproj|solutionrelative:cinema\\gui\\quanlyhoadon.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{C52DEBAD-40E0-4AF0-8D14-F999E38FD214}|Cinema\\Cinema.csproj|d:\\cinema\\cinema\\gui\\quanlyphim.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{C52DEBAD-40E0-4AF0-8D14-F999E38FD214}|Cinema\\Cinema.csproj|solutionrelative:cinema\\gui\\quanlyphim.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C52DEBAD-40E0-4AF0-8D14-F999E38FD214}|Cinema\\Cinema.csproj|d:\\cinema\\cinema\\gui\\addmoviewindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{C52DEBAD-40E0-4AF0-8D14-F999E38FD214}|Cinema\\Cinema.csproj|solutionrelative:cinema\\gui\\addmoviewindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{C52DEBAD-40E0-4AF0-8D14-F999E38FD214}|Cinema\\Cinema.csproj|d:\\cinema\\cinema\\gui\\addmoviewindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -25,10 +61,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{C52DEBAD-40E0-4AF0-8D14-F999E38FD214}|Cinema\\Cinema.csproj|d:\\cinema\\cinema\\gui\\quanlyphong.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{C52DEBAD-40E0-4AF0-8D14-F999E38FD214}|Cinema\\Cinema.csproj|solutionrelative:cinema\\gui\\quanlyphong.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C52DEBAD-40E0-4AF0-8D14-F999E38FD214}|Cinema\\Cinema.csproj|d:\\cinema\\cinema\\gui\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C52DEBAD-40E0-4AF0-8D14-F999E38FD214}|Cinema\\Cinema.csproj|solutionrelative:cinema\\gui\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{C52DEBAD-40E0-4AF0-8D14-F999E38FD214}|Cinema\\Cinema.csproj|d:\\cinema\\cinema\\gui\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
@@ -55,20 +87,12 @@
       "RelativeMoniker": "D:0:0:{C52DEBAD-40E0-4AF0-8D14-F999E38FD214}|Cinema\\Cinema.csproj|solutionrelative:cinema\\gui\\quanlybangluong.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C52DEBAD-40E0-4AF0-8D14-F999E38FD214}|Cinema\\Cinema.csproj|d:\\cinema\\cinema\\gui\\huyhoadonwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{C52DEBAD-40E0-4AF0-8D14-F999E38FD214}|Cinema\\Cinema.csproj|solutionrelative:cinema\\gui\\huyhoadonwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{C52DEBAD-40E0-4AF0-8D14-F999E38FD214}|Cinema\\Cinema.csproj|d:\\cinema\\cinema\\gui\\addxuatchieu.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{C52DEBAD-40E0-4AF0-8D14-F999E38FD214}|Cinema\\Cinema.csproj|solutionrelative:cinema\\gui\\addxuatchieu.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{C52DEBAD-40E0-4AF0-8D14-F999E38FD214}|Cinema\\Cinema.csproj|d:\\cinema\\cinema\\gui\\home.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{C52DEBAD-40E0-4AF0-8D14-F999E38FD214}|Cinema\\Cinema.csproj|solutionrelative:cinema\\gui\\home.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C52DEBAD-40E0-4AF0-8D14-F999E38FD214}|Cinema\\Cinema.csproj|d:\\cinema\\cinema\\gui\\khuyenmai.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{C52DEBAD-40E0-4AF0-8D14-F999E38FD214}|Cinema\\Cinema.csproj|solutionrelative:cinema\\gui\\khuyenmai.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{C52DEBAD-40E0-4AF0-8D14-F999E38FD214}|Cinema\\Cinema.csproj|d:\\cinema\\cinema\\gui\\login.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -89,10 +113,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{C52DEBAD-40E0-4AF0-8D14-F999E38FD214}|Cinema\\Cinema.csproj|d:\\cinema\\cinema\\gui\\quanlyghe.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{C52DEBAD-40E0-4AF0-8D14-F999E38FD214}|Cinema\\Cinema.csproj|solutionrelative:cinema\\gui\\quanlyghe.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C3FB7E0C-D2E0-4361-A100-31431C017E44}|DAL\\DAL.csproj|d:\\cinema\\dal\\banvedal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C3FB7E0C-D2E0-4361-A100-31431C017E44}|DAL\\DAL.csproj|solutionrelative:dal\\banvedal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{C52DEBAD-40E0-4AF0-8D14-F999E38FD214}|Cinema\\Cinema.csproj|d:\\cinema\\cinema\\gui\\themkhuyenmai.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
@@ -117,10 +137,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{C52DEBAD-40E0-4AF0-8D14-F999E38FD214}|Cinema\\Cinema.csproj|d:\\cinema\\cinema\\gui\\quanlykho.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{C52DEBAD-40E0-4AF0-8D14-F999E38FD214}|Cinema\\Cinema.csproj|solutionrelative:cinema\\gui\\quanlykho.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C52DEBAD-40E0-4AF0-8D14-F999E38FD214}|Cinema\\Cinema.csproj|d:\\cinema\\cinema\\gui\\banve.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{C52DEBAD-40E0-4AF0-8D14-F999E38FD214}|Cinema\\Cinema.csproj|solutionrelative:cinema\\gui\\banve.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{C3FB7E0C-D2E0-4361-A100-31431C017E44}|DAL\\DAL.csproj|d:\\cinema\\dal\\hoadondal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -153,10 +169,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{C52DEBAD-40E0-4AF0-8D14-F999E38FD214}|Cinema\\Cinema.csproj|d:\\cinema\\cinema\\gui\\phieuluong.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{C52DEBAD-40E0-4AF0-8D14-F999E38FD214}|Cinema\\Cinema.csproj|solutionrelative:cinema\\gui\\phieuluong.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C52DEBAD-40E0-4AF0-8D14-F999E38FD214}|Cinema\\Cinema.csproj|d:\\cinema\\cinema\\gui\\phanca.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{C52DEBAD-40E0-4AF0-8D14-F999E38FD214}|Cinema\\Cinema.csproj|solutionrelative:cinema\\gui\\phanca.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{C52DEBAD-40E0-4AF0-8D14-F999E38FD214}|Cinema\\Cinema.csproj|d:\\cinema\\cinema\\gui\\ticketpreviewwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
@@ -203,19 +215,11 @@
       "RelativeMoniker": "D:0:0:{C3FB7E0C-D2E0-4361-A100-31431C017E44}|DAL\\DAL.csproj|solutionrelative:dal\\sanphamdal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C52DEBAD-40E0-4AF0-8D14-F999E38FD214}|Cinema\\Cinema.csproj|d:\\cinema\\cinema\\gui\\banve.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C52DEBAD-40E0-4AF0-8D14-F999E38FD214}|Cinema\\Cinema.csproj|solutionrelative:cinema\\gui\\banve.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|ViewDataWindow_MSSQL__/LAPTOP_8RQB10J4/RapPhim2/True/SqlTable/dbo.KhuyenMai.sql||{0058A1F7-65F3-4DB9-B3D0-CA7E64DD73CD}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{FD26F33E-77B7-41D1-BB00-51B7BA75E125}|BUS\\BUS.csproj|d:\\cinema\\bus\\khuyenmaibus.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{FD26F33E-77B7-41D1-BB00-51B7BA75E125}|BUS\\BUS.csproj|solutionrelative:bus\\khuyenmaibus.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C52DEBAD-40E0-4AF0-8D14-F999E38FD214}|Cinema\\Cinema.csproj|d:\\cinema\\cinema\\gui\\khuyenmai.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C52DEBAD-40E0-4AF0-8D14-F999E38FD214}|Cinema\\Cinema.csproj|solutionrelative:cinema\\gui\\khuyenmai.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{C52DEBAD-40E0-4AF0-8D14-F999E38FD214}|Cinema\\Cinema.csproj|d:\\cinema\\cinema\\gui\\quanlyphim.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -507,10 +511,6 @@
       "RelativeMoniker": "D:0:0:{C52DEBAD-40E0-4AF0-8D14-F999E38FD214}|Cinema\\Cinema.csproj|solutionrelative:cinema\\gui\\quanlyhoadon.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C52DEBAD-40E0-4AF0-8D14-F999E38FD214}|Cinema\\Cinema.csproj|d:\\cinema\\cinema\\gui\\quanlyhoadon.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{C52DEBAD-40E0-4AF0-8D14-F999E38FD214}|Cinema\\Cinema.csproj|solutionrelative:cinema\\gui\\quanlyhoadon.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Program Files\\dotnet\\sdk\\9.0.314\\Sdks\\Microsoft.NET.Sdk.WindowsDesktop\\targets\\Microsoft.WinFX.targets||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
     },
     {
@@ -660,366 +660,7 @@
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "HuyHoaDonWindow.xaml",
-              "DocumentMoniker": "D:\\Cinema\\Cinema\\GUI\\HuyHoaDonWindow.xaml",
-              "RelativeDocumentMoniker": "Cinema\\GUI\\HuyHoaDonWindow.xaml",
-              "ToolTip": "D:\\Cinema\\Cinema\\GUI\\HuyHoaDonWindow.xaml",
-              "RelativeToolTip": "Cinema\\GUI\\HuyHoaDonWindow.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2026-05-27T07:44:20.398Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "AddMovieWindow.xaml",
-              "DocumentMoniker": "D:\\Cinema\\Cinema\\GUI\\AddMovieWindow.xaml",
-              "RelativeDocumentMoniker": "Cinema\\GUI\\AddMovieWindow.xaml",
-              "ToolTip": "D:\\Cinema\\Cinema\\GUI\\AddMovieWindow.xaml",
-              "RelativeToolTip": "Cinema\\GUI\\AddMovieWindow.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2026-05-05T07:25:52.744Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "QuanLyPhim.xaml",
-              "DocumentMoniker": "D:\\Cinema\\Cinema\\GUI\\QuanLyPhim.xaml",
-              "RelativeDocumentMoniker": "Cinema\\GUI\\QuanLyPhim.xaml",
-              "ToolTip": "D:\\Cinema\\Cinema\\GUI\\QuanLyPhim.xaml",
-              "RelativeToolTip": "Cinema\\GUI\\QuanLyPhim.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2026-05-05T06:41:34.781Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "QuanLyPhong.xaml",
-              "DocumentMoniker": "D:\\Cinema\\Cinema\\GUI\\QuanLyPhong.xaml",
-              "RelativeDocumentMoniker": "Cinema\\GUI\\QuanLyPhong.xaml",
-              "ToolTip": "D:\\Cinema\\Cinema\\GUI\\QuanLyPhong.xaml",
-              "RelativeToolTip": "Cinema\\GUI\\QuanLyPhong.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2026-05-06T05:21:27.1Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "QuanLySuatChieu.xaml",
-              "DocumentMoniker": "D:\\Cinema\\Cinema\\GUI\\QuanLySuatChieu.xaml",
-              "RelativeDocumentMoniker": "Cinema\\GUI\\QuanLySuatChieu.xaml",
-              "ToolTip": "D:\\Cinema\\Cinema\\GUI\\QuanLySuatChieu.xaml",
-              "RelativeToolTip": "Cinema\\GUI\\QuanLySuatChieu.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2026-05-25T17:46:46.7Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "BaoCaoDoanhThuNgay.xaml",
-              "DocumentMoniker": "D:\\Cinema\\Cinema\\GUI\\BaoCaoDoanhThuNgay.xaml",
-              "RelativeDocumentMoniker": "Cinema\\GUI\\BaoCaoDoanhThuNgay.xaml",
-              "ToolTip": "D:\\Cinema\\Cinema\\GUI\\BaoCaoDoanhThuNgay.xaml",
-              "RelativeToolTip": "Cinema\\GUI\\BaoCaoDoanhThuNgay.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2026-05-20T02:25:54.175Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "AddMovieWindow.xaml.cs",
-              "DocumentMoniker": "D:\\Cinema\\Cinema\\GUI\\AddMovieWindow.xaml.cs",
-              "RelativeDocumentMoniker": "Cinema\\GUI\\AddMovieWindow.xaml.cs",
-              "ToolTip": "D:\\Cinema\\Cinema\\GUI\\AddMovieWindow.xaml.cs",
-              "RelativeToolTip": "Cinema\\GUI\\AddMovieWindow.xaml.cs",
-              "ViewState": "AgIAABgAAAAAAAAAAAAwwCMAAAAVAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-05T07:50:48.064Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "MainWindow.xaml.cs",
-              "DocumentMoniker": "D:\\Cinema\\Cinema\\GUI\\MainWindow.xaml.cs",
-              "RelativeDocumentMoniker": "Cinema\\GUI\\MainWindow.xaml.cs",
-              "ToolTip": "D:\\Cinema\\Cinema\\GUI\\MainWindow.xaml.cs",
-              "RelativeToolTip": "Cinema\\GUI\\MainWindow.xaml.cs",
-              "ViewState": "AgIAAE8AAAAAAAAAAAAqwNQAAABXAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-10T02:34:12.765Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 4,
-              "Title": "QuanLyPhongChieu.xaml",
-              "DocumentMoniker": "D:\\Cinema\\Cinema\\GUI\\QuanLyPhongChieu.xaml",
-              "RelativeDocumentMoniker": "Cinema\\GUI\\QuanLyPhongChieu.xaml",
-              "ToolTip": "D:\\Cinema\\Cinema\\GUI\\QuanLyPhongChieu.xaml",
-              "RelativeToolTip": "Cinema\\GUI\\QuanLyPhongChieu.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2026-05-06T04:24:05.33Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "MainWindow.xaml",
-              "DocumentMoniker": "D:\\Cinema\\Cinema\\GUI\\MainWindow.xaml",
-              "RelativeDocumentMoniker": "Cinema\\GUI\\MainWindow.xaml",
-              "ToolTip": "D:\\Cinema\\Cinema\\GUI\\MainWindow.xaml",
-              "RelativeToolTip": "Cinema\\GUI\\MainWindow.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2026-05-25T15:53:49.789Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "KhenThuong.xaml",
-              "DocumentMoniker": "D:\\Cinema\\Cinema\\GUI\\KhenThuong.xaml",
-              "RelativeDocumentMoniker": "Cinema\\GUI\\KhenThuong.xaml",
-              "ToolTip": "D:\\Cinema\\Cinema\\GUI\\KhenThuong.xaml",
-              "RelativeToolTip": "Cinema\\GUI\\KhenThuong.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2026-05-21T01:16:46.579Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "SuaTrangThaiChamCongWindow.xaml",
-              "DocumentMoniker": "D:\\Cinema\\Cinema\\GUI\\SuaTrangThaiChamCongWindow.xaml",
-              "RelativeDocumentMoniker": "Cinema\\GUI\\SuaTrangThaiChamCongWindow.xaml",
-              "ToolTip": "D:\\Cinema\\Cinema\\GUI\\SuaTrangThaiChamCongWindow.xaml",
-              "RelativeToolTip": "Cinema\\GUI\\SuaTrangThaiChamCongWindow.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2026-05-30T09:28:23.286Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "BaoCaoDoanhThuNgay.xaml.cs",
-              "DocumentMoniker": "D:\\Cinema\\Cinema\\GUI\\BaoCaoDoanhThuNgay.xaml.cs",
-              "RelativeDocumentMoniker": "Cinema\\GUI\\BaoCaoDoanhThuNgay.xaml.cs",
-              "ToolTip": "D:\\Cinema\\Cinema\\GUI\\BaoCaoDoanhThuNgay.xaml.cs",
-              "RelativeToolTip": "Cinema\\GUI\\BaoCaoDoanhThuNgay.xaml.cs",
-              "ViewState": "AgIAAOkAAAAAAAAAAAAgwP8AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-20T03:32:22.024Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "AddXuatChieu.xaml",
-              "DocumentMoniker": "D:\\Cinema\\Cinema\\GUI\\AddXuatChieu.xaml",
-              "RelativeDocumentMoniker": "Cinema\\GUI\\AddXuatChieu.xaml",
-              "ToolTip": "D:\\Cinema\\Cinema\\GUI\\AddXuatChieu.xaml",
-              "RelativeToolTip": "Cinema\\GUI\\AddXuatChieu.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2026-05-13T03:34:42.263Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "QuanLyBangLuong.xaml",
-              "DocumentMoniker": "D:\\Cinema\\Cinema\\GUI\\QuanLyBangLuong.xaml",
-              "RelativeDocumentMoniker": "Cinema\\GUI\\QuanLyBangLuong.xaml",
-              "ToolTip": "D:\\Cinema\\Cinema\\GUI\\QuanLyBangLuong.xaml",
-              "RelativeToolTip": "Cinema\\GUI\\QuanLyBangLuong.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2026-05-21T11:18:01.524Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 16,
-              "Title": "KhuyenMai.xaml",
-              "DocumentMoniker": "D:\\Cinema\\Cinema\\GUI\\KhuyenMai.xaml",
-              "RelativeDocumentMoniker": "Cinema\\GUI\\KhuyenMai.xaml",
-              "ToolTip": "D:\\Cinema\\Cinema\\GUI\\KhuyenMai.xaml",
-              "RelativeToolTip": "Cinema\\GUI\\KhuyenMai.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2026-05-27T02:41:57.817Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 15,
-              "Title": "Home.xaml",
-              "DocumentMoniker": "D:\\Cinema\\Cinema\\GUI\\Home.xaml",
-              "RelativeDocumentMoniker": "Cinema\\GUI\\Home.xaml",
-              "ToolTip": "D:\\Cinema\\Cinema\\GUI\\Home.xaml",
-              "RelativeToolTip": "Cinema\\GUI\\Home.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2026-05-10T02:16:26.367Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 18,
-              "Title": "HoanVe.xaml",
-              "DocumentMoniker": "D:\\Cinema\\Cinema\\GUI\\HoanVe.xaml",
-              "RelativeDocumentMoniker": "Cinema\\GUI\\HoanVe.xaml",
-              "ToolTip": "D:\\Cinema\\Cinema\\GUI\\HoanVe.xaml",
-              "RelativeToolTip": "Cinema\\GUI\\HoanVe.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2026-05-26T03:03:28.21Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 27,
-              "Title": "QrThanhToanWindow.xaml",
-              "DocumentMoniker": "D:\\Cinema\\Cinema\\GUI\\QrThanhToanWindow.xaml",
-              "RelativeDocumentMoniker": "Cinema\\GUI\\QrThanhToanWindow.xaml",
-              "ToolTip": "D:\\Cinema\\Cinema\\GUI\\QrThanhToanWindow.xaml",
-              "RelativeToolTip": "Cinema\\GUI\\QrThanhToanWindow.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2026-05-30T06:03:57.945Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 21,
-              "Title": "QuanLyGhe.xaml",
-              "DocumentMoniker": "D:\\Cinema\\Cinema\\GUI\\QuanLyGhe.xaml",
-              "RelativeDocumentMoniker": "Cinema\\GUI\\QuanLyGhe.xaml",
-              "ToolTip": "D:\\Cinema\\Cinema\\GUI\\QuanLyGhe.xaml",
-              "RelativeToolTip": "Cinema\\GUI\\QuanLyGhe.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2026-05-18T14:54:21.305Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 17,
-              "Title": "Login.xaml.cs",
-              "DocumentMoniker": "D:\\Cinema\\Cinema\\GUI\\Login.xaml.cs",
-              "RelativeDocumentMoniker": "Cinema\\GUI\\Login.xaml.cs",
-              "ToolTip": "D:\\Cinema\\Cinema\\GUI\\Login.xaml.cs",
-              "RelativeToolTip": "Cinema\\GUI\\Login.xaml.cs",
-              "ViewState": "AgIAAA4AAAAAAAAAAAASwBoAAAADAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-25T04:28:10.533Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 19,
-              "Title": "KhuyenMaiDAL.cs",
-              "DocumentMoniker": "D:\\Cinema\\DAL\\KhuyenMaiDAL.cs",
-              "RelativeDocumentMoniker": "DAL\\KhuyenMaiDAL.cs",
-              "ToolTip": "D:\\Cinema\\DAL\\KhuyenMaiDAL.cs",
-              "RelativeToolTip": "DAL\\KhuyenMaiDAL.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAswAkAAAAGAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-27T02:41:09.713Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 22,
-              "Title": "BanVeDAL.cs",
-              "DocumentMoniker": "D:\\Cinema\\DAL\\BanVeDAL.cs",
-              "RelativeDocumentMoniker": "DAL\\BanVeDAL.cs",
-              "ToolTip": "D:\\Cinema\\DAL\\BanVeDAL.cs",
-              "RelativeToolTip": "DAL\\BanVeDAL.cs",
-              "ViewState": "AgIAADkCAAAAAAAAAAAswEYCAAAvAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-26T01:03:03.071Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 30,
-              "Title": "HoaDonDAL.cs",
-              "DocumentMoniker": "D:\\Cinema\\DAL\\HoaDonDAL.cs",
-              "RelativeDocumentMoniker": "DAL\\HoaDonDAL.cs",
-              "ToolTip": "D:\\Cinema\\DAL\\HoaDonDAL.cs",
-              "RelativeToolTip": "DAL\\HoaDonDAL.cs",
-              "ViewState": "AgIAAAgAAAAAAAAAAAAAwHYAAAApAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-30T00:57:18.467Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 26,
-              "Title": "PhanCa.cs",
-              "DocumentMoniker": "D:\\Cinema\\DAL\\Models\\PhanCa.cs",
-              "RelativeDocumentMoniker": "DAL\\Models\\PhanCa.cs",
-              "ToolTip": "D:\\Cinema\\DAL\\Models\\PhanCa.cs",
-              "RelativeToolTip": "DAL\\Models\\PhanCa.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAABCAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-20T13:49:58.073Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 23,
-              "Title": "ThemKhuyenMai.xaml",
-              "DocumentMoniker": "D:\\Cinema\\Cinema\\GUI\\ThemKhuyenMai.xaml",
-              "RelativeDocumentMoniker": "Cinema\\GUI\\ThemKhuyenMai.xaml",
-              "ToolTip": "D:\\Cinema\\Cinema\\GUI\\ThemKhuyenMai.xaml",
-              "RelativeToolTip": "Cinema\\GUI\\ThemKhuyenMai.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2026-05-27T03:57:29.88Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 20,
-              "Title": "MovieDTO.cs",
-              "DocumentMoniker": "D:\\Cinema\\DTO\\MovieDTO.cs",
-              "RelativeDocumentMoniker": "DTO\\MovieDTO.cs",
-              "ToolTip": "D:\\Cinema\\DTO\\MovieDTO.cs",
-              "RelativeToolTip": "DTO\\MovieDTO.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAACAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-06T01:20:43.169Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 25,
-              "Title": "NhanVien.cs",
-              "DocumentMoniker": "D:\\Cinema\\DAL\\Models\\NhanVien.cs",
-              "RelativeDocumentMoniker": "DAL\\Models\\NhanVien.cs",
-              "ToolTip": "D:\\Cinema\\DAL\\Models\\NhanVien.cs",
-              "RelativeToolTip": "DAL\\Models\\NhanVien.cs",
-              "ViewState": "AgIAAA4AAAAAAAAAAAAgwB8AAAA/AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-19T13:42:42.524Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 24,
-              "Title": "NhanVienDAL.cs",
-              "DocumentMoniker": "D:\\Cinema\\DAL\\NhanVienDAL.cs",
-              "RelativeDocumentMoniker": "DAL\\NhanVienDAL.cs",
-              "ToolTip": "D:\\Cinema\\DAL\\NhanVienDAL.cs",
-              "RelativeToolTip": "DAL\\NhanVienDAL.cs",
-              "ViewState": "AgIAADAAAAAAAAAAAAAEwBUAAAAvAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-25T14:44:00.536Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 32,
-              "Title": "Session.cs",
-              "DocumentMoniker": "D:\\Cinema\\DTO\\Session.cs",
-              "RelativeDocumentMoniker": "DTO\\Session.cs",
-              "ToolTip": "D:\\Cinema\\DTO\\Session.cs",
-              "RelativeToolTip": "DTO\\Session.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAYwBEAAAAkAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-28T16:11:24.534Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 29,
               "Title": "BanVe.xaml",
               "DocumentMoniker": "D:\\Cinema\\Cinema\\GUI\\BanVe.xaml",
               "RelativeDocumentMoniker": "Cinema\\GUI\\BanVe.xaml",
@@ -1030,230 +671,78 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 28,
-              "Title": "QuanLyKho.xaml",
-              "DocumentMoniker": "D:\\Cinema\\Cinema\\GUI\\QuanLyKho.xaml",
-              "RelativeDocumentMoniker": "Cinema\\GUI\\QuanLyKho.xaml",
-              "ToolTip": "D:\\Cinema\\Cinema\\GUI\\QuanLyKho.xaml",
-              "RelativeToolTip": "Cinema\\GUI\\QuanLyKho.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2026-05-24T14:49:36.625Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 37,
-              "Title": "PhieuLuong.xaml",
-              "DocumentMoniker": "D:\\Cinema\\Cinema\\GUI\\PhieuLuong.xaml",
-              "RelativeDocumentMoniker": "Cinema\\GUI\\PhieuLuong.xaml",
-              "ToolTip": "D:\\Cinema\\Cinema\\GUI\\PhieuLuong.xaml",
-              "RelativeToolTip": "Cinema\\GUI\\PhieuLuong.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2026-05-21T16:15:27.945Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 33,
-              "Title": "Main.xaml",
-              "DocumentMoniker": "D:\\Cinema\\Cinema\\GUI\\Main.xaml",
-              "RelativeDocumentMoniker": "Cinema\\GUI\\Main.xaml",
-              "ToolTip": "D:\\Cinema\\Cinema\\GUI\\Main.xaml",
-              "RelativeToolTip": "Cinema\\GUI\\Main.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2026-05-25T15:58:08.932Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 31,
-              "Title": "CaLamDAL.cs",
-              "DocumentMoniker": "D:\\Cinema\\DAL\\CaLamDAL.cs",
-              "RelativeDocumentMoniker": "DAL\\CaLamDAL.cs",
-              "ToolTip": "D:\\Cinema\\DAL\\CaLamDAL.cs",
-              "RelativeToolTip": "DAL\\CaLamDAL.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAOAAAAAAAAAA==",
+              "DocumentIndex": 0,
+              "Title": "BanVeDAL.cs",
+              "DocumentMoniker": "D:\\Cinema\\DAL\\BanVeDAL.cs",
+              "RelativeDocumentMoniker": "DAL\\BanVeDAL.cs",
+              "ToolTip": "D:\\Cinema\\DAL\\BanVeDAL.cs",
+              "RelativeToolTip": "DAL\\BanVeDAL.cs",
+              "ViewState": "AgIAAEsCAAAAAAAAAADgv1QCAAAMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-20T14:38:11.374Z"
+              "WhenOpened": "2026-05-26T01:03:03.071Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 36,
-              "Title": "QuanLyGhe.xaml.cs",
-              "DocumentMoniker": "D:\\Cinema\\Cinema\\GUI\\QuanLyGhe.xaml.cs",
-              "RelativeDocumentMoniker": "Cinema\\GUI\\QuanLyGhe.xaml.cs",
-              "ToolTip": "D:\\Cinema\\Cinema\\GUI\\QuanLyGhe.xaml.cs",
-              "RelativeToolTip": "Cinema\\GUI\\QuanLyGhe.xaml.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 9,
+              "Title": "QuanLyPhim.xaml",
+              "DocumentMoniker": "D:\\Cinema\\Cinema\\GUI\\QuanLyPhim.xaml",
+              "RelativeDocumentMoniker": "Cinema\\GUI\\QuanLyPhim.xaml",
+              "ToolTip": "D:\\Cinema\\Cinema\\GUI\\QuanLyPhim.xaml",
+              "RelativeToolTip": "Cinema\\GUI\\QuanLyPhim.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-05-05T06:41:34.781Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "QuanLyHoaDon.xaml",
+              "DocumentMoniker": "D:\\Cinema\\Cinema\\GUI\\QuanLyHoaDon.xaml",
+              "RelativeDocumentMoniker": "Cinema\\GUI\\QuanLyHoaDon.xaml",
+              "ToolTip": "D:\\Cinema\\Cinema\\GUI\\QuanLyHoaDon.xaml",
+              "RelativeToolTip": "Cinema\\GUI\\QuanLyHoaDon.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-05-19T17:08:25.594Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "MainWindow.xaml.cs",
+              "DocumentMoniker": "D:\\Cinema\\Cinema\\GUI\\MainWindow.xaml.cs",
+              "RelativeDocumentMoniker": "Cinema\\GUI\\MainWindow.xaml.cs",
+              "ToolTip": "D:\\Cinema\\Cinema\\GUI\\MainWindow.xaml.cs",
+              "RelativeToolTip": "Cinema\\GUI\\MainWindow.xaml.cs",
+              "ViewState": "AgIAAKIAAAAAAAAAAAAiwLQAAAAxAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-27T08:05:55.097Z"
+              "WhenOpened": "2026-05-10T02:34:12.765Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 34,
-              "Title": "SuaSanPhamWindow.xaml",
-              "DocumentMoniker": "D:\\Cinema\\Cinema\\GUI\\SuaSanPhamWindow.xaml",
-              "RelativeDocumentMoniker": "Cinema\\GUI\\SuaSanPhamWindow.xaml",
-              "ToolTip": "D:\\Cinema\\Cinema\\GUI\\SuaSanPhamWindow.xaml",
-              "RelativeToolTip": "Cinema\\GUI\\SuaSanPhamWindow.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2026-05-24T15:26:22.576Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 38,
-              "Title": "PhanCa.xaml",
-              "DocumentMoniker": "D:\\Cinema\\Cinema\\GUI\\PhanCa.xaml",
-              "RelativeDocumentMoniker": "Cinema\\GUI\\PhanCa.xaml",
-              "ToolTip": "D:\\Cinema\\Cinema\\GUI\\PhanCa.xaml",
-              "RelativeToolTip": "Cinema\\GUI\\PhanCa.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2026-05-20T14:16:28.596Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 35,
-              "Title": "Student.xaml",
-              "DocumentMoniker": "D:\\Cinema\\Cinema\\GUI\\Student.xaml",
-              "RelativeDocumentMoniker": "Cinema\\GUI\\Student.xaml",
-              "ToolTip": "D:\\Cinema\\Cinema\\GUI\\Student.xaml",
-              "RelativeToolTip": "Cinema\\GUI\\Student.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2026-05-26T01:52:54.187Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 39,
-              "Title": "TicketPreviewWindow.xaml",
-              "DocumentMoniker": "D:\\Cinema\\Cinema\\GUI\\TicketPreviewWindow.xaml",
-              "RelativeDocumentMoniker": "Cinema\\GUI\\TicketPreviewWindow.xaml",
-              "ToolTip": "D:\\Cinema\\Cinema\\GUI\\TicketPreviewWindow.xaml",
-              "RelativeToolTip": "Cinema\\GUI\\TicketPreviewWindow.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2026-05-19T16:54:30.877Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 44,
-              "Title": "ThemPhong.xaml",
-              "DocumentMoniker": "D:\\Cinema\\Cinema\\GUI\\ThemPhong.xaml",
-              "RelativeDocumentMoniker": "Cinema\\GUI\\ThemPhong.xaml",
-              "ToolTip": "D:\\Cinema\\Cinema\\GUI\\ThemPhong.xaml",
-              "RelativeToolTip": "Cinema\\GUI\\ThemPhong.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2026-05-27T07:46:38.323Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 42,
-              "Title": "ThemSanPham.xaml",
-              "DocumentMoniker": "D:\\Cinema\\Cinema\\GUI\\ThemSanPham.xaml",
-              "RelativeDocumentMoniker": "Cinema\\GUI\\ThemSanPham.xaml",
-              "ToolTip": "D:\\Cinema\\Cinema\\GUI\\ThemSanPham.xaml",
-              "RelativeToolTip": "Cinema\\GUI\\ThemSanPham.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2026-05-24T16:15:21.478Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 40,
-              "Title": "PreviewPhieuNhap.xaml",
-              "DocumentMoniker": "D:\\Cinema\\Cinema\\GUI\\PreviewPhieuNhap.xaml",
-              "RelativeDocumentMoniker": "Cinema\\GUI\\PreviewPhieuNhap.xaml",
-              "ToolTip": "D:\\Cinema\\Cinema\\GUI\\PreviewPhieuNhap.xaml",
-              "RelativeToolTip": "Cinema\\GUI\\PreviewPhieuNhap.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2026-05-25T13:33:40.782Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 41,
-              "Title": "NhapKhoWindow.xaml",
-              "DocumentMoniker": "D:\\Cinema\\Cinema\\GUI\\NhapKhoWindow.xaml",
-              "RelativeDocumentMoniker": "Cinema\\GUI\\NhapKhoWindow.xaml",
-              "ToolTip": "D:\\Cinema\\Cinema\\GUI\\NhapKhoWindow.xaml",
-              "RelativeToolTip": "Cinema\\GUI\\NhapKhoWindow.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2026-05-24T14:30:14.141Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 43,
-              "Title": "ThemPhongChieu.xaml",
-              "DocumentMoniker": "D:\\Cinema\\Cinema\\GUI\\ThemPhongChieu.xaml",
-              "RelativeDocumentMoniker": "Cinema\\GUI\\ThemPhongChieu.xaml",
-              "ToolTip": "D:\\Cinema\\Cinema\\GUI\\ThemPhongChieu.xaml",
-              "RelativeToolTip": "Cinema\\GUI\\ThemPhongChieu.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2026-05-06T04:45:13.061Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 46,
-              "Title": "Login.xaml",
-              "DocumentMoniker": "D:\\Cinema\\Cinema\\GUI\\Login.xaml",
-              "RelativeDocumentMoniker": "Cinema\\GUI\\Login.xaml",
-              "ToolTip": "D:\\Cinema\\Cinema\\GUI\\Login.xaml",
-              "RelativeToolTip": "Cinema\\GUI\\Login.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2026-05-05T08:04:35.377Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 49,
-              "Title": "SanPhamDAL.cs",
-              "DocumentMoniker": "D:\\Cinema\\DAL\\SanPhamDAL.cs",
-              "RelativeDocumentMoniker": "DAL\\SanPhamDAL.cs",
-              "ToolTip": "D:\\Cinema\\DAL\\SanPhamDAL.cs",
-              "RelativeToolTip": "DAL\\SanPhamDAL.cs",
-              "ViewState": "AgIAAC0AAAAAAAAAAAAowGMAAAAMAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-24T13:16:04.361Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 47,
-              "Title": "HoanVe.xaml.cs",
-              "DocumentMoniker": "D:\\Cinema\\Cinema\\GUI\\HoanVe.xaml.cs",
-              "RelativeDocumentMoniker": "Cinema\\GUI\\HoanVe.xaml.cs",
-              "ToolTip": "D:\\Cinema\\Cinema\\GUI\\HoanVe.xaml.cs",
-              "RelativeToolTip": "Cinema\\GUI\\HoanVe.xaml.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-27T07:44:14.479Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 50,
+              "DocumentIndex": 1,
               "Title": "BanVe.xaml.cs",
               "DocumentMoniker": "D:\\Cinema\\Cinema\\GUI\\BanVe.xaml.cs",
               "RelativeDocumentMoniker": "Cinema\\GUI\\BanVe.xaml.cs",
               "ToolTip": "D:\\Cinema\\Cinema\\GUI\\BanVe.xaml.cs",
               "RelativeToolTip": "Cinema\\GUI\\BanVe.xaml.cs",
-              "ViewState": "AgIAAPABAAAAAAAAAAA3wOsBAABAAAAAAAAAAA==",
+              "ViewState": "AgIAABsCAAAAAAAAAAA8wOgAAABPAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-16T06:04:22.443Z"
+              "WhenOpened": "2026-05-16T06:04:22.443Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 45,
-              "Title": "ThemNhanVien.xaml",
-              "DocumentMoniker": "D:\\Cinema\\Cinema\\GUI\\ThemNhanVien.xaml",
-              "RelativeDocumentMoniker": "Cinema\\GUI\\ThemNhanVien.xaml",
-              "ToolTip": "D:\\Cinema\\Cinema\\GUI\\ThemNhanVien.xaml",
-              "RelativeToolTip": "Cinema\\GUI\\ThemNhanVien.xaml",
+              "DocumentIndex": 18,
+              "Title": "BaoCaoDoanhThuNgay.xaml",
+              "DocumentMoniker": "D:\\Cinema\\Cinema\\GUI\\BaoCaoDoanhThuNgay.xaml",
+              "RelativeDocumentMoniker": "Cinema\\GUI\\BaoCaoDoanhThuNgay.xaml",
+              "ToolTip": "D:\\Cinema\\Cinema\\GUI\\BaoCaoDoanhThuNgay.xaml",
+              "RelativeToolTip": "Cinema\\GUI\\BaoCaoDoanhThuNgay.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2026-05-25T14:35:37.853Z"
+              "WhenOpened": "2026-05-20T02:25:54.175Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 51,
-              "Title": "dbo.KhuyenMai.sql",
-              "DocumentMoniker": "ViewDataWindow_MSSQL__/LAPTOP_8RQB10J4/RapPhim2/True/SqlTable/dbo.KhuyenMai.sql",
-              "ToolTip": "ViewDataWindow_MSSQL__/LAPTOP_8RQB10J4/RapPhim2/True/SqlTable/dbo.KhuyenMai.sql",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
-              "WhenOpened": "2026-05-27T06:50:01.826Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 53,
+              "DocumentIndex": 7,
               "Title": "KhuyenMai.xaml.cs",
               "DocumentMoniker": "D:\\Cinema\\Cinema\\GUI\\KhuyenMai.xaml.cs",
               "RelativeDocumentMoniker": "Cinema\\GUI\\KhuyenMai.xaml.cs",
@@ -1265,7 +754,515 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "HuyHoaDonWindow.xaml",
+              "DocumentMoniker": "D:\\Cinema\\Cinema\\GUI\\HuyHoaDonWindow.xaml",
+              "RelativeDocumentMoniker": "Cinema\\GUI\\HuyHoaDonWindow.xaml",
+              "ToolTip": "D:\\Cinema\\Cinema\\GUI\\HuyHoaDonWindow.xaml",
+              "RelativeToolTip": "Cinema\\GUI\\HuyHoaDonWindow.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-05-27T07:44:20.398Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "PhanCa.xaml",
+              "DocumentMoniker": "D:\\Cinema\\Cinema\\GUI\\PhanCa.xaml",
+              "RelativeDocumentMoniker": "Cinema\\GUI\\PhanCa.xaml",
+              "ToolTip": "D:\\Cinema\\Cinema\\GUI\\PhanCa.xaml",
+              "RelativeToolTip": "Cinema\\GUI\\PhanCa.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-05-20T14:16:28.596Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "QuanLyPhong.xaml",
+              "DocumentMoniker": "D:\\Cinema\\Cinema\\GUI\\QuanLyPhong.xaml",
+              "RelativeDocumentMoniker": "Cinema\\GUI\\QuanLyPhong.xaml",
+              "ToolTip": "D:\\Cinema\\Cinema\\GUI\\QuanLyPhong.xaml",
+              "RelativeToolTip": "Cinema\\GUI\\QuanLyPhong.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-05-06T05:21:27.1Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "AddMovieWindow.xaml",
+              "DocumentMoniker": "D:\\Cinema\\Cinema\\GUI\\AddMovieWindow.xaml",
+              "RelativeDocumentMoniker": "Cinema\\GUI\\AddMovieWindow.xaml",
+              "ToolTip": "D:\\Cinema\\Cinema\\GUI\\AddMovieWindow.xaml",
+              "RelativeToolTip": "Cinema\\GUI\\AddMovieWindow.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-05-05T07:25:52.744Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "KhuyenMai.xaml",
+              "DocumentMoniker": "D:\\Cinema\\Cinema\\GUI\\KhuyenMai.xaml",
+              "RelativeDocumentMoniker": "Cinema\\GUI\\KhuyenMai.xaml",
+              "ToolTip": "D:\\Cinema\\Cinema\\GUI\\KhuyenMai.xaml",
+              "RelativeToolTip": "Cinema\\GUI\\KhuyenMai.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-05-27T02:41:57.817Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "AddMovieWindow.xaml.cs",
+              "DocumentMoniker": "D:\\Cinema\\Cinema\\GUI\\AddMovieWindow.xaml.cs",
+              "RelativeDocumentMoniker": "Cinema\\GUI\\AddMovieWindow.xaml.cs",
+              "ToolTip": "D:\\Cinema\\Cinema\\GUI\\AddMovieWindow.xaml.cs",
+              "RelativeToolTip": "Cinema\\GUI\\AddMovieWindow.xaml.cs",
+              "ViewState": "AgIAABgAAAAAAAAAAAAwwCMAAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-05T07:50:48.064Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "QuanLySuatChieu.xaml",
+              "DocumentMoniker": "D:\\Cinema\\Cinema\\GUI\\QuanLySuatChieu.xaml",
+              "RelativeDocumentMoniker": "Cinema\\GUI\\QuanLySuatChieu.xaml",
+              "ToolTip": "D:\\Cinema\\Cinema\\GUI\\QuanLySuatChieu.xaml",
+              "RelativeToolTip": "Cinema\\GUI\\QuanLySuatChieu.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-05-25T17:46:46.7Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "QuanLyPhongChieu.xaml",
+              "DocumentMoniker": "D:\\Cinema\\Cinema\\GUI\\QuanLyPhongChieu.xaml",
+              "RelativeDocumentMoniker": "Cinema\\GUI\\QuanLyPhongChieu.xaml",
+              "ToolTip": "D:\\Cinema\\Cinema\\GUI\\QuanLyPhongChieu.xaml",
+              "RelativeToolTip": "Cinema\\GUI\\QuanLyPhongChieu.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-05-06T04:24:05.33Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "MainWindow.xaml",
+              "DocumentMoniker": "D:\\Cinema\\Cinema\\GUI\\MainWindow.xaml",
+              "RelativeDocumentMoniker": "Cinema\\GUI\\MainWindow.xaml",
+              "ToolTip": "D:\\Cinema\\Cinema\\GUI\\MainWindow.xaml",
+              "RelativeToolTip": "Cinema\\GUI\\MainWindow.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-05-25T15:53:49.789Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "KhenThuong.xaml",
+              "DocumentMoniker": "D:\\Cinema\\Cinema\\GUI\\KhenThuong.xaml",
+              "RelativeDocumentMoniker": "Cinema\\GUI\\KhenThuong.xaml",
+              "ToolTip": "D:\\Cinema\\Cinema\\GUI\\KhenThuong.xaml",
+              "RelativeToolTip": "Cinema\\GUI\\KhenThuong.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-05-21T01:16:46.579Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "SuaTrangThaiChamCongWindow.xaml",
+              "DocumentMoniker": "D:\\Cinema\\Cinema\\GUI\\SuaTrangThaiChamCongWindow.xaml",
+              "RelativeDocumentMoniker": "Cinema\\GUI\\SuaTrangThaiChamCongWindow.xaml",
+              "ToolTip": "D:\\Cinema\\Cinema\\GUI\\SuaTrangThaiChamCongWindow.xaml",
+              "RelativeToolTip": "Cinema\\GUI\\SuaTrangThaiChamCongWindow.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-05-30T09:28:23.286Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "BaoCaoDoanhThuNgay.xaml.cs",
+              "DocumentMoniker": "D:\\Cinema\\Cinema\\GUI\\BaoCaoDoanhThuNgay.xaml.cs",
+              "RelativeDocumentMoniker": "Cinema\\GUI\\BaoCaoDoanhThuNgay.xaml.cs",
+              "ToolTip": "D:\\Cinema\\Cinema\\GUI\\BaoCaoDoanhThuNgay.xaml.cs",
+              "RelativeToolTip": "Cinema\\GUI\\BaoCaoDoanhThuNgay.xaml.cs",
+              "ViewState": "AgIAAOkAAAAAAAAAAAAgwP8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-20T03:32:22.024Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "AddXuatChieu.xaml",
+              "DocumentMoniker": "D:\\Cinema\\Cinema\\GUI\\AddXuatChieu.xaml",
+              "RelativeDocumentMoniker": "Cinema\\GUI\\AddXuatChieu.xaml",
+              "ToolTip": "D:\\Cinema\\Cinema\\GUI\\AddXuatChieu.xaml",
+              "RelativeToolTip": "Cinema\\GUI\\AddXuatChieu.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-05-13T03:34:42.263Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "QuanLyBangLuong.xaml",
+              "DocumentMoniker": "D:\\Cinema\\Cinema\\GUI\\QuanLyBangLuong.xaml",
+              "RelativeDocumentMoniker": "Cinema\\GUI\\QuanLyBangLuong.xaml",
+              "ToolTip": "D:\\Cinema\\Cinema\\GUI\\QuanLyBangLuong.xaml",
+              "RelativeToolTip": "Cinema\\GUI\\QuanLyBangLuong.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-05-21T11:18:01.524Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "Home.xaml",
+              "DocumentMoniker": "D:\\Cinema\\Cinema\\GUI\\Home.xaml",
+              "RelativeDocumentMoniker": "Cinema\\GUI\\Home.xaml",
+              "ToolTip": "D:\\Cinema\\Cinema\\GUI\\Home.xaml",
+              "RelativeToolTip": "Cinema\\GUI\\Home.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-05-10T02:16:26.367Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "HoanVe.xaml",
+              "DocumentMoniker": "D:\\Cinema\\Cinema\\GUI\\HoanVe.xaml",
+              "RelativeDocumentMoniker": "Cinema\\GUI\\HoanVe.xaml",
+              "ToolTip": "D:\\Cinema\\Cinema\\GUI\\HoanVe.xaml",
+              "RelativeToolTip": "Cinema\\GUI\\HoanVe.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-05-26T03:03:28.21Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 32,
+              "Title": "QrThanhToanWindow.xaml",
+              "DocumentMoniker": "D:\\Cinema\\Cinema\\GUI\\QrThanhToanWindow.xaml",
+              "RelativeDocumentMoniker": "Cinema\\GUI\\QrThanhToanWindow.xaml",
+              "ToolTip": "D:\\Cinema\\Cinema\\GUI\\QrThanhToanWindow.xaml",
+              "RelativeToolTip": "Cinema\\GUI\\QrThanhToanWindow.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-05-30T06:03:57.945Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 27,
+              "Title": "QuanLyGhe.xaml",
+              "DocumentMoniker": "D:\\Cinema\\Cinema\\GUI\\QuanLyGhe.xaml",
+              "RelativeDocumentMoniker": "Cinema\\GUI\\QuanLyGhe.xaml",
+              "ToolTip": "D:\\Cinema\\Cinema\\GUI\\QuanLyGhe.xaml",
+              "RelativeToolTip": "Cinema\\GUI\\QuanLyGhe.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-05-18T14:54:21.305Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "Login.xaml.cs",
+              "DocumentMoniker": "D:\\Cinema\\Cinema\\GUI\\Login.xaml.cs",
+              "RelativeDocumentMoniker": "Cinema\\GUI\\Login.xaml.cs",
+              "ToolTip": "D:\\Cinema\\Cinema\\GUI\\Login.xaml.cs",
+              "RelativeToolTip": "Cinema\\GUI\\Login.xaml.cs",
+              "ViewState": "AgIAAA4AAAAAAAAAAAASwBoAAAADAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-25T04:28:10.533Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "KhuyenMaiDAL.cs",
+              "DocumentMoniker": "D:\\Cinema\\DAL\\KhuyenMaiDAL.cs",
+              "RelativeDocumentMoniker": "DAL\\KhuyenMaiDAL.cs",
+              "ToolTip": "D:\\Cinema\\DAL\\KhuyenMaiDAL.cs",
+              "RelativeToolTip": "DAL\\KhuyenMaiDAL.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAswAkAAAAGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-27T02:41:09.713Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 34,
+              "Title": "HoaDonDAL.cs",
+              "DocumentMoniker": "D:\\Cinema\\DAL\\HoaDonDAL.cs",
+              "RelativeDocumentMoniker": "DAL\\HoaDonDAL.cs",
+              "ToolTip": "D:\\Cinema\\DAL\\HoaDonDAL.cs",
+              "RelativeToolTip": "DAL\\HoaDonDAL.cs",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAAwHYAAAApAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-30T00:57:18.467Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 31,
+              "Title": "PhanCa.cs",
+              "DocumentMoniker": "D:\\Cinema\\DAL\\Models\\PhanCa.cs",
+              "RelativeDocumentMoniker": "DAL\\Models\\PhanCa.cs",
+              "ToolTip": "D:\\Cinema\\DAL\\Models\\PhanCa.cs",
+              "RelativeToolTip": "DAL\\Models\\PhanCa.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAABCAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-20T13:49:58.073Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 28,
+              "Title": "ThemKhuyenMai.xaml",
+              "DocumentMoniker": "D:\\Cinema\\Cinema\\GUI\\ThemKhuyenMai.xaml",
+              "RelativeDocumentMoniker": "Cinema\\GUI\\ThemKhuyenMai.xaml",
+              "ToolTip": "D:\\Cinema\\Cinema\\GUI\\ThemKhuyenMai.xaml",
+              "RelativeToolTip": "Cinema\\GUI\\ThemKhuyenMai.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-05-27T03:57:29.88Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 26,
+              "Title": "MovieDTO.cs",
+              "DocumentMoniker": "D:\\Cinema\\DTO\\MovieDTO.cs",
+              "RelativeDocumentMoniker": "DTO\\MovieDTO.cs",
+              "ToolTip": "D:\\Cinema\\DTO\\MovieDTO.cs",
+              "RelativeToolTip": "DTO\\MovieDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAACAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-06T01:20:43.169Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 30,
+              "Title": "NhanVien.cs",
+              "DocumentMoniker": "D:\\Cinema\\DAL\\Models\\NhanVien.cs",
+              "RelativeDocumentMoniker": "DAL\\Models\\NhanVien.cs",
+              "ToolTip": "D:\\Cinema\\DAL\\Models\\NhanVien.cs",
+              "RelativeToolTip": "DAL\\Models\\NhanVien.cs",
+              "ViewState": "AgIAAA4AAAAAAAAAAAAgwB8AAAA/AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-19T13:42:42.524Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 29,
+              "Title": "NhanVienDAL.cs",
+              "DocumentMoniker": "D:\\Cinema\\DAL\\NhanVienDAL.cs",
+              "RelativeDocumentMoniker": "DAL\\NhanVienDAL.cs",
+              "ToolTip": "D:\\Cinema\\DAL\\NhanVienDAL.cs",
+              "RelativeToolTip": "DAL\\NhanVienDAL.cs",
+              "ViewState": "AgIAADAAAAAAAAAAAAAEwBUAAAAvAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-25T14:44:00.536Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 36,
+              "Title": "Session.cs",
+              "DocumentMoniker": "D:\\Cinema\\DTO\\Session.cs",
+              "RelativeDocumentMoniker": "DTO\\Session.cs",
+              "ToolTip": "D:\\Cinema\\DTO\\Session.cs",
+              "RelativeToolTip": "DTO\\Session.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAYwBEAAAAkAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-28T16:11:24.534Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 33,
+              "Title": "QuanLyKho.xaml",
+              "DocumentMoniker": "D:\\Cinema\\Cinema\\GUI\\QuanLyKho.xaml",
+              "RelativeDocumentMoniker": "Cinema\\GUI\\QuanLyKho.xaml",
+              "ToolTip": "D:\\Cinema\\Cinema\\GUI\\QuanLyKho.xaml",
+              "RelativeToolTip": "Cinema\\GUI\\QuanLyKho.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-05-24T14:49:36.625Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 41,
+              "Title": "PhieuLuong.xaml",
+              "DocumentMoniker": "D:\\Cinema\\Cinema\\GUI\\PhieuLuong.xaml",
+              "RelativeDocumentMoniker": "Cinema\\GUI\\PhieuLuong.xaml",
+              "ToolTip": "D:\\Cinema\\Cinema\\GUI\\PhieuLuong.xaml",
+              "RelativeToolTip": "Cinema\\GUI\\PhieuLuong.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-05-21T16:15:27.945Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 37,
+              "Title": "Main.xaml",
+              "DocumentMoniker": "D:\\Cinema\\Cinema\\GUI\\Main.xaml",
+              "RelativeDocumentMoniker": "Cinema\\GUI\\Main.xaml",
+              "ToolTip": "D:\\Cinema\\Cinema\\GUI\\Main.xaml",
+              "RelativeToolTip": "Cinema\\GUI\\Main.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-05-25T15:58:08.932Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 35,
+              "Title": "CaLamDAL.cs",
+              "DocumentMoniker": "D:\\Cinema\\DAL\\CaLamDAL.cs",
+              "RelativeDocumentMoniker": "DAL\\CaLamDAL.cs",
+              "ToolTip": "D:\\Cinema\\DAL\\CaLamDAL.cs",
+              "RelativeToolTip": "DAL\\CaLamDAL.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-20T14:38:11.374Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 40,
+              "Title": "QuanLyGhe.xaml.cs",
+              "DocumentMoniker": "D:\\Cinema\\Cinema\\GUI\\QuanLyGhe.xaml.cs",
+              "RelativeDocumentMoniker": "Cinema\\GUI\\QuanLyGhe.xaml.cs",
+              "ToolTip": "D:\\Cinema\\Cinema\\GUI\\QuanLyGhe.xaml.cs",
+              "RelativeToolTip": "Cinema\\GUI\\QuanLyGhe.xaml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-27T08:05:55.097Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 38,
+              "Title": "SuaSanPhamWindow.xaml",
+              "DocumentMoniker": "D:\\Cinema\\Cinema\\GUI\\SuaSanPhamWindow.xaml",
+              "RelativeDocumentMoniker": "Cinema\\GUI\\SuaSanPhamWindow.xaml",
+              "ToolTip": "D:\\Cinema\\Cinema\\GUI\\SuaSanPhamWindow.xaml",
+              "RelativeToolTip": "Cinema\\GUI\\SuaSanPhamWindow.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-05-24T15:26:22.576Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 39,
+              "Title": "Student.xaml",
+              "DocumentMoniker": "D:\\Cinema\\Cinema\\GUI\\Student.xaml",
+              "RelativeDocumentMoniker": "Cinema\\GUI\\Student.xaml",
+              "ToolTip": "D:\\Cinema\\Cinema\\GUI\\Student.xaml",
+              "RelativeToolTip": "Cinema\\GUI\\Student.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-05-26T01:52:54.187Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 42,
+              "Title": "TicketPreviewWindow.xaml",
+              "DocumentMoniker": "D:\\Cinema\\Cinema\\GUI\\TicketPreviewWindow.xaml",
+              "RelativeDocumentMoniker": "Cinema\\GUI\\TicketPreviewWindow.xaml",
+              "ToolTip": "D:\\Cinema\\Cinema\\GUI\\TicketPreviewWindow.xaml",
+              "RelativeToolTip": "Cinema\\GUI\\TicketPreviewWindow.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-05-19T16:54:30.877Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 47,
+              "Title": "ThemPhong.xaml",
+              "DocumentMoniker": "D:\\Cinema\\Cinema\\GUI\\ThemPhong.xaml",
+              "RelativeDocumentMoniker": "Cinema\\GUI\\ThemPhong.xaml",
+              "ToolTip": "D:\\Cinema\\Cinema\\GUI\\ThemPhong.xaml",
+              "RelativeToolTip": "Cinema\\GUI\\ThemPhong.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-05-27T07:46:38.323Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 45,
+              "Title": "ThemSanPham.xaml",
+              "DocumentMoniker": "D:\\Cinema\\Cinema\\GUI\\ThemSanPham.xaml",
+              "RelativeDocumentMoniker": "Cinema\\GUI\\ThemSanPham.xaml",
+              "ToolTip": "D:\\Cinema\\Cinema\\GUI\\ThemSanPham.xaml",
+              "RelativeToolTip": "Cinema\\GUI\\ThemSanPham.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-05-24T16:15:21.478Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 43,
+              "Title": "PreviewPhieuNhap.xaml",
+              "DocumentMoniker": "D:\\Cinema\\Cinema\\GUI\\PreviewPhieuNhap.xaml",
+              "RelativeDocumentMoniker": "Cinema\\GUI\\PreviewPhieuNhap.xaml",
+              "ToolTip": "D:\\Cinema\\Cinema\\GUI\\PreviewPhieuNhap.xaml",
+              "RelativeToolTip": "Cinema\\GUI\\PreviewPhieuNhap.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-05-25T13:33:40.782Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 44,
+              "Title": "NhapKhoWindow.xaml",
+              "DocumentMoniker": "D:\\Cinema\\Cinema\\GUI\\NhapKhoWindow.xaml",
+              "RelativeDocumentMoniker": "Cinema\\GUI\\NhapKhoWindow.xaml",
+              "ToolTip": "D:\\Cinema\\Cinema\\GUI\\NhapKhoWindow.xaml",
+              "RelativeToolTip": "Cinema\\GUI\\NhapKhoWindow.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-05-24T14:30:14.141Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 46,
+              "Title": "ThemPhongChieu.xaml",
+              "DocumentMoniker": "D:\\Cinema\\Cinema\\GUI\\ThemPhongChieu.xaml",
+              "RelativeDocumentMoniker": "Cinema\\GUI\\ThemPhongChieu.xaml",
+              "ToolTip": "D:\\Cinema\\Cinema\\GUI\\ThemPhongChieu.xaml",
+              "RelativeToolTip": "Cinema\\GUI\\ThemPhongChieu.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-05-06T04:45:13.061Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 49,
+              "Title": "Login.xaml",
+              "DocumentMoniker": "D:\\Cinema\\Cinema\\GUI\\Login.xaml",
+              "RelativeDocumentMoniker": "Cinema\\GUI\\Login.xaml",
+              "ToolTip": "D:\\Cinema\\Cinema\\GUI\\Login.xaml",
+              "RelativeToolTip": "Cinema\\GUI\\Login.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-05-05T08:04:35.377Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 52,
+              "Title": "SanPhamDAL.cs",
+              "DocumentMoniker": "D:\\Cinema\\DAL\\SanPhamDAL.cs",
+              "RelativeDocumentMoniker": "DAL\\SanPhamDAL.cs",
+              "ToolTip": "D:\\Cinema\\DAL\\SanPhamDAL.cs",
+              "RelativeToolTip": "DAL\\SanPhamDAL.cs",
+              "ViewState": "AgIAAC0AAAAAAAAAAAAowGMAAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-24T13:16:04.361Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 50,
+              "Title": "HoanVe.xaml.cs",
+              "DocumentMoniker": "D:\\Cinema\\Cinema\\GUI\\HoanVe.xaml.cs",
+              "RelativeDocumentMoniker": "Cinema\\GUI\\HoanVe.xaml.cs",
+              "ToolTip": "D:\\Cinema\\Cinema\\GUI\\HoanVe.xaml.cs",
+              "RelativeToolTip": "Cinema\\GUI\\HoanVe.xaml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-27T07:44:14.479Z"
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 48,
+              "Title": "ThemNhanVien.xaml",
+              "DocumentMoniker": "D:\\Cinema\\Cinema\\GUI\\ThemNhanVien.xaml",
+              "RelativeDocumentMoniker": "Cinema\\GUI\\ThemNhanVien.xaml",
+              "ToolTip": "D:\\Cinema\\Cinema\\GUI\\ThemNhanVien.xaml",
+              "RelativeToolTip": "Cinema\\GUI\\ThemNhanVien.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-05-25T14:35:37.853Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 53,
+              "Title": "dbo.KhuyenMai.sql",
+              "DocumentMoniker": "ViewDataWindow_MSSQL__/LAPTOP_8RQB10J4/RapPhim2/True/SqlTable/dbo.KhuyenMai.sql",
+              "ToolTip": "ViewDataWindow_MSSQL__/LAPTOP_8RQB10J4/RapPhim2/True/SqlTable/dbo.KhuyenMai.sql",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
+              "WhenOpened": "2026-05-27T06:50:01.826Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 51,
               "Title": "ChamCong.xaml.cs",
               "DocumentMoniker": "D:\\Cinema\\Cinema\\GUI\\ChamCong.xaml.cs",
               "RelativeDocumentMoniker": "Cinema\\GUI\\ChamCong.xaml.cs",
@@ -1277,7 +1274,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 52,
+              "DocumentIndex": 54,
               "Title": "KhuyenMaiBUS.cs",
               "DocumentMoniker": "D:\\Cinema\\BUS\\KhuyenMaiBUS.cs",
               "RelativeDocumentMoniker": "BUS\\KhuyenMaiBUS.cs",
@@ -1289,7 +1286,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 54,
+              "DocumentIndex": 55,
               "Title": "QuanLyPhim.xaml.cs",
               "DocumentMoniker": "D:\\Cinema\\Cinema\\GUI\\QuanLyPhim.xaml.cs",
               "RelativeDocumentMoniker": "Cinema\\GUI\\QuanLyPhim.xaml.cs",
@@ -1301,7 +1298,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 55,
+              "DocumentIndex": 56,
               "Title": "Phim.cs",
               "DocumentMoniker": "D:\\Cinema\\DAL\\Models\\Phim.cs",
               "RelativeDocumentMoniker": "DAL\\Models\\Phim.cs",
@@ -1313,7 +1310,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 60,
+              "DocumentIndex": 61,
               "Title": "dbo.Rap.sql",
               "DocumentMoniker": "ViewDataWindow_MSSQL__/LAPTOP_8RQB10J4/RapPhim2/True/SqlTable/dbo.Rap.sql",
               "ToolTip": "ViewDataWindow_MSSQL__/LAPTOP_8RQB10J4/RapPhim2/True/SqlTable/dbo.Rap.sql",
@@ -1322,7 +1319,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 56,
+              "DocumentIndex": 57,
               "Title": "BanVeBUS.cs",
               "DocumentMoniker": "D:\\Cinema\\BUS\\BanVeBUS.cs",
               "RelativeDocumentMoniker": "BUS\\BanVeBUS.cs",
@@ -1334,7 +1331,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 59,
+              "DocumentIndex": 60,
               "Title": "dbo.NhanVien.data.sql",
               "DocumentMoniker": "D:\\Cinema\\dbo.NhanVien.data.sql",
               "RelativeDocumentMoniker": "dbo.NhanVien.data.sql",
@@ -1345,7 +1342,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 63,
+              "DocumentIndex": 64,
               "Title": "ChamCong.xaml",
               "DocumentMoniker": "D:\\Cinema\\Cinema\\GUI\\ChamCong.xaml",
               "RelativeDocumentMoniker": "Cinema\\GUI\\ChamCong.xaml",
@@ -1356,7 +1353,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 58,
+              "DocumentIndex": 59,
               "Title": "dbo.NhanVien.sql",
               "DocumentMoniker": "ViewDataWindow_MSSQL__/LAPTOP_8RQB10J4/RapPhim2/True/SqlTable/dbo.NhanVien.sql",
               "ToolTip": "ViewDataWindow_MSSQL__/LAPTOP_8RQB10J4/RapPhim2/True/SqlTable/dbo.NhanVien.sql",
@@ -1365,7 +1362,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 57,
+              "DocumentIndex": 58,
               "Title": "App.xaml",
               "DocumentMoniker": "D:\\Cinema\\Cinema\\App.xaml",
               "RelativeDocumentMoniker": "Cinema\\App.xaml",
@@ -1377,7 +1374,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 61,
+              "DocumentIndex": 62,
               "Title": "Main.xaml.cs",
               "DocumentMoniker": "D:\\Cinema\\Cinema\\GUI\\Main.xaml.cs",
               "RelativeDocumentMoniker": "Cinema\\GUI\\Main.xaml.cs",
@@ -1389,7 +1386,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 62,
+              "DocumentIndex": 63,
               "Title": "CustomMessageBox.xaml",
               "DocumentMoniker": "D:\\Cinema\\Cinema\\GUI\\CustomMessageBox.xaml",
               "RelativeDocumentMoniker": "Cinema\\GUI\\CustomMessageBox.xaml",
@@ -1400,7 +1397,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 64,
+              "DocumentIndex": 65,
               "Title": "Booking.xaml",
               "DocumentMoniker": "D:\\Cinema\\Cinema\\GUI\\Booking.xaml",
               "RelativeDocumentMoniker": "Cinema\\GUI\\Booking.xaml",
@@ -1411,19 +1408,18 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 65,
+              "DocumentIndex": 66,
               "Title": "MovieDetailDialog.xaml",
               "DocumentMoniker": "D:\\Cinema\\Cinema\\GUI\\MovieDetailDialog.xaml",
               "RelativeDocumentMoniker": "Cinema\\GUI\\MovieDetailDialog.xaml",
               "ToolTip": "D:\\Cinema\\Cinema\\GUI\\MovieDetailDialog.xaml",
               "RelativeToolTip": "Cinema\\GUI\\MovieDetailDialog.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2026-05-10T03:39:55.06Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-10T03:39:55.06Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 68,
+              "DocumentIndex": 69,
               "Title": "ThemNhanVien.xaml.cs",
               "DocumentMoniker": "D:\\Cinema\\Cinema\\GUI\\ThemNhanVien.xaml.cs",
               "RelativeDocumentMoniker": "Cinema\\GUI\\ThemNhanVien.xaml.cs",
@@ -1435,7 +1431,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 66,
+              "DocumentIndex": 67,
               "Title": "NhanVienBUS.cs",
               "DocumentMoniker": "D:\\Cinema\\BUS\\NhanVienBUS.cs",
               "RelativeDocumentMoniker": "BUS\\NhanVienBUS.cs",
@@ -1447,7 +1443,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 67,
+              "DocumentIndex": 68,
               "Title": "DichVuDAL.cs",
               "DocumentMoniker": "D:\\Cinema\\DAL\\DichVuDAL.cs",
               "RelativeDocumentMoniker": "DAL\\DichVuDAL.cs",
@@ -1459,7 +1455,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 71,
+              "DocumentIndex": 72,
               "Title": "TaiKhoanDTO.cs",
               "DocumentMoniker": "D:\\Cinema\\DTO\\TaiKhoanDTO.cs",
               "RelativeDocumentMoniker": "DTO\\TaiKhoanDTO.cs",
@@ -1471,7 +1467,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 69,
+              "DocumentIndex": 70,
               "Title": "Student.xaml.cs",
               "DocumentMoniker": "D:\\Cinema\\Cinema\\GUI\\Student.xaml.cs",
               "RelativeDocumentMoniker": "Cinema\\GUI\\Student.xaml.cs",
@@ -1483,7 +1479,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 70,
+              "DocumentIndex": 71,
               "Title": "SuaSanPhamWindow.xaml.cs",
               "DocumentMoniker": "D:\\Cinema\\Cinema\\GUI\\SuaSanPhamWindow.xaml.cs",
               "RelativeDocumentMoniker": "Cinema\\GUI\\SuaSanPhamWindow.xaml.cs",
@@ -1495,7 +1491,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 73,
+              "DocumentIndex": 74,
               "Title": "NhapKhoWindow.xaml.cs",
               "DocumentMoniker": "D:\\Cinema\\Cinema\\GUI\\NhapKhoWindow.xaml.cs",
               "RelativeDocumentMoniker": "Cinema\\GUI\\NhapKhoWindow.xaml.cs",
@@ -1507,7 +1503,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 72,
+              "DocumentIndex": 73,
               "Title": "PreviewPhieuNhap.xaml.cs",
               "DocumentMoniker": "D:\\Cinema\\Cinema\\GUI\\PreviewPhieuNhap.xaml.cs",
               "RelativeDocumentMoniker": "Cinema\\GUI\\PreviewPhieuNhap.xaml.cs",
@@ -1519,7 +1515,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 75,
+              "DocumentIndex": 76,
               "Title": "QuanLyKho.xaml.cs",
               "DocumentMoniker": "D:\\Cinema\\Cinema\\GUI\\QuanLyKho.xaml.cs",
               "RelativeDocumentMoniker": "Cinema\\GUI\\QuanLyKho.xaml.cs",
@@ -1531,7 +1527,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 74,
+              "DocumentIndex": 75,
               "Title": "Cinema.csproj",
               "DocumentMoniker": "D:\\Cinema\\Cinema\\Cinema.csproj",
               "RelativeDocumentMoniker": "Cinema\\Cinema.csproj",
@@ -1543,7 +1539,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 76,
+              "DocumentIndex": 77,
               "Title": "SanPhamBUS.cs",
               "DocumentMoniker": "D:\\Cinema\\BUS\\SanPhamBUS.cs",
               "RelativeDocumentMoniker": "BUS\\SanPhamBUS.cs",
@@ -1555,7 +1551,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 77,
+              "DocumentIndex": 78,
               "Title": "PhieuNhapReportDTO.cs",
               "DocumentMoniker": "D:\\Cinema\\DTO\\PhieuNhapReportDTO.cs",
               "RelativeDocumentMoniker": "DTO\\PhieuNhapReportDTO.cs",
@@ -1567,7 +1563,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 78,
+              "DocumentIndex": 79,
               "Title": "TaiKhoanBUS.cs",
               "DocumentMoniker": "D:\\Cinema\\BUS\\TaiKhoanBUS.cs",
               "RelativeDocumentMoniker": "BUS\\TaiKhoanBUS.cs",
@@ -1579,7 +1575,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 79,
+              "DocumentIndex": 80,
               "Title": "ChiTietNhapKhoDTO.cs",
               "DocumentMoniker": "D:\\Cinema\\DTO\\ChiTietNhapKhoDTO.cs",
               "RelativeDocumentMoniker": "DTO\\ChiTietNhapKhoDTO.cs",
@@ -1591,7 +1587,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 83,
+              "DocumentIndex": 84,
               "Title": "dbo.Kho.sql",
               "DocumentMoniker": "ViewDataWindow_MSSQL__/LAPTOP_8RQB10J4/RapPhim2/True/SqlTable/dbo.Kho.sql",
               "ToolTip": "ViewDataWindow_MSSQL__/LAPTOP_8RQB10J4/RapPhim2/True/SqlTable/dbo.Kho.sql",
@@ -1600,7 +1596,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 81,
+              "DocumentIndex": 82,
               "Title": "ThemSanPham.xaml.cs",
               "DocumentMoniker": "D:\\Cinema\\Cinema\\GUI\\ThemSanPham.xaml.cs",
               "RelativeDocumentMoniker": "Cinema\\GUI\\ThemSanPham.xaml.cs",
@@ -1612,7 +1608,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 80,
+              "DocumentIndex": 81,
               "Title": "SanPhamKhoDTO.cs",
               "DocumentMoniker": "D:\\Cinema\\DTO\\SanPhamKhoDTO.cs",
               "RelativeDocumentMoniker": "DTO\\SanPhamKhoDTO.cs",
@@ -1624,7 +1620,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 82,
+              "DocumentIndex": 83,
               "Title": "dbo.PhongChieu.sql",
               "DocumentMoniker": "ViewDataWindow_MSSQL__/LAPTOP_8RQB10J4/RapPhim2/True/SqlTable/dbo.PhongChieu.sql",
               "ToolTip": "ViewDataWindow_MSSQL__/LAPTOP_8RQB10J4/RapPhim2/True/SqlTable/dbo.PhongChieu.sql",
@@ -1633,7 +1629,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 89,
+              "DocumentIndex": 90,
               "Title": "BangLuongDAL.cs",
               "DocumentMoniker": "D:\\Cinema\\DAL\\BangLuongDAL.cs",
               "RelativeDocumentMoniker": "DAL\\BangLuongDAL.cs",
@@ -1645,7 +1641,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 94,
+              "DocumentIndex": 95,
               "Title": "DichVuBUS.cs",
               "DocumentMoniker": "D:\\Cinema\\BUS\\DichVuBUS.cs",
               "RelativeDocumentMoniker": "BUS\\DichVuBUS.cs",
@@ -1657,7 +1653,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 84,
+              "DocumentIndex": 85,
               "Title": "SanPham.cs",
               "DocumentMoniker": "D:\\Cinema\\DAL\\Models\\SanPham.cs",
               "RelativeDocumentMoniker": "DAL\\Models\\SanPham.cs",
@@ -1669,7 +1665,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 85,
+              "DocumentIndex": 86,
               "Title": "PhieuLuong.xaml.cs",
               "DocumentMoniker": "D:\\Cinema\\Cinema\\GUI\\PhieuLuong.xaml.cs",
               "RelativeDocumentMoniker": "Cinema\\GUI\\PhieuLuong.xaml.cs",
@@ -1681,7 +1677,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 86,
+              "DocumentIndex": 87,
               "Title": "BangLuongBUS.cs",
               "DocumentMoniker": "D:\\Cinema\\BUS\\BangLuongBUS.cs",
               "RelativeDocumentMoniker": "BUS\\BangLuongBUS.cs",
@@ -1693,7 +1689,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 88,
+              "DocumentIndex": 89,
               "Title": "ChamCongBUS.cs",
               "DocumentMoniker": "D:\\Cinema\\BUS\\ChamCongBUS.cs",
               "RelativeDocumentMoniker": "BUS\\ChamCongBUS.cs",
@@ -1705,7 +1701,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 93,
+              "DocumentIndex": 94,
               "Title": "QuanLyBangLuong.xaml.cs",
               "DocumentMoniker": "D:\\Cinema\\Cinema\\GUI\\QuanLyBangLuong.xaml.cs",
               "RelativeDocumentMoniker": "Cinema\\GUI\\QuanLyBangLuong.xaml.cs",
@@ -1717,7 +1713,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 87,
+              "DocumentIndex": 88,
               "Title": "CaLamBUS.cs",
               "DocumentMoniker": "D:\\Cinema\\BUS\\CaLamBUS.cs",
               "RelativeDocumentMoniker": "BUS\\CaLamBUS.cs",
@@ -1729,7 +1725,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 92,
+              "DocumentIndex": 93,
               "Title": "ChamCongDAL.cs",
               "DocumentMoniker": "D:\\Cinema\\DAL\\ChamCongDAL.cs",
               "RelativeDocumentMoniker": "DAL\\ChamCongDAL.cs",
@@ -1741,7 +1737,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 90,
+              "DocumentIndex": 91,
               "Title": "SQLQuery1.sql",
               "DocumentMoniker": "D:\\Cinema\\SQLQuery1.sql",
               "RelativeDocumentMoniker": "SQLQuery1.sql",
@@ -1752,7 +1748,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 91,
+              "DocumentIndex": 92,
               "Title": "dbo.ChamCong.sql",
               "DocumentMoniker": "ViewDataWindow_MSSQL__/LAPTOP_8RQB10J4/RapPhim2/True/SqlTable/dbo.ChamCong.sql",
               "ToolTip": "ViewDataWindow_MSSQL__/LAPTOP_8RQB10J4/RapPhim2/True/SqlTable/dbo.ChamCong.sql",
@@ -1761,7 +1757,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 96,
+              "DocumentIndex": 97,
               "Title": "KhenThuong.xaml.cs",
               "DocumentMoniker": "D:\\Cinema\\Cinema\\GUI\\KhenThuong.xaml.cs",
               "RelativeDocumentMoniker": "Cinema\\GUI\\KhenThuong.xaml.cs",
@@ -1773,7 +1769,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 100,
+              "DocumentIndex": 101,
               "Title": "KyLuatDTO.cs",
               "DocumentMoniker": "D:\\Cinema\\DTO\\KyLuatDTO.cs",
               "RelativeDocumentMoniker": "DTO\\KyLuatDTO.cs",
@@ -1785,7 +1781,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 95,
+              "DocumentIndex": 96,
               "Title": "BangLuongDTO.cs",
               "DocumentMoniker": "D:\\Cinema\\DTO\\BangLuongDTO.cs",
               "RelativeDocumentMoniker": "DTO\\BangLuongDTO.cs",
@@ -1797,7 +1793,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 101,
+              "DocumentIndex": 102,
               "Title": "ChamCong.cs",
               "DocumentMoniker": "D:\\Cinema\\DAL\\Models\\ChamCong.cs",
               "RelativeDocumentMoniker": "DAL\\Models\\ChamCong.cs",
@@ -1809,7 +1805,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 97,
+              "DocumentIndex": 98,
               "Title": "ThuongKyLuatBUS.cs",
               "DocumentMoniker": "D:\\Cinema\\BUS\\ThuongKyLuatBUS.cs",
               "RelativeDocumentMoniker": "BUS\\ThuongKyLuatBUS.cs",
@@ -1821,7 +1817,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 98,
+              "DocumentIndex": 99,
               "Title": "KyLuatBUS.cs",
               "DocumentMoniker": "D:\\Cinema\\BUS\\KyLuatBUS.cs",
               "RelativeDocumentMoniker": "BUS\\KyLuatBUS.cs",
@@ -1833,7 +1829,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 99,
+              "DocumentIndex": 100,
               "Title": "KyLuatDAL.cs",
               "DocumentMoniker": "D:\\Cinema\\DAL\\KyLuatDAL.cs",
               "RelativeDocumentMoniker": "DAL\\KyLuatDAL.cs",
@@ -1845,7 +1841,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 102,
+              "DocumentIndex": 103,
               "Title": "KhenThuong.cs",
               "DocumentMoniker": "D:\\Cinema\\DAL\\Models\\KhenThuong.cs",
               "RelativeDocumentMoniker": "DAL\\Models\\KhenThuong.cs",
@@ -1857,7 +1853,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 103,
+              "DocumentIndex": 104,
               "Title": "KhenThuongBUS.cs",
               "DocumentMoniker": "D:\\Cinema\\BUS\\KhenThuongBUS.cs",
               "RelativeDocumentMoniker": "BUS\\KhenThuongBUS.cs",
@@ -1869,7 +1865,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 104,
+              "DocumentIndex": 105,
               "Title": "KhenThuongDAL.cs",
               "DocumentMoniker": "D:\\Cinema\\DAL\\KhenThuongDAL.cs",
               "RelativeDocumentMoniker": "DAL\\KhenThuongDAL.cs",
@@ -1881,7 +1877,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 105,
+              "DocumentIndex": 106,
               "Title": "KhenThuongDTO.cs",
               "DocumentMoniker": "D:\\Cinema\\DTO\\KhenThuongDTO.cs",
               "RelativeDocumentMoniker": "DTO\\KhenThuongDTO.cs",
@@ -1893,7 +1889,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 107,
+              "DocumentIndex": 108,
               "Title": "ChamCongDTO.cs",
               "DocumentMoniker": "D:\\Cinema\\DTO\\ChamCongDTO.cs",
               "RelativeDocumentMoniker": "DTO\\ChamCongDTO.cs",
@@ -1905,7 +1901,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 109,
+              "DocumentIndex": 110,
               "Title": "CaLam.cs",
               "DocumentMoniker": "D:\\Cinema\\DAL\\Models\\CaLam.cs",
               "RelativeDocumentMoniker": "DAL\\Models\\CaLam.cs",
@@ -1917,7 +1913,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 106,
+              "DocumentIndex": 107,
               "Title": "XamlReader.cs",
               "DocumentMoniker": "C:\\Users\\admin\\AppData\\Local\\Temp\\.vsdbgsrc\\aad6be2495d0a786b94b3514a5b6903407fe2d6a75ad7e505df6a9d895927867\\XamlReader.cs",
               "ToolTip": "C:\\Users\\admin\\AppData\\Local\\Temp\\.vsdbgsrc\\aad6be2495d0a786b94b3514a5b6903407fe2d6a75ad7e505df6a9d895927867\\XamlReader.cs",
@@ -1927,7 +1923,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 111,
+              "DocumentIndex": 112,
               "Title": "PhanCaBUS.cs",
               "DocumentMoniker": "D:\\Cinema\\BUS\\PhanCaBUS.cs",
               "RelativeDocumentMoniker": "BUS\\PhanCaBUS.cs",
@@ -1939,7 +1935,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 112,
+              "DocumentIndex": 113,
               "Title": "PhanCaDTO.cs",
               "DocumentMoniker": "D:\\Cinema\\DTO\\PhanCaDTO.cs",
               "RelativeDocumentMoniker": "DTO\\PhanCaDTO.cs",
@@ -1951,7 +1947,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 108,
+              "DocumentIndex": 109,
               "Title": "PhanCaDAL.cs",
               "DocumentMoniker": "D:\\Cinema\\DAL\\PhanCaDAL.cs",
               "RelativeDocumentMoniker": "DAL\\PhanCaDAL.cs",
@@ -1963,7 +1959,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 110,
+              "DocumentIndex": 111,
               "Title": "PhanCa.xaml.cs",
               "DocumentMoniker": "D:\\Cinema\\Cinema\\GUI\\PhanCa.xaml.cs",
               "RelativeDocumentMoniker": "Cinema\\GUI\\PhanCa.xaml.cs",
@@ -1975,7 +1971,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 116,
+              "DocumentIndex": 117,
               "Title": "BaoCaoDoanhThuNgay.frx",
               "DocumentMoniker": "D:\\Cinema\\Cinema\\Reports\\BaoCaoDoanhThuNgay.frx",
               "RelativeDocumentMoniker": "Cinema\\Reports\\BaoCaoDoanhThuNgay.frx",
@@ -1987,7 +1983,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 117,
+              "DocumentIndex": 118,
               "Title": "dbo.DonHang.sql",
               "DocumentMoniker": "ViewDataWindow_MSSQL__/LAPTOP_8RQB10J4/RapPhim2/True/SqlTable/dbo.DonHang.sql",
               "ToolTip": "ViewDataWindow_MSSQL__/LAPTOP_8RQB10J4/RapPhim2/True/SqlTable/dbo.DonHang.sql",
@@ -1996,7 +1992,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 115,
+              "DocumentIndex": 116,
               "Title": "BaoCaoDoanhThuExcelDTO.cs",
               "DocumentMoniker": "D:\\Cinema\\DTO\\BaoCaoDoanhThuExcelDTO.cs",
               "RelativeDocumentMoniker": "DTO\\BaoCaoDoanhThuExcelDTO.cs",
@@ -2008,7 +2004,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 113,
+              "DocumentIndex": 114,
               "Title": "RapPhim2Context.cs",
               "DocumentMoniker": "D:\\Cinema\\DAL\\Models\\RapPhim2Context.cs",
               "RelativeDocumentMoniker": "DAL\\Models\\RapPhim2Context.cs",
@@ -2020,7 +2016,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 114,
+              "DocumentIndex": 115,
               "Title": "BaoCaoDoanhThuBUS.cs",
               "DocumentMoniker": "D:\\Cinema\\BUS\\BaoCaoDoanhThuBUS.cs",
               "RelativeDocumentMoniker": "BUS\\BaoCaoDoanhThuBUS.cs",
@@ -2032,7 +2028,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 119,
+              "DocumentIndex": 120,
               "Title": "BaoCaoDoanhThuNgayDTO.cs",
               "DocumentMoniker": "D:\\Cinema\\DTO\\BaoCaoDoanhThuNgayDTO.cs",
               "RelativeDocumentMoniker": "DTO\\BaoCaoDoanhThuNgayDTO.cs",
@@ -2044,7 +2040,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 118,
+              "DocumentIndex": 119,
               "Title": "BaoCaoDoanhThuReportDTO.cs",
               "DocumentMoniker": "D:\\Cinema\\DTO\\BaoCaoDoanhThuReportDTO.cs",
               "RelativeDocumentMoniker": "DTO\\BaoCaoDoanhThuReportDTO.cs",
@@ -2056,7 +2052,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 120,
+              "DocumentIndex": 121,
               "Title": "PhongChieu.cs",
               "DocumentMoniker": "D:\\Cinema\\DAL\\Models\\PhongChieu.cs",
               "RelativeDocumentMoniker": "DAL\\Models\\PhongChieu.cs",
@@ -2068,7 +2064,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 123,
+              "DocumentIndex": 124,
               "Title": "BaoCaoDoanhThuNgay.cs",
               "DocumentMoniker": "D:\\Cinema\\DAL\\Models\\BaoCaoDoanhThuNgay.cs",
               "RelativeDocumentMoniker": "DAL\\Models\\BaoCaoDoanhThuNgay.cs",
@@ -2080,7 +2076,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 122,
+              "DocumentIndex": 123,
               "Title": "ChiTietDonHang.cs",
               "DocumentMoniker": "D:\\Cinema\\DAL\\Models\\ChiTietDonHang.cs",
               "RelativeDocumentMoniker": "DAL\\Models\\ChiTietDonHang.cs",
@@ -2092,7 +2088,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 121,
+              "DocumentIndex": 122,
               "Title": "VeBan.cs",
               "DocumentMoniker": "D:\\Cinema\\DAL\\Models\\VeBan.cs",
               "RelativeDocumentMoniker": "DAL\\Models\\VeBan.cs",
@@ -2104,7 +2100,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 125,
+              "DocumentIndex": 126,
               "Title": "StatCard.xaml.cs",
               "DocumentMoniker": "D:\\Cinema\\Cinema\\Controls\\StatCard.xaml.cs",
               "RelativeDocumentMoniker": "Cinema\\Controls\\StatCard.xaml.cs",
@@ -2116,7 +2112,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 127,
+              "DocumentIndex": 128,
               "Title": "QuanLyHoaDon.xaml.cs",
               "DocumentMoniker": "D:\\Cinema\\Cinema\\GUI\\QuanLyHoaDon.xaml.cs",
               "RelativeDocumentMoniker": "Cinema\\GUI\\QuanLyHoaDon.xaml.cs",
@@ -2128,15 +2124,14 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 124,
+              "DocumentIndex": 125,
               "Title": "StatCard.xaml",
               "DocumentMoniker": "D:\\Cinema\\Cinema\\Controls\\StatCard.xaml",
               "RelativeDocumentMoniker": "Cinema\\Controls\\StatCard.xaml",
               "ToolTip": "D:\\Cinema\\Cinema\\Controls\\StatCard.xaml",
               "RelativeToolTip": "Cinema\\Controls\\StatCard.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2026-05-20T02:29:03.768Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-20T02:29:03.768Z"
             },
             {
               "$type": "Document",
@@ -2173,7 +2168,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 126,
+              "DocumentIndex": 127,
               "Title": "Dark.xaml",
               "DocumentMoniker": "D:\\Cinema\\Cinema\\Themes\\Dark.xaml",
               "RelativeDocumentMoniker": "Cinema\\Themes\\Dark.xaml",
@@ -2182,17 +2177,6 @@
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
               "WhenOpened": "2026-05-10T05:51:09.011Z",
               "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 128,
-              "Title": "QuanLyHoaDon.xaml",
-              "DocumentMoniker": "D:\\Cinema\\Cinema\\GUI\\QuanLyHoaDon.xaml",
-              "RelativeDocumentMoniker": "Cinema\\GUI\\QuanLyHoaDon.xaml",
-              "ToolTip": "D:\\Cinema\\Cinema\\GUI\\QuanLyHoaDon.xaml",
-              "RelativeToolTip": "Cinema\\GUI\\QuanLyHoaDon.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2026-05-19T17:08:25.594Z"
             },
             {
               "$type": "Document",
@@ -2422,8 +2406,7 @@
               "ToolTip": "D:\\Cinema\\Cinema\\Controls\\NavItem.xaml",
               "RelativeToolTip": "Cinema\\Controls\\NavItem.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2026-05-10T06:13:04.387Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-10T06:13:04.387Z"
             },
             {
               "$type": "Document",

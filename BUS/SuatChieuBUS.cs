@@ -31,6 +31,10 @@ namespace BUS
         {
             return dal.KiemTraTrungGio(maPhong, start, end);
         }
+        public bool KiemTraTrungGio(int maPhong, DateTime start, DateTime end, int? excludeMaSuatChieu)
+        {
+            return dal.KiemTraTrungGio(maPhong, start, end, excludeMaSuatChieu);
+        }
         public SuatChieu? getSuatChieuById(int id, int? maRap = null)
         {
             return dal.getSuatChieuById(id, maRap);
@@ -62,15 +66,7 @@ namespace BUS
         }
         public bool removeSuatChieu(int id)
         {
-            try
-            {
-                dal.removeSuatChieu(id);
-                return true;
-            }
-            catch
-            {
-                return false;
-            }
+            return dal.removeSuatChieu(id);
         }
         public bool updateSuatChieu(SuatChieu suat)
         {
@@ -83,6 +79,15 @@ namespace BUS
             }
 
             if (suat.ThoiGianKetThuc.Value <= suat.ThoiGianBatDau.Value)
+            {
+                return false;
+            }
+
+            if (KiemTraTrungGio(
+                suat.MaPhong.Value,
+                suat.ThoiGianBatDau.Value,
+                suat.ThoiGianKetThuc.Value,
+                suat.MaSuatChieu))
             {
                 return false;
             }

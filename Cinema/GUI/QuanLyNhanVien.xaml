@@ -66,6 +66,7 @@
                           BorderThickness="0"
                           DisplayMemberPath="TenRap"
                           SelectedValuePath="MaRap"
+                          SelectionChanged="cbRap_SelectionChanged"
                           />
                 </StackPanel>
 

@@ -178,7 +178,7 @@ namespace Cinema.GUI
 				nav_PhanCa.Visibility = Visibility.Collapsed;
 				nav_KhuyenMai.Visibility = Visibility.Collapsed;
 				nav_Luong.Visibility = Visibility.Collapsed;
-				nav_Phim.Visibility = Visibility.Collapsed;
+				nav_QLPhim.Visibility = Visibility.Collapsed;
 				nav_KhenThuong.Visibility = Visibility.Collapsed;
 				nav_Phong.Visibility = Visibility.Collapsed;
 				nav_Kho.Visibility = Visibility.Collapsed;

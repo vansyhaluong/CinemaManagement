@@ -143,6 +143,9 @@ namespace DAL
                     .Include(x => x.ChiTietDonHangs)
                         .ThenInclude(c => c.MaSanPhamNavigation)
                             .ThenInclude(s => s!.Kho)
+                    .Include(x => x.ChiTietDonHangs)
+                        .ThenInclude(c => c.MaSanPhamNavigation)
+                            .ThenInclude(s => s!.MaLoaiSpNavigation)
                     .Include(x => x.ThanhToans)
                     .FirstOrDefault(x => x.MaDonHang == maDonHang);
 
@@ -183,7 +186,25 @@ namespace DAL
 
                 foreach (var ct in donHang.ChiTietDonHangs)
                 {
-                    if (ct.MaSanPhamNavigation?.Kho != null)
+                    if (ct.MaSanPhamNavigation == null)
+                        continue;
+
+                    if (string.Equals(ct.MaSanPhamNavigation.MaLoaiSpNavigation?.TenLoai, "Combo", StringComparison.OrdinalIgnoreCase))
+                    {
+                        var thanhPhans = db.ComboChiTiets
+                            .Where(x => x.MaCombo == ct.MaSanPham && (x.SoLuong ?? 0) > 0)
+                            .ToList();
+
+                        foreach (var thanhPhan in thanhPhans)
+                        {
+                            var khoThanhPhan = db.Khos.FirstOrDefault(x => x.MaSanPham == thanhPhan.MaSanPhamCon);
+                            if (khoThanhPhan != null)
+                            {
+                                khoThanhPhan.SoLuongTon = (khoThanhPhan.SoLuongTon ?? 0) + (ct.SoLuong ?? 0) * (thanhPhan.SoLuong ?? 0);
+                            }
+                        }
+                    }
+                    else if (ct.MaSanPhamNavigation.Kho != null)
                     {
                         ct.MaSanPhamNavigation.Kho.SoLuongTon = (ct.MaSanPhamNavigation.Kho.SoLuongTon ?? 0) + (ct.SoLuong ?? 0);
                     }

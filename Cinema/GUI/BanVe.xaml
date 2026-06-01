@@ -204,11 +204,11 @@
                             Padding="10,6"
                             CornerRadius="6"
                             Margin="0,0,10,0">
-                        <TextBlock Text="Ban ve"
+                        <TextBlock Text="Bán vé"
                                    Foreground="White"
                                    FontWeight="SemiBold"/>
                     </Border>
-                    <TextBlock Text="Giu ghe 60 giay"
+                    <TextBlock Text="Giữ ghế 60 giây"
                                Foreground="#A7B0C0"
                                VerticalAlignment="Center"/>
                 </StackPanel>
@@ -401,7 +401,7 @@
                         <Border Height="10"
                                 Background="#E7E1CF"
                                 CornerRadius="5"/>
-                        <TextBlock Text="MAN HINH"
+                        <TextBlock Text="MÀN HÌNH"
                                    Foreground="#A7B0C0"
                                    HorizontalAlignment="Center"
                                    Margin="0,10,0,0"/>
@@ -417,7 +417,7 @@
                     <WrapPanel Grid.Row="3"
                                HorizontalAlignment="Center"
                                Margin="0,14,0,0">
-                        <TextBlock Text="Trong" Foreground="#A7B0C0" Margin="8,0"/>
+                        <TextBlock Text="Trống" Foreground="#A7B0C0" Margin="8,0"/>
                         <Border Width="14"
                                 Height="14"
                                 Background="Transparent"
@@ -426,8 +426,8 @@
                                 CornerRadius="3"/>
                         <TextBlock Text="Đang chọn" Foreground="#A7B0C0" Margin="16,0,8,0"/>
                         <Border Width="14" Height="14" Background="#22C55E" CornerRadius="3"/>
-                        <TextBlock Text="Đang giữ" Foreground="#A7B0C0" Margin="16,0,8,0"/>
-                        <Border Width="14" Height="14" Background="#CA8A04" CornerRadius="3"/>
+                        <!--<TextBlock Text="Đang giữ" Foreground="#A7B0C0" Margin="16,0,8,0"/>
+                        <Border Width="14" Height="14" Background="#CA8A04" CornerRadius="3"/>-->
                         <TextBlock Text="Đã bán" Foreground="#A7B0C0" Margin="16,0,8,0"/>
                         <Border Width="14" Height="14" Background="#991B1B" CornerRadius="3"/>
                         <TextBlock Text="Bảo trì" Foreground="#A7B0C0" Margin="16,0,8,0"/>

@@ -148,7 +148,7 @@ namespace Cinema.GUI {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/Cinema;V1.0.0.0;component/gui/themkhuyenmai.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/Cinema;component/gui/themkhuyenmai.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\GUI\ThemKhuyenMai.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

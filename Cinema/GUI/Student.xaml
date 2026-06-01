@@ -71,25 +71,29 @@
                         VerticalAlignment="Center">
 
                 <controls:StatCard CardLabel="Total Employees"
-                                   Value="24"
+                                   x:Name="cardTotalEmployees"
+                                   Value="0"
                                    SubLabel="All cinema branches"
                                    ValueBrushKey="TextPrimaryBrush"
                                    Margin="0,0,10,0"/>
 
                 <controls:StatCard CardLabel="Working Today"
-                                   Value="18"
+                                   x:Name="cardWorkingToday"
+                                   Value="0"
                                    SubLabel="Current active staff"
                                    ValueBrushKey="SuccessBrush"
                                    Margin="0,0,10,0"/>
 
                 <controls:StatCard CardLabel="Managers"
-                                   Value="4"
+                                   x:Name="cardManagers"
+                                   Value="0"
                                    SubLabel="Management accounts"
                                    ValueBrushKey="WarningBrush"
                                    Margin="0,0,10,0"/>
 
                 <controls:StatCard CardLabel="Inactive"
-                                   Value="2"
+                                   x:Name="cardInactive"
+                                   Value="0"
                                    SubLabel="Disabled accounts"
                                    ValueBrushKey="DangerBrush"/>
 
@@ -114,29 +118,23 @@
                 <TextBox Width="220"
                          Margin="0,0,8,0"
                          x:Name="txtSearch"
-                         Text="Search employee..."/>
+                         Text="Search employee..."
+                         TextChanged="txtSearch_TextChanged"
+                         GotFocus="txtSearch_GotFocus"
+                         LostFocus="txtSearch_LostFocus"/>
 
                 <ComboBox Width="150"
                           Margin="0,0,8,0"
                           SelectedIndex="0"
-                          x:Name="cmbRap">
-
-                    <ComboBoxItem>All Branches</ComboBoxItem>
-                    <ComboBoxItem>CGV Vincom</ComboBoxItem>
-                    <ComboBoxItem>CGV Aeon Mall</ComboBoxItem>
-                    <ComboBoxItem>CGV Landmark</ComboBoxItem>
-
-                </ComboBox>
+                          x:Name="cmbRap"
+                          DisplayMemberPath="TenRap"
+                          SelectedValuePath="MaRap"
+                          SelectionChanged="cmbRap_SelectionChanged"/>
 
                 <ComboBox Width="140"
                           SelectedIndex="0"
-                          x:Name="cmbStatus">
-
-                    <ComboBoxItem>All Status</ComboBoxItem>
-                    <ComboBoxItem>Active</ComboBoxItem>
-                    <ComboBoxItem>Inactive</ComboBoxItem>
-
-                </ComboBox>
+                          x:Name="cmbStatus"
+                          SelectionChanged="cmbStatus_SelectionChanged"/>
 
             </StackPanel>
 

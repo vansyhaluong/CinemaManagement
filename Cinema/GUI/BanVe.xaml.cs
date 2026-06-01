@@ -230,7 +230,7 @@ namespace Cinema.GUI
             var thanhCong = banVeBUS.GiuGhe(suatChieuDangChon.MaSuatChieu, ghe.MaGhe);
             if (!thanhCong)
             {
-                MessageBox.Show("Không thể giữ ghế này. Vui long tai lai va chon ghe khac.", "Thông báo");
+                MessageBox.Show("Không thể giữ ghế này. Vui lòng chọn ghế khác.", "Thông báo");
                 LoadGhe(suatChieuDangChon.MaSuatChieu);
                 return;
             }
@@ -366,7 +366,7 @@ namespace Cinema.GUI
 
             if (!ketQua.ThanhCong)
             {
-                MessageBox.Show(ketQua.ThongBao, "Thong bao");
+                MessageBox.Show(ketQua.ThongBao, "Thông báo");
                 LoadGhe(suatChieuDangChon.MaSuatChieu);
                 TinhTien();
                 return;
@@ -432,7 +432,7 @@ namespace Cinema.GUI
             if (item.SoLuong >= tonKho)
             {
                 if (hienThongBao)
-                    MessageBox.Show($"Dich vu {item.Ten} chi con {tonKho} san pham trong kho.", "Thong bao");
+                    MessageBox.Show($"Dịch vụ {item.Ten} chi còn {tonKho} sản phẩm trong kho.", "Thông báo");
 
                 return false;
             }

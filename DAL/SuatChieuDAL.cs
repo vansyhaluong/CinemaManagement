@@ -81,21 +81,42 @@ namespace DAL
 
             return query.OrderBy(x => x.ThoiGianBatDau).ToList();
         }
-        public bool KiemTraTrungGio(int maPhong, DateTime start, DateTime end)
+        public bool KiemTraTrungGio(int maPhong, DateTime start, DateTime end, int? excludeMaSuatChieu = null)
         {
             using (var db = new RapPhim2Context())
             {
-                return db.SuatChieus.Any(x =>
+                var query = db.SuatChieus.Where(x =>
                     x.MaPhong == maPhong &&
                     x.ThoiGianBatDau < end &&
-                    x.ThoiGianKetThuc > start
-                );
+                    x.ThoiGianKetThuc > start);
+
+                if (excludeMaSuatChieu.HasValue)
+                {
+                    query = query.Where(x => x.MaSuatChieu != excludeMaSuatChieu.Value);
+                }
+
+                return query.Any();
             }
         }
         public bool addSuatChieu(SuatChieu suat)
         {
             try
             {
+                if (!suat.MaPhong.HasValue ||
+                    !suat.ThoiGianBatDau.HasValue ||
+                    !suat.ThoiGianKetThuc.HasValue)
+                {
+                    return false;
+                }
+
+                if (KiemTraTrungGio(
+                    suat.MaPhong.Value,
+                    suat.ThoiGianBatDau.Value,
+                    suat.ThoiGianKetThuc.Value))
+                {
+                    return false;
+                }
+
                 db.SuatChieus.Add(suat);
                 db.SaveChanges();
                 return true;
@@ -110,13 +131,22 @@ namespace DAL
             try
             {
                 var suat = db.SuatChieus.FirstOrDefault(s => s.MaSuatChieu == id);
-                if (suat != null)
+                if (suat == null)
+                    return false;
+
+                bool daCoVeBan = db.VeBans.Any(v => v.MaSuatChieu == id);
+                if (daCoVeBan)
+                    return false;
+
+                var dsGiuTam = db.GiuGheTams.Where(x => x.MaSuatChieu == id).ToList();
+                if (dsGiuTam.Count > 0)
                 {
-                    db.SuatChieus.Remove(suat);
-                    db.SaveChanges();
-                    return true;
+                    db.GiuGheTams.RemoveRange(dsGiuTam);
                 }
-                return false;
+
+                db.SuatChieus.Remove(suat);
+                db.SaveChanges();
+                return true;
             }
             catch
             {
@@ -130,11 +160,14 @@ namespace DAL
                 var existingSuat = db.SuatChieus.FirstOrDefault(s => s.MaSuatChieu == suat.MaSuatChieu);
                 if (existingSuat != null)
                 {
-                    bool biTrungGio = db.SuatChieus.Any(s =>
-                        s.MaSuatChieu != suat.MaSuatChieu &&
-                        s.MaPhong == suat.MaPhong &&
-                        s.ThoiGianBatDau < suat.ThoiGianKetThuc &&
-                        s.ThoiGianKetThuc > suat.ThoiGianBatDau);
+                    bool biTrungGio = suat.MaPhong.HasValue
+                        && suat.ThoiGianBatDau.HasValue
+                        && suat.ThoiGianKetThuc.HasValue
+                        && KiemTraTrungGio(
+                            suat.MaPhong.Value,
+                            suat.ThoiGianBatDau.Value,
+                            suat.ThoiGianKetThuc.Value,
+                            suat.MaSuatChieu);
 
                     if (biTrungGio)
                     {

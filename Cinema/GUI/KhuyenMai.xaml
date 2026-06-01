@@ -57,6 +57,8 @@
                 <Setter Property="BorderBrush" Value="{StaticResource PanelBorderBrush}"/>
                 <Setter Property="BorderThickness" Value="1"/>
                 <Setter Property="Padding" Value="10,0"/>
+                <Setter Property="VerticalContentAlignment" Value="Center"/>
+                <Setter Property="HorizontalContentAlignment" Value="Left"/>
             </Style>
 
             <Style x:Key="FilterButtonStyle" TargetType="Button">
@@ -249,6 +251,9 @@
                     <ComboBox x:Name="cbTrangThai"
                               Grid.Column="1"
                               Margin="14,0,0,0"
+                              Height="35"
+                              
+                              Foreground="{StaticResource SecondaryTextBrush}"
                               Style="{StaticResource InputComboBoxStyle}"
                               SelectionChanged="FilterChanged">
                         <ComboBoxItem Content="Tất cả trạng thái" IsSelected="True"/>
@@ -262,7 +267,10 @@
                     <ComboBox x:Name="cbLoai"
                               Grid.Column="2"
                               Margin="14,0,0,0"
+                              
                               Style="{StaticResource InputComboBoxStyle}"
+                              Foreground="{StaticResource SecondaryTextBrush}"
+                              Height="35"
                               SelectionChanged="FilterChanged">
                         <ComboBoxItem Content="Tất cả loại" IsSelected="True"/>
                         <ComboBoxItem Content="Giảm tiền"/>

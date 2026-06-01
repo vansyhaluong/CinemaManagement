@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Cinema.Models;
 
 namespace Cinema.GUI
 {
@@ -21,11 +22,55 @@ namespace Cinema.GUI
     /// </summary>
     public partial class QuanLyNhanVien : UserControl
     {
-         NhanVienBUS bus = new NhanVienBUS();
+        private readonly NhanVienBUS bus = new NhanVienBUS();
+        private readonly RapBUS rapBUS = new RapBUS();
+        private List<NhanVien> allNhanVien = new();
+
         public QuanLyNhanVien()
         {
             InitializeComponent();
-            dgNhanVien.ItemsSource = bus.getNhanVien();
+            LoadNhanVienData();
+            LoadRapComboBox();
+        }
+
+        private void LoadNhanVienData()
+        {
+            allNhanVien = bus.getNhanVien();
+            ApplyRapFilter();
+        }
+
+        private void LoadRapComboBox()
+        {
+            var dsRap = rapBUS.getAllRap();
+            dsRap.Insert(0, new Rap { MaRap = 0, TenRap = "Tất cả rạp" });
+
+            cbRap.ItemsSource = dsRap;
+            cbRap.SelectedValue = 0;
+        }
+
+        private void ApplyRapFilter()
+        {
+            int maRap = cbRap.SelectedValue is int value ? value : 0;
+
+            if (maRap <= 0)
+            {
+                dgNhanVien.ItemsSource = allNhanVien;
+                return;
+            }
+
+            dgNhanVien.ItemsSource = allNhanVien
+                .Where(x => x.MaRap == maRap)
+                .ToList();
+        }
+
+        private void cbRap_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (!IsLoaded)
+            {
+                return;
+            }
+
+            ApplyRapFilter();
         }
     }
 }

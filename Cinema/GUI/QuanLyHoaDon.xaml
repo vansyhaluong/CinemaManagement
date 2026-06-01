@@ -37,22 +37,36 @@
         <Style x:Key="FilterLabel" TargetType="TextBlock">
             <Setter Property="Foreground" Value="#CBD5E1"/>
             <Setter Property="FontSize" Value="12"/>
+            
             <Setter Property="FontWeight" Value="SemiBold"/>
             <Setter Property="Margin" Value="0,0,0,6"/>
         </Style>
 
         <Style x:Key="FilterTextBox" TargetType="TextBox">
-            <Setter Property="Height" Value="38"/>
+            <Setter Property="Height" Value="35"/>
             <Setter Property="Padding" Value="12,0"/>
             <Setter Property="Foreground" Value="#F8FAFC"/>
             <Setter Property="Background" Value="#0F172A"/>
             <Setter Property="BorderBrush" Value="#334155"/>
             <Setter Property="BorderThickness" Value="1"/>
             <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="TextBox">
+                        <Border Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        CornerRadius="8">
+                            <ScrollViewer x:Name="PART_ContentHost"
+                                  Margin="{TemplateBinding Padding}"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
         </Style>
 
         <Style x:Key="FilterDatePicker" TargetType="DatePicker">
-            <Setter Property="Height" Value="38"/>
+            <Setter Property="Height" Value="35"/>
             <Setter Property="Foreground" Value="#F8FAFC"/>
             <Setter Property="Background" Value="#0F172A"/>
             <Setter Property="BorderBrush" Value="#334155"/>
