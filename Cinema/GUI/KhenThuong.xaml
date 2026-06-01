@@ -320,23 +320,55 @@
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Loại"
                                                 Binding="{Binding Loai}"
+                                                Foreground="#94A3B8"
                                                 Width="120"/>
 
                             <DataGridTextColumn Header="Nhân viên"
                                                 Binding="{Binding HoTen}"
+                                                Foreground="#94A3B8"
                                                 Width="220"/>
 
                             <DataGridTextColumn Header="Ngày"
                                                 Binding="{Binding Ngay, StringFormat=dd/MM/yyyy}"
+                                                Foreground="#94A3B8"
                                                 Width="130"/>
 
                             <DataGridTextColumn Header="Lý do"
                                                 Binding="{Binding LyDo}"
+                                                Foreground="#94A3B8"
                                                 Width="*"/>
 
                             <DataGridTextColumn Header="Tiền"
                                                 Binding="{Binding SoTienHienThi}"
+                                                Foreground="#94A3B8"
                                                 Width="130"/>
+
+                            <DataGridTemplateColumn Header="Thao tác"
+                                                    Width="170">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Orientation="Horizontal">
+                                            <Button Content="Sửa"
+                                                    Width="70"
+                                                    Height="30"
+                                                    Margin="0,0,8,0"
+                                                    Background="#1E293B"
+                                                    Foreground="#93C5FD"
+                                                    BorderBrush="#3B82F6"
+                                                    BorderThickness="1"
+                                                    Click="btnSuaDong_Click"/>
+                                            <Button Content="Xóa"
+                                                    Width="70"
+                                                    Height="30"
+                                                    Foreground="#FCA5A5"
+                                                    Background="#3A1111"
+                                                    BorderBrush="#EF4444"
+                                                    BorderThickness="1"
+                                                    Click="btnXoaDong_Click"/>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
                         </DataGrid.Columns>
                     </DataGrid>
                 </Grid>

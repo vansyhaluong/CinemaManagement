@@ -14,7 +14,13 @@ namespace DAL
         RapPhim2Context db = new RapPhim2Context();
         public List<NhanVien> getNhanVien()
         {
-            return db.NhanViens.Include(x=>x.MaRapNavigation).ToList();
+            //return db.NhanViens.Include(x=>x.MaRapNavigation).ToList();
+            return db.NhanViens
+         .Include(x => x.MaRapNavigation)
+         .Include(x => x.MaTaiKhoanNavigation)
+         .Where(x => x.MaTaiKhoanNavigation == null
+                  || x.MaTaiKhoanNavigation.VaiTro != "Admin")
+         .ToList();
         }
         public bool removeStaff(int id)
         {

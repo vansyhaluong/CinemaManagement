@@ -21,8 +21,8 @@ namespace BUS
             if (maNhanVien <= 0 || maCa <= 0)
                 throw new Exception("Vui lòng chọn nhân viên và ca làm.");
 
-            if (dal.Exists(maNhanVien, ngay))
-                throw new Exception("Nhân viên này đã được phân ca trong ngày này.");
+            if (dal.Exists(maNhanVien, maCa, ngay))
+                throw new Exception("Nhân viên này đã được phân đúng ca trong ngày này.");
 
             var pc = new PhanCa
             {
@@ -41,8 +41,8 @@ namespace BUS
             if (maNhanVien <= 0 || maCa <= 0)
                 throw new Exception("Vui lòng chọn nhân viên và ca làm.");
 
-            if (dal.Exists(maNhanVien, ngay, maPhanCa))
-                throw new Exception("Nhân viên này đã có phân ca trong ngày này.");
+            if (dal.Exists(maNhanVien, maCa, ngay, maPhanCa))
+                throw new Exception("Nhân viên này đã có đúng ca này trong ngày.");
 
             var pc = new PhanCa
             {

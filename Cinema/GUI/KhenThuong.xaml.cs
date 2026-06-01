@@ -26,6 +26,7 @@ namespace Cinema.GUI
         private class ThuongPhatViewItem
         {
             public string Loai { get; set; } = "";
+            public int MaBanGhi { get; set; }
             public int MaNhanVien { get; set; }
             public string HoTen { get; set; } = "";
             public DateTime? Ngay { get; set; }
@@ -166,13 +167,28 @@ namespace Cinema.GUI
         ////}
         private void loadData()
         {
-            var dsKhenThuong = khenThuongBUS.GetAll();
-            var dsKyLuat = kyLuatBUS.GetAll();
+            List<KhenThuongDTO> dsKhenThuong;
+            List<KyLuatDTO> dsKyLuat;
+
+            if (dpTuNgay.SelectedDate != null && dpDenNgay.SelectedDate != null)
+            {
+                var tuNgay = DateOnly.FromDateTime(dpTuNgay.SelectedDate.Value);
+                var denNgay = DateOnly.FromDateTime(dpDenNgay.SelectedDate.Value);
+
+                dsKhenThuong = khenThuongBUS.GetByDateRange(tuNgay, denNgay);
+                dsKyLuat = kyLuatBUS.GetByDateRange(tuNgay, denNgay);
+            }
+            else
+            {
+                dsKhenThuong = khenThuongBUS.GetAll();
+                dsKyLuat = kyLuatBUS.GetAll();
+            }
 
             dsThuongPhat = dsKhenThuong
                 .Select(x => new ThuongPhatViewItem
                 {
                     Loai = "Thưởng",
+                    MaBanGhi = x.MaKhenThuong,
                     MaNhanVien = x.MaNhanVien,
                     HoTen = x.HoTen,
                     Ngay = x.Ngay,
@@ -182,6 +198,7 @@ namespace Cinema.GUI
                 .Concat(dsKyLuat.Select(x => new ThuongPhatViewItem
                 {
                     Loai = "Kỷ luật",
+                    MaBanGhi = x.MaKyLuat,
                     MaNhanVien = x.MaNhanVien,
                     HoTen = x.HoTen,
                     Ngay = x.Ngay,
@@ -295,6 +312,104 @@ namespace Cinema.GUI
         private void btnKyLuat_Click(object sender, RoutedEventArgs e)
         {
             HienThiKyLuat();
+        }
+
+        private void btnSuaDong_Click(object sender, RoutedEventArgs e)
+        {
+            if ((sender as FrameworkElement)?.DataContext is not ThuongPhatViewItem item)
+                return;
+
+            var popup = new SuaThuongPhatWindow(
+                item.Loai,
+                item.MaBanGhi,
+                item.MaNhanVien,
+                item.Ngay,
+                item.LyDo,
+                item.SoTien)
+            {
+                Owner = Window.GetWindow(this)
+            };
+
+            if (popup.ShowDialog() != true)
+                return;
+
+            try
+            {
+                bool ketQua;
+
+                if (item.Loai == "Thưởng")
+                {
+                    ketQua = khenThuongBUS.Update(new Cinema.Models.KhenThuong
+                    {
+                        MaKhenThuong = item.MaBanGhi,
+                        MaNhanVien = popup.MaNhanVien,
+                        Ngay = DateOnly.FromDateTime(popup.Ngay),
+                        LyDo = popup.LyDo,
+                        SoTienThuong = popup.SoTien
+                    });
+                }
+                else
+                {
+                    ketQua = kyLuatBUS.Update(new Cinema.Models.KyLuat
+                    {
+                        MaKyLuat = item.MaBanGhi,
+                        MaNhanVien = popup.MaNhanVien,
+                        Ngay = DateOnly.FromDateTime(popup.Ngay),
+                        LyDo = popup.LyDo,
+                        SoTienPhat = popup.SoTien
+                    });
+                }
+
+                if (ketQua)
+                {
+                    loadData();
+                    MessageBox.Show("Cập nhật thành công.");
+                }
+                else
+                {
+                    MessageBox.Show("Không thể cập nhật dữ liệu.");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi cập nhật: " + ex.Message);
+            }
+        }
+
+        private void btnXoaDong_Click(object sender, RoutedEventArgs e)
+        {
+            if ((sender as FrameworkElement)?.DataContext is not ThuongPhatViewItem item)
+                return;
+
+            var xacNhan = MessageBox.Show(
+                "Bạn có chắc muốn xóa dòng này không?",
+                "Xác nhận",
+                MessageBoxButton.YesNo,
+                MessageBoxImage.Question);
+
+            if (xacNhan != MessageBoxResult.Yes)
+                return;
+
+            try
+            {
+                bool ketQua = item.Loai == "Thưởng"
+                    ? khenThuongBUS.Delete(item.MaBanGhi)
+                    : kyLuatBUS.Delete(item.MaBanGhi);
+
+                if (ketQua)
+                {
+                    loadData();
+                    MessageBox.Show("Xóa thành công.");
+                }
+                else
+                {
+                    MessageBox.Show("Không thể xóa dữ liệu.");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi xóa: " + ex.Message);
+            }
         }
     }
 }

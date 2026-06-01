@@ -1,29 +1,34 @@
-﻿using FastReport.Export.PdfSimple.PdfObjects;
+using Microsoft.Web.WebView2.Core;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.IO;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace Cinema.GUI
 {
-    /// <summary>
-    /// Interaction logic for ReportPreviewWindow.xaml
-    /// </summary>
     public partial class ReportPreviewWindow : Window
     {
+        private readonly string _pdfPath;
+
         public ReportPreviewWindow(string pdfPath)
         {
             InitializeComponent();
-            pdfViewer.Navigate(pdfPath);
+            _pdfPath = pdfPath;
+            Loaded += ReportPreviewWindow_Loaded;
+        }
+
+        private async void ReportPreviewWindow_Loaded(object sender, RoutedEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(_pdfPath) || !File.Exists(_pdfPath))
+            {
+                MessageBox.Show("Không tìm thấy file PDF để xem trước.");
+                Close();
+                return;
+            }
+
+            await pdfViewer.EnsureCoreWebView2Async();
+            pdfViewer.CoreWebView2.Settings.AreDefaultContextMenusEnabled = true;
+            pdfViewer.CoreWebView2.Settings.AreDevToolsEnabled = false;
+            pdfViewer.CoreWebView2.Navigate(new Uri(_pdfPath).AbsoluteUri);
         }
     }
 }

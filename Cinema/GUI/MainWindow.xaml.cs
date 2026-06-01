@@ -25,6 +25,7 @@ namespace Cinema.GUI
 		public MainWindow()
 		{
 			InitializeComponent();
+			LoadUserInfo();
 			ApplyPermission();
             MainContent.Content = new Main();
 			//LoadData();
@@ -102,6 +103,7 @@ namespace Cinema.GUI
 			nav_KhenThuong.IsActive = false;
 			nav_QLNV.IsActive = false;
 			nav_KhuyenMai.IsActive = false;
+			nav_DoanhThu.IsActive = false;
             // Bật item đang click
             NavItem? item = sender as NavItem;
 			item.IsActive = true;
@@ -160,13 +162,13 @@ namespace Cinema.GUI
 		{
             MainContent.Content = new ChamCong();
         }
-        private void ApplyPermission()
+		private void ApplyPermission()
         {
             string vaiTro = Session.VaiTro;
 
             if (vaiTro == "Admin")
             {
-                return; // thấy hết
+                return; 
             }
 
 			else
@@ -179,10 +181,37 @@ namespace Cinema.GUI
 				nav_Phim.Visibility = Visibility.Collapsed;
 				nav_KhenThuong.Visibility = Visibility.Collapsed;
 				nav_Phong.Visibility = Visibility.Collapsed;
-			}
+				nav_Kho.Visibility = Visibility.Collapsed;
+				nav_SuatChieu.Visibility = Visibility.Collapsed;
+            }
 
             
         }
+
+		private void LoadUserInfo()
+		{
+			if (Session.IsAdmin)
+			{
+				txtUserAvatar.Text = "AD";
+				txtUserName.Text = "Admin";
+				txtUserRole.Text = "Administrator";
+				return;
+			}
+
+			string hoTen = string.IsNullOrWhiteSpace(Session.HoTen) ? "Nhân viên" : Session.HoTen.Trim();
+			string vaiTro = string.IsNullOrWhiteSpace(Session.VaiTro) ? "Nhân viên" : Session.VaiTro.Trim();
+
+			txtUserName.Text = hoTen;
+			txtUserRole.Text = vaiTro;
+
+			var words = hoTen
+				.Split(' ', StringSplitOptions.RemoveEmptyEntries)
+				.Select(x => x[0])
+				.Take(2)
+				.ToArray();
+
+			txtUserAvatar.Text = words.Length > 0 ? new string(words).ToUpperInvariant() : "NV";
+		}
 
     }
 }

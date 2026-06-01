@@ -149,7 +149,7 @@
                                             <ColumnDefinition Width="*"/>
                                             <ColumnDefinition Width="150"/>
                                             <ColumnDefinition Width="120"/>
-                                            <ColumnDefinition Width="130"/>
+                                            <ColumnDefinition Width="180"/>
                                         </Grid.ColumnDefinitions>
 
                                         <StackPanel Grid.Column="0">
@@ -195,8 +195,13 @@
                                                     Click="btnCheckIn_Click"/>
                                             <Button Content="OUT"
                                                     Width="52"
+                                                    Margin="0,0,6,0"
                                                     Tag="{Binding}"
                                                     Click="btnCheckOut_Click"/>
+                                            <Button Content="Sửa"
+                                                    Width="52"
+                                                    Tag="{Binding}"
+                                                    Click="btnSuaTrangThai_Click"/>
                                         </StackPanel>
                                     </Grid>
                                 </Border>

@@ -157,6 +157,10 @@
               "target": "Package",
               "version": "[8.0.25, )"
             },
+            "Microsoft.Web.WebView2": {
+              "target": "Package",
+              "version": "[1.0.3967.48, )"
+            },
             "QRCoder": {
               "target": "Package",
               "version": "[1.8.0, )"

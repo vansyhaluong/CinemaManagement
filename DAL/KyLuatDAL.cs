@@ -72,5 +72,33 @@ namespace DAL
             db.SaveChanges();
             return true;
         }
+
+        public bool Update(KyLuat kl)
+        {
+            var old = db.KyLuats.Find(kl.MaKyLuat);
+
+            if (old == null)
+                return false;
+
+            old.MaNhanVien = kl.MaNhanVien;
+            old.Ngay = kl.Ngay;
+            old.LyDo = kl.LyDo;
+            old.SoTienPhat = kl.SoTienPhat;
+
+            db.SaveChanges();
+            return true;
+        }
+
+        public bool Delete(int maKyLuat)
+        {
+            var kl = db.KyLuats.Find(maKyLuat);
+
+            if (kl == null)
+                return false;
+
+            db.KyLuats.Remove(kl);
+            db.SaveChanges();
+            return true;
+        }
     }
 }

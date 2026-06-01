@@ -54,7 +54,7 @@ namespace Cinema.GUI
 
             int? maRap = Session.IsAdmin ? null : Session.MaRap;
             var dsSuat = suatChieuBUS.getSuatChieuByPhim(phim.MaPhim, maRap)
-                .Where(x => x.ThoiGianBatDau != null && x.ThoiGianBatDau.Value.Date >= DateTime.Today)
+                .Where(x => x.ThoiGianBatDau != null && x.ThoiGianBatDau.Value >= DateTime.Now)
                 .OrderBy(x => x.ThoiGianBatDau)
                 .ToList();
 

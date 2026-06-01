@@ -28,14 +28,14 @@ namespace BUS
         {
             return baoCaoDAL.GetChiTietExcel(ngay, maRap);
         }
-        public int CountDonHangTheoNgay(DateTime ngay)
+        public int CountDonHangTheoNgay(DateTime ngay, int maRap)
         {
-            return baoCaoDAL.CountDonHangTheoNgay(ngay);
+            return baoCaoDAL.CountDonHangTheoNgay(ngay, maRap);
         }
 
-        public int CountDonHangDaThanhToan(DateTime ngay)
+        public int CountDonHangDaThanhToan(DateTime ngay, int maRap)
         {
-            return baoCaoDAL.CountDonHangDaThanhToan(ngay);
+            return baoCaoDAL.CountDonHangDaThanhToan(ngay, maRap);
         }
     }
 }

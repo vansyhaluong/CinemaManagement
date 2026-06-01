@@ -79,13 +79,13 @@
                 HorizontalAlignment="Right"
                 VerticalAlignment="Center">
 
-                <Button Content="Xuất PDF"
+                <Button Content="🖨 Xuất PDF"
                 Width="110"
                 Height="38"
                 Margin="0,0,10,0"
                 Click="btnXuatPdf_Click"/>
 
-                <Button Content="Xuất Excel"
+                <Button Content="🖨 Xuất Excel"
                 Width="120"
                 Height="38"
                 Click="btnXuatExcel_Click"/>
@@ -113,6 +113,7 @@
                                FontSize="13"
                                Margin="0,0,0,8"/>
                     <DatePicker x:Name="dpNgayBaoCao" 
+                                Foreground="White"
                                 Height="32"/>
                 </StackPanel>
 

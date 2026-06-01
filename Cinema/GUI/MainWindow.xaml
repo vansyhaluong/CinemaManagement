@@ -52,7 +52,7 @@
                     <controls:NavItem Icon="📽" Label="Quản Lý Phòng Chiếu" MouseLeftButtonDown="btnQuanLyPhong_Click" Click="Nav_Click" x:Name="nav_Phong"/>
                     <controls:NavItem Icon="🎫" Label="Suất Chiếu" MouseLeftButtonDown="btnSuatChieu_Click" Click="Nav_Click" x:Name="nav_SuatChieu"/>
                     <controls:NavItem Icon="🎫" Label="Chấm Công" MouseLeftButtonDown="btnChamCong_Click" Click="Nav_Click" x:Name="nav_ChamCong"/>
-                    <controls:NavItem Icon="🧾" Label="Quản Lý Hóa Đơn" MouseLeftButtonDown="btnQuanLyHoaDon_Click" Click="Nav_Click" x:Name="nav_HoaDon"/>
+                    <controls:NavItem Icon="🧾" Label="Hóa Đơn" MouseLeftButtonDown="btnQuanLyHoaDon_Click" Click="Nav_Click" x:Name="nav_HoaDon"/>
                     <controls:NavItem Icon="🧑‍💼" Label="Quản Lý Nhân Viên" MouseLeftButtonDown="btnQLNhanVien_Click" x:Name="nav_QLNV" Click="Nav_Click"/>
                     <controls:NavItem Icon="📦" Label="Kho" MouseLeftButtonDown="btnKho_Click" x:Name="nav_Kho" Click="Nav_Click"/>
                     <controls:NavItem Icon="🎁" Label="Khuyến mãi" MouseLeftButtonDown="btnKhuyenMai_Click" x:Name="nav_KhuyenMai" Click="Nav_Click"/>
@@ -91,17 +91,20 @@
                             Background="{DynamicResource AccentBrush}"
                             CornerRadius="14"
                             Margin="0,0,10,0">
-                        <TextBlock Text="AD"
+                        <TextBlock x:Name="txtUserAvatar"
+                                   Text="AD"
                                    FontSize="10" FontWeight="Bold"
                                    Foreground="White"
                                    HorizontalAlignment="Center"
                                    VerticalAlignment="Center"/>
                     </Border>
                     <StackPanel VerticalAlignment="Center">
-                        <TextBlock Text="Admin"
+                        <TextBlock x:Name="txtUserName"
+                                   Text="Admin"
                                    FontSize="13" FontWeight="Medium"
                                    Foreground="{DynamicResource TextPrimaryBrush}"/>
-                        <TextBlock Text="Administrator"
+                        <TextBlock x:Name="txtUserRole"
+                                   Text="Administrator"
                                    FontSize="10"
                                    Foreground="{DynamicResource TextMutedBrush}"/>
                     </StackPanel>

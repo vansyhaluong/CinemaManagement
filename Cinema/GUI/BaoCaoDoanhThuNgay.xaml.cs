@@ -78,12 +78,9 @@ namespace Cinema.GUI
 
             DateTime ngay = dpNgayBaoCao.SelectedDate ?? DateTime.Today;
             int maRap = Convert.ToInt32(cbRap.SelectedValue);
-            int countNgay = baoCaoBUS.CountDonHangTheoNgay(ngay);
-            int countThanhToan = baoCaoBUS.CountDonHangDaThanhToan(ngay);
-            MessageBox.Show(
-    $"Theo ngày: {countNgay}\n" +
-    $"Đã thanh toán: {countThanhToan}"
-);
+            int countNgay = baoCaoBUS.CountDonHangTheoNgay(ngay, maRap);
+            int countThanhToan = baoCaoBUS.CountDonHangDaThanhToan(ngay, maRap);
+  
             var data = baoCaoBUS.GetChiTietExcel(ngay, maRap);
  
 
@@ -214,8 +211,6 @@ namespace Cinema.GUI
 
             int maRap = cbRap.SelectedValue == null? 0: Convert.ToInt32(cbRap.SelectedValue);
 
-            baoCaoBUS.TaoBaoCaoTheoNgay(ngay);
-
             var data = baoCaoBUS.GetBaoCaoTheoNgay(ngay, maRap);
 
             dgBaoCao.ItemsSource = data;
@@ -327,13 +322,8 @@ namespace Cinema.GUI
             PDFSimpleExport pdf = new PDFSimpleExport();
 
             report.Export(pdf, tempPdf);
-            Process.Start(new ProcessStartInfo
-            {
-                FileName = tempPdf,
-                UseShellExecute = true
-            });
-            //ReportPreviewWindow preview = new ReportPreviewWindow(tempPdf);
-            //preview.ShowDialog();
+            ReportPreviewWindow preview = new ReportPreviewWindow(tempPdf);
+            preview.ShowDialog();
 
 
         }

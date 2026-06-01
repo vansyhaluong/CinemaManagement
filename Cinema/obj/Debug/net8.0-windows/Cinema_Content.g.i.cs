@@ -47,5 +47,8 @@
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/spiderman.webp")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/traintobusan.jpg")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("reports/baocaodoanhthungay.frx")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("webview2loader.dll")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("webview2loader.dll")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("webview2loader.dll")]
 
 

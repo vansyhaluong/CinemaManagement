@@ -193,6 +193,35 @@ namespace Cinema.GUI
             }
         }
 
+        private void btnSuaTrangThai_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                if (sender is not Button btn) return;
+                if (btn.Tag is not ChamCongDTO dto) return;
+
+                var popup = new SuaTrangThaiChamCongWindow(dto)
+                {
+                    Owner = Window.GetWindow(this)
+                };
+
+                if (popup.ShowDialog() != true)
+                    return;
+
+                bool result = chamCongBUS.CapNhatTrangThai(dto, popup.TrangThaiDaChon);
+
+                if (result)
+                {
+                    MessageBox.Show("Cập nhật trạng thái thành công.");
+                    LoadData();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
         private void txtSearch_TextChanged(object sender, TextChangedEventArgs e)
         {
             if (!IsLoaded) return;

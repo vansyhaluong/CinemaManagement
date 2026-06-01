@@ -82,6 +82,37 @@ namespace DAL
 
             return db.SaveChanges() > 0;
         }
+
+        public bool CapNhatTrangThai(ChamCongDTO dto, string trangThaiMoi)
+        {
+            var date = DateOnly.FromDateTime(dto.Ngay);
+
+            var cc = db.ChamCongs.FirstOrDefault(x =>
+                x.MaNhanVien == dto.MaNhanVien &&
+                x.MaCa == dto.MaCa &&
+                x.Ngay == date);
+
+            if (cc == null)
+            {
+                cc = new ChamCong
+                {
+                    MaNhanVien = dto.MaNhanVien,
+                    MaCa = dto.MaCa,
+                    Ngay = date,
+                    GioVao = null,
+                    GioRa = null,
+                    TrangThai = trangThaiMoi
+                };
+
+                db.ChamCongs.Add(cc);
+            }
+            else
+            {
+                cc.TrangThai = trangThaiMoi;
+            }
+
+            return db.SaveChanges() > 0;
+        }
         public List<ChamCong> GetChamCongTheoTuan(
     DateOnly tuNgay,
     DateOnly denNgay)

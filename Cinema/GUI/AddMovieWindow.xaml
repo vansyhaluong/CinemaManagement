@@ -5,8 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Cinema.GUI"
         WindowStartupLocation="CenterScreen"
-        
+        Background="#111827"
         mc:Ignorable="d"
+        WindowStyle="None"
         Title="Thêm Phim Mới" Height="600" Width="1000">
     <Grid Margin="24">
 
@@ -39,10 +40,7 @@
                                FontSize="14"/>
                 </StackPanel>
 
-                <TextBlock Grid.Column="1"
-                           Text="🎬"
-                           FontSize="34"
-                           VerticalAlignment="Center"/>
+                
             </Grid>
         </Border>
 
@@ -87,7 +85,8 @@
                         HorizontalAlignment="Center">
 
                                     <TextBlock Text="🖼"
-                           FontSize="42"
+                           FontSize="42" 
+                            x:Name="txtImageEdit"                   
                            HorizontalAlignment="Center"/>
 
                                     <TextBlock Text="Chọn ảnh poster"
@@ -179,25 +178,11 @@
                                            Foreground="#CBD5E1"
                                            Margin="0,0,0,6"/>
 
-                                <ComboBox Height="42" x:Name="cbQuocGia"
-          Background="#1E293B"
-          
-          BorderThickness="0"
-          Padding="10,4">
-
-                                    <ComboBoxItem Content="Việt Nam"/>
-                                    <ComboBoxItem Content="Hoa Kỳ"/>
-                                    <ComboBoxItem Content="Hàn Quốc"/>
-                                    <ComboBoxItem Content="Nhật Bản"/>
-                                    <ComboBoxItem Content="Trung Quốc"/>
-                                    <ComboBoxItem Content="Thái Lan"/>
-                                    <ComboBoxItem Content="Ấn Độ"/>
-                                    <ComboBoxItem Content="Pháp"/>
-                                    <ComboBoxItem Content="Anh"/>
-                                    <ComboBoxItem Content="Canada"/>
-                                    <ComboBoxItem Content="Úc"/>
-
-                                </ComboBox>
+                                <ComboBox Height="32" x:Name="cbQuocGia"
+                                          Background="#1E293B"
+                                          Foreground="#94A3B8"
+                                          BorderThickness="0"
+                                          Padding="10,4"/>
                             </StackPanel>
 
                             <StackPanel Grid.Column="2">
@@ -205,14 +190,10 @@
                                            Foreground="#CBD5E1"
                                            Margin="0,0,0,6"/>
 
-                                <ComboBox Height="42" x:Name="cbTrangThai"
+                                <ComboBox Height="32" x:Name="cbTrangThai"
                                           Background="#1E293B"
-                                          Foreground="White"
-                                          BorderThickness="0">
-                                    <ComboBoxItem Content="Đang chiếu"/>
-                                    <ComboBoxItem Content="Sắp chiếu"/>
-                                    <ComboBoxItem Content="Ngừng chiếu"/>
-                                </ComboBox>
+                                          Foreground="#94A3B8"
+                                          BorderThickness="0"/>
                             </StackPanel>
                         </Grid>
 
@@ -225,35 +206,14 @@
                             </Grid.ColumnDefinitions>
 
                             <StackPanel Grid.Column="0">
-                                <TextBlock Text="Suất chiếu"
-                                           Foreground="#CBD5E1"
-                                           Margin="0,0,0,6"/>
-
-                                <ComboBox Height="42"
-                                          Background="#1E293B" x:Name="cbSuatChieu"
-                                          Foreground="White"
-                                          BorderThickness="0">
-                                    <ComboBoxItem Content="2D"/>
-                                    <ComboBoxItem Content="3D"/>
-                                    <ComboBoxItem Content="IMAX"/>
-                                </ComboBox>
-                            </StackPanel>
-
-                            <StackPanel Grid.Column="2">
                                 <TextBlock Text="Thể loại"
                                            Foreground="#CBD5E1"
                                            Margin="0,0,0,6"/>
 
-                                <ComboBox Height="42"
+                                <ComboBox Height="32"
                                           Background="#1E293B" x:Name="cbTheLoai"
-                                          Foreground="White"
-                                          BorderThickness="0">
-                                    <ComboBoxItem Content="Hành động"/>
-                                    <ComboBoxItem Content="Kinh dị"/>
-                                    <ComboBoxItem Content="Tình cảm"/>
-                                    <ComboBoxItem Content="Hoạt hình"/>
-                                    <ComboBoxItem Content="Phiêu lưu"/>
-                                </ComboBox>
+                                          Foreground="#94A3B8"
+                                          BorderThickness="0"/>
                             </StackPanel>
                         </Grid>
 
@@ -278,6 +238,7 @@
             <Button Grid.Column="1"
                     Content="Hủy"
                     Height="44"
+                    Click="btnHuy_Click"
                     Background="#334155"
                     Foreground="White"
                     BorderThickness="0"

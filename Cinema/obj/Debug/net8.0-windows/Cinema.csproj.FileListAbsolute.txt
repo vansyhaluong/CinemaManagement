@@ -506,3 +506,16 @@ D:\Cinema\Cinema\bin\Debug\net8.0-windows\Images\qr.jpg
 D:\Cinema\Cinema\obj\Debug\net8.0-windows\GUI\QrThanhToanWindow.baml
 D:\Cinema\Cinema\obj\Debug\net8.0-windows\GUI\QrThanhToanWindow.g.cs
 D:\Cinema\Cinema\bin\Debug\net8.0-windows\QRCoder.dll
+D:\Cinema\Cinema\obj\Debug\net8.0-windows\GUI\SuaThuongPhatWindow.baml
+D:\Cinema\Cinema\obj\Debug\net8.0-windows\GUI\SuaThuongPhatWindow.g.cs
+D:\Cinema\Cinema\obj\Debug\net8.0-windows\GUI\SuaTrangThaiChamCongWindow.baml
+D:\Cinema\Cinema\obj\Debug\net8.0-windows\GUI\SuaTrangThaiChamCongWindow.g.cs
+D:\Cinema\Cinema\bin\Debug\net8.0-windows\runtimes\win-x86\native\WebView2Loader.dll
+D:\Cinema\Cinema\bin\Debug\net8.0-windows\runtimes\win-x64\native\WebView2Loader.dll
+D:\Cinema\Cinema\bin\Debug\net8.0-windows\runtimes\win-arm64\native\WebView2Loader.dll
+D:\Cinema\Cinema\bin\Debug\net8.0-windows\Microsoft.Web.WebView2.Core.dll
+D:\Cinema\Cinema\bin\Debug\net8.0-windows\Microsoft.Web.WebView2.WinForms.dll
+D:\Cinema\Cinema\bin\Debug\net8.0-windows\Microsoft.Web.WebView2.Wpf.dll
+D:\Cinema\Cinema\bin\Debug\net8.0-windows\Microsoft.Web.WebView2.Core.xml
+D:\Cinema\Cinema\bin\Debug\net8.0-windows\Microsoft.Web.WebView2.WinForms.xml
+D:\Cinema\Cinema\bin\Debug\net8.0-windows\Microsoft.Web.WebView2.Wpf.xml

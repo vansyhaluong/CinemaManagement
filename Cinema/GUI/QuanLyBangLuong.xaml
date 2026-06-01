@@ -22,7 +22,7 @@
                 BorderThickness="0,0,0,1">
             <Grid Margin="16,0">
                 <StackPanel VerticalAlignment="Center">
-                    <TextBlock Text="Bảng lương theo tuần"
+                    <TextBlock Text="BẢNG LƯƠNG"
                                FontSize="17"
                                FontWeight="Bold"
                                Foreground="{DynamicResource TextPrimaryBrush}"/>
@@ -37,11 +37,13 @@
                     <DatePicker x:Name="dpTuNgay"
                                 Width="130"
                                 Height="30"
+                                Foreground="White"
                                 Margin="0,0,8,0"/>
 
                     <DatePicker x:Name="dpDenNgay"
                                 Width="130"
                                 Height="30"
+                                Foreground="White"
                                 Margin="0,0,8,0"/>
 
                     <Button x:Name="btnTinhLuong"
@@ -116,15 +118,15 @@
 
             <StackPanel Orientation="Horizontal"
                         HorizontalAlignment="Right">
-                <Button Content="Xuất Excel"
+                <!--<Button Content="Xuất Excel"
                         Width="95"
                         Height="30"
-                        Margin="0,0,8,0"/>
+                        Margin="0,0,8,0"/>-->
 
-                <Button Content="In bảng lương"
+                <Button Content="🖨 In bảng lương"
                         Width="115"
                         Height="30"
-                        Background="#111827"
+                        
                         Foreground="White"
                         Click="btnInBangLuong_Click"
                         BorderThickness="0"/>

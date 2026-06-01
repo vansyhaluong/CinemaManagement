@@ -90,7 +90,7 @@ public partial class RapPhim2Context : DbContext
             entity.Property(e => e.Ngay)
                   .HasColumnType("date");
 
-            entity.HasIndex(e => new { e.MaNhanVien, e.Ngay })
+            entity.HasIndex(e => new { e.MaNhanVien, e.MaCa, e.Ngay })
                   .IsUnique();
 
             entity.HasOne(e => e.MaNhanVienNavigation)

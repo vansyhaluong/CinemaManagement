@@ -133,7 +133,7 @@ namespace Cinema.GUI {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/Cinema;V1.0.0.0;component/gui/phieuluong.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/Cinema;component/gui/phieuluong.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\GUI\PhieuLuong.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

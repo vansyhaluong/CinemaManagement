@@ -18,9 +18,24 @@ namespace BUS
             return dal.GetAll();
         }
 
+        public List<KyLuatDTO> GetByDateRange(DateOnly tuNgay, DateOnly denNgay)
+        {
+            return dal.GetByDateRange(tuNgay, denNgay);
+        }
+
         public bool Add(KyLuat kl)
         {
             return dal.Add(kl);
+        }
+
+        public bool Update(KyLuat kl)
+        {
+            return dal.Update(kl);
+        }
+
+        public bool Delete(int maKyLuat)
+        {
+            return dal.Delete(maKyLuat);
         }
     }
 }

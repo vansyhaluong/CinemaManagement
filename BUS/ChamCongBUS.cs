@@ -57,5 +57,16 @@ namespace BUS
 
             return dal.CheckOut(dto.MaChamCong.Value);
         }
+
+        public bool CapNhatTrangThai(ChamCongDTO dto, string trangThaiMoi)
+        {
+            if (dto == null)
+                throw new Exception("Dữ liệu chấm công không hợp lệ.");
+
+            if (string.IsNullOrWhiteSpace(trangThaiMoi))
+                throw new Exception("Trạng thái không hợp lệ.");
+
+            return dal.CapNhatTrangThai(dto, trangThaiMoi.Trim());
+        }
     }
 }

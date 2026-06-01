@@ -43,6 +43,13 @@ namespace BUS
                             ))
                     ));
 
+                int soCaLamHopLe = nhom.Count(x =>
+                    x.TrangThai != null &&
+                    !string.Equals(x.TrangThai, "Chưa chấm công", StringComparison.OrdinalIgnoreCase) &&
+                    !x.TrangThai.ToLower().Contains("vắng") &&
+                    !x.TrangThai.ToLower().Contains("off") &&
+                    !x.TrangThai.ToLower().Contains("nghỉ"));
+
                 if (soLanTre > 0)
                 {
                     KyLuat kl = new KyLuat
@@ -71,7 +78,7 @@ namespace BUS
 
                 if (soLanTre == 0 &&
                     soLanVang == 0 &&
-                    nhom.Any())
+                    soCaLamHopLe >= 4)
                 {
                     KhenThuong kt = new KhenThuong
                     {

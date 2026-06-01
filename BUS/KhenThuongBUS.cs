@@ -18,6 +18,11 @@ namespace BUS
             return dal.GetAllKhenThuong();
         }
 
+        public List<KhenThuongDTO> GetByDateRange(DateOnly tuNgay, DateOnly denNgay)
+        {
+            return dal.GetByDateRange(tuNgay, denNgay);
+        }
+
         public bool Add(KhenThuong kt)
         {
             return dal.Add(kt);

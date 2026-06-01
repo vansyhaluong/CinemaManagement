@@ -174,12 +174,14 @@
                                 Style="{StaticResource FilterControlStyle}"
                                 Foreground="White"
                                 Background="#1E293B"
+                                Height="32"
                                 BorderBrush="{StaticResource BorderBrushDark}"
                                 SelectedDateChanged="dpNgayChieu_SelectedDateChanged"/>
 
                     <ComboBox Grid.Column="1"
                               x:Name="cbPhim"
                               Margin="14,0,0,0"
+                              Height="32"
                               Style="{StaticResource FilterControlStyle}"
                               Foreground="{StaticResource TextMutedBrushLocal}"
                               Background="#1E293B"

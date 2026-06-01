@@ -7,6 +7,7 @@ using Microsoft.Win32;
 using System.IO;
 using Path = System.IO.Path;
 using BUS;
+using Microsoft.EntityFrameworkCore;
 
 namespace Cinema.GUI
 {
@@ -17,12 +18,14 @@ namespace Cinema.GUI
 	{
 		private string posterPath = "";
 		private readonly MovieBUS bus = new MovieBUS();
+		private readonly RapPhim2Context db = new RapPhim2Context();
 		private Phim? editingMovie;
 		private bool isEdit;
 
 		public AddMovieWindow(Phim? movie = null)
 		{
 			InitializeComponent();
+			LoadComboData();
 			if (movie != null)
 			{
 				isEdit = true;
@@ -30,8 +33,13 @@ namespace Cinema.GUI
 				loadData(movie);
 			}
 		}
+		public void btnHuy_Click(object sender, RoutedEventArgs e)
+		{
+			DialogResult = false;
+			Close();
+        }
 
-		private void btnSave_Click(object sender, RoutedEventArgs e)
+        private void btnSave_Click(object sender, RoutedEventArgs e)
 		{
 			if (!ValidateMovieInput(out int thoiLuong, out DateOnly ngayKhoiChieu, out string quocGia, out string trangThai, out string theLoai))
 			{
@@ -53,8 +61,8 @@ namespace Cinema.GUI
 				editingMovie.NgayKhoiChieu = ngayKhoiChieu;
 				editingMovie.TrangThai = trangThai;
 				editingMovie.AnhBia = posterPath;
-
-				editingMovie.MaTheLoais.Clear();
+				txtImageEdit.Visibility = Visibility.Collapsed;
+                editingMovie.MaTheLoais.Clear();
 				editingMovie.MaTheLoais.Add(new TheLoai { Ten = theLoai });
 
 				bool result = bus.updateMovie(editingMovie);
@@ -162,6 +170,11 @@ namespace Cinema.GUI
 				return item.Content?.ToString()?.Trim() ?? string.Empty;
 			}
 
+			if (comboBox.SelectedItem is string textItem)
+			{
+				return textItem.Trim();
+			}
+
 			return comboBox.Text?.Trim() ?? string.Empty;
 		}
 
@@ -181,9 +194,42 @@ namespace Cinema.GUI
 					comboBox.SelectedItem = comboBoxItem;
 					return;
 				}
+
+				if (item is string textItem &&
+					string.Equals(textItem, value, StringComparison.CurrentCultureIgnoreCase))
+				{
+					comboBox.SelectedItem = item;
+					return;
+				}
 			}
 
 			comboBox.Text = value;
+		}
+
+		private void LoadComboData()
+		{
+			cbQuocGia.ItemsSource = db.Phims
+				.AsNoTracking()
+				.Where(x => !string.IsNullOrWhiteSpace(x.QuocGia))
+				.Select(x => x.QuocGia!.Trim())
+				.Distinct()
+				.OrderBy(x => x)
+				.ToList();
+
+			cbTrangThai.ItemsSource = db.Phims
+				.AsNoTracking()
+				.Where(x => !string.IsNullOrWhiteSpace(x.TrangThai))
+				.Select(x => x.TrangThai!.Trim())
+				.Distinct()
+				.OrderBy(x => x)
+				.ToList();
+
+			cbTheLoai.ItemsSource = db.TheLoais
+				.AsNoTracking()
+				.Where(x => !string.IsNullOrWhiteSpace(x.Ten))
+				.Select(x => x.Ten!.Trim())
+				.OrderBy(x => x)
+				.ToList();
 		}
 
 		private void btnUpLoad_Click(object sender, RoutedEventArgs e)

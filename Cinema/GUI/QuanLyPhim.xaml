@@ -70,8 +70,8 @@
                          TextChanged="txtTimKiem_TextChanged"
                          GotFocus="txtTimKiem_GotFocus"
                          LostFocus="txtTimKiem_LostFocus"/>
-                    <ComboBox Grid.Column="1" Margin="14,0,0,0" Height="40" SelectedIndex="0" x:Name="cbTheLoai"
-                          Background="#1E293B" Foreground="White" BorderThickness="0"
+                    <ComboBox Grid.Column="1" Margin="14,0,0,0" Height="35" SelectedIndex="0" x:Name="cbTheLoai"
+                          Background="#1E293B" Foreground="#94A3B8" BorderThickness="0"
                           SelectionChanged="cbTheLoai_SelectionChanged">
                         
                     </ComboBox>
@@ -83,11 +83,12 @@
           AutoGenerateColumns="False"
           HeadersVisibility="Column"
           GridLinesVisibility="None"
-          RowHeight="58"
+          IsReadOnly="True"
+          RowHeight="48"
           CanUserAddRows="False"
           Background="#111827"
           BorderThickness="0"
-          Foreground="White"
+          Foreground="#94A3B8"
           AlternatingRowBackground="#0B1220"
           RowBackground="#111827"
           SelectionMode="Single"
